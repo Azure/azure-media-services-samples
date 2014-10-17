@@ -1,0 +1,78 @@
+﻿<Application 
+    x:Class="Microsoft.SilverlightMediaFramework.Test.Phone.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone" xmlns:ViewModels="clr-namespace:Microsoft.SilverlightMediaFramework.Test.Phone.ViewModels" xmlns:Media="clr-namespace:Microsoft.SilverlightMediaFramework.Core.Media;assembly=Microsoft.SilverlightMediaFramework.Core.Phone">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <ViewModels:RootViewModel x:Key="RootViewModel">
+            <ViewModels:RootViewModel.Playlist>
+                <Media:PlaylistItem Title="Big Buck Bunny" Duration="00:09:47" DeliveryMethod="AdaptiveStreaming" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/bbbwp7/big buck bunny.ism/manifest" Description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.  A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth." ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg">
+                    <Media:PlaylistItem.Chapters>
+                        <Media:Chapter Begin="00:01:00" Title="Chapter 1" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg"/>
+                        <Media:Chapter Begin="00:02:00" Title="Chapter 2" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg"/>
+                        <Media:Chapter Begin="00:03:00" Title="Chapter 3" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg"/>
+                        <Media:Chapter Begin="00:04:00" Title="Chapter 4" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg"/>
+                        <Media:Chapter Begin="00:05:00" Title="Chapter 5" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/bigbuckbunny_poster.jpg"/>
+                    </Media:PlaylistItem.Chapters>
+                    <Media:PlaylistItem.TimelineMarkers>
+                        <Media:TimelineMediaMarker Begin="00:01:30" Content="Marker 1"/>
+                        <Media:TimelineMediaMarker Begin="00:02:30" Content="Marker 2"/>
+                        <Media:TimelineMediaMarker Begin="00:03:30" Content="Marker 3"/>
+                        <Media:TimelineMediaMarker Begin="00:04:30" Content="Marker 4"/>
+                        <Media:TimelineMediaMarker Begin="00:05:30" Content="Marker 5"/>
+                    </Media:PlaylistItem.TimelineMarkers>
+                </Media:PlaylistItem>
+
+                <Media:PlaylistItem Title="Elephants Dream (cc)" Duration="00:10:53" DeliveryMethod="AdaptiveStreaming" SelectedAudioStreamName="audio_english" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/edwp7/Elephants_Dream_1024-h264-st-aac.ism/manifest" Description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.  A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth." ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg">
+                    <Media:PlaylistItem.MarkerResources>
+                        <Media:MarkerResource Source="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/edwp7/samplecaptions.xml"/>
+                    </Media:PlaylistItem.MarkerResources>
+                    <Media:PlaylistItem.Chapters>
+                        <Media:Chapter Begin="00:01:00" Title="Chapter 1" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg"/>
+                        <Media:Chapter Begin="00:02:00" Title="Chapter 2" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg"/>
+                        <Media:Chapter Begin="00:03:00" Title="Chapter 3" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg"/>
+                        <Media:Chapter Begin="00:04:00" Title="Chapter 4" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg"/>
+                        <Media:Chapter Begin="00:05:00" Title="Chapter 5" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/ElephantsDream_Poster.jpg"/>
+                    </Media:PlaylistItem.Chapters>
+                    <Media:PlaylistItem.TimelineMarkers>
+                        <Media:TimelineMediaMarker Begin="00:01:30" Content="Marker 1"/>
+                        <Media:TimelineMediaMarker Begin="00:02:30" Content="Marker 2"/>
+                        <Media:TimelineMediaMarker Begin="00:03:30" Content="Marker 3"/>
+                        <Media:TimelineMediaMarker Begin="00:04:30" Content="Marker 4"/>
+                        <Media:TimelineMediaMarker Begin="00:05:30" Content="Marker 5"/>
+                    </Media:PlaylistItem.TimelineMarkers>
+                </Media:PlaylistItem>
+
+                <Media:PlaylistItem Title="Wildlife" Duration="00:00:30" DeliveryMethod="ProgressiveDownload" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/progressivecontent/wildlife.wmv" Description="Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.  A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth." ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/Wildlife_Poster.jpg">
+                    <Media:PlaylistItem.Chapters>
+                        <Media:Chapter Begin="00:00:10" Title="Chapter 1" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/Wildlife_Poster.jpg"/>
+                        <Media:Chapter Begin="00:00:20" Title="Chapter 2" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/Wildlife_Poster.jpg"/>
+                        <Media:Chapter Begin="00:00:30" Title="Chapter 3" ThumbSource="http://ecn.channel9.msdn.com/o9/content/smf/images/Wildlife_Poster.jpg"/>
+                    </Media:PlaylistItem.Chapters>
+                    <Media:PlaylistItem.TimelineMarkers>
+                        <Media:TimelineMediaMarker Begin="00:00:01" Content="Horses"/>
+                        <Media:TimelineMediaMarker Begin="00:00:04" Content="Birds"/>
+                        <Media:TimelineMediaMarker Begin="00:00:08" Content="Seals"/>
+                        <Media:TimelineMediaMarker Begin="00:00:12" Content="More Birds"/>
+                        <Media:TimelineMediaMarker Begin="00:00:16" Content="Badger"/>
+                        <Media:TimelineMediaMarker Begin="00:00:20" Content="Koala"/>
+                        <Media:TimelineMediaMarker Begin="00:00:25" Content="Sea Gulls"/>
+                    </Media:PlaylistItem.TimelineMarkers>
+                </Media:PlaylistItem>
+            </ViewModels:RootViewModel.Playlist>
+        </ViewModels:RootViewModel>
+        <DataTemplate x:Key="PanoramaTitleTemplate">
+            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" Margin="0,75,0,0" FontSize="20" CacheMode="BitmapCache" />
+        </DataTemplate>
+    </Application.Resources>
+
+    <Application.ApplicationLifetimeObjects>
+        <!--Required object that handles lifetime events for the application-->
+        <shell:PhoneApplicationService 
+            Launching="Application_Launching" Closing="Application_Closing" 
+            Activated="Application_Activated" Deactivated="Application_Deactivated"/>
+    </Application.ApplicationLifetimeObjects>
+
+</Application>

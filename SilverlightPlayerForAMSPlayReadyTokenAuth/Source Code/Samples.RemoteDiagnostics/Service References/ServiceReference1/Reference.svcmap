@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1aed75d6-58e3-4b2e-9986-7a323b364e66" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.ObjectModel.ObservableCollection`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:9735/Services/LoggingService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LoggingService.wsdl" MetadataType="Wsdl" ID="6c72584b-e120-402f-9c69-8fb7bf49223b" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="LoggingService.xsd" MetadataType="Schema" ID="6a5e1b26-2f0f-4c08-824c-84026eb93194" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LoggingService1.xsd" MetadataType="Schema" ID="8af4f542-c864-41f2-bbe5-782f1883b6ee" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?xsd=xsd1" />
+    <MetadataFile FileName="LoggingService2.xsd" MetadataType="Schema" ID="7d9e511b-a2a9-4bb4-9a1c-c506edf4fc4a" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?xsd=xsd2" />
+    <MetadataFile FileName="LoggingService.disco" MetadataType="Disco" ID="a3541eaf-9b7e-4a9c-a425-c4eadb990fe2" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?disco" />
+    <MetadataFile FileName="LoggingService1.wsdl" MetadataType="Wsdl" ID="4461ef3f-9346-4c03-b45a-23d2e9bf1678" SourceId="1" SourceUrl="http://localhost:9735/Services/LoggingService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

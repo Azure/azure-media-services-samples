@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>Microsoft.SilverlightMediaFramework.Anaglyph3DHTMLPlayer</title>
+    <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    </style>
+    <script type="text/javascript" src="Silverlight.js"></script>
+    <script type="text/javascript">
+        function onSilverlightError(sender, args) {
+            var appSource = "";
+            if (sender != null && sender != 0) {
+                appSource = sender.getHost().Source;
+            }
+
+            var errorType = args.ErrorType;
+            var iErrorCode = args.ErrorCode;
+
+            if (errorType == "ImageError" || errorType == "MediaError") {
+                return;
+            }
+
+            var errMsg = "Unhandled Error in Silverlight Application " + appSource + "\n";
+
+            errMsg += "Code: " + iErrorCode + "    \n";
+            errMsg += "Category: " + errorType + "       \n";
+            errMsg += "Message: " + args.ErrorMessage + "     \n";
+
+            if (errorType == "ParserError") {
+                errMsg += "File: " + args.xamlFile + "     \n";
+                errMsg += "Line: " + args.lineNumber + "     \n";
+                errMsg += "Position: " + args.charPosition + "     \n";
+            }
+            else if (errorType == "RuntimeError") {
+                if (args.lineNumber != 0) {
+                    errMsg += "Line: " + args.lineNumber + "     \n";
+                    errMsg += "Position: " + args.charPosition + "     \n";
+                }
+                errMsg += "MethodName: " + args.methodName + "     \n";
+            }
+
+            throw new Error(errMsg);
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server" style="height:100%">
+    <div id="silverlightControlHost">
+        <object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+		  <param name="source" value="../../ClientBin/SmoothStreamingPlayer.xap"/>
+		  <param name="onError" value="onSilverlightError" />
+		  <param name="background" value="white" />
+		  <param name="minRuntimeVersion" value="5.0.61118.0" />
+		  <param name="autoUpgrade" value="true" />
+          <param name="enableGPUAcceleration" value="true" />
+          <param name="initparams" value="PlayerSettings = 
+                        <Playlist>
+                            <AutoLoad>true</AutoLoad>
+                            <AutoPlay>true</AutoPlay>
+                            <DisplayTimeCode>false</DisplayTimeCode>
+                            <EnableCachedComposition>true</EnableCachedComposition>
+                            <EnableCaptions>true</EnableCaptions>
+                            <EnableOffline>true</EnableOffline>
+                            <EnablePopOut>true</EnablePopOut>
+                            <StartMuted>false</StartMuted>
+                            <StretchMode>None</StretchMode>
+                            <Items>
+								<PlaylistItem>
+									<AudioCodec>WmaProfessional</AudioCodec>
+									<Description>Anaglyph%203D%20Smooth%20Streaming</Description>
+									<FileSize>23775864</FileSize>
+									<FrameRate>29.9700898503294</FrameRate>
+									<IsAdaptiveStreaming>true</IsAdaptiveStreaming>
+                                    <DeliveryMethod>AdaptiveStreaming</DeliveryMethod>
+									<MediaSource>http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_SxS_LeftFirst.ism/manifest</MediaSource>
+									<Title>Anaglyph 3D Smooth Streaming</Title>
+									<VideoCodec>VC1</VideoCodec>
+                                    <S3DProperties>
+                                        <S3DFormat>SideBySide</S3DFormat>
+                                        <S3DEyePriority>LeftFirst</S3DEyePriority>
+                                        <S3DLeftEyePAR>2.0</S3DLeftEyePAR>
+                                        <S3DRightEyePAR>2.0</S3DRightEyePAR>
+                                    </S3DProperties>
+                                    <CustomMetadata>
+                                        <ExampleProperty1>ExampleValue1</ExampleProperty1>
+                                        <ExampleProperty2>ExampleValue2</ExampleProperty2>
+                                    </CustomMetadata>
+								</PlaylistItem>
+                            </Items>
+                        </Playlist>"/>  
+		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=5.0.61118.0" style="text-decoration:none">
+ 			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none"/>
+		  </a>
+	    </object><iframe id="_sl_historyFrame" style="visibility:hidden;height:0px;width:0px;border:0px"></iframe></div>
+    </form>
+</body>
+</html>

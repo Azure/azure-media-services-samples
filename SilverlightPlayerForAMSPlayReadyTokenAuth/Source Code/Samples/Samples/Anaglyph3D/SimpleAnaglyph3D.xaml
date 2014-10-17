@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="Microsoft.SilverlightMediaFramework.Samples.Samples.Anaglyph3D.SimpleAnaglyph3D"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:smf="clr-namespace:Microsoft.SilverlightMediaFramework.Core;assembly=Microsoft.SilverlightMediaFramework.Core" 
+	xmlns:smfm="clr-namespace:Microsoft.SilverlightMediaFramework.Core.Media;assembly=Microsoft.SilverlightMediaFramework.Core"
+    xmlns:plugins3d="clr-namespace:Microsoft.SilverlightMediaFramework.Plugins.Primitives.S3D;assembly=Microsoft.SilverlightMediaFramework.Plugins"
+    xmlns:smfutilitymd="clr-namespace:Microsoft.SilverlightMediaFramework.Utilities.Metadata;assembly=Microsoft.SilverlightMediaFramework.Utilities"
+    mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot" Background="White" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <TextBlock Text="Selected Anaglyph Mode:" FontWeight="Bold"></TextBlock>
+            <ComboBox x:Name="AnaglyphModeSelector" SelectionChanged="AnaglyphModeSelector_SelectionChanged" Width="150" VerticalAlignment="Center" Margin="5,0,0,0">
+                <ComboBoxItem Content="Half Color 3D" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="Greyscale 3D"></ComboBoxItem>
+                <ComboBoxItem Content="Left Eye Only"></ComboBoxItem>
+                <ComboBoxItem Content="None"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <smf:SMFPlayer x:Name="smfPlayer" Grid.Row="1" >
+            <smf:SMFPlayer.Playlist>
+                <smfm:PlaylistItem Title="Progessive Anaglyph SxS Left First 3D" DeliveryMethod="ProgressiveDownload"  MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_720p30_SxS_LeftFirst.wmv">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="LeftFirst" S3DFormat="SideBySide" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Progessive Anaglyph SxS Right First 3D" DeliveryMethod="ProgressiveDownload"  MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_720p30_SxS_RightFirst.wmv">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="RightFirst" S3DFormat="SideBySide" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Progessive Anaglyph TxB Left First 3D" DeliveryMethod="ProgressiveDownload"  MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_720p30_TxB_LeftFirst.wmv">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="LeftFirst" S3DFormat="TopAndBottom" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Progessive Anaglyph TxB Right First 3D" DeliveryMethod="ProgressiveDownload"  MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_720p30_TxB_RightFirst.wmv">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="RightFirst" S3DFormat="TopAndBottom" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Smooth Streaming SxS Left First 3D Multi Bitrate" MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_SxS_LeftFirst.ism/manifest" DeliveryMethod="AdaptiveStreaming">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="LeftFirst" S3DFormat="SideBySide" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Smooth Streaming SxS Right First 3D Multi Bitrate" MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_SxS_RightFirst.ism/manifest" DeliveryMethod="AdaptiveStreaming">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="RightFirst" S3DFormat="SideBySide" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Smooth Streaming TxB Left First 3D Multi Bitrate" MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_TxB_LeftFirst.ism/manifest" DeliveryMethod="AdaptiveStreaming">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="LeftFirst" S3DFormat="TopAndBottom" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                    <smfm:PlaylistItem.CustomMetadata>
+                        <smfutilitymd:MetadataItem Key="ExampleProperty1" Value="ExampleValue1"/>
+                        <smfutilitymd:MetadataItem Key="ExampleProperty2" Value="ExampleValue2"/>
+                    </smfm:PlaylistItem.CustomMetadata>
+                </smfm:PlaylistItem>
+                <smfm:PlaylistItem Title="Smooth Streaming TxB Right First 3D Multi Bitrate" MediaSource="http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_TxB_RightFirst.ism/manifest" DeliveryMethod="AdaptiveStreaming">
+                    <smfm:PlaylistItem.S3DProperties>
+                        <plugins3d:S3DProperties S3DEyePriority="RightFirst" S3DFormat="TopAndBottom" S3DLeftEyePAR="2.0" S3DRightEyePAR="2.0" />
+                    </smfm:PlaylistItem.S3DProperties>
+                    <smfm:PlaylistItem.CustomMetadata>
+                        <smfutilitymd:MetadataItem Key="ExampleProperty1" Value="ExampleValue1"/>
+                        <smfutilitymd:MetadataItem Key="ExampleProperty2" Value="ExampleValue2"/>
+                    </smfm:PlaylistItem.CustomMetadata>
+                </smfm:PlaylistItem>
+            </smf:SMFPlayer.Playlist>
+        </smf:SMFPlayer>    
+    </Grid>
+</UserControl>

@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F76C6CBF-65B8-4105-A866-8E7469C23962}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Plugins</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Plugins</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Debug\Microsoft.SilverlightMediaFramework.Plugins.XML</DocumentationFile>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Release\Microsoft.SilverlightMediaFramework.Plugins.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.SilverlightMediaFramework.Plugins.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Metadata\IAdPayloadHandlerMetadata.cs" />
+    <Compile Include="Primitives\Advertising\AdMarker.cs" />
+    <Compile Include="Primitives\Advertising\Constants.cs" />
+    <Compile Include="Primitives\Advertising\FailurePolicy.cs" />
+    <Compile Include="Primitives\Advertising\HandleCompletedEventArgs.cs" />
+    <Compile Include="Primitives\Advertising\ScheduledAd.cs" />
+    <Compile Include="Primitives\Advertising\AdMarkerEventArgs.cs" />
+    <Compile Include="Primitives\Advertising\AdMarkerReachedInfoEventArgs.cs" />
+    <Compile Include="Primitives\Advertising\AdSequencingTrigger.cs" />
+    <Compile Include="Primitives\Advertising\IAdPayload.cs" />
+    <Compile Include="IAdPayloadHandlerPlugin.cs" />
+    <Compile Include="Primitives\Advertising\IAdSequencingTrigger.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="IPlayerConsumer.cs" />
+    <Compile Include="IS3DPlugin.cs" />
+    <Compile Include="Metadata\ExportAdPayloadHandlerPluginAttribute.cs" />
+    <Compile Include="Metadata\Export3DPluginAttribute.cs" />
+    <Compile Include="Primitives\ChunkDownloadStrategy.cs" />
+    <Compile Include="Primitives\DeliveryMethods.cs" />
+    <Compile Include="IGenericPlugin.cs" />
+    <Compile Include="Metadata\ExportGenericPluginAttribute.cs" />
+    <Compile Include="IHeuristicsPlugin.cs" />
+    <Compile Include="Metadata\ExportMultiHeuristicsPluginAttribute.cs" />
+    <Compile Include="IPlugIn.cs" />
+    <Compile Include="Primitives\AdProgress.cs" />
+    <Compile Include="Primitives\IAdContext.cs" />
+    <Compile Include="Primitives\IDataChunk.cs" />
+    <Compile Include="Primitives\DataReceivedInfo.cs" />
+    <Compile Include="Primitives\IMediaStream.cs" />
+    <Compile Include="Primitives\IMediaTrack.cs" />
+    <Compile Include="Primitives\IStreamDownloadResult.cs" />
+    <Compile Include="Primitives\LivePlaybackStartPosition.cs" />
+    <Compile Include="Metadata\ExportAdaptiveCacheProviderAttribute.cs" />
+    <Compile Include="Primitives\MediaSetPlaybackRangeCompletedEventArgs.cs" />
+    <Compile Include="Primitives\S3DProperties.cs" />
+    <Compile Include="Primitives\S3DPropertiesEventArgs.cs" />
+    <Compile Include="Primitives\StreamType.cs" />
+    <Compile Include="Primitives\ISegment.cs" />
+    <Compile Include="IUIPlugin.cs" />
+    <Compile Include="Primitives\LogEntry.cs" />
+    <Compile Include="ILogWriter.cs" />
+    <Compile Include="LogWriters\DebugLogWriter.cs" />
+    <Compile Include="Metadata\ExportLogWriterAttribute.cs" />
+    <Compile Include="Metadata\ILogWriterMetadata.cs" />
+    <Compile Include="Primitives\LogLevel.cs" />
+    <Compile Include="IAdaptiveMediaPlugin.cs" />
+    <Compile Include="ILiveDvrMediaPlugin.cs" />
+    <Compile Include="IMarkerProvider.cs" />
+    <Compile Include="IMediaPlugin.cs" />
+    <Compile Include="Primitives\MediaMarker.cs" />
+    <Compile Include="Metadata\ExportMarkerProviderAttribute.cs" />
+    <Compile Include="Metadata\ExportMediaPluginAttribute.cs" />
+    <Compile Include="Metadata\IMarkerProviderMetadata.cs" />
+    <Compile Include="Metadata\IMediaPluginMetadata.cs" />
+    <Compile Include="Primitives\MediaPluginState.cs" />
+    <Compile Include="Metadata\ExportUIPluginAttribute.cs" />
+    <Compile Include="Metadata\IPlugInMetadata.cs" />
+    <Compile Include="Metadata\ExportPlugInAttribute.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\PluginsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PluginsResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\PluginsResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PluginsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.SilverlightMediaFramework.Plugins.snk" />
+  </ItemGroup>
+  <Import Project="$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets" Condition="Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

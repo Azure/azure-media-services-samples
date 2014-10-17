@@ -1,0 +1,126 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.HealthMonitor", "Microsoft.HealthMonitor.csproj", "{06BC9426-0B70-4386-BBC1-28B629BBCB59}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Core", "..\..\Core\Microsoft.SilverlightMediaFramework.Core.csproj", "{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Utilities", "..\..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.csproj", "{329CBB82-F489-42B9-98FC-F79CC35CEF04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins", "..\..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.csproj", "{F76C6CBF-65B8-4105-A866-8E7469C23962}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Diagnostics", "..\..\Plugins.Diagnostics\Microsoft.SilverlightMediaFramework.Diagnostics.csproj", "{8B4797F2-DAE0-41D6-B532-694C537B036F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Logging", "..\..\Plugins.Logging\Microsoft.SilverlightMediaFramework.Logging.csproj", "{152613FF-42F4-4289-8282-966EE51F9A20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.Monitoring", "..\..\Plugins.Monitoring\Microsoft.SilverlightMediaFramework.Plugins.Monitoring.csproj", "{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming", "..\..\Plugins.SmoothStreaming\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csproj", "{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{D093EF12-4787-4172-B7D3-AA9BE63B5D69}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{B44E461F-8B9C-4115-A20B-25DEAC72E3BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetZip", "..\..\Lib\DotNetZip\DotNetZip.csproj", "{B0F0C99F-7602-47E7-B453-91E3892FB837}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZLib", "..\..\Lib\ZLib\ZLib.csproj", "{968873D2-5726-4055-98D2-7623D364C673}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 12
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://tfs.vertigo.com/tfs/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Microsoft.HealthMonitor.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\..\\Core\\Microsoft.SilverlightMediaFramework.Core.csproj
+		SccProjectName2 = ../../Core
+		SccLocalPath2 = ..\\..\\Core
+		SccProjectUniqueName3 = ..\\..\\Utilities\\Microsoft.SilverlightMediaFramework.Utilities.csproj
+		SccProjectName3 = ../../Utilities
+		SccLocalPath3 = ..\\..\\Utilities
+		SccProjectUniqueName4 = ..\\..\\Plugins\\Microsoft.SilverlightMediaFramework.Plugins.csproj
+		SccProjectName4 = ../../Plugins
+		SccLocalPath4 = ..\\..\\Plugins
+		SccProjectUniqueName5 = ..\\..\\Plugins.Monitoring\\Microsoft.SilverlightMediaFramework.Plugins.Monitoring.csproj
+		SccProjectName5 = ../../Plugins.Monitoring
+		SccLocalPath5 = ..\\..\\Plugins.Monitoring
+		SccProjectUniqueName6 = ..\\..\\Plugins.SmoothStreaming\\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csproj
+		SccProjectName6 = ../../Plugins.SmoothStreaming
+		SccLocalPath6 = ..\\..\\Plugins.SmoothStreaming
+		SccProjectUniqueName7 = Web\\Web.csproj
+		SccProjectName7 = Web
+		SccLocalPath7 = Web
+		SccProjectUniqueName8 = ..\\..\\Plugins.Diagnostics\\Microsoft.SilverlightMediaFramework.Diagnostics.csproj
+		SccProjectName8 = ../../Plugins.Diagnostics
+		SccLocalPath8 = ..\\..\\Plugins.Diagnostics
+		SccProjectUniqueName9 = ..\\..\\Plugins.Logging\\Microsoft.SilverlightMediaFramework.Logging.csproj
+		SccProjectName9 = ../../Plugins.Logging
+		SccLocalPath9 = ..\\..\\Plugins.Logging
+		SccProjectUniqueName10 = ..\\..\\Lib\\DotNetZip\\DotNetZip.csproj
+		SccProjectTopLevelParentUniqueName10 = Microsoft.HealthMonitor.sln
+		SccProjectName10 = ../../Lib/DotNetZip
+		SccLocalPath10 = ..\\..\\Lib\\DotNetZip
+		SccProjectUniqueName11 = ..\\..\\Lib\\ZLib\\ZLib.csproj
+		SccProjectTopLevelParentUniqueName11 = Microsoft.HealthMonitor.sln
+		SccProjectName11 = ../../Lib/ZLib
+		SccLocalPath11 = ..\\..\\Lib\\ZLib
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06BC9426-0B70-4386-BBC1-28B629BBCB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06BC9426-0B70-4386-BBC1-28B629BBCB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06BC9426-0B70-4386-BBC1-28B629BBCB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06BC9426-0B70-4386-BBC1-28B629BBCB59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{329CBB82-F489-42B9-98FC-F79CC35CEF04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{329CBB82-F489-42B9-98FC-F79CC35CEF04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{329CBB82-F489-42B9-98FC-F79CC35CEF04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{329CBB82-F489-42B9-98FC-F79CC35CEF04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F76C6CBF-65B8-4105-A866-8E7469C23962}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F76C6CBF-65B8-4105-A866-8E7469C23962}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F76C6CBF-65B8-4105-A866-8E7469C23962}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F76C6CBF-65B8-4105-A866-8E7469C23962}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B4797F2-DAE0-41D6-B532-694C537B036F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B4797F2-DAE0-41D6-B532-694C537B036F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B4797F2-DAE0-41D6-B532-694C537B036F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B4797F2-DAE0-41D6-B532-694C537B036F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{152613FF-42F4-4289-8282-966EE51F9A20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{152613FF-42F4-4289-8282-966EE51F9A20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{152613FF-42F4-4289-8282-966EE51F9A20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{152613FF-42F4-4289-8282-966EE51F9A20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D093EF12-4787-4172-B7D3-AA9BE63B5D69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D093EF12-4787-4172-B7D3-AA9BE63B5D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D093EF12-4787-4172-B7D3-AA9BE63B5D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D093EF12-4787-4172-B7D3-AA9BE63B5D69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0F0C99F-7602-47E7-B453-91E3892FB837}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0F0C99F-7602-47E7-B453-91E3892FB837}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0F0C99F-7602-47E7-B453-91E3892FB837}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0F0C99F-7602-47E7-B453-91E3892FB837}.Release|Any CPU.Build.0 = Release|Any CPU
+		{968873D2-5726-4055-98D2-7623D364C673}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{968873D2-5726-4055-98D2-7623D364C673}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{968873D2-5726-4055-98D2-7623D364C673}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{968873D2-5726-4055-98D2-7623D364C673}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B0F0C99F-7602-47E7-B453-91E3892FB837} = {B44E461F-8B9C-4115-A20B-25DEAC72E3BF}
+		{968873D2-5726-4055-98D2-7623D364C673} = {B44E461F-8B9C-4115-A20B-25DEAC72E3BF}
+	EndGlobalSection
+EndGlobal

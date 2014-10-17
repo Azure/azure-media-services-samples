@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<tt xml:lang="en-GB" xmlns="http://www.w3.org/2006/10/ttaf1">
+  <head>
+    <metadata>
+      <ttm:title xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" />
+      <ttm:desc xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" />
+      <ttm:copyright xmlns:ttm="http://www.w3.org/2006/10/ttaf1#metadata" />
+    </metadata>
+    <styling>
+      <style xml:id="backgroundStyle" p5:fontFamily="proportionalSansSerif" p5:fontSize="16px" p5:textAlign="center" p5:origin="10% 85%" p5:extent="80% 10%" p5:backgroundColor="rgba(0,0,0,100)" p5:displayAlign="center" xmlns:p5="http://www.w3.org/2006/10/ttaf1#styling" />
+      <p5:style xml:id="speakerStyle" p5:style="backgroundStyle" p6:color="white" p6:backgroundColor="transparent" xmlns:p6="http://www.w3.org/2006/10/ttaf1#styling" xmlns:p5="http://www.w3.org/2006/10/ttaf1" />
+    </styling>
+    <layout>
+      <p5:region xml:id="speaker" p5:style="speakerStyle" p6:zIndex="1" xmlns:p6="http://www.w3.org/2006/10/ttaf1#styling" xmlns:p5="http://www.w3.org/2006/10/ttaf1" />
+      <p5:region xml:id="background" p5:style="backgroundStyle" p6:zIndex="0" xmlns:p6="http://www.w3.org/2006/10/ttaf1#styling" xmlns:p5="http://www.w3.org/2006/10/ttaf1" />
+    </layout>
+  </head>
+  <body>
+    <div>
+      <p4:p p4:region="speaker" p4:begin="00:00:15:00" p4:end="00:00:17:28" xmlns:p4="http://www.w3.org/2006/10/ttaf1">At the left we can see... </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:18:04" p4:end="00:00:20:02" xmlns:p4="http://www.w3.org/2006/10/ttaf1">At the right we can see the... </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:20:03" p4:end="00:00:21:28" xmlns:p4="http://www.w3.org/2006/10/ttaf1">...the head-snarlers </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:21:29" p4:end="00:00:24:11" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Everything is safe. Perfectly safe. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:24:17" p4:end="00:00:27:01" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Emo? </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:28:06" p4:end="00:00:29:29" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Watch out! </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:47:01" p4:end="00:00:48:14" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Are you hurt? </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:51:29" p4:end="00:00:53:28" xmlns:p4="http://www.w3.org/2006/10/ttaf1">I don't think so. You? </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:55:04" p4:end="00:00:56:29" xmlns:p4="http://www.w3.org/2006/10/ttaf1">I'm Ok. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:00:57:03" p4:end="00:01:00:00" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Get up. Emo, it's not safe here. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:00:00" p4:end="00:01:01:03" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Get up. Emo, it's not safe here. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:02:01" p4:end="00:01:03:17" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Let's go. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:03:18" p4:end="00:01:05:03" xmlns:p4="http://www.w3.org/2006/10/ttaf1">What's next? </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:05:06" p4:end="00:01:09:04" xmlns:p4="http://www.w3.org/2006/10/ttaf1">You'll see! </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:16:00" p4:end="00:01:18:00" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Emo. This way. </p4:p>
+      <p4:p p4:region="speaker" p4:begin="00:01:34:07" p4:end="00:01:35:14" xmlns:p4="http://www.w3.org/2006/10/ttaf1">Follow me! </p4:p>
+    </div>
+  </body>
+</tt>

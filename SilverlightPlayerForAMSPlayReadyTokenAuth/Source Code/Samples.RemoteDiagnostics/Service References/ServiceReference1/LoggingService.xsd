@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:9735/Services/LoggingService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:element name="LogBatch">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BatchXml" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LogBatchResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="LogBatchResult" type="q1:DateTimeOffset" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

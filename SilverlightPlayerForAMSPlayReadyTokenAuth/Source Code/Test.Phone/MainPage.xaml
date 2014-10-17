@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:smf="clr-namespace:Microsoft.SilverlightMediaFramework.Core;assembly=Microsoft.SilverlightMediaFramework.Core.Phone" xmlns:Media="clr-namespace:Microsoft.SilverlightMediaFramework.Core.Media;assembly=Microsoft.SilverlightMediaFramework.Core.Phone" xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:Microsoft_SilverlightMediaFramework_Utilities="clr-namespace:Microsoft.SilverlightMediaFramework.Utilities;assembly=Microsoft.SilverlightMediaFramework.Utilities.Phone" 
+    x:Class="Microsoft.SilverlightMediaFramework.Test.Phone.MainPage"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+	<phone:PhoneApplicationPage.Resources>
+		<DataTemplate x:Key="PlaylistItemTemplate">
+			<Grid Margin="0,12">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				<Image Height="100" Source="{Binding ThumbSource}" d:LayoutOverrides="VerticalMargin" Width="100" VerticalAlignment="Top"/>
+				<StackPanel Margin="12,0,0,0" d:LayoutOverrides="Width" Grid.Column="1">
+					<TextBlock Foreground="#FFFFFFFF" FontSize="32" FontFamily="Segoe WP SemiLight" LineStackingStrategy="BlockLineHeight" TextAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" LineHeight="32" MinHeight="32" Text="{Binding Title}" MinWidth="50"/>
+					<TextBlock Foreground="#FFFFFFFF" FontSize="20" FontFamily="Segoe WP" LineStackingStrategy="BlockLineHeight" LineHeight="20" Opacity="0.6" TextAlignment="Left" TextWrapping="Wrap" Text="{Binding Duration}" MinHeight="20" VerticalAlignment="Top" MinWidth="50" Margin="0,5,0,0"/>
+				</StackPanel>
+			</Grid>
+		</DataTemplate>
+	</phone:PhoneApplicationPage.Resources>
+
+	<phone:PhoneApplicationPage.FontFamily>
+		<StaticResource ResourceKey="PhoneFontFamilyNormal"/>
+	</phone:PhoneApplicationPage.FontFamily>
+	<phone:PhoneApplicationPage.FontSize>
+		<StaticResource ResourceKey="PhoneFontSizeNormal"/>
+	</phone:PhoneApplicationPage.FontSize>
+	<phone:PhoneApplicationPage.Foreground>
+		<StaticResource ResourceKey="PhoneForegroundBrush"/>
+	</phone:PhoneApplicationPage.Foreground>
+	<phone:PhoneApplicationPage.DataContext>
+		<StaticResource ResourceKey="RootViewModel"/>
+	</phone:PhoneApplicationPage.DataContext>
+
+    <StackPanel Margin="12,0,0,0">
+		<Grid x:Name="TitlePanel" Grid.Row="0" Margin="0,0,0,25">
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="Auto"/>
+        		<RowDefinition Height="Auto"/>
+        	</Grid.RowDefinitions>
+    		<TextBlock x:Name="ApplicationTitle" Text="SILVERLIGHT MEDIA FRAMEWORK" Style="{StaticResource PhoneTextNormalStyle}" VerticalAlignment="Top" Margin="0"/>
+    		<TextBlock x:Name="PageTitle" Text="playlist" Margin="0" Style="{StaticResource PhoneTextTitle1Style}" VerticalAlignment="Top" Grid.Row="1"/>
+    	</Grid>
+		<ListBox x:Name="PlaylistItemSelector" Margin="0" ItemTemplate="{StaticResource PlaylistItemTemplate}" ItemsSource="{Binding Playlist}" SelectedItem="{Binding SelectedPlaylistItem, Mode=TwoWay}"/>
+	</StackPanel>
+</phone:PhoneApplicationPage>

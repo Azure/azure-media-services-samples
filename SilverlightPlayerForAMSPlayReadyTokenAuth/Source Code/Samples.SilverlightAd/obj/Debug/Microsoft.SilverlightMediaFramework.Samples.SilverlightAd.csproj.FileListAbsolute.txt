@@ -1,0 +1,10 @@
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\Bin\Debug\Microsoft.SilverlightMediaFramework.Samples.SilverlightAd.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\Bin\Debug\Microsoft.SilverlightMediaFramework.Samples.SilverlightAd.pdb
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\Bin\Debug\AppManifest.xaml
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\Bin\Debug\Samples.SilverlightAd.xap
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\Bin\Debug\Samples.SilverlightAdTestPage.html
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\obj\Debug\MainPage.g.cs
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\obj\Debug\Microsoft.SilverlightMediaFramework.Samples.SilverlightAd.g.resources
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\obj\Debug\Microsoft.SilverlightMediaFramework.Samples.SilverlightAd.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\obj\Debug\Microsoft.SilverlightMediaFramework.Samples.SilverlightAd.pdb
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Samples.SilverlightAd\obj\Debug\XapCacheFile.xml

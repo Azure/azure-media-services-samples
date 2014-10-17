@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TracingConfiguration
+          enabled="true"
+          includeClassName="true"
+          includeDate="true"
+          includeMethodName="true"
+          includeThreadId="true"
+          includeTime="true"
+          includeTraceLevel="true"
+          includeMediaElementId="true">
+  <TraceAreas baseSet="all">
+    <remove area="MediaSampleTrickPlay"></remove>
+    <remove area="PerSample"></remove>
+  </TraceAreas>
+  <TraceDestinations>
+    <add destination="Memory" maxLines="4096" />
+  </TraceDestinations>
+  <TraceLevels baseSet="all">
+    <remove level="Verbose" />
+    <remove level="FunctionEntry" />
+    <remove level="FunctionExit" />
+  </TraceLevels>
+</TracingConfiguration>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>True</EnableENC>
+          <AlwaysStartWebServerOnDebug>True</AlwaysStartWebServerOnDebug>
+          <ProjectOutputReferences>
+            <Ref Project="{ABD5B4EB-A49A-4692-981C-EB39F8E3C305}" Folder="ClientBin">Microsoft.SilverlightMediaFramework.Samples.xap</Ref>
+            <Ref Project="{98319078-9023-46BE-9636-5AD5C32AA40D}" Folder="ClientBin">SmoothStreamingPlayer.xap</Ref>
+            <Ref Project="{73717C5F-E0B1-4C99-827D-373166A2D1CC}" Folder="ClientBin">Samples.GenericPlugin.xap</Ref>
+            <Ref Project="{9C50A808-A5B5-487E-ACA0-1F2D38DC0247}" Folder="ClientBin">Samples.LogWriter.xap</Ref>
+            <Ref Project="{A48E1E46-26CD-4572-B707-BDDF33A33988}" Folder="ClientBin">Samples.MarkerProvider.xap</Ref>
+            <Ref Project="{142A088D-9B14-43EA-9F9E-7F551A19012E}" Folder="ClientBin">Samples.UIPlugin.xap</Ref>
+            <Ref Project="{18E4793B-8FF8-442D-8093-0C2E1796FC2B}" Folder="ClientBin">Samples.LocalDiagnostics.xap</Ref>
+            <Ref Project="{384AAB2C-8FFA-447C-9740-3CFEFF315E40}" Folder="ClientBin">Samples.RemoteDiagnostics.xap</Ref>
+            <Ref Project="{C5B5A6ED-8793-45D9-A673-179D829D698B}" Folder="ClientBin">Samples.Advertising.xap</Ref>
+            <Ref Project="{53C3A1A9-FF5E-413F-9FCC-FA04521F44BB}" Folder="ClientBin">Samples.SilverlightAd.xap</Ref>
+          </ProjectOutputReferences>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

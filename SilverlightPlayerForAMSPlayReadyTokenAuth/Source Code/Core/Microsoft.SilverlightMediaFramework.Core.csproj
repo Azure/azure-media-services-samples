@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Core</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Core</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20223.20</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>Bin\Debug\Microsoft.SilverlightMediaFramework.Core.xml</DocumentationFile>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\bin\Microsoft.SilverlightMediaFramework.Core.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Microsoft.SilverlightMediaFramework.Core.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Serialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Utils, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Accessibility\Captions\Direction.cs" />
+    <Compile Include="Accessibility\Captions\TimedTextAnimation.cs" />
+    <Compile Include="Accessibility\Captions\CaptionElement.cs" />
+    <Compile Include="Accessibility\Captions\TimedTextElement.cs" />
+    <Compile Include="Accessibility\Captions\TimedTextElementType.cs" />
+    <Compile Include="Accessibility\Captions\CaptionRegion.cs" />
+    <Compile Include="Accessibility\Captions\TimedTextStyle.cs" />
+    <Compile Include="Accessibility\Captions\DisplayAlign.cs" />
+    <Compile Include="Accessibility\Captions\Extent.cs" />
+    <Compile Include="Accessibility\Captions\Length.cs" />
+    <Compile Include="Accessibility\Captions\LengthUnit.cs" />
+    <Compile Include="Accessibility\Captions\Origin.cs" />
+    <Compile Include="Accessibility\Captions\Overflow.cs" />
+    <Compile Include="Accessibility\Captions\Padding.cs" />
+    <Compile Include="Accessibility\Captions\ShowBackground.cs" />
+    <Compile Include="Accessibility\Controls\CaptionBlockRegion.xaml.cs">
+      <DependentUpon>CaptionBlockRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Accessibility\Controls\CaptionsPresenter.cs" />
+    <Compile Include="AdSequencingPayload.cs" />
+    <Compile Include="AMSBearerTokenLicenseAcquirer.cs" />
+    <Compile Include="SkippableMarkerManager.cs" />
+    <Compile Include="Plugin\SMFPlayer.IPlayer.cs" />
+    <Compile Include="BitrateGraphControl.cs" />
+    <Compile Include="BitrateMonitor.cs" />
+    <Compile Include="ButtonInputType.cs" />
+    <Compile Include="AdMarkerManager.cs" />
+    <Compile Include="Data\PlayerIdDataClient.cs" />
+    <Compile Include="EventArgs.cs" />
+    <Compile Include="FeatureVisibility.cs" />
+    <Compile Include="FramerateGraphControl.cs" />
+    <Compile Include="Javascript\ScriptS3DProperties.cs" />
+    <Compile Include="KnownLogEntryTypes.cs" />
+    <Compile Include="MaxBitrateLimiterControl.cs" />
+    <Compile Include="MediaMarkerManager.cs" />
+    <Compile Include="Media\Advertisement.cs" />
+    <Compile Include="Media\Chapter.cs" />
+    <Compile Include="Media\InvalidPlaylistException.cs" />
+    <Compile Include="Media\MediaMarkerCollection.cs" />
+    <Compile Include="Media\MarkerResource.cs" />
+    <Compile Include="Media\PlaylistItem.cs" />
+    <Compile Include="Media\SmpteFrameRate.cs" />
+    <Compile Include="Media\StreamMetadata.cs" />
+    <Compile Include="Media\TimelineMediaMarker.cs" />
+    <Compile Include="Offline\OfflineException.cs" />
+    <Compile Include="Offline\OfflineManager.cs" />
+    <Compile Include="Offline\OfflinePlaylist.cs" />
+    <Compile Include="Offline\OfflineStorageManager.cs" />
+    <Compile Include="Offline\OfflineTask.cs" />
+    <Compile Include="Offline\OfflineTaskType.cs" />
+    <Compile Include="PositionAwareListBoxItem.cs" />
+    <Compile Include="Javascript\JavascriptBridge.cs" />
+    <Compile Include="Javascript\ScriptChapter.cs" />
+    <Compile Include="Javascript\ScriptEventArgs.cs" />
+    <Compile Include="Javascript\ScriptMediaMarker.cs" />
+    <Compile Include="Javascript\ScriptPlaylist.cs" />
+    <Compile Include="Javascript\ScriptPlaylistItem.cs" />
+    <Compile Include="KnownMarkerTypes.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="MarkerItemsPanel.cs" />
+    <Compile Include="MarkerControl.cs" />
+    <Compile Include="MarkerItemsControl.cs" />
+    <Compile Include="SupportedInitParams.cs" />
+    <Compile Include="TimelineMarkerManager.cs" />
+    <Compile Include="PlayElement.cs" />
+    <Compile Include="PlaylistListBox.cs" />
+    <Compile Include="PlaylistListBoxItem.cs" />
+    <Compile Include="PlaySpeedManager.cs" />
+    <Compile Include="PlaySpeedState.cs" />
+    <Compile Include="PluginsManager.cs" />
+    <Compile Include="Resources\SilverlightMediaFrameworkResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SilverlightMediaFrameworkResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RetryMonitor.cs" />
+    <Compile Include="ScrollableListBox.cs" />
+    <Compile Include="TemplateDefinitions\BitrateMonitor\BitrateMonitor.TemplateDefinition.cs" />
+    <Compile Include="TemplateDefinitions\BitrateMonitor\BitrateMonitorVisualStates.cs" />
+    <Compile Include="TemplateDefinitions\PlayElement\PlayElement.TemplateDefinition.cs" />
+    <Compile Include="TemplateDefinitions\PlayElement\PlayElementVisualStates.cs" />
+    <Compile Include="TemplateDefinitions\SMFPlayer\SMFPlayerTemplateParts.cs" />
+    <Compile Include="SMFPlayer.cs" />
+    <Compile Include="TemplateDefinitions\SMFPlayer\SMFPlayer.TemplateDefinition.cs" />
+    <Compile Include="TemplateDefinitions\SMFPlayer\SMFPlayerVisualStates.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateDefinitions\Timeline\Timeline.TemplateDefinition.cs" />
+    <Compile Include="TemplateDefinitions\Timeline\TimelineTemplateParts.cs" />
+    <Compile Include="TemplateDefinitions\Timeline\TimelineVisualStates.cs" />
+    <Compile Include="Timeline.cs" />
+    <Compile Include="VersionInformation.cs" />
+    <Compile Include="VolumeControl.cs" />
+    <Compile Include="TemplateDefinitions\VolumeControl\VolumeControl.TemplateDefinition.cs" />
+    <Compile Include="TemplateDefinitions\VolumeControl\VolumeControlTemplateParts.cs" />
+    <Compile Include="TemplateDefinitions\VolumeControl\VolumeControlVisualStates.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Microsoft.SilverlightMediaFramework.Core.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.csproj">
+      <Project>{F76C6CBF-65B8-4105-A866-8E7469C23962}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.csproj">
+      <Project>{329CBB82-F489-42B9-98FC-F79CC35CEF04}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Accessibility\Controls\CaptionBlockRegion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\SilverlightMediaFrameworkResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SilverlightMediaFrameworkResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets" Condition="Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

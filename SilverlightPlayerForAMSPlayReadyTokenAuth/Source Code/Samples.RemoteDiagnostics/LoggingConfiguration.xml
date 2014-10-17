@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<BatchingConfig>
+  <Application>
+    <Id>{F6386379-F00F-4C0B-8915-2C262DFDEC70}</Id>
+    <Name>Remote Logging Sample</Name>
+    <Version>1.0</Version>
+    <Enabled>1</Enabled>
+  </Application>
+  <Queue>
+    <maxLength>200</maxLength>
+    <maxBatchLength>10</maxBatchLength>
+    <maxSendErrors>60</maxSendErrors>
+    <maxSendErrorsThrottled>10</maxSendErrorsThrottled>
+    <pollingIntervalSeconds>30</pollingIntervalSeconds>
+    <pollingIntervalThrottledSeconds>120</pollingIntervalThrottledSeconds>
+    <maxRetries>6</maxRetries>
+  </Queue>
+  <Session>
+    <maxSessionLogs>100000</maxSessionLogs>
+  </Session>
+</BatchingConfig>
