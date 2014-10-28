@@ -1,0 +1,56 @@
+<UserControl x:Class="Microsoft.SilverlightMediaFramework.Samples.Samples.PlayerControl.ExternalControls"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400"
+    xmlns:smf="clr-namespace:Microsoft.SilverlightMediaFramework.Core;assembly=Microsoft.SilverlightMediaFramework.Core"
+	xmlns:smf_media="http://schemas.microsoft.com/smf/2010/xaml/media">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Play" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Stop" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Pause" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Replay" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Start FF" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Stop FF" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Start Rew" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Stop Rew" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Start SloMo" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Stop SloMo" Click="Button_Click" Margin="2" Padding="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Next Chapter" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Prev Chapter" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Next Playlistitem" Click="Button_Click" Margin="2" Padding="5"/>
+                <Button Content="Prev Playlistitem" Click="Button_Click" Margin="2" Padding="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Go to Playlistitem:" VerticalAlignment="Center"/>
+                <TextBox x:Name="itemText" Text="0" Margin="3" Width="30"/>
+                <Button x:Name="goButton" Content="Go" Click="goButton_Click" Margin="2" Padding="5"/>
+            </StackPanel>
+        </StackPanel>
+        <smf:SMFPlayer x:Name="player" Grid.Row="1">
+            <smf:SMFPlayer.Playlist>
+                <smf_media:PlaylistItem DeliveryMethod="AdaptiveStreaming" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest" ThumbSource="../../Assets/ElephentsDream.jpg">
+                    <smf_media:PlaylistItem.Chapters>
+                        <smf_media:Chapter Begin="0:0:0" Title="Proog Oversees" ThumbSource="http://orange.blender.org/wp-content/themes/orange/images/media/gallery/s1_proog_t.jpg" Description="The main character, Proog, looks over his invented world."/>
+                        <smf_media:Chapter Begin="0:0:27" Title="Emo in Danger" ThumbSource="http://orange.blender.org/wp-content/themes/orange/images/media/gallery/s2_emo_t.jpg" Description="Emo seems oblivious to the imminent danger and Proog jumps in to help."/>
+                        <smf_media:Chapter Begin="0:01:30" Title="On the Run" ThumbSource="http://orange.blender.org/wp-content/themes/orange/images/media/gallery/s3_both_t.jpg" Description="Proog and Emo hurry to try to get to a place of safety."/>
+                        <smf_media:Chapter Begin="0:02:31" Title="The Phone" ThumbSource="http://orange.blender.org/wp-content/themes/orange/images/media/gallery/s3_telephone_t.jpg" Description="Nothing is as it seems, even the phone."/>
+                    </smf_media:PlaylistItem.Chapters>
+                </smf_media:PlaylistItem>
+                <smf_media:PlaylistItem Title="Progressive Download Video" DeliveryMethod="ProgressiveDownload" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/progressivecontent/wildlife.wmv" ThumbSource="../../Assets/ElephentsDream.jpg" />
+                <smf_media:PlaylistItem Title="Streaming Video" DeliveryMethod="Streaming"  MediaSource="http://demo.com/StreamingSource" ThumbSource="../../Assets/ElephentsDream.jpg"/>
+            </smf:SMFPlayer.Playlist>
+        </smf:SMFPlayer>
+    </Grid>
+</UserControl>

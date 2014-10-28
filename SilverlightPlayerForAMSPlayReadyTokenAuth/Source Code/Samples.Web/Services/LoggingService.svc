@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Microsoft.SilverlightMediaFramework.Samples.Web.Services.LoggingService" CodeBehind="LoggingService.svc.cs" %>

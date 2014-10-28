@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{18E4793B-8FF8-442D-8093-0C2E1796FC2B}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Samples.LocalDiagnostics</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Samples.LocalDiagnostics</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Samples.LocalDiagnostics.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Microsoft.SilverlightMediaFramework.Samples.LocalDiagnostics.App</SilverlightAppEntry>
+    <TestPageFileName>Microsoft.SilverlightMediaFramework.Samples.LocalDiagnosticsTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>..\Lib\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Microsoft.SilverlightMediaFramework.Core.csproj">
+      <Project>{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Diagnostics\Microsoft.SilverlightMediaFramework.Diagnostics.csproj">
+      <Project>{8B4797F2-DAE0-41D6-B532-694C537B036F}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Diagnostics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Logging\Microsoft.SilverlightMediaFramework.Logging.csproj">
+      <Project>{152613FF-42F4-4289-8282-966EE51F9A20}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Monitoring\Microsoft.SilverlightMediaFramework.Plugins.Monitoring.csproj">
+      <Project>{938F81B9-50B5-4636-92D4-C1D0EEA0DFF2}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Monitoring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.SmoothStreaming\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csproj">
+      <Project>{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.csproj">
+      <Project>{F76C6CBF-65B8-4105-A866-8E7469C23962}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.csproj">
+      <Project>{329CBB82-F489-42B9-98FC-F79CC35CEF04}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets" Condition="Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

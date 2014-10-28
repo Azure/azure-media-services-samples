@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configuration>
+  <Diagnostics>
+    <TraceMonitor>
+      <TracingConfigFile>/Microsoft.SilverlightMediaFramework.Diagnostics;component/TracingConfig.xml</TracingConfigFile>
+      <PollingMilliseconds>1000</PollingMilliseconds>
+      <RecordCpuLoad>1</RecordCpuLoad>
+    </TraceMonitor>
+    <Diagnostics>
+      <AggregationIntervalMilliseconds>15000</AggregationIntervalMilliseconds>
+      <SnapshotIntervalMilliseconds>1000</SnapshotIntervalMilliseconds>
+      <TrackQuality>1</TrackQuality>
+      <TrackDownloadErrors>1</TrackDownloadErrors>
+      <TrackQualitySnapshot>1</TrackQualitySnapshot>
+      <LatencyAlertThreshold>2</LatencyAlertThreshold>
+      <RecordTraceLogs>1</RecordTraceLogs>
+      <!--omit this node to track everything-->
+      <!--<QualityTracking>
+        <DroppedFrames>1</DroppedFrames>
+        <RenderedFrames>1</RenderedFrames>
+        <ProcessCPULoad>1</ProcessCPULoad>
+        <SystemCPULoad>1</SystemCPULoad>
+        <Bitrate>1</Bitrate>
+        <BitrateMax>1</BitrateMax>
+        <BitrateMaxDuration>1</BitrateMaxDuration>
+        <PerceivedBandwidth>1</PerceivedBandwidth>
+        <VideoBufferSize>1</VideoBufferSize>
+        <AudioBufferSize>1</AudioBufferSize>
+        <Buffering>1</Buffering>
+        <BitrateChangeCount>1</BitrateChangeCount>
+        <VideoDownloadLatency>1</VideoDownloadLatency>
+        <AudioDownloadLatency>1</AudioDownloadLatency>
+        <DvrOperationCount>1</DvrOperationCount>
+        <FullScreenChangeCount>1</FullScreenChangeCount>
+        <HttpErrorCount>1</HttpErrorCount>
+      </QualityTracking>-->
+    </Diagnostics>
+  </Diagnostics>
+  <Logging>
+    <LogUnhandledExceptions>1</LogUnhandledExceptions>
+    <PreventUnhandledExceptions>0</PreventUnhandledExceptions>
+    <MaxExceptionLength>2048</MaxExceptionLength>
+    <!--<QueryStringParam>refid</QueryStringParam>-->
+  </Logging>
+  <!--<AdditionalData>key1=value1,key2=value2</AdditionalData>-->
+</Configuration>

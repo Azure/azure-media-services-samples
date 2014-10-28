@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CE4199DB-BCAA-4BD9-91D2-F35725E72022}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Core</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Core.Phone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20808.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\wpbin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\wpbin\Microsoft.SilverlightMediaFramework.Core.Phone.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Core\Accessibility\Captions\CaptionElement.cs">
+      <Link>Accessibility\Captions\CaptionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\CaptionRegion.cs">
+      <Link>Accessibility\Captions\CaptionRegion.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Direction.cs">
+      <Link>Accessibility\Captions\Direction.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\DisplayAlign.cs">
+      <Link>Accessibility\Captions\DisplayAlign.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Extent.cs">
+      <Link>Accessibility\Captions\Extent.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Length.cs">
+      <Link>Accessibility\Captions\Length.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\LengthUnit.cs">
+      <Link>Accessibility\Captions\LengthUnit.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Origin.cs">
+      <Link>Accessibility\Captions\Origin.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Overflow.cs">
+      <Link>Accessibility\Captions\Overflow.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\Padding.cs">
+      <Link>Accessibility\Captions\Padding.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\ShowBackground.cs">
+      <Link>Accessibility\Captions\ShowBackground.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\TimedTextAnimation.cs">
+      <Link>Accessibility\Captions\TimedTextAnimation.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\TimedTextElement.cs">
+      <Link>Accessibility\Captions\TimedTextElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\TimedTextElementType.cs">
+      <Link>Accessibility\Captions\TimedTextElementType.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Captions\TimedTextStyle.cs">
+      <Link>Accessibility\Captions\TimedTextStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Controls\CaptionBlockRegion.xaml.cs">
+      <Link>Accessibility\Controls\CaptionBlockRegion.xaml.cs</Link>
+      <DependentUpon>CaptionBlockRegion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\Core\Accessibility\Controls\CaptionsPresenter.cs">
+      <Link>Accessibility\Controls\CaptionsPresenter.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\AdMarkerManager.cs">
+      <Link>AdMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\AdSequencingPayload.cs">
+      <Link>AdSequencingPayload.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\BitrateGraphControl.cs">
+      <Link>BitrateGraphControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\BitrateMonitor.cs">
+      <Link>BitrateMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\ButtonInputType.cs">
+      <Link>ButtonInputType.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Data\PlayerIdDataClient.cs">
+      <Link>Data\PlayerIdDataClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\EventArgs.cs">
+      <Link>EventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\FeatureVisibility.cs">
+      <Link>FeatureVisibility.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\FramerateGraphControl.cs">
+      <Link>FramerateGraphControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\KnownLogEntryTypes.cs">
+      <Link>KnownLogEntryTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\KnownMarkerTypes.cs">
+      <Link>KnownMarkerTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Logging\Logger.cs">
+      <Link>Logging\Logger.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\MarkerControl.cs">
+      <Link>MarkerControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\MarkerItemsControl.cs">
+      <Link>MarkerItemsControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\MarkerItemsPanel.cs">
+      <Link>MarkerItemsPanel.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\MaxBitrateLimiterControl.cs">
+      <Link>MaxBitrateLimiterControl.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\MediaMarkerManager.cs">
+      <Link>MediaMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\Advertisement.cs">
+      <Link>Media\Advertisement.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\Chapter.cs">
+      <Link>Media\Chapter.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\InvalidPlaylistException.cs">
+      <Link>Media\InvalidPlaylistException.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\MarkerResource.cs">
+      <Link>Media\MarkerResource.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\MediaMarkerCollection.cs">
+      <Link>Media\MediaMarkerCollection.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\PlaylistItem.cs">
+      <Link>Media\PlaylistItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\SmpteFrameRate.cs">
+      <Link>Media\SmpteFrameRate.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\StreamMetadata.cs">
+      <Link>Media\StreamMetadata.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Media\TimelineMediaMarker.cs">
+      <Link>Media\TimelineMediaMarker.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PlayElement.cs">
+      <Link>PlayElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PlaylistListBox.cs">
+      <Link>PlaylistListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PlaylistListBoxItem.cs">
+      <Link>PlaylistListBoxItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PlaySpeedManager.cs">
+      <Link>PlaySpeedManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PlaySpeedState.cs">
+      <Link>PlaySpeedState.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PluginsManager.cs">
+      <Link>PluginsManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Plugin\SMFPlayer.IPlayer.cs">
+      <Link>Plugin\SMFPlayer.IPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\PositionAwareListBoxItem.cs">
+      <Link>PositionAwareListBoxItem.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Resources\SilverlightMediaFrameworkResources.Designer.cs">
+      <Link>Resources\SilverlightMediaFrameworkResources.Designer.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\RetryMonitor.cs">
+      <Link>RetryMonitor.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\ScrollableListBox.cs">
+      <Link>ScrollableListBox.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\SkippableMarkerManager.cs">
+      <Link>SkippableMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\SMFPlayer.cs">
+      <Link>SMFPlayer.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\SupportedInitParams.cs">
+      <Link>SupportedInitParams.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\BitrateMonitor\BitrateMonitor.TemplateDefinition.cs">
+      <Link>TemplateDefinitions\BitrateMonitor\BitrateMonitor.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\BitrateMonitor\BitrateMonitorVisualStates.cs">
+      <Link>TemplateDefinitions\BitrateMonitor\BitrateMonitorVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\PlayElement\PlayElement.TemplateDefinition.cs">
+      <Link>TemplateDefinitions\PlayElement\PlayElement.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\PlayElement\PlayElementVisualStates.cs">
+      <Link>TemplateDefinitions\PlayElement\PlayElementVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\SMFPlayer\SMFPlayer.TemplateDefinition.cs">
+      <Link>TemplateDefinitions\SMFPlayer\SMFPlayer.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\SMFPlayer\SMFPlayerTemplateParts.cs">
+      <Link>TemplateDefinitions\SMFPlayer\SMFPlayerTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\SMFPlayer\SMFPlayerVisualStates.cs">
+      <Link>TemplateDefinitions\SMFPlayer\SMFPlayerVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\Timeline\Timeline.TemplateDefinition.cs">
+      <Link>TemplateDefinitions\Timeline\Timeline.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\Timeline\TimelineTemplateParts.cs">
+      <Link>TemplateDefinitions\Timeline\TimelineTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\Timeline\TimelineVisualStates.cs">
+      <Link>TemplateDefinitions\Timeline\TimelineVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\VolumeControl\VolumeControl.TemplateDefinition.cs">
+      <Link>TemplateDefinitions\VolumeControl\VolumeControl.TemplateDefinition.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\VolumeControl\VolumeControlTemplateParts.cs">
+      <Link>TemplateDefinitions\VolumeControl\VolumeControlTemplateParts.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TemplateDefinitions\VolumeControl\VolumeControlVisualStates.cs">
+      <Link>TemplateDefinitions\VolumeControl\VolumeControlVisualStates.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\Timeline.cs">
+      <Link>Timeline.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\TimelineMarkerManager.cs">
+      <Link>TimelineMarkerManager.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\VersionInformation.cs">
+      <Link>VersionInformation.cs</Link>
+    </Compile>
+    <Compile Include="..\Core\VolumeControl.cs">
+      <Link>VolumeControl.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateDefinitions\SMFPlayer\SMFPlayer.Phone.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compatibility.Phone\Microsoft.SilverlightMediaFramework.Compatibility.Phone.csproj">
+      <Project>{B42C02B3-B634-47B7-BB06-CAD420AD9C44}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Compatibility.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.Phone.csproj">
+      <Project>{6C791631-F3D2-4480-B48F-F0870275A929}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.Phone.csproj">
+      <Project>{AC40FA0B-3150-4250-9AED-3E9D5259FA34}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities.Phone</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\Core\Accessibility\Controls\CaptionBlockRegion.xaml">
+      <Link>Accessibility\Controls\CaptionBlockRegion.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="themes\generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="..\Core\Resources\SilverlightMediaFrameworkResources.resx">
+      <Link>Resources\SilverlightMediaFrameworkResources.resx</Link>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\fastforward_normal.png" />
+    <Resource Include="Images\fastfoward_pressed.png" />
+    <Resource Include="Images\live_disabled.png" />
+    <Resource Include="Images\live_normal.png" />
+    <Resource Include="Images\live_pressed.png" />
+    <Resource Include="Images\pause_normal.png" />
+    <Resource Include="Images\pause_pressed.png" />
+    <Resource Include="Images\play_normal.png" />
+    <Resource Include="Images\play_pressed.png" />
+    <Resource Include="Images\replay_normal.png" />
+    <Resource Include="Images\replay_pressed.png" />
+    <Resource Include="Images\rewind_normal.png" />
+    <Resource Include="Images\rewind_pressed.png" />
+    <Resource Include="Images\slowmotion_disabled.png" />
+    <Resource Include="Images\slowmotion_normal.png" />
+    <Resource Include="Images\slowmotion_pressed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\closedcaptions_normal.png" />
+    <Resource Include="Images\closedcaptions_pressed.png" />
+  </ItemGroup>
+  <!-- This MSBuild script compensates for Blend Design time having the wrong SolutionDir -->
+  <PropertyGroup>
+    <MissingExternalDependenciesBlendDesignTimehack>false</MissingExternalDependenciesBlendDesignTimehack>
+    <MissingExternalDependenciesBlendDesignTimehack Condition="!Exists('$(SolutionDir)Lib')">true</MissingExternalDependenciesBlendDesignTimehack>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'!='true'">$(SolutionDir)</CompileTimeSolutionDir>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'=='true'">$(SolutionDir)..\</CompileTimeSolutionDir>
+  </PropertyGroup>
+  <Import Project="$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets" Condition="Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

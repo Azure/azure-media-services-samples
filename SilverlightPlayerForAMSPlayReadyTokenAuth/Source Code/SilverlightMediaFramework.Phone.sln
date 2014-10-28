@@ -1,0 +1,75 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Utilities.Phone", "Utilities\Microsoft.SilverlightMediaFramework.Utilities.Phone.csproj", "{AC40FA0B-3150-4250-9AED-3E9D5259FA34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.Phone", "Plugins\Microsoft.SilverlightMediaFramework.Plugins.Phone.csproj", "{6C791631-F3D2-4480-B48F-F0870275A929}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.Progressive.Phone", "Plugins.Progressive\Microsoft.SilverlightMediaFramework.Plugins.Progressive.Phone.csproj", "{D815536A-2A43-404A-BC4E-E780DA7EAC10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.Phone", "Plugins.SmoothStreaming\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.Phone.csproj", "{3636E115-6E04-4459-B62D-6495D0CFEF70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone", "Plugins.TimedText\Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone.csproj", "{530E3B49-F2B6-417F-885F-8F10F7917D31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Compatibility.Phone", "Compatibility.Phone\Microsoft.SilverlightMediaFramework.Compatibility.Phone.csproj", "{B42C02B3-B634-47B7-BB06-CAD420AD9C44}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Core.Phone", "Core.Phone\Microsoft.SilverlightMediaFramework.Core.Phone.csproj", "{CE4199DB-BCAA-4BD9-91D2-F35725E72022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.SilverlightMediaFramework.Test.Phone", "Test.Phone\Microsoft.SilverlightMediaFramework.Test.Phone.csproj", "{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{FF52DEFB-924C-487B-89A7-F99725361D75}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E5560C51-08DA-4DCC-B93C-2A179EB9FBAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC40FA0B-3150-4250-9AED-3E9D5259FA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC40FA0B-3150-4250-9AED-3E9D5259FA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC40FA0B-3150-4250-9AED-3E9D5259FA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC40FA0B-3150-4250-9AED-3E9D5259FA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C791631-F3D2-4480-B48F-F0870275A929}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C791631-F3D2-4480-B48F-F0870275A929}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C791631-F3D2-4480-B48F-F0870275A929}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C791631-F3D2-4480-B48F-F0870275A929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D815536A-2A43-404A-BC4E-E780DA7EAC10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D815536A-2A43-404A-BC4E-E780DA7EAC10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D815536A-2A43-404A-BC4E-E780DA7EAC10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D815536A-2A43-404A-BC4E-E780DA7EAC10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3636E115-6E04-4459-B62D-6495D0CFEF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3636E115-6E04-4459-B62D-6495D0CFEF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3636E115-6E04-4459-B62D-6495D0CFEF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3636E115-6E04-4459-B62D-6495D0CFEF70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{530E3B49-F2B6-417F-885F-8F10F7917D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{530E3B49-F2B6-417F-885F-8F10F7917D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{530E3B49-F2B6-417F-885F-8F10F7917D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{530E3B49-F2B6-417F-885F-8F10F7917D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B42C02B3-B634-47B7-BB06-CAD420AD9C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B42C02B3-B634-47B7-BB06-CAD420AD9C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B42C02B3-B634-47B7-BB06-CAD420AD9C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B42C02B3-B634-47B7-BB06-CAD420AD9C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4199DB-BCAA-4BD9-91D2-F35725E72022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4199DB-BCAA-4BD9-91D2-F35725E72022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4199DB-BCAA-4BD9-91D2-F35725E72022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4199DB-BCAA-4BD9-91D2-F35725E72022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D815536A-2A43-404A-BC4E-E780DA7EAC10} = {FF52DEFB-924C-487B-89A7-F99725361D75}
+		{3636E115-6E04-4459-B62D-6495D0CFEF70} = {FF52DEFB-924C-487B-89A7-F99725361D75}
+		{530E3B49-F2B6-417F-885F-8F10F7917D31} = {FF52DEFB-924C-487B-89A7-F99725361D75}
+		{6C791631-F3D2-4480-B48F-F0870275A929} = {FF52DEFB-924C-487B-89A7-F99725361D75}
+		{1A8FA400-3688-452D-B58B-76CC3EFD9A0D} = {E5560C51-08DA-4DCC-B93C-2A179EB9FBAF}
+	EndGlobalSection
+EndGlobal

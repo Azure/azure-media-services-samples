@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{ABD5B4EB-A49A-4692-981C-EB39F8E3C305}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Samples</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Samples</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Microsoft.SilverlightMediaFramework.Samples.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Microsoft.SilverlightMediaFramework.Samples.App</SilverlightAppEntry>
+    <TestPageFileName>Microsoft.SilverlightMediaFramework.SamplesTestPage.html</TestPageFileName>
+    <CreateTestPage>true</CreateTestPage>
+    <ValidateXaml>true</ValidateXaml>
+    <EnableOutOfBrowser>false</EnableOutOfBrowser>
+    <OutOfBrowserSettingsFile>Properties\OutOfBrowserSettings.xml</OutOfBrowserSettingsFile>
+    <UsePlatformExtensions>false</UsePlatformExtensions>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <LinkedServerProject>
+    </LinkedServerProject>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20408.0</ExpressionBlendVersion>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <NoWarn>1591</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>..\Lib\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Controls" />
+    <Reference Include="System.Windows.Controls.Toolkit">
+      <HintPath>..\Lib\System.Windows.Controls.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Controls.Toolkit.Internals">
+      <HintPath>..\Lib\System.Windows.Controls.Toolkit.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Framework\Group.cs" />
+    <Compile Include="Framework\GroupNames.cs" />
+    <Compile Include="Framework\ISupportBlendInstructions.cs" />
+    <Compile Include="Framework\ISupportCodeDisplay.cs" />
+    <Compile Include="Framework\ISupportHtmlDisplay.cs" />
+    <Compile Include="Framework\MetadataStore.cs" />
+    <Compile Include="Framework\Sample.cs" />
+    <Compile Include="Framework\SampleAttribute.cs" />
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPageViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Samples\Anaglyph3D\SimpleAnaglyph3D.xaml.cs">
+      <DependentUpon>SimpleAnaglyph3D.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Anaglyph3D\Anaglyph3DHTMLPlaylist.xaml.cs">
+      <DependentUpon>Anaglyph3DHTMLPlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Anaglyph3D\Anaglyph3DJavascriptPlaylist.xaml.cs">
+      <DependentUpon>Anaglyph3DJavascriptPlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Anaglyph3D\MultiModeAnaglyph3D.xaml.cs">
+      <DependentUpon>MultiModeAnaglyph3D.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Captions\CodeCaptions.xaml.cs">
+      <DependentUpon>CodeCaptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Captions\InStreamCaptions.xaml.cs">
+      <DependentUpon>InStreamCaptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Captions\XamlCaptions.xaml.cs">
+      <DependentUpon>XamlCaptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Chapters\XamlChapters.xaml.cs">
+      <DependentUpon>XamlChapters.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\HtmlIntegration\SetupBasicPlayer.xaml.cs">
+      <DependentUpon>SetupBasicPlayer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Javascript\JavascriptPlaylist.xaml.cs">
+      <DependentUpon>JavascriptPlaylist.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Javascript\JavascriptVCR.xaml.cs">
+      <DependentUpon>JavascriptVCR.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Logging\DisplayLoggingConsole.xaml.cs">
+      <DependentUpon>DisplayLoggingConsole.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Captions\ExternalFileCaptions.xaml.cs">
+      <DependentUpon>ExternalFileCaptions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Markers\TextualMarkers.xaml.cs">
+      <DependentUpon>TextualMarkers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Markers\XamlMarkers.xaml.cs">
+      <DependentUpon>XamlMarkers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\Offline\LocalFileExample.xaml.cs">
+      <DependentUpon>LocalFileExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PlayerControl\FullScreen.xaml.cs">
+      <DependentUpon>FullScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PlaylistItem\AllDeliveryMethods.xaml.cs">
+      <DependentUpon>AllDeliveryMethods.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PlaylistItem\ProgressiveDownload.xaml.cs">
+      <DependentUpon>ProgressiveDownload.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PlaylistItem\SmoothStreaming.xaml.cs">
+      <DependentUpon>SmoothStreaming.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\SmoothStreamingMediaElementExample\CustomPlayer.cs" />
+    <Compile Include="Samples\SmoothStreamingMediaElementExample\SmoothStreamingMediaElementExample.xaml.cs">
+      <DependentUpon>SmoothStreamingMediaElementExample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\StylingAndTemplating\ChangePlayerColourTheme.xaml.cs">
+      <DependentUpon>ChangePlayerColourTheme.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\StylingAndTemplating\ChangeVCRDisplay.xaml.cs">
+      <DependentUpon>ChangeVCRDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\PlayerControl\ExternalControls.xaml.cs">
+      <DependentUpon>ExternalControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\StylingAndTemplating\MoveVolumeControl.xaml.cs">
+      <DependentUpon>MoveVolumeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\StylingAndTemplating\TopButtons.xaml.cs">
+      <DependentUpon>TopButtons.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Samples\StylingAndTemplating\VerticalPlaylist.xaml.cs">
+      <DependentUpon>VerticalPlaylist.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Anaglyph3D\SimpleAnaglyph3D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Anaglyph3D\Anaglyph3DHTMLPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Anaglyph3D\Anaglyph3DJavascriptPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Anaglyph3D\MultiModeAnaglyph3D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Captions\CodeCaptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Captions\InStreamCaptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Captions\XamlCaptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Chapters\XamlChapters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\HtmlIntegration\SetupBasicPlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Javascript\JavascriptPlaylist.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\Javascript\JavascriptVCR.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\Logging\DisplayLoggingConsole.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Captions\ExternalFileCaptions.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Samples\Markers\TextualMarkers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Markers\XamlMarkers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\Offline\LocalFileExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PlayerControl\FullScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PlaylistItem\AllDeliveryMethods.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PlaylistItem\ProgressiveDownload.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PlaylistItem\SmoothStreaming.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\SmoothStreamingMediaElementExample\SmoothStreamingMediaElementExample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\StylingAndTemplating\ChangePlayerColourTheme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\StylingAndTemplating\ChangeVCRDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\PlayerControl\ExternalControls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\StylingAndTemplating\MoveVolumeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\StylingAndTemplating\TopButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Samples\StylingAndTemplating\VerticalPlaylist.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <DesignData Include="SampleData\GroupSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
+    <DesignData Include="SampleData\MainPageViewModelSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
+    <DesignData Include="SampleData\SampleSampleData.xaml">
+      <Generator>MSBuild:MarkupCompilePass1</Generator>
+    </DesignData>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Silverlight.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ElephentsDream.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Microsoft.SilverlightMediaFramework.Core.csproj">
+      <Project>{A1ACE999-EDFB-49DB-A408-ABE0E6DFE856}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Core</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Anaglyph3D\Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.csproj">
+      <Project>{88F6A2AD-F053-4E65-9601-F4069CA4F926}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Heuristics\Microsoft.SilverlightMediaFramework.Plugins.Heuristics.csproj">
+      <Project>{EFCA04B3-3BE1-49FB-B985-81CD7DF8E330}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Heuristics</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Progressive\Microsoft.SilverlightMediaFramework.Plugins.Progressive.csproj">
+      <Project>{5990FD56-C027-4022-BF94-649D099A3778}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Progressive</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.SmoothStreaming\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csproj">
+      <Project>{C32426D6-2CF9-4124-8571-DCFBCDFAD5E6}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.TimedText\Microsoft.SilverlightMediaFramework.Plugins.TimedText.csproj">
+      <Project>{CEC07ED7-7214-4B8B-B20B-5C13C623E4A5}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.TimedText</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.csproj">
+      <Project>{F76C6CBF-65B8-4105-A866-8E7469C23962}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins</Name>
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.csproj">
+      <Project>{329CBB82-F489-42B9-98FC-F79CC35CEF04}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities</Name>
+      <Private>True</Private>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets" Condition="Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(SolutionDir)Lib\Build\silverlight5\Microsoft.Silverlight.BuildServer.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

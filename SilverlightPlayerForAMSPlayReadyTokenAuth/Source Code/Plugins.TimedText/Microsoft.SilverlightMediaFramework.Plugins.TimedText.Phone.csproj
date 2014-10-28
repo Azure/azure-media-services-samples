@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{530E3B49-F2B6-417F-885F-8F10F7917D31}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Plugins.TimedText</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\wpbin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\wpbin\Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IMarkerParser.cs" />
+    <Compile Include="InStreamTimedTextPlugin.cs" />
+    <Compile Include="KnownLogEntryTypes.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Resources.Designer.cs" />
+    <Compile Include="Resources\TimedTextMediaPluginResources.Designer.cs" />
+    <Compile Include="TimedTextLib\Metadata\Metadata.cs" />
+    <Compile Include="TimedTextLib\Model\AnonymousSpanElement.cs" />
+    <Compile Include="TimedTextLib\Model\BodyElement.cs" />
+    <Compile Include="TimedTextLib\Model\BrElement.cs" />
+    <Compile Include="TimedTextLib\Model\DivElement.cs" />
+    <Compile Include="TimedTextLib\Model\HeadElement.cs" />
+    <Compile Include="TimedTextLib\Model\LayoutElement.cs" />
+    <Compile Include="TimedTextLib\Model\MetadataElement.cs" />
+    <Compile Include="TimedTextLib\Model\PElement.cs" />
+    <Compile Include="TimedTextLib\Model\RegionElement.cs" />
+    <Compile Include="TimedTextLib\Model\SetElement.cs" />
+    <Compile Include="TimedTextLib\Model\SpanElement.cs" />
+    <Compile Include="TimedTextLib\Model\StyleElement.cs" />
+    <Compile Include="TimedTextLib\Model\StylingElement.cs" />
+    <Compile Include="TimedTextLib\Model\TimedTextAttributeBase.cs" />
+    <Compile Include="TimedTextLib\Model\TimedTextElementBase.cs" />
+    <Compile Include="TimedTextLib\Model\TtElement.cs" />
+    <Compile Include="TimedTextLib\Parsing\TimedTextException.cs" />
+    <Compile Include="TimedTextLib\Parsing\TimedTextMetadata.cs" />
+    <Compile Include="TimedTextLib\Parsing\TimedTextProfile.cs" />
+    <Compile Include="TimedTextLib\Rendering\FormattingObjectNew.cs" />
+    <Compile Include="TimedTextLib\Rendering\Renderer.cs" />
+    <Compile Include="TimedTextLib\Rendering\Unicode.cs" />
+    <Compile Include="TimedTextLib\Styling\ColourExpression.cs" />
+    <Compile Include="TimedTextLib\Styling\Extent.cs" />
+    <Compile Include="TimedTextLib\Styling\Font.cs" />
+    <Compile Include="TimedTextLib\Styling\NumberPair.cs" />
+    <Compile Include="TimedTextLib\Styling\Styling.cs" />
+    <Compile Include="TimedTextLib\Timing\TimeCode.cs" />
+    <Compile Include="TimedTextLib\Timing\TimeExpression.cs" />
+    <Compile Include="TimedTextLib\Timing\TimeTree.cs" />
+    <Compile Include="TimedTextMarkerParser.cs" />
+    <Compile Include="TimedTextMarkerProvider.cs" />
+    <Compile Include="TimedTextStyleParser.cs" />
+    <Compile Include="TimedTextVocabulary.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compatibility.Phone\Microsoft.SilverlightMediaFramework.Compatibility.Phone.csproj">
+      <Project>{B42C02B3-B634-47B7-BB06-CAD420AD9C44}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Compatibility.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Phone\Microsoft.SilverlightMediaFramework.Core.Phone.csproj">
+      <Project>{CE4199DB-BCAA-4BD9-91D2-F35725E72022}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Core.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.Phone.csproj">
+      <Project>{6C791631-F3D2-4480-B48F-F0870275A929}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.Phone.csproj">
+      <Project>{AC40FA0B-3150-4250-9AED-3E9D5259FA34}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities.Phone</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Resources.resx" />
+    <EmbeddedResource Include="Resources\TimedTextMediaPluginResources.resx" />
+  </ItemGroup>
+  <!-- This MSBuild script compensates for Blend Design time having the wrong SolutionDir -->
+  <PropertyGroup>
+    <MissingExternalDependenciesBlendDesignTimehack>false</MissingExternalDependenciesBlendDesignTimehack>
+    <MissingExternalDependenciesBlendDesignTimehack Condition="!Exists('$(SolutionDir)Lib')">true</MissingExternalDependenciesBlendDesignTimehack>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'!='true'">$(SolutionDir)</CompileTimeSolutionDir>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'=='true'">$(SolutionDir)..\</CompileTimeSolutionDir>
+  </PropertyGroup>
+  <Import Project="$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets" Condition="Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

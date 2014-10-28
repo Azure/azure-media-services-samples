@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1A8FA400-3688-452D-B58B-76CC3EFD9A0D}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Test.Phone</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Test.Phone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>true</SilverlightApplication>
+    <SupportedCultures>
+    </SupportedCultures>
+    <XapOutputs>true</XapOutputs>
+    <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
+    <XapFilename>Microsoft.SilverlightMediaFramework.Test.Phone.xap</XapFilename>
+    <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
+    <SilverlightAppEntry>Microsoft.SilverlightMediaFramework.Test.Phone.App</SilverlightAppEntry>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20901.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Phone" />
+    <Reference Include="Microsoft.Phone.Controls">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>..\Lib\Phone\Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="mscorlib" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\Lib\Phone\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MediaDetailPage.xaml.cs">
+      <DependentUpon>MediaDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PlayerPage.xaml.cs">
+      <DependentUpon>PlayerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\FeatureVisibilityToBoolConverter.cs" />
+    <Compile Include="ViewModels\RootViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MediaDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PlayerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AppManifest.xml" />
+    <None Include="Properties\WMAppManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ApplicationIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Images\details_normal.png" />
+    <Resource Include="Images\details_pressed.png" />
+    <Content Include="SplashScreenImage.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Compatibility.Phone\Microsoft.SilverlightMediaFramework.Compatibility.Phone.csproj">
+      <Project>{B42C02B3-B634-47B7-BB06-CAD420AD9C44}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Compatibility.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core.Phone\Microsoft.SilverlightMediaFramework.Core.Phone.csproj">
+      <Project>{CE4199DB-BCAA-4BD9-91D2-F35725E72022}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Core.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.Progressive\Microsoft.SilverlightMediaFramework.Plugins.Progressive.Phone.csproj">
+      <Project>{D815536A-2A43-404A-BC4E-E780DA7EAC10}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Progressive.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.SmoothStreaming\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.Phone.csproj">
+      <Project>{3636E115-6E04-4459-B62D-6495D0CFEF70}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.TimedText\Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone.csproj">
+      <Project>{530E3B49-F2B6-417F-885F-8F10F7917D31}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.TimedText.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Microsoft.SilverlightMediaFramework.Plugins.Phone.csproj">
+      <Project>{6C791631-F3D2-4480-B48F-F0870275A929}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Plugins.Phone</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Utilities\Microsoft.SilverlightMediaFramework.Utilities.Phone.csproj">
+      <Project>{AC40FA0B-3150-4250-9AED-3E9D5259FA34}</Project>
+      <Name>Microsoft.SilverlightMediaFramework.Utilities.Phone</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <!-- This MSBuild script compensates for Blend Design time having the wrong SolutionDir -->
+  <PropertyGroup>
+    <MissingExternalDependenciesBlendDesignTimehack>false</MissingExternalDependenciesBlendDesignTimehack>
+    <MissingExternalDependenciesBlendDesignTimehack Condition="!Exists('$(SolutionDir)Lib')">true</MissingExternalDependenciesBlendDesignTimehack>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'!='true'">$(SolutionDir)</CompileTimeSolutionDir>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'=='true'">$(SolutionDir)..\</CompileTimeSolutionDir>
+  </PropertyGroup>
+  <Import Project="$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets" Condition="Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions />
+</Project>

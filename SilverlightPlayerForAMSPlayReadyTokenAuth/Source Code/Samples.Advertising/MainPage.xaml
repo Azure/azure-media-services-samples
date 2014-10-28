@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Samples.Advertising.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Core="clr-namespace:Microsoft.SilverlightMediaFramework.Core;assembly=Microsoft.SilverlightMediaFramework.Core" 
+    xmlns:Media="clr-namespace:Microsoft.SilverlightMediaFramework.Core.Media;assembly=Microsoft.SilverlightMediaFramework.Core" 
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid x:Name="banner" Core:SMFPlayer.ContainerHost="{Binding ElementName=smf}" />
+        <Core:SMFPlayer x:Name="smf" Grid.Row="1">
+            <Core:SMFPlayer.Playlist>
+                <Media:PlaylistItem DeliveryMethod="AdaptiveStreaming" MediaSource="http://video3.smoothhd.com.edgesuite.net/ondemand/Big%20Buck%20Bunny%20Adaptive.ism/Manifest">
+                    <Media:PlaylistItem.MarkerResources>
+                        <Media:MarkerResource Format="IAB-MAST" Source="mast.xml" />
+                    </Media:PlaylistItem.MarkerResources>
+                </Media:PlaylistItem>
+            </Core:SMFPlayer.Playlist>
+        </Core:SMFPlayer>
+    </Grid>
+</UserControl>

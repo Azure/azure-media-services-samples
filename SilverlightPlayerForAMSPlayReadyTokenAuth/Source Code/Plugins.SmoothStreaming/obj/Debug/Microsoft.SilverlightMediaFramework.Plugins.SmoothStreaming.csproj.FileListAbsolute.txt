@@ -1,0 +1,8 @@
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\bin\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.XML
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\bin\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\bin\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.pdb
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Plugins.SmoothStreaming\obj\Debug\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csprojResolveAssemblyReference.cache
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Plugins.SmoothStreaming\obj\Debug\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.Resources.SmoothStreamingResources.resources
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Plugins.SmoothStreaming\obj\Debug\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.csproj.GenerateResource.Cache
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Plugins.SmoothStreaming\obj\Debug\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Plugins.SmoothStreaming\obj\Debug\Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.pdb

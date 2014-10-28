@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <customBinding>
+                <binding name="CustomBinding_LoggingService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:9735/Services/LoggingService.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_LoggingService"
+                contract="ServiceReference1.LoggingService" name="CustomBinding_LoggingService" />
+        </client>
+    </system.serviceModel>
+</configuration>

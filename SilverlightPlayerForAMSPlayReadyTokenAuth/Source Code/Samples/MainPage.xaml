@@ -1,0 +1,75 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk" 
+    xmlns:toolkit="http://schemas.microsoft.com/winfx/2006/xaml/presentation/toolkit" 
+    x:Class="Microsoft.SilverlightMediaFramework.Samples.MainPage"
+    mc:Ignorable="d"
+    d:DesignHeight="768" d:DesignWidth="1024">
+	<UserControl.Resources>
+		<Style x:Key="codeTextBox" TargetType="TextBox">
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="Background" Value="#FFDEDEDE"/>
+			<Setter Property="IsReadOnly" Value="True"/>
+		</Style>
+		
+		<sdk:HierarchicalDataTemplate x:Key="SampleTemplate">
+			<Grid d:DataContext="{d:DesignData /SampleData/SampleSampleData.xaml}">
+				<TextBlock Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			</Grid>
+        </sdk:HierarchicalDataTemplate>
+		<sdk:HierarchicalDataTemplate x:Key="GroupTemplate" ItemsSource="{Binding Samples}" ItemTemplate="{StaticResource SampleTemplate}">
+			<Grid d:DataContext="{d:DesignData /SampleData/GroupSampleData.xaml}">
+				<TextBlock Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+			</Grid>
+        </sdk:HierarchicalDataTemplate>
+		<Style x:Key="sampleTrvStyle" TargetType="sdk:TreeViewItem">
+			<Setter Property="IsExpanded" Value="True"/>
+		</Style>
+	</UserControl.Resources>
+
+	<Grid x:Name="LayoutRoot" Background="White" d:DataContext="{d:DesignData /SampleData/MainPageViewModelSampleData.xaml}">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="0.211*"/>
+			<ColumnDefinition Width="0.789*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="0.105*"/>
+			<RowDefinition Height="0.861*"/>
+			<RowDefinition Height="0.034*"/>
+		</Grid.RowDefinitions>
+		<TextBlock  TextWrapping="Wrap" Text="Silverlight Media Framework Samples" FontSize="37.333" FontWeight="Bold" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="96,0,0,0" FontFamily="Trebuchet MS"/>
+		<sdk:TreeView x:Name="trv" Grid.Row="1" Grid.RowSpan="2" ItemsSource="{Binding Groups}" ItemTemplate="{StaticResource GroupTemplate}" ItemContainerStyle="{StaticResource sampleTrvStyle}"/>
+		<toolkit:Expander x:Name="sourceCodeExpander" Grid.Column="1" Header="Source Code" Grid.Row="2" VerticalAlignment="Bottom" ExpandDirection="Up">
+			<Grid Background="#FFE5E5E5">
+				<sdk:TabControl Canvas.ZIndex="1" x:Name="tabCode">
+                    <sdk:TabItem x:Name="blendTabItem" Header="Blend Instructions" Visibility="{Binding BlendInstructionsVisiblity}">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBox x:Name="BlendInstructionsTextBox" TextWrapping="Wrap" Style="{StaticResource codeTextBox}" Text="{Binding BlendInstructions, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" />
+                        </Grid>
+                    </sdk:TabItem>
+                    <sdk:TabItem x:Name="htmlTabItem" Header="HTML" Visibility="{Binding HtmlVisibility}">
+                        <Grid Background="#FFE5E5E5">
+                            <TextBox x:Name="HtmlTextBox" TextWrapping="Wrap" Style="{StaticResource codeTextBox}" Text="{Binding HtmlCode, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" />
+                        </Grid>
+                    </sdk:TabItem>
+                    <sdk:TabItem x:Name="xamlTabItem" Header="XAML" Visibility="{Binding XamlVisibility}">
+						<Grid Background="#FFE5E5E5">
+							<TextBox x:Name="XamlTextBox" TextWrapping="Wrap" Style="{StaticResource codeTextBox}" Text="{Binding XamlCode, Mode=TwoWay}" VerticalScrollBarVisibility="Auto" />
+						</Grid>
+					</sdk:TabItem>
+                    <sdk:TabItem x:Name="csharpTabItem" Header="C#" Visibility="{Binding CSharpVisiblity}">
+						<Grid Background="#FFE5E5E5">
+							<TextBox x:Name="CSharpTextBox" TextWrapping="Wrap" Style="{StaticResource codeTextBox}" Text="{Binding CSharpCode, Mode=TwoWay}" VerticalScrollBarVisibility="Auto"/>
+						</Grid>
+					</sdk:TabItem>
+				</sdk:TabControl>
+			</Grid>
+		</toolkit:Expander>
+        <ContentControl x:Name="displayArea" Grid.Column="1" Grid.Row="1" Content="{Binding ActiveUI}" Margin="5,0,5,0" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+		<Image HorizontalAlignment="Left" Margin="0,2,0,0" Source="Silverlight.jpg" Width="96"/>
+	</Grid>
+</UserControl>

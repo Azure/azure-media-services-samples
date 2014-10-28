@@ -1,0 +1,60 @@
+﻿<phone:PhoneApplicationPage
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity" xmlns:Microsoft_SilverlightMediaFramework_Utilities="clr-namespace:Microsoft.SilverlightMediaFramework.Utilities;assembly=Microsoft.SilverlightMediaFramework.Utilities.Phone" 
+    x:Class="Microsoft.SilverlightMediaFramework.Test.Phone.MediaDetailPage"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    DataContext="{StaticResource RootViewModel}"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <StackPanel x:Name="LayoutRoot" HorizontalAlignment="Left" VerticalAlignment="Top" DataContext="{Binding SelectedPlaylistItem}">
+
+        <!--TitlePanel contains the name of the application and page title-->
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="TitlePanel" Margin="12,0" Grid.Row="0" Width="456" HorizontalAlignment="Left" VerticalAlignment="Top">
+        	<Grid.RowDefinitions>
+        		<RowDefinition Height="Auto"/>
+        		<RowDefinition Height="Auto"/>
+        	</Grid.RowDefinitions>
+        	<TextBlock x:Name="ApplicationTitle" Text="SILVERLIGHT MEDIA FRAMEWORK" VerticalAlignment="Top" Margin="0,0,0,20" HorizontalAlignment="Left"/>
+        	<TextBlock x:Name="VideoTitle" Text="{Binding Title}" Margin="0" Style="{StaticResource PhoneTextTitle1Style}" Grid.Row="1" FontSize="48" LineHeight="48" VerticalAlignment="Top" HorizontalAlignment="Left" TextWrapping="Wrap" MinHeight="64"/>
+        </Grid>
+        
+        <ScrollViewer>
+            <StackPanel>
+                <Grid x:Name="Controls" HorizontalAlignment="Left" Grid.Row="1" Margin="12,10,0,10" Width="456" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Margin="0,12,0,0" Grid.RowSpan="2" Height="175" Source="{Binding ThumbSource}" Width="175" VerticalAlignment="Top"/>
+                    <StackPanel Margin="0" Grid.Column="1">
+                        <Button x:Name="Play" Content="Play" Margin="0" HorizontalAlignment="Left" Width="150">
+                            <Custom:Interaction.Triggers>
+                                <Custom:EventTrigger EventName="Click">
+                                    <Microsoft_SilverlightMediaFramework_Utilities:NavigationBehavior NavigationUri="PlayerPage.xaml"/>
+                                </Custom:EventTrigger>
+                            </Custom:Interaction.Triggers>
+                        </Button>
+                        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="{Binding Duration}" Margin="12,12,0,0"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid x:Name="Description" Margin="0" HorizontalAlignment="Center" Width="456" Grid.Row="2">
+                    <TextBlock x:Name="VideoDescription" Margin="0,10,0,0" TextWrapping="Wrap" d:LayoutOverrides="Height" Width="456" HorizontalAlignment="Left" Text="{Binding Description}"/>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        
+    </StackPanel>
+
+</phone:PhoneApplicationPage>

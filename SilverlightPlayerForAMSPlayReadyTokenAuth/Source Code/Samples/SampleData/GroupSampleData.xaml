@@ -1,0 +1,14 @@
+<Microsoft_SilverlightMediaFramework_Samples_Framework:Group xmlns:Microsoft_SilverlightMediaFramework_Samples_Framework="clr-namespace:Microsoft.SilverlightMediaFramework.Samples.Framework" Name="Cras maecenas">
+	<Microsoft_SilverlightMediaFramework_Samples_Framework:Group.Samples>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Vestibulum nam class duis" Name="Aenean curabitur mauris adipiscing parturient" XamlCode="Nullam phasellus"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Curae vestibulum nunc" Name="Praesent aliquam" XamlCode="Consequat donec aptent"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Amet convallis integer ante arcu" Name="Quisque vestibulum adipiscing" XamlCode="Etiam diam parturient vestibulum vivamus"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Sed aliquam eget vestibulum adipiscing" Name="Dignissim fusce auctor" XamlCode="Congue aliquet elit accumsan bibendum"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Dictumst lorem morbi" Name="Dis nulla cursus dictum proin" XamlCode="Est elementum"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Lectus parturient enim eleifend" Name="Libero facilisis erat fermentum" XamlCode="Hac ligula augue dolor litora"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Leo fringilla facilisi" Name="Vestibulum mus nec" XamlCode="Habitasse fames"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Felis luctus magnis hendrerit faucibus" Name="Habitant eros vestibulum mattis" XamlCode="Blandit nibh"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Adipiscing inceptos" Name="Interdum non himenaeos nisi" XamlCode="Parturient lobortis nisl imperdiet per"/>
+		<Microsoft_SilverlightMediaFramework_Samples_Framework:Sample CSharpCode="Nunc mauris mollis vestibulum ipsum" Name="Odio commodo conubia" XamlCode="Justo lacus"/>
+	</Microsoft_SilverlightMediaFramework_Samples_Framework:Group.Samples>
+</Microsoft_SilverlightMediaFramework_Samples_Framework:Group>

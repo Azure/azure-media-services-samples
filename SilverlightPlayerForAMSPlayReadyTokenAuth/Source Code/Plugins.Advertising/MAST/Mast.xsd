@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema xmlns="http://openvideoplayer.sf.net/mast" targetNamespace="http://openvideoplayer.sf.net/mast" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="MAST" >
+	<xs:complexType>
+	<xs:all>
+		<xs:element name="triggers" >
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="trigger" type="Trigger" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Each trigger is evaluated independantly, and contains source, target,and other attributes, and a sequence of conditions</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		</xs:all>
+	</xs:complexType>
+	</xs:element>
+
+	
+	<!--Start 'trigger' type definition-->
+	<xs:complexType name="Trigger">
+		<xs:all >
+			<xs:element name="startConditions" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="condition" type="Condition" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>  </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="endConditions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="condition" type="Condition" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>  </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="sources" minOccurs="1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="source" type="Source" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>  </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		
+		<xs:attribute name="id" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Unique identifier of this trigger</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="description" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Description of trigger, user defined - not used in implmentation</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--End 'trigger' type definition-->
+
+	
+	<!--Start 'source' type definition-->
+	<xs:complexType name="Source">
+		
+		<xs:all>
+			<xs:element name="sources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="sources" type="Source" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>  </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="targets"  minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="target" type="Target" minOccurs="0" maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>  </xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:all>
+		
+		<xs:attribute name="uri" type="xs:anyURI">
+			<xs:annotation>
+				<xs:documentation>Source document to act upon when triggered</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="altReference" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>ID of source to act upon when triggered, used along with Uri - assumes player has a source we can reference with this ID</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="format" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Format of source document, for example: "VAST".</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--End 'source' type definition-->
+
+	
+	<!--Start 'condition' type definition-->
+	<xs:complexType name="Condition">
+		
+	<xs:sequence minOccurs="0" maxOccurs="unbounded">
+		<xs:element name="condition" type="Condition">
+				<xs:annotation>
+					<xs:documentation>Child conditions - treated as an implicit boolean 'AND'</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+	</xs:sequence>
+		
+		<xs:attribute name="type" type="ConditionType">
+			<xs:annotation>
+				<xs:documentation>General type of condition</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="name" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Name of player var or event to apply condition to</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="value" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>The value the variable is compared against</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="operator" type="Operator">
+			<xs:annotation>
+				<xs:documentation>The value the variable is compared against</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<!--End 'condition' type definition-->
+
+	
+	<!--Start 'target' type definition-->
+	<xs:complexType name="Target">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="target" type="Target">
+				<xs:annotation>
+					<xs:documentation>Child targets - treated as a dependant</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		
+		<xs:attribute name="region" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>Named target region to use</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<xs:attribute name="type" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>User defined type of target, can be used to determine target usage, such as 'companion', 'caption', etc.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		
+		<!--<xs:attribute name="behavior" type="Behavior">
+			<xs:annotation>
+				<xs:documentation>Behavior of target when called to action</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>-->
+	</xs:complexType>
+	<!--End 'target' type definition-->
+
+
+	<!--Simple types-->
+	
+	<xs:simpleType name="ConditionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="property"/>
+			<xs:enumeration value="event"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="Operator">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EQ"/>
+			<xs:enumeration value="NEQ"/>
+			<xs:enumeration value="GTR"/>
+			<xs:enumeration value="GEQ"/>
+			<xs:enumeration value="LT"/>
+			<xs:enumeration value="LEQ"/>
+			<xs:enumeration value="MOD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<!--<xs:simpleType name="Behavior">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="replace"/>
+			<xs:enumeration value="combine"/>
+			<xs:enumeration value="bypass"/>
+			<xs:enumeration value="stack"/>
+		</xs:restriction>
+	</xs:simpleType>-->
+	
+</xs:schema>

@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="Microsoft.SilverlightMediaFramework.Samples.Samples.Captions.InStreamCaptions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:smf="clr-namespace:Microsoft.SilverlightMediaFramework.Core;assembly=Microsoft.SilverlightMediaFramework.Core" xmlns:smf_media="clr-namespace:Microsoft.SilverlightMediaFramework.Core.Media;assembly=Microsoft.SilverlightMediaFramework.Core" mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="400">
+    
+    <Grid x:Name="LayoutRoot" Background="White">
+        <smf:SMFPlayer CaptionsVisibility="Visible">
+            <smf:SMFPlayer.Playlist>
+                <smf_media:PlaylistItem SelectedCaptionStreamName="textstream_eng" DeliveryMethod="AdaptiveStreaming" MediaSource="http://ecn.channel9.msdn.com/o9/content/smf/smoothcontent/elephantsdream/Elephants_Dream_1024-h264-st-aac.ism/manifest"/>
+            </smf:SMFPlayer.Playlist>
+        </smf:SMFPlayer>
+    </Grid>
+</UserControl>
