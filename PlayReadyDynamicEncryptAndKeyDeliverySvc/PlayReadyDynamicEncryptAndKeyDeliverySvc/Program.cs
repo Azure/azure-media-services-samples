@@ -45,7 +45,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
             // Used the cached credentials to create CloudMediaContext.
             _context = new CloudMediaContext(_cachedCredentials);
 
-            bool tokenRestriction = false;
+            bool tokenRestriction = true;
             string tokenTemplateString = null;
 
             IAsset asset = UploadFileAndCreateAsset(_singleMP4File);
@@ -82,7 +82,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
                 // Note, you need to pass the key id Guid because we specified 
                 // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
                 Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
-                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
+                string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey, DateTime.UtcNow.AddDays(365));
                 Console.WriteLine("The authorization token is:\n{0}", testToken);
                 Console.WriteLine();
             }
