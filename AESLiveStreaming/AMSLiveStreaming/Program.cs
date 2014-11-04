@@ -51,9 +51,9 @@ namespace AMSLiveStreaming
             // Used the cached credentials to create CloudMediaContext.
             _context = new CloudMediaContext(_cachedCredentials);
 
-            //IChannel channel = CreateAndStartChannel();
+            IChannel channel = CreateAndStartChannel();
 
-            IChannel channel = _context.Channels.Where(c => c.Name == "channelAES").Single();
+            //IChannel channel = _context.Channels.Where(c => c.Name == "channelAES").Single();
             // Set the Live Encoder to point to the channel's input endpoint:
             string ingestUrl = channel.Input.Endpoints.FirstOrDefault().Url.ToString();
 
