@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D</name>
+    </assembly>
+    <members>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.Load">
+            <summary>
+            Loads the plugin
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.Unload">
+            <summary>
+            Unloads the plugin
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetPlayer(System.Windows.FrameworkElement)">
+            <summary>
+            Provides a mechanism to pass the SMF player to the plugin.
+            </summary>
+            <param name="player"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.ValidateS3DPropertiesforAnaglyph">
+            <summary>
+            Ensures that the content conforms to S3D properties that can be properly
+            rendered in Anaglyph
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.LoadAnaglyphSetup">
+            <summary>
+            Grabs the active Media Element or Smooth Streaming Media element from the 
+            active media plugin, and begins the 3D rendering process by kicking off
+            the SetEffect() method.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.UnloadAnaglyphSetup">
+            <summary>
+            Start the process of undoing any modifications made to visual elements so that new
+            non-3D content can load normally.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetActiveDisplayMechanism(Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.AnaglyphDisplayMechanism)">
+            <summary>
+            Allows the specific Anaglyph display mechanism to be passed in to the plugin
+            by a consuming application.
+            </summary>
+            <param name="displayMechanism"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetMediaPresenterElementContent">
+            <summary>
+            In the SMF visual tree, the MediaPresenterElement contains the MediaElement
+            or SmoothStreamingMediaElement.  In order to properly render anaglyph 3D content,
+            a Canvas must be inserted between the MediaPresenter Element and the ME/SSME.
+            
+            This method takes over the loading of content into the MediaPresenterElement, injecting
+            a Canvas to allow for 3D rendering.  
+            
+            We'll name the Canvas we insert "PluginInjectedCanvas".  This will allow the Core SMF
+            code to detect that the MediaPresenterElement's content has been custom-loaded by a 
+            plugin, which will cause it to skip settin the MediaPresenterElement's content.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetEffect">
+            <summary>
+            Chooses to route to a sub-method for either ME or SSME to 
+            set the ME/SSME's shader effect and choose a scaling factor.
+            The method that modifies the visual elements' properties will then
+            be kicked off.  
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.RemoveEffect">
+            <summary>
+            Removes the shader effect from the ME/SSME so that non-3D content
+            can be rendered.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetVideoProperties">
+            <summary>
+            Chooses to route to a sub-method for either ME or SSME to 
+            set the properties on the visual elements to support proper
+            anaglyph 3D rendering.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.RemoveVideoProperties">
+            <summary>
+            Removes the property modifications made to the visual elements
+            for 3D rendering so that non-3D content can be displayed as normal.
+            Since a new SSME or ME should be loaded with the next playlist item,
+            this method is more of a safety catch.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetShaderEffect">
+            <summary>
+            Set the ME's or SSME's shader effect and chooses a scaling factor.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SetVisualElementVideoProperties">
+            <summary>
+            Sets the properties on the visual elements to support proper
+            anaglyph 3D rendering.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.AdjustAspectRatioToUniform(System.Double,System.Double)">
+            <summary>
+            Maintains the aspect ratio for scaled content in the ME or SSME
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.Current">
+            <summary>
+            The current instance of the Anaglyph 3D Plugin.
+            This allows a consuming application to reference the plugin and control it.
+            For example, a consuming application may wish to call SetActiveDisplayMechanism() on 
+            this Anaglyphy plugin to specify Gray vs. Half color 3D display.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.IsLoaded">
+            <summary>
+            Gets a value indicating whether a plug-in is currently loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.SupportedS3DFormats">
+            <summary>
+            Gets the 3D formats supported by this plugin.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.Is3DPluginEnabled">
+            <summary>
+            Indicates whether the 3D Plugin is enabled.
+            Allows a consuming application to instruct the 3D plugin to activate or deactivate.
+            Useful when a consuming application will handle multuple 3D plugins.
+            
+            Note: to properly enable/disable the Anaglyph 3D plugin, make sure to
+            set this value before the Media Plugin loaded event fires.
+            (the MediaPluginRegistered event fires before MediaPluginLoaded)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.MediaPresenterElement">
+            <summary>
+            Allows the MediaPresenterElement to be passed to the 3D plugin
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.S3DPropertiesValid">
+            <summary>
+            An event indicating that the S3D Properties have been successfully
+            validated for this 3D plugin for the current Playlist Item
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.S3DPropertiesInvalid">
+            <summary>
+            An event indicating that the S3D Properties are invalid for this 3D plugin
+            for the current Playlist Item.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.PluginLoaded">
+            <summary>
+            Occurs when the plug-in is loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.PluginUnloaded">
+            <summary>
+            Occurs when the plug-in is unloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.PluginLoadFailed">
+            <summary>
+            Occurs when an exception occurs when the plug-in is loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.PluginUnloadFailed">
+            <summary>
+            Occurs when an exception occurs when the plug-in is unloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.LogReady">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.AnaglyphDisplayMechanism">
+            <summary>
+            Indicates the Anaglyph 3D display mechanism.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.Anaglyph3DPlugin.StretchModes">
+            <summary>
+            The anaglyph 3d plugin supports either stretching the content
+            to Uniform or to Fill.  UniformToFill and None are not supported.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MAST xsi:schemaLocation="http://openvideoplayer.sf.net/mast http://openvideoplayer.sf.net/mast/mast.xsd" xmlns="http://openvideoplayer.sf.net/mast" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <triggers>
+    <trigger id="preroll" description="preroll every item"  >
+      <startConditions>
+        <condition type="event" name="OnItemStart" />
+      </startConditions>
+      <endConditions>
+        <condition type="event" name="OnItemEnd"/>
+        <!--This 'resets' the trigger for the next clip-->
+      </endConditions>
+      <sources>
+        <source uri="/ClientBin/vast.xml" format="vast">
+          <sources />
+          <targets>
+            <target type="raw_banner_300x60" region="banner" />
+          </targets>
+        </source>
+      </sources>
+    </trigger>
+
+    <trigger id="midroll" description="midroll at 30 sec."  >
+      <startConditions>
+        <condition type="property" name="Position" value="00:00:30.0" operator="GEQ" />
+      </startConditions>
+      <endConditions>
+        <condition type="event" name="OnItemEnd"/>
+         <!--This 'resets' the trigger for the next clip-->
+      </endConditions>
+      <sources>
+        <source uri="/ClientBin/vast-silverlightAd.xml" format="vast">
+          <sources />
+          <targets>
+            <target type="raw_banner_300x60" region="banner" />
+          </targets>
+        </source>
+      </sources>
+    </trigger>
+  </triggers>
+</MAST>

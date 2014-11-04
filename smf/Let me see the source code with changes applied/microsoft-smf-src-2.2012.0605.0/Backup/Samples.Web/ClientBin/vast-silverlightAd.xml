@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+	<Ad id="115571748">
+		<InLine>
+			<AdSystem version="2.0 alpha">Atlas</AdSystem>
+			<AdTitle>Unknown</AdTitle>
+			<Description>Unknown</Description>
+			<Survey></Survey>
+			<Error></Error>
+			<Impression id="Atlas"><![CDATA[http://view.atdmt.com/000/sview/115571748/direct;ai.117051679;vt.2/01/634317290034907014]]></Impression>
+			<Creatives>
+				<Creative id="video" sequence="0" AdID="">
+					<Linear>
+						<Duration>00:00:10</Duration>
+						<TrackingEvents>
+							<Tracking event="start"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.117051679;ct.i3/01/634317290034907014]]></Tracking>
+							<Tracking event="midpoint"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.117051679;ct.i1/01/634317290034907014]]></Tracking>
+							<Tracking event="complete"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.117051679;ct.i2/01/634317290034907014]]></Tracking>
+							<Tracking event="expand"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.117051679;ct.i4/01/634317290034907014]]></Tracking>
+						</TrackingEvents>
+						<VideoClicks>
+							<ClickThrough id="Atlas Redirect"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.1/01/634317290034907014]]></ClickThrough>
+							<ClickTracking id="Spare"></ClickTracking>
+						</VideoClicks>
+						<MediaFiles>
+              <MediaFile apiFramework="Silverlight" id="test" maintainAspectRatio="true" scalable="true" delivery="progressive" bitrate="700" width="400" height="300" type="application/x-silverlight-app">
+                <![CDATA[/ClientBin/Samples.SilverlightAd.xap]]>
+              </MediaFile>
+            </MediaFiles>
+					</Linear>
+				</Creative>
+			</Creatives>
+			<Extensions>
+				<Extension type="Atlas">
+				</Extension>
+			</Extensions>
+		</InLine>
+	</Ad>
+</VAST>

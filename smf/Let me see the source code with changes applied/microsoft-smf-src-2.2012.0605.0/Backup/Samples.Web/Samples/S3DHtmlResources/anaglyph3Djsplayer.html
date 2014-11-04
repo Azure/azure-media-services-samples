@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>Microsoft.SilverlightMediaFramework.Anaglyph3DJSPlayer</title>
+    <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    </style>
+    <script type="text/javascript" src="Silverlight.js"></script>
+    <script type="text/javascript">
+        var slCtl = null;
+        function pluginLoaded(sender, args) {
+            slCtl = sender.getHost().Content;
+        }
+
+        function createNewPlaylistItem() {
+            var NewPlaylistItemAdaptive = slCtl.Player.CreatePlaylistItem('http://devplatem.vo.msecnd.net/3D/NVIDIA_3DV_PC_1080p30_SxS_LeftFirst.ism/manifest', '', 'Smooth Streaming Anaglyph Half Color 3D', 'Description');
+            NewPlaylistItemAdaptive.DeliveryMethod = 'AdaptiveStreaming';
+            NewPlaylistItemAdaptive.ScriptS3DProperties.S3DFormat = "SideBySide";
+            NewPlaylistItemAdaptive.ScriptS3DProperties.S3DEyePriority = "LeftFirst";
+            NewPlaylistItemAdaptive.ScriptS3DProperties.S3DLeftEyePAR = "2.0";
+            NewPlaylistItemAdaptive.ScriptS3DProperties.S3DRightEyePAR = "2.0";
+            
+            var CustomMetaDataCollection = slCtl.Player.CreateMetadataCollection();
+            CustomMetaDataCollection.Add("ExampleProperty1","ExampleValue1");
+            CustomMetaDataCollection.Add("ExampleProperty2", "ExampleValue2");
+
+            NewPlaylistItemAdaptive.CustomMetadata = CustomMetaDataCollection;
+
+            var NewPlaylist = slCtl.Player.CreatePlaylist();
+            NewPlaylist.AddPlaylistItem(NewPlaylistItemAdaptive);
+
+            slCtl.Player.SetPlaylist(NewPlaylist);
+        }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server" style="height:100%">
+    <input type="button" value="Create New Playlist in Javascript" onClick="createNewPlaylistItem()" />
+    <br />
+    <div id="silverlightControlHost">
+        <object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="95%">
+		  <param name="source" value="../../ClientBin/SmoothStreamingPlayer.xap"/>
+          <param name="onload" value="pluginLoaded" />
+		  <param name="background" value="white" />
+		  <param name="minRuntimeVersion" value="5.0.61118.0" />
+		  <param name="autoUpgrade" value="true" />
+          <param name="enableGPUAcceleration" value="true" />
+          <param name="InitParams" value="scriptablename=Player" />
+		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=5.0.61118.0" style="text-decoration:none">
+ 			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none"/>
+		  </a>
+	    </object><iframe id="_sl_historyFrame" style="visibility:hidden;height:0px;width:0px;border:0px"></iframe></div>
+    </form>
+</body>
+</html>

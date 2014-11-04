@@ -1,0 +1,2924 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Plugins.Advertising</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper">
+            <summary>
+            Static class containing async helper methods
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Func{System.Object},System.Boolean)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed. 
+            This overload always tries the ThreadPool and DOES NOT check for reentrance.
+            </summary>
+            <param name="d">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return: Async.Do((Func&lt;object&gt;)MyMethod);</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <returns>AsyncRes with all kind of goodies for waiting, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Action)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed. 
+            This overload always tries the ThreadPool and DOES NOT check for reentrance.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod)</param>
+            <returns>AsyncRes with all kind of goodies for waiting, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Func{System.Object},System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return: Async.Do((Func&lt;object&gt;)MyMethod);</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <returns>AsyncRes with all kind of goodies for waiting, resturn and result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Action,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod);</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Func{System.Object},System.Boolean,System.Object,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return: Async.Do((Func&lt;object&gt;)MyMethod);</param>
+            <param name="state">A user object that can be tracked through the returned result</param>
+            <param name="tryThreadPool">True to use the TP, otherwise just go to a ful lthread - good for long running tasks.</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <returns>AsyncRes with all kind of goodies for waiting, resturn and result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Action,System.Object,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod);</param>
+            <param name="state">A user object that can be tracked through the returned result</param>
+            <param name="tryThreadPool">True to use the TP, otherwise just go to a ful lthread - good for long running tasks.</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.Do(System.Func{System.Object},System.Action,System.Boolean,System.Object,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode,System.Boolean,System.Windows.Threading.Dispatcher)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate.</param>
+            <param name="dr">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return.</param>
+            <param name="state">A user object that can be tracked through the returned result</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <param name="tryThreadPool">True to use the TP, otherwise just go to a ful lthread - good for long running tasks.</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.UI(System.Action,System.Windows.Threading.Dispatcher,System.Boolean)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod);</param>
+            <param name="async">Whether to run async, or try on current thread if invoke is not required.</param>
+            <param name="dispatcher">A dispatcher to Invoke upon GUI thread of, if needed. Null if unused.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.UI(System.Action,System.Windows.Threading.Dispatcher,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod);</param>
+            <param name="async">Whether to run async, or try on current thread if invoke is not required.</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <param name="dispatcher">A dispatcher to Invoke upon GUI thread of, if needed. Null if unused.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.UI(System.Func{System.Object},System.Boolean,System.Windows.Threading.Dispatcher,System.Boolean)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return: Async.Do((Func&lt;object&gt;)MyMethod);</param>
+            <param name="async">Whether to run async, or try on current thread if invoke is not required.</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <param name="dispatcher">A dispatcher to Invoke upon GUI thread of, if needed. Null if unused.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.UI(System.Action,System.Windows.Threading.Dispatcher,System.Object,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A void delegate - can be cast to (Action) from an anonymous delgate or method:  Async.Do((Action)MyVoidMethod);</param>
+            <param name="state">A user object that can be tracked through the returned result</param>
+            <param name="async">Whether to run async, or try on current thread if invoke is not required.</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <param name="dispatcher">A dispatcher to Invoke upon GUI thread of, if needed. Null if unused.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncHelper.UI(System.Func{System.Object},System.Boolean,System.Windows.Threading.Dispatcher,System.Object,System.Boolean,Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ReenteranceMode)">
+            <summary>
+            Fires off your delegate asyncronously, using the threadpool or a full managed thread if needed.
+            </summary>
+            <param name="d">A delegate with a return value of some sort - can be cast to (Func&lt;object&gt;) from an anonymous delgate with a return: Async.Do((Func&lt;object&gt;)MyMethod);</param>
+            <param name="state">A user object that can be tracked through the returned result</param>
+            <param name="async">Whether to run async, or try on current thread if invoke is not required.</param>
+            <param name="getRetVal">If true, and the method/delgete returns something, it is included in the AsyncRes returned (after the method completes)</param>
+            <param name="rMode">If true, will make sure no other instances are running your method.</param>
+            <param name="dispatcher">A dispatcher to Invoke upon GUI thread of, if needed. Null if unused.</param>
+            <returns>AsyncRes with all kind of goodies for waiting, result values, etc.</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.AsyncRes">
+            <summary>
+            Used with the Async helper class, This class is mostly a holder for a lot of tracking fields and properties, with a few things mandated by the IAsyncResult interface.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ConversionHelper.GetAbsoluteUri(System.Uri,System.String)">
+            <summary>
+            </summary>
+            <param name="base">The base uri to use if the string is not absolute</param>
+            <param name="uriString">The uri string, relative or absolute</param>
+            <returns>Resulting merged uri object</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.ConversionHelper.ColorFromString(System.String)">
+            <summary>
+            Converts a string of an ARGB color to a System.color type
+            </summary>
+            <param name="color">The ARGB color profile to parse</param>
+            <returns>The resulting System.color type</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.Extensions.Raise(System.EventHandler,System.Object,System.EventArgs)">
+            <summary>
+            Raises the event safely by checking for null and avoiding race conditions.
+            </summary>
+            <param name="handler"></param>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <see cref="!:http://stackoverflow.com/questions/248072/evil-use-of-extension-methods"/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.Extensions.Raise``1(System.EventHandler{``0},System.Object,``0)">
+            <summary>
+            Raises the event safely by checking for null and avoiding race conditions.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="handler"></param>
+            <param name="sender"></param>
+            <param name="e"></param>
+            <see cref="!:http://stackoverflow.com/questions/248072/evil-use-of-extension-methods"/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.Extensions.Sum(System.Windows.Size)">
+            <summary>
+            Calculates the sum of a size's width and height.  Goos for quick comparisons.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Helpers.Extensions.Scale(System.Windows.Size,System.Windows.Size)">
+            <summary>
+            Scales a size based on another provided size
+            </summary>
+            <param name="s"></param>
+            <param name="scale">A size used to scale this size</param>
+            <returns>a new instance of Size</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter">
+            <summary>
+            Defines all the properties and events that MAST conditions can be based on
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.Ready">
+            <summary>
+            Indicates that we are ready to start receiving events. If there were any events that happened before this moment, repeat them.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.TimelineChanged">
+            <summary>
+            fires when the position changes. Used to drive the MAST trigger evaluation
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnPlay">
+            <summary>
+            Defined as anytime the play command is issued, even after a pause
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnStop">
+            <summary>
+            The stop command is given
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnPause">
+            <summary>
+            The pause command is given
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnMute">
+            <summary>
+            The player was muted, or volume brought to 0
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnVolumeChange">
+            <summary>
+            Volume was changed
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnEnd">
+            <summary>
+            The player has stopped naturally, with no new content
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnSeek">
+            <summary>
+            The player was manually seeked
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnItemStarting">
+            <summary>
+            A new item is being started. Occurs immediately before OnItemStart and should be used for internal purposes only
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnItemStart">
+            <summary>
+            A new item is being started
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnItemEnd">
+            <summary>
+            The current item is coming to the end
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnFullScreenChange">
+            <summary>
+            Fullscreen has been toggled
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnPlayerSizeChanged">
+            <summary>
+            Player size has changed
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnError">
+            <summary>
+            An error has occurred, typically of enough severity to warrant display to the user
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.OnMouseOver">
+            <summary>
+            The mouse has moved 
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.Duration">
+            <summary>
+            The duration of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.Position">
+            <summary>
+            The position of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.WatchedTime">
+            <summary>
+            The amount of time that this item has rendered, regardless of seeks
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.TotalWatchedTime">
+            <summary>
+            The total amount of content that has been rendered in this session
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.SystemTime">
+            <summary>
+            The current system time
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.FullScreen">
+            <summary>
+            True if the player is fullscreen
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.IsPlaying">
+            <summary>
+            True if the player is playing content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.IsPaused">
+            <summary>
+            True if the player is paused
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.IsStopped">
+            <summary>
+            True if the player is stopped, or not yet started
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.CaptionsActive">
+            <summary>
+            True if captions are active and being shown
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.HasVideo">
+            <summary>
+            True if the current content has a video stream
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.HasAudio">
+            <summary>
+            True if the current content has an audio stream
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.HasCaptions">
+            <summary>
+            True if the current content has captions available
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ItemsPlayed">
+            <summary>
+            The count of items that have been displayed in full or part
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.PlayerWidth">
+            <summary>
+            The physical width of the player application
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.PlayerHeight">
+            <summary>
+            The physical height of the player application
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ContentWidth">
+            <summary>
+            The native width of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ContentHeight">
+            <summary>
+            The native height of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ContentBitrate">
+            <summary>
+            The bitrate-in-use of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ContentTitle">
+            <summary>
+            The title of the current content
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.IMastAdapter.ContentUrl">
+            <summary>
+            The URL that the current content was received from 
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.InstreamMastMarkerProvider">
+            <summary>
+            Provides SMF with the ability to parse and display DFXP formatted Timed Text captions arriving over in-stream data tracks.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase">
+            <summary>
+            Retrieves MediaMarkers (triggers) using the IAB MAST specification.
+            </summary>
+            <remarks>
+            <para>
+            The MastMarkerProvider can read the MAST format and return a collection of MediaMarker objects from it.
+            A MastMarkerProvider has a reference to a PollingRequest object which determines the polling interval to be used, if any, for checking the source for new markers (polling is optional).
+            </para>
+            <para>
+            This class has a collection of new markers and a collection of markers removed since the last request to check for markers. This check is done using the Marker Id property.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.BeginRetrievingMarkers">
+            <summary>
+            Begins the polling for retrieving markers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.StopRetrievingMarkers">
+            <summary>
+            Stops polling for markers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.Load">
+            <summary>
+            Loads the plug-in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.Unload">
+            <summary>
+            Unloads the plug-in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.AdMarkerContent_Deactivated(System.Object,System.EventArgs)">
+            <summary>
+            An active payload has been deactivated (due to an error or finishing)
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.Mainsail_DeactivateTrigger(System.Object,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerEventArgs)">
+            <summary>
+            The mainsail wants us to deactivate the trigger. This could be because the end condition was met OR we told it to deactivate the trigger
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.PluginLoaded">
+            <summary>
+            Occurs when the plug-in is loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.PluginUnloaded">
+            <summary>
+            Occurs when the plug-in is unloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.PluginLoadFailed">
+            <summary>
+            Occurs when the plug-in fails to load.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.PluginUnloadFailed">
+            <summary>
+            Occurs when the plug-in fails to unload.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.LogReady">
+            <summary>
+            Occurs when the log is ready.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.RetrieveMarkersFailed">
+            <summary>
+            Occurs when retrieving markers fails.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.MarkersRemoved">
+            <summary>
+            Occurs when markers have been removed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.NewMarkers">
+            <summary>
+            Occurs when new markers are found.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.IsLoaded">
+            <summary>
+            Gets a value indicating whether a plug-in is currently loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.Source">
+            <summary>
+            Gets or sets the location where the markers are retrieved.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProviderBase.PollingInterval">
+            <summary>
+            The time interval between checking for new and removed markers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VpaidResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VpaidResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VpaidResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VpaidResources.TrackingFailed">
+            <summary>
+              Looks up a localized string similar to Tracking failed for url {0}. Error: {1}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdCompletedEventArgs">
+            <summary>
+            EventArgs used to send information about when an individual VAST ad has completed running.
+            Note: There may be multiple VAST ads per AdSequencingTrigger. Each is run in succession.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdCompletedEventArgs.Ad">
+            <summary>
+            The Ad associated with this operation
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdCompletedEventArgs.Success">
+            <summary>
+            Flag indicating success vs. failure. Success criteria is based on the FailureStrategy property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler">
+            <summary>
+            Plugin that handles VAST ads
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase">
+            <summary>
+            Base class for a plugin that handles ads
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.Handle(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource)">
+            <summary>
+            This is where it all begins. Calling this method will load the source if the plugin format matches and ads will starting playing in succession.
+            </summary>
+            <param name="source">The source for the ad (contains info about the source and targets)</param>
+            <returns>Returns an object representing the exectuing ad. This object can then be used to deactivate the ad.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.GetAdTargets(System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget},System.Predicate{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Returns all targets that meet a certain condition in order of likelihood.
+            </summary>
+            <param name="Targets">The list of targets to test</param>
+            <param name="Predicate">The condition to test with</param>
+            <returns>All matching targets in order of priority, along with their dependencies</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.GetAdTargets(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource)">
+            <summary>
+            Returns all matching targets in order of priority for a given creative source
+            </summary>
+            <param name="AdSource">The sequencing source that contains the targets to search</param>
+            <param name="CreativeSource">The creative that needs to find a target</param>
+            <returns>All matching targets in order of priority, along with their dependencies</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.GetAdContainer(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget)">
+            <summary>
+            Finds the Silverlight FrameworkElement associated with the target.
+            </summary>
+            <param name="Target">The target for a given ad creative</param>
+            <returns>The FrameworkElement cooresponding to the target</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.GetHtmlAdContainer(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget)">
+            <summary>
+            Finds the HTMLElement associated with the target
+            </summary>
+            <param name="Target">The target for a given ad creative</param>
+            <returns>The HTMLElement cooresponding to the target</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.FindTarget(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource)">
+            <summary>
+            Finds and creates a target from an ad sequencing source and a creative source.
+            </summary>
+            <param name="AdSource">Provides required target info</param>
+            <param name="CreativeSource">Provides info about the actual creative that is to be placed.</param>
+            <returns>And object representing the selected target of the creative</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreateAdTarget(System.Windows.FrameworkElement,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IList{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a target object to store info about a chosen target to place a creative in.
+            </summary>
+            <param name="Element">The FrameworkElement that the ad creative will be place in.</param>
+            <param name="TargetSource">The sequencing target that was selected from the ad source</param>
+            <param name="TargetDependencies">The other dependency targets. These will be looked at later to make sure all dependency targets have been used before playing the ad.</param>
+            <returns></returns>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeFailed">
+            <summary>
+            Raised when an individual creative fails.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeSucceeded">
+            <summary>
+            Raised when an individual creative succeeds.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeCanceled">
+            <summary>
+            Raised when an individual creative is canceled.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeStarted">
+            <summary>
+            Raised when an individual creative is started.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeProgressChanged">
+            <summary>
+            Raised when the progress changes on an individual creative.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativePaused">
+            <summary>
+            Raised when an individual creative is paused.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CreativeResumed">
+            <summary>
+            Raised when an individual creative is resumed from a pause.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.AdHost">
+            <summary>
+            Represents the player. SMFPlayer implements this but it could really be anything that implements IAdHost.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.IsEnabled">
+            <summary>
+            Indicates whether new ads passed to the plugin should be ignored.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.InitTimeout">
+            <summary>
+            The timeout for initializing/loading ads. Null indicates no timeout.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.StartTimeout">
+            <summary>
+            The timeout for starting an ad. Null indicates no timeout.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.StopTimeout">
+            <summary>
+            The timeout for stopping an ad. Null indicates no timeout.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.FailurePolicy">
+            <summary>
+            The failure strategy to use when handling an AdSequencingTrigger.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.CloseCompanionsOnComplete">
+            <summary>
+            Indicates that non required creatives (companion ads) should be allowed to continue running after the ad has completed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.HandleCompleted">
+            <summary>
+            Raised when an AdSequencingTrigger fails. The criteria are based on the FailureStrategy property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdHandlerBase.VideoAreaTarget">
+            <summary>
+            Serves as an ad target for the VideoArea. The VideoArea is the default target for linear and nonlinear ads so it won't always be provided in the list of targets, in which case, this class will do the job.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.LoadAdUnitAsync(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdUnit,System.Action{System.Boolean})">
+            <summary>
+            Populates an AdUnit with the VAST info, downloads the VAST doc if necessary
+            </summary>
+            <param name="ad">The VastAdUnit to be populated</param>
+            <param name="Completed">Fired when the operation is complete, includes a status param</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.UnWrapAdPod(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdPod,System.Action)">
+            <summary>
+            Processes any wrapper ads in the adpod by downloading and merging them.
+            All adpods should go through this process before being run.
+            </summary>
+            <param name="adPod">The adpod to process.</param>
+            <param name="Completed">A callback to notify when the operation is complete.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.MergeWrappedAd(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine)">
+            <summary>
+            Merges the tracking info for the two ads
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.GetAdSourceKey(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource)">
+            <summary>
+            Creates a key for the AvailableAds dictionary from the AdSequencingSource.
+            </summary>
+            <param name="Source">The ad sequencing source</param>
+            <returns>A string key to be used in the AvailableAds dictionary</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.GetAdSourceKey(System.String,System.String)">
+            <summary>
+            Creates a key for the AvailableAds dictionary from a key (altReference) and the Uri of the document.
+            This is the recommended way to key ads from the VAST spec
+            </summary>
+            <param name="uri">The Uri of the VAST document</param>
+            <param name="altReference">Optional. An additional piece of data to add to your key</param>
+            <returns>A string key to be used in the AvailableAds dictionary</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.AvailableAds">
+            <summary>
+            A dictionary of VAST documents keyed on altReference and Uri.
+            All downloaded VAST documents are cached here.
+            New ads with the same key will always be retreived from here instead of re-downloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdHandler.VastAdCompleted">
+            <summary>
+            Raised when an individual VAST ad fails. The criteria are based on the FailureStrategy property.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase">
+            <summary>
+            The individual ad unit for a single VAST document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.#ctor(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource)">
+            <summary>
+            Creates a new VastAdUnit to serve as a handle to the running ad
+            </summary>
+            <param name="Source">The source associated with this ad</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.Deactivate">
+            <summary>
+            Forces the payload to deactivate.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.OnStart">
+            <summary>
+            Tells us that the payload has been activated.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.OnFail">
+            <summary>
+            Tells us that the payload has failed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.AdPod">
+            <summary>
+            The ad pod associated with this ad unit.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.Source">
+            <summary>
+            The source for the ad unit
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.Deactivated">
+            <summary>
+            Indicates that the payload has been deactivated from an outside source.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.Started">
+            <summary>
+            Indicates that the payload has been activated/handled.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.Failed">
+            <summary>
+            Indicates that the payload has failed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.State">
+            <summary>
+            Returns the current state of the ad unit (loading, ready, failed).
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdUnitBase.StateChanged">
+            <summary>
+            Indicates the state has changed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST.#ctor">
+            <summary>
+            .ctor class constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST.Serialize">
+            <summary>
+            Serializes current MAST object into an XML document
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an MAST object
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MAST.triggers">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.#ctor">
+            <summary>
+            .ctor class constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.Serialize">
+            <summary>
+            Serializes current Trigger object into an XML document
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Trigger object
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.startConditions">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.endConditions">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.sources">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.Id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.Description">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Trigger.Duration">
+            <summary>
+            Implements the Duration property for a MAST trigger.
+            This will always return null since MAST triggers don't support durations. Instead they are removed based on end conditions instead
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.#ctor">
+            <summary>
+            .ctor class constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.Serialize">
+            <summary>
+            Serializes current Condition object into an XML document
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Condition object
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.condition">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.typeSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.name">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.value">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.operator">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Condition.operatorSpecified">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionType">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionType.property">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionType.event">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.EQ">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.NEQ">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.GTR">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.GEQ">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.LT">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.LEQ">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Operator.MOD">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.#ctor">
+            <summary>
+            .ctor class constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.Serialize">
+            <summary>
+            Serializes current Target object into an XML document
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Target object
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.target">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.Region">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Target.Type">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.#ctor">
+            <summary>
+            .ctor class constructor
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.Serialize">
+            <summary>
+            Serializes current Source object into an XML document
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an Source object
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.sources">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.targets">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.Uri">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.AltReference">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Source.Format">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MastFailureEventArgs">
+            <summary>
+            Provides information about a MAST document download or parsing error
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MastFailureEventArgs.Exception">
+            <summary>
+            The reason for the failure.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MastFailureEventArgs.MastUri">
+            <summary>
+            The Uri of the MAST document that failed to load
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VastAdHandlerResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VastAdHandlerResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VastAdHandlerResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VastAdHandlerResources.CreativeFailed">
+            <summary>
+              Looks up a localized string similar to Creative failed {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.VastAdHandlerResources.CreativeSucceeded">
+            <summary>
+              Looks up a localized string similar to Creative succeeded {0}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeFactory">
+            <summary>
+            Provides a way for the VastAdModels to load creatives
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeFactory.MaxBitrateKbps">
+            <summary>
+            Indicates whtat the max bitrate for an ad can be. If there are no ads with bitrates below this theshold, the setting will be ignored.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod">
+            <summary>
+            Represents one or Ads to be played in sequence.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.#ctor">
+            <summary>
+            Creates a new ad pod
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.RunAsync">
+            <summary>
+            Starts the AdPod. Calls RunCompleted when finished.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.Cleanup">
+            <summary>
+            Cleans up the AdPod by canceling all running Ads if any exist.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.Cancel">
+            <summary>
+            Cancels the AdPod and any of it's running Ads.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.Ads">
+            <summary>
+            The list of Ads to play in sequential order.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.RunCompleted">
+            <summary>
+            Indicates that the RunAsync operation has completed. Includes a success param.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.ReleasePlayer">
+            <summary>
+            Indicates that the ad pod is no longer holding up the show. There may still be active companion ads but the player should treat this as if the ad is complete.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.FailurePolicy">
+            <summary>
+            The failure policy for the AdPod.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.CloseCompanionsOnComplete">
+            <summary>
+            Indicates that non required creatives (companion ads) should be allowed to continue running after the ad has completed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdPod.CanShutdown">
+            <summary>
+            Indicates that the ad can be replaced with another.
+            </summary>
+            <returns>true if the ad can be shut down without prematurely turning off the ad</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad">
+            <summary>
+            Represents a single Ad, which contains many creatives (which can be grouped into CreativeSets).
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.#ctor">
+            <summary>
+            Createsa  new ad object
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.RunAsync">
+            <summary>
+            Starts the Ad. Calls RunCompleted when finished.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.Cleanup">
+            <summary>
+            Cancels all running CreativeSets and cleans up.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.Cancel">
+            <summary>
+            Cancel the ad
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.CloseCompanionsOnComplete">
+            <summary>
+            Indicates that non required creatives (companion ads) should be allowed to continue running after the ad has completed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.CreativeSets">
+            <summary>
+            Contains a list of Creatives grouped by sequence. These are to be played in sequential order.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.RunCompleted">
+            <summary>
+            Indicates that the RunAsync operation has completed. Includes a success param.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.FailureStrategy">
+            <summary>
+            The failure strategy for the Ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.RunningCreativeSet">
+            <summary>
+            Returns the currently running creative set
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Ad.CanShutdown">
+            <summary>
+            Indicates that the ad can be replaced with another.
+            </summary>
+            <returns>true if the ad can be shut down without prematurely turning off the ad</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet">
+            <summary>
+            Represents a set of creatives to be played at the same time.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.RunAsync(System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative})">
+            <summary>
+            Starts the creative set (which will launch all creatives simultaneously).
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.GetAllowedCreatives(System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative})">
+            <summary>
+            Filters the list of creatives. This allows a subclass to do it's own filtering.
+            </summary>
+            <param name="Creatives">The creatives to be filtered.</param>
+            <returns>The new list of creatives.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.SoftCleanup">
+            <summary>
+            Cancels all required creatives and cleans up event handlers for running creatives
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.Cleanup">
+            <summary>
+            Cancels all running creatives and cleans up the creative set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.Cancel">
+            <summary>
+            Cancels all running creatives and raises the RunCompleted event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.Creatives">
+            <summary>
+            The list of creatives for this specific group.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.RunStarting">
+            <summary>
+            Indicates the creatives are starting.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.RunStarted">
+            <summary>
+            Indicates the creatives have successfully started.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.RunCompleted">
+            <summary>
+            Indicates the creatives have all finished.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.FailureStrategy">
+            <summary>
+            Provides the failure strategy for the CreativeSet.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.RunningCreatives">
+            <summary>
+            Returns the collection of actively running creatives
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CreativeSet.CanShutdown">
+            <summary>
+            Indicates that the ad can be replaced with another. Returns true if the ad can be shut down without prematurely turning off the ad.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative">
+            <summary>
+            Describes the required properties for an individual creative
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.Load">
+            <summary>
+            Loads the current creative set.
+            </summary>
+            <returns>Returns false if there was a problem such as finding a suitable VPaid plugin.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.RunAsync">
+            <summary>
+            Runs the creative. Fires RunCompleted when done.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.Cancel">
+            <summary>
+            Forces the current creative to cancel.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.Failed">
+            <summary>
+            Called by the VastAdHandler to tell us that we failed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.Succeeded">
+            <summary>
+            Called by the VastAdHandler to tell us that we succeeded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.Id">
+            <summary>
+            The ID of the creative
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.ControlsLifespan">
+            <summary>
+            Indicates whether or not the creative is required to finish on it's own before the current CreativeSet is considered complete and next CreativeSet will begin.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative.RunCompleted">
+            <summary>
+            Raised when the creative has completed running.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdPod">
+            <summary>
+            Represents a single VAST document, which can contain many Ads.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdPod.LoadAsync(System.Action{System.Boolean})">
+            <summary>
+            Starts loading the AdPod. This calls out to the AdModelFactory to do much of the actual downloading and processing of wrapper ads.
+            </summary>
+            <param name="Completed">Callback to notify when we are finished. Passes a success param.</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdPod.AdModelFactory">
+            <summary>
+            A reference to a factory that can help create and populate these models at the appropriate times.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdPod.AdUnit">
+            <summary>
+            The VAST AdUnit associated with this model. This object provides information about the source used to load this AdPod.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAd">
+            <summary>
+            Represents a single VAST ad. Cooresponds to the Ad node of the VAST document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAd.Parent">
+            <summary>
+            A reference to the parent AdPod.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAd.Ad">
+            <summary>
+            The VAST Ad model that came directly from the Ad node of the VAST document.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeSet">
+            <summary>
+            Represents a group of creatives intended to play at the same time.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeSet.GetAllowedCreatives(System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Creative})">
+            <summary>
+            Filters a list of creatives based on target dependencies.
+            If one creative uses a target that has a dependency on another target, only permit the creative if the dependency target was used.
+            </summary>
+            <param name="Creatives">The list of creatives to filter.</param>
+            <returns>The filtered list of creatives.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeSet.Parent">
+            <summary>
+            A reference to the parent AdPod.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeSet.InlineCreatives">
+            <summary>
+            A collection of inline creatives with the same sequence number. These come directly from the deserialized VAST document.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreativeSet.ContainsLinear">
+            <summary>
+            Indicates whether or not the creative set contains a linear creative.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CompanionVastCreative">
+            <summary>
+            A creative for a companion ad
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative">
+            <summary>
+            The base class for a creative
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.Creative">
+            <summary>
+            The deserialized model from the VAST document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.RunAsync">
+            <summary>
+            Actually runs the creative.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.Cancel">
+            <summary>
+            Cancels the running creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.ActiveCreative">
+            <summary>
+            An object that represents a running creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.Parent">
+            <summary>
+            The creative set that creative belongs to.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastCreative.AdModelFactory">
+            <summary>
+            Shortcut to the AdModelFactory.
+            Should be protected AND internal but no way in C# to indicate this. 'protected internal' notation does OR.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CompanionVastCreative.Load">
+            <summary>
+            Loads the ActiveCreative.
+            </summary>
+            <returns>Indicates success.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CompanionVastCreative.Companion">
+            <summary>
+            The model that comes from the VAST document representing the specific companion creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.CompanionVastCreative.ControlsLifespan">
+            <summary>
+            Always returns false. Companions never control the lifespan.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.LinearVastCreative">
+            <summary>
+            A creative for a linear ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.LinearVastCreative.Load">
+            <summary>
+            Loads the ActiveCreative.
+            </summary>
+            <returns>Indicates success.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.LinearVastCreative.Linear">
+            <summary>
+            The model that comes from the VAST document representing the specific linear creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.LinearVastCreative.ControlsLifespan">
+            <summary>
+            Always returns true. Linear ads are expected to have durations and control the lifespan.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinearVastCreative">
+            <summary>
+            A creative for a nonlinear ad
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinearVastCreative.Load">
+            <summary>
+            Loads the ActiveCreative.
+            </summary>
+            <returns>Indicates success.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinearVastCreative.NonLinear">
+            <summary>
+            The model that comes from the VAST document representing the specific non linear creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinearVastCreative.ControlsLifespan">
+            <summary>
+            Always returns true. Nonlinear ads are expected to control the lifespan.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VPAID.CompanionSource">
+            <summary>
+            Represents a VAST companion creative to be used by a VPAID plugin
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource">
+            <summary>
+            Represents all the information necessary to render a VPAID ad.
+            This will be used to find an appropriate VPAID plugin and then the VPAID plugin will use it to play the ad.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.Track(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.TrackingEventEnum)">
+            <summary>
+            Called when a particular tracking event occurs
+            </summary>
+            <param name="TrackingEvent">The tracking event that occured</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.MimeType">
+            <summary>
+            The MIME type of the ad
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.MediaSource">
+            <summary>
+            The payload of the creative. This is usually a URL depending on the MediaSourceType but can also contain HTML.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.ExtraInfo">
+            <summary>
+            Additional information associated with the creative to help VPAID play the ad.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.ClickUrl">
+            <summary>
+            The URL that should be launched if the ad is clicked. This is different from the URL used to track clicks.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.Duration">
+            <summary>
+            The duration of the ad. Companion ads do not have durations. And durations for NonLinear ads are optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.MediaSourceType">
+            <summary>
+            Indicates what the MediaSource contains.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.AltText">
+            <summary>
+            Provides the alternate text for the target
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.IsStreaming">
+            <summary>
+            Indicates whether or not the source is streaming vs. progressive
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.ExpandedDimensions">
+            <summary>
+            The expanded dimensions of the creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.Dimensions">
+            <summary>
+            The dimensions of the creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.IsScalable">
+            <summary>
+            Indicates whether or not the creative can scale in size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.MaintainAspectRatio">
+            <summary>
+            Indicates whether or not the aspect ratio should be maintained.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.Type">
+            <summary>
+            Indicates how the creative is intended to be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource.Id">
+            <summary>
+            The ID of the Ad Creative
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VPAID.LinearSource">
+            <summary>
+            Represents a VAST linear creative to be used by a VPAID plugin
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VPAID.NonLinearSource">
+            <summary>
+            Represents a VAST non linear creative to be used by a VPAID plugin
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative">
+            <summary>
+            An actively running creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative.Player">
+            <summary>
+            The VPaid handler responsible for playing the creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative.Source">
+            <summary>
+            The source for the creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative.Target">
+            <summary>
+            The target for the creative
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative.PreviousVolume">
+            <summary>
+            Helps us know if the user is coming out of mute when the volume changes
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerHost">
+            <summary>
+            This is glorified contentcontrol that defaults the alignment and allows the background color to be set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerHost.#ctor">
+            <summary>
+            Creates a new AdPlayerHost control
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.CreativeProgressEventArgs">
+            <summary>
+            EventArgs used to send information about when an individual creative's progress changes.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.CreativeEventArgs">
+            <summary>
+            EventArgs used to send information about when an individual creative fails.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.CreativeEventArgs.AdSource">
+            <summary>
+            Extra information about the source of the creative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.CreativeProgressEventArgs.TimeRemaining">
+            <summary>
+            Returns the time remaining for the ad.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid">
+            <summary>
+            VPAID 1.1 interface. For more info: http://www.iab.net/media/file/VPAIDFINAL51109.pdf
+            Players capable of playing ads must implement this interface.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdClipLinearAdPlayer">
+            <summary>
+            A VPAID ad player that can play cips using an existing IMediaPlugin object retrieved from IPlayer.ActiveMediaPlugin using the ScheduleAd method
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase">
+            <summary>
+            A reusable abstract base class to help build VPAID ad players
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ClickableAdPlayerHost">
+            <summary>
+            This is glorified contentcontrol that defaults the alignment and allows the background color to be set.
+            Also inherits HyperlinkButton to skirt popup blocker issues
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ClickableAdPlayerHost.#ctor">
+            <summary>
+            Creates a new AdPlayerHost control
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase.#ctor(System.Windows.Size,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a new instance of AdPlayerBase.
+            </summary>
+            <param name="Dimensions">The dimensions of the ad to play</param>
+            <param name="Scalable">Whether or not the ad is scalable</param>
+            <param name="Linear">Whether or not the ad is linear</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase.DesiredBitrate">
+            <summary>
+            Indicates the desired startup bitrate (based on the current bitrate of the video when the ad started).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase.Linear">
+            <summary>
+            Indicates whether or not the ad is linear
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase.Dimensions">
+            <summary>
+            Returns the dimensions of the ad
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdPlayerBase.Scalable">
+            <summary>
+            Indicates that the ad is scalable.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdUnit">
+            <summary>
+            The individual ad unit for a single VAST document.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdUnit.#ctor(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSource)">
+            <summary>
+            Creates a new VastAdUnit to serve as a handle to the running ad
+            </summary>
+            <param name="Source">The source associated with this ad</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdUnit.Vast">
+            <summary>
+            The VAST document that the source refered to. This will be null until populated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VastAdUnit.AdPod">
+            <summary>
+            Returns the VAST ad pod associated with this ad unit
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VAST">
+            <remarks/>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VAST.Deserialize(System.String,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VAST@,System.Exception@)">
+            <summary>
+            Deserializes workflow markup into an VAST object
+            </summary>
+            <param name="xml">string workflow markup to deserialize</param>
+            <param name="obj">Output VAST object</param>
+            <param name="exception">output Exception value if deserialize failed</param>
+            <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VAST.Ad">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VAST.version">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTAD">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTAD.Item">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTAD.id">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.AdSystem">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.AdTitle">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Description">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Survey">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Error">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Impression">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Creatives">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLine.Extensions">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdSystem_type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdSystem_type.version">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.AdSystem_type.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.Item">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.ItemElementName">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.NonLinearClickThrough">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.AdParameters">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.width">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.height">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.expandedWidth">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.expandedHeight">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.scalable">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.scalableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.maintainAspectRatio">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.maintainAspectRatioSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.minSuggestedDuration">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.minSuggestedDurationSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_type.apiFramework">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_typeStaticResource">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_typeStaticResource.creativeType">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.NonLinear_typeStaticResource.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType1">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType1.HTMLResource">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType1.IFrameResource">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType1.StaticResource">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.Item">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.ItemElementName">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.TrackingEvents">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.CompanionClickThrough">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.AltText">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.AdParameters">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.width">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.height">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.expandedWidth">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.expandedHeight">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_type.apiFramework">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_typeStaticResource">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_typeStaticResource.creativeType">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Companion_typeStaticResource.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType.HTMLResource">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType.IFrameResource">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.ItemChoiceType.StaticResource">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTracking">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTracking.event">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTracking.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.creativeView">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.start">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.midpoint">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.firstQuartile">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.thirdQuartile">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.complete">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.mute">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.unmute">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.pause">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.rewind">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.resume">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.fullscreen">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.expand">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.collapse">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.acceptInvitation">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.TrackingEvents_typeTrackingEvent.close">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_type.ClickThrough">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_type.ClickTracking">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_type.CustomClick">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickThrough">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickThrough.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickThrough.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickTracking">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickTracking.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeClickTracking.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeCustomClick">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeCustomClick.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VideoClicks_typeCustomClick.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Impression_type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Impression_type.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.Impression_type.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreative">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreative.Item">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreative.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreative.sequence">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreative.AdID">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeCompanionAds">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeCompanionAds.Companion">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear.Duration">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear.TrackingEvents">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear.AdParameters">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear.VideoClicks">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinear.MediaFiles">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.delivery">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.type">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.bitrate">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.width">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.height">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.scalable">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.scalableSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.maintainAspectRatio">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.maintainAspectRatioSpecified">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.apiFramework">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFile.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFileDelivery">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFileDelivery.streaming">
+            <remarks/>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeLinearMediaFileDelivery.progressive">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeNonLinearAds">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeNonLinearAds.TrackingEvents">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADInLineCreativeNonLinearAds.NonLinear">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.AdSystem">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.VASTAdTagURI">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.Error">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.Impression">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.Creatives">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapper.Extensions">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreative">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreative.Item">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreative.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreative.sequence">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreative.AdID">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeCompanionAds">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeCompanionAds.Companion">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinear">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinear.TrackingEvents">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinear.VideoClicks">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinearClickTracking">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinearClickTracking.id">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeLinearClickTracking.Value">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeNonLinearAds">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeNonLinearAds.TrackingEvents">
+            <remarks/>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VAST.VASTADWrapperCreativeNonLinearAds.NonLinear">
+            <remarks/>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager">
+            <summary>
+            Wraps a MAST Condition, applying the appropriate logic
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.Children">
+            <summary>
+            Our child conditions - these are treated as boolean 'AND'.  If we evaluate to true, we need to also check each child.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.eventHandler">
+            <summary>
+            Track this so we can unwire our event
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.OnEventFired(System.Object,System.EventArgs)">
+            <summary>
+            Fires from the MAST Interface event, if wired up
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.Evaluate">
+            <summary>
+            Called by our parent to evaluate our condition
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.CompareValue(System.Object,System.String)">
+            <summary>
+            Compare two values, with the appropriate operator
+            </summary>
+            <param name="prop"></param>
+            <param name="val"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.Condition">
+            <summary>
+            The condition we are managing
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.MastInterface">
+            <summary>
+            Our MAST Interface to player/system, events and properties
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager.EventFired">
+            <summary>
+            The event we'll fire to our Trigger parent if the event we are monitoring from the MAST Interface fires.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail">
+            <summary>
+            The MAST Engine
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.Triggers">
+            <summary>
+            The list of triggers we're monitoring
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.timer">
+            <summary>
+            Timer to allow us to check property conditions periodically
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.OnTriggerDeactivate(Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager)">
+            <summary>
+            Used to force the deactivation of a trigger
+            </summary>
+            <param name="t">The trigger that is to be deactivated</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.MastInterface">
+            <summary>
+            A reference to the player. Trigger conditions are based on player properties and events.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.ActivateTrigger">
+            <summary>
+            The conditions for a trigger were met. The trigger is now active.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.DeactivateTrigger">
+            <summary>
+            The conditions to deactivate a trigger were met. The trigger is no longer active.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.MastDocLoaded">
+            <summary>
+            The MAST document as been successfully downloaded and parsed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.MastDocFailed">
+            <summary>
+            The MAST document failed to download or parse.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.TriggerEvaluationFailed">
+            <summary>
+            Evaluating the conditions for a trigger caused an error.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.Mainsail.PollingFrequency">
+            <summary>
+            Check frequency of the timer
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.MastAdapter">
+            <summary>
+            Adapts an IPlayer to IMastAdapter.
+            Used to provide the MAST conditions all the info they need to fire triggers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProvider">
+            <summary>
+            Retrieves MediaMarkers (triggers) using the IAB MAST specification.
+            </summary>
+            <remarks>
+            <para>
+            The MastMarkerProvider can read the MAST format and return a collection of MediaMarker objects from it.
+            A MastMarkerProvider has a reference to a PollingRequest object which determines the polling interval to be used, if any, for checking the source for new markers (polling is optional).
+            </para>
+            <para>
+            This class has a collection of new markers and a collection of markers removed since the last request to check for markers. This check is done using the Marker Id property.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProvider.BeginRetrievingMarkers">
+            <summary>
+            Begins the polling for retrieving markers.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProvider.StopRetrievingMarkers">
+            <summary>
+            Stops polling for markers.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProvider.Source">
+            <summary>
+            Gets or sets the location where the markers are retrieved.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MastMarkerProvider.PollingInterval">
+            <summary>
+            The time interval between checking for new and removed markers.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerEventArgs">
+            <summary>
+            Provides information about an event related to a MAST trigger
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerFailureEventArgs">
+            <summary>
+            Provides information about a failure involving a specific MAST trigger
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager">
+            <summary>
+            Handles actions for a trigger.  The trigger calls itself is auto generated in the parser from XSD, 
+            so the functionality was pulled into this class - to allow for schema changes wihtout interfereing with business logic
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.StartConditions">
+            <summary>
+            Our conditions - only top level, so multiples are evaluated as boolean 'OR'
+            Child conditions are handled by their parent
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.EndConditions">
+            <summary>
+            The end conditions that will deactivate triggers
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.Evaluate">
+            <summary>
+            This is called by the engine's timer
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.EvaluateConditionList(System.Collections.Generic.List{Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.ConditionManager})">
+            <summary>
+            Evaluates a list of conditions.  Returns the first condition that evaluates true, or null 
+            </summary>
+            <param name="conditions"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.ActivateTrigger">
+            <summary>
+            TriggerNow fires when our conditions are met based on properties and/or events
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.Trigger">
+            <summary>
+            The trigger we are representing
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.MastInterface">
+            <summary>
+            The MAST Interface to the player/system - gives us the properties and events we need
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.Activate">
+            <summary>
+            Fires when conditions are right and we are activating trigger
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.MAST.TriggerManager.Deactivate">
+            <summary>
+            Fires when an active trigger is shutting down
+            So far this can only happen because of external action, or our duration
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.DownloadCompletedLogMessage">
+            <summary>
+              Looks up a localized string similar to Download Completed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.DownloadFailedLogMessage">
+            <summary>
+              Looks up a localized string similar to Download Failed: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.DownloadProgressChangedLogMessage">
+            <summary>
+              Looks up a localized string similar to Download Progress Changed: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.MastMarkerProviderInstantiatedLogMessage">
+            <summary>
+              Looks up a localized string similar to MastMarkerProvider Instantiated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.MastMarkerProviderLoadedLogMessage">
+            <summary>
+              Looks up a localized string similar to MastMarkerProvider Loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.MastMarkerProviderParseFailedLogMessage">
+            <summary>
+              Looks up a localized string similar to Parsing of MAST data failed: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.MastMarkerProviderParsingSuccessfulLogMessage">
+            <summary>
+              Looks up a localized string similar to Parsing of MAST data completed.  {0} triggers added..
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.MastMarkerProviderUnloadedLogMessage">
+            <summary>
+              Looks up a localized string similar to MastMarkerProvider Unloaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.ParseErrorLogMessage">
+            <summary>
+              Looks up a localized string similar to Parse Error: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.TriggerActivated">
+            <summary>
+              Looks up a localized string similar to MAST Trigger activated: {0}, {1}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.TriggerDeactivated">
+            <summary>
+              Looks up a localized string similar to MAST Trigger deactivated: {0}.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.Resources.MastMarkerProviderResources.TriggerEvaluationFailed">
+            <summary>
+              Looks up a localized string similar to Error in trigger evaluation: {0}\n{1}.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdClickThruEventArgs">
+            <summary>
+            Contains information about the Ad that was clicked. Info is included to give the player the option for handling the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdClickThruEventArgs.Url">
+            <summary>
+            The url can be used for the ad to specify the click thru url.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdClickThruEventArgs.Id">
+            <summary>
+            The ID of the Ad that was clicked. Can be used for tracking purposes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdClickThruEventArgs.PlayerHandles">
+            <summary>
+            If true, the player must handle the event by opening a new browser window to the url. false, the ad will handle the event.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdMessageEventArgs">
+            <summary>
+            Contains information about an error or log associated with a VPAID event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdMessageEventArgs.Message">
+            <summary>
+            The error info or log message to be logged.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeEventArgs">
+            <summary>
+            EventArgs used to pass information about an event associated with an ActiveCreative.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeEventArgs.ActiveCreative">
+            <summary>
+            The ActiveCreative associated with the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeEventArgs.UserState">
+            <summary>
+            The UserState associated with the original call that ulimately caused this event to fire.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeLogEventArgs">
+            <summary>
+            EventArgs used to pass information about a log event associated with an ActiveCreative for debugging purposes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeLogEventArgs.ActiveCreative">
+            <summary>
+            The ActiveCreative associated with the event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreativeLogEventArgs.Message">
+            <summary>
+            The log message.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlAdPlayer">
+            <summary>
+            A VPAID ad player that can play html based ads.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.QuartileAdPlayerBase">
+            <summary>
+            A reusable base class based on AdPlayerBase to make it easy to build VPAID ad players with quartile events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.QuartileAdPlayerBase.SeekToPosition(System.TimeSpan)">
+            <summary>
+            Seeks to a new position.
+            </summary>
+            <param name="position">The new position of the ad</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.QuartileAdPlayerBase.Duration">
+            <summary>
+            Provides the duration of the ad.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.QuartileAdPlayerBase.Position">
+            <summary>
+            Provides the position of the ad.
+            This will use a timer to report the position unless it is overridden.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.Plugins.AdClipLinearAdPlayerFactory">
+            <summary>
+            Provides an IVpaidFactory implementation for the AdClipLinearAdPlayer
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaidFactory">
+            <summary>
+            The interface used when implementing a VPAID plugin.
+            Classes that implement this interface can participate in the list of VPAID plugins.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaidFactory.CheckSupport(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget)">
+            <summary>
+            Allows the factory to indicate what level of support the given ad would have if executed by its cooresponding VPAID player.
+            This is used to help prioritize which plugin to use in the event that multiple VPAID plugins are capable of handling the same ad.
+            </summary>
+            <param name="AdSource">Provides information about the ad creative that is to be played.</param>
+            <param name="AdTarget">Provides information about the target where the VPAID player is to be placed.</param>
+            <returns>A bitwise enum used to help determine priority in the event that multiple VPAID plugins are capable of handling the same ad creative.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaidFactory.GetVpaidPlayer(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ICreativeSource,Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget)">
+            <summary>
+            Returns a VPAID player to handle the ad.
+            </summary>
+            <param name="AdSource">Provides information about the ad creative that is to be played.</param>
+            <param name="AdTarget">Provides information about the target where the VPAID player is to be placed.</param>
+            <returns>The VPAID player that will be expected to play the ad creative creative.</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase">
+            <summary>
+            Defines the base class for all AdTargets, HTML or Silverlight
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget">
+            <summary>
+            The target or container of an ad. Controls placement of the ad.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <summary>
+            Adds a VPAID ad player to the container
+            </summary>
+            <param name="adPlayer">The VPAID ad player to add</param>
+            <returns>Indicates success or failure to add the player</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <summary>
+            Removes the VPAID ad player from the container.
+            </summary>
+            <param name="adPlayer">The VPAID ad player to add</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget.Size">
+            <summary>
+            Provides the size of the container.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget.TargetSource">
+            <summary>
+            The ad sequencing target associated with this target
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IAdTarget.TargetDependencies">
+            <summary>
+            The ad sequencing target dependencies that must be filled in order to place the ad.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.#ctor(Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Constructor for AdTargetBase base class
+            </summary>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.Size">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.TargetSource">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.AdTargetBase.TargetDependencies">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.BorderAdTarget">
+            <summary>
+            Defines an AdTarget for a Silverlight Border control.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.FrameworkElementAdTarget">
+            <summary>
+            Defines the base class for a Silverlight FrameworkElement based AdTarget
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.FrameworkElementAdTarget.#ctor(System.Windows.FrameworkElement,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a new Target for a Silverlight FrameworkElement
+            </summary>
+            <param name="Target">The FrameworkElement for this target</param>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.FrameworkElementAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.FrameworkElementAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.FrameworkElementAdTarget.Size">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.BorderAdTarget.#ctor(System.Windows.Controls.Border,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a new Target for a Silverlight Border control
+            </summary>
+            <param name="Target">The Border control to be used as a target</param>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.BorderAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.BorderAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ControlAdTarget">
+            <summary>
+            Defines an AdTarget for a Silverlight ContentControl.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ControlAdTarget.#ctor(System.Windows.Controls.ContentControl,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a new Target for a Silverlight ContentControl control
+            </summary>
+            <param name="Target">The ContentControl control to be used as a target</param>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ControlAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ControlAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlElementAdTarget">
+            <summary>
+            Defines an AdTarget for an HTMLElement object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlElementAdTarget.#ctor(System.Windows.Browser.HtmlElement,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a new Target for an HtmlElement
+            </summary>
+            <param name="Target">The HtmlElement to be used as a target</param>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlElementAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlElementAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlElementAdTarget.Size">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PanelAdTarget">
+            <summary>
+            Defines an AdTarget for a Silverlight Panel control such as a Grid or StackPanel.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PanelAdTarget.#ctor(System.Windows.Controls.Panel,Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget,System.Collections.Generic.IEnumerable{Microsoft.SilverlightMediaFramework.Plugins.Primitives.Advertising.IAdSequencingTarget})">
+            <summary>
+            Creates a new Target for a Silverlight Panel control. This includes Grids and StackPanels
+            </summary>
+            <param name="Target">The Panel control to be used as a target</param>
+            <param name="TargetSource">The sequencing target associated with this target</param>
+            <param name="TargetDependencies">The sequencing target this is dependent on</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PanelAdTarget.AddChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PanelAdTarget.RemoveChild(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <inheritdoc />
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.TimeoutHelper`1">
+            <summary>
+            Helper class that allows us to track a timeout for an action.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.CreativeSourceType">
+            <summary>
+            The possible values for how a creative is intended to be used.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.MediaSourceEnum">
+            <summary>
+            The various kinds of media sources.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.TrackingEventEnum">
+            <summary>
+            The supported tracking event keys
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ImageAdPlayer">
+            <summary>
+            A VPAID ad player that can show static image ads
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ProgressiveVideoAdPlayer">
+            <summary>
+            A VPAID ad player that can play progressive video ads
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum">
+            <summary>
+            Enum used to indicates how the cooresponding VPAID plugin would play the ad creative.
+            This is a bitwise enum and helps provide the priority that the given VPAID player should be given.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Dynamic">
+            <summary>
+            Indicates that the creative would be dynamic as opposed to static (e.g. videos are dynamic, images are static).
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Native">
+            <summary>
+            Indicates that the creative would be played natively in Silverlight.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Interactive">
+            <summary>
+            Indicates that the creative would be interactive.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Adaptive">
+            <summary>
+            Indicates that the creative contains adaptive streaming content.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Progressive">
+            <summary>
+            Indicates that the creative contains progressive content as opposed to adaptive.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Static">
+            <summary>
+            Indicates that the creative would be static such as an image.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.InPlayer">
+            <summary>
+            Indicates that the creative would be played inside the player by the ActiveMediaPlugin. This is preferrable to being played in a separate container.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.Trump">
+            <summary>
+            Indicates that the creative would be played dynamically.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.PriorityCriteriaEnum.NotSupported">
+            <summary>
+            Back door to allow VPAID plugin developers to override the default implementations.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.HtmlAdPlayerFactory">
+            <summary>
+            Provides an IVpaidFactory implementation for the HtmlAdPlayer
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.Plugins.ProgressiveVideoAdPlayerFactory">
+            <summary>
+            Provides an IVpaidFactory implementation for the ProgressiveVideoAdPlayer
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ImageAdPlayerFactory">
+            <summary>
+            Provides an IVpaidFactory implementation for the ImageAdPlayer
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController">
+            <summary>
+            A controller that is capable of playing multiple VPAID ads simultaneously.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.SetVolume(System.Double)">
+            <summary>
+            Passes on player volume to all active ads
+            </summary>
+            <param name="VolumeLevel"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.SetVolume(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative,System.Double)">
+            <summary>
+            Passes on player volume to a single ad
+            </summary>
+            <param name="VolumeLevel"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.LoadAd(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative,System.Int32,System.Object)">
+            <summary>
+            Loads a creative. This causes VPAID.InitAd to execute.
+            </summary>
+            <param name="ad">The creative to load</param>
+            <param name="bitrate">The current bitrate of the player. This is passed onto the VPAID player which can use it to initialize itself.</param>
+            <param name="userState">A user state associated with this ad. This will be included with the various events associated with this ad.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.StartAd(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative,System.Object)">
+            <summary>
+            Tells the ad to start.
+            </summary>
+            <param name="ad">The ad creative that should start playing</param>
+            <param name="userState">A user state associated with this ad. This will be included with the various events associated with this ad.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.StopAd(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative,System.Object)">
+            <summary>
+            Stops the ad.
+            </summary>
+            <param name="ad">The ad creative that should stop playing</param>
+            <param name="userState">A user state associated with this ad. This will be included with the various events associated with this ad.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.RemoveAd(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.ActiveCreative)">
+            <summary>
+            Removes the ad.
+            </summary>
+            <param name="ad">The ad creative that should be removed.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.Handshake(Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.IVpaid)">
+            <summary>
+            Handshakes with the current player to test version compatibility.
+            </summary>
+            <param name="adPlayer">The player to handshake with.</param>
+            <returns>Flag indicating whether the player's version is supported.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.OnRewind">
+            <summary>
+            Forces the rewind tracking event to occur for all active creatives
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.OnFullscreen">
+            <summary>
+            Forces the fullscreen tracking event to occur for all active creatives
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdInitTimeout">
+            <summary>
+            The timeout for initializing/loading ads. AdLoadFailed will fire if the timeout is exceeded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStartTimeout">
+            <summary>
+            The timeout for starting an ad. AdStartFailed will fire if the timeout is exceeded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStopTimeout">
+            <summary>
+            The timeout for stopping an ad. AdStopFailed will fire if the timeout is exceeded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdIsLinear">
+            <summary>
+            The ad has changed to linear mode.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdIsNotLinear">
+            <summary>
+            The ad has changed to nonlinear mode.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdLoadFailed">
+            <summary>
+            The ad failed to load due to a timeout.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStartFailed">
+            <summary>
+            The ad failed to start due to a timeout.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStopFailed">
+            <summary>
+            The ad failed to stop due to a timeout.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdLoaded">
+            <summary>
+            The ad successfully to loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStarted">
+            <summary>
+            The ad successfully to started.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdStopped">
+            <summary>
+            The ad successfully to stopped.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdFailed">
+            <summary>
+            The ad failed for some reason.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdRemoved">
+            <summary>
+            The ad was removed and destroyed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdPaused">
+            <summary>
+            The ad was paused.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdResumed">
+            <summary>
+            The ad was resumed from a pause.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.Log">
+            <summary>
+            The ad player is requesting to log something.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.TrackingFailed">
+            <summary>
+            A tracking event failed usually due to a loss of internet or a bad tracking URL.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.AdProgressChanged">
+            <summary>
+            The progress of the ad has changed.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.TrackingFailureEventArgs">
+            <summary>
+            Provides additional information about a tracking failure event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.TrackingFailureEventArgs.TrackingEvent">
+            <summary>
+            The tracking url that failed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Advertising.VPAID.VpaidController.TrackingFailureEventArgs.Exception">
+            <summary>
+            The exception that occurred when trying to track.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+	<Parameters>
+		<Parameter Name="MySetting" Value="MyValue" />
+		<Parameter Name="RecommendationAutoplayTimerDuration" Value="20" />
+		<Parameter Name="DefaultVolumeLevel" Value=".5" />
+		<Parameter Name="LiveDurationExtendPercentage" Value="0.15" />
+		<Parameter Name="ReplaySeconds" Value="10" />
+		<Parameter Name="PreviousChapterRangeSeconds" Value="2" />
+		<Parameter Name="UseAdvancedTracing" Value="False" />
+		<Parameter Name="AdvancedTracingURL" Value="http://nbcsnf.clntlogger.akadns.net/local/7/1/1/1/local/nbcsnf.log" />
+		<Parameter Name="TimeServerURL" Value="http://vod-staging.olympics2010.msn.com/time" />
+		<Parameter Name="GeoFenceURL" Value="http://vod.olympics2010.msn.com/time" />
+		<Parameter Name="TokenURL" Value="http://vod-staging.olympics2010.msn.com/beacon" />
+		<Parameter Name="EntitlementURL" Value="http://staging.services.identity.nbcuni.com/entitlement/" />
+		<Parameter Name="UseEntitlement" Value="False" />
+		<Parameter Name="ClockAccuracyInMilliseconds" Value="1000" />
+		<Parameter Name="ClockReSyncInMilliseconds" Value="85000" />
+		<Parameter Name="TokenTimerIntervalInMilliseconds" Value="120000" />
+    <Parameter Name="SecondaryTokenTimerIntervalInMilliseconds" Value="5000" />
+		<Parameter Name="RecommendedVideosMaxInactivityInMinutes" Value="30" />
+		<Parameter Name="PreRollTimerSeconds" Value="60" />
+		<Parameter Name="MidRollTimerSeconds" Value="180" />
+		<Parameter Name="PreRollAdTextFormat" Value="Your video will start soon" />
+		<Parameter Name="MidRollAdTextFormat" Value="Your video will resume soon" />
+		<Parameter Name="ShowAdCountdown" Value="False" />
+		<Parameter Name="PreRollDurationSeconds" Value="30" />
+		<Parameter Name="ManualRetryDurationSeconds" Value="10" />
+		<Parameter Name="RetryIntervalSeconds" Value="10" />
+		<Parameter Name="RetryDurationSeconds" Value="60" />
+		<Parameter Name="AlertLingerSeconds" Value="5" />
+		<Parameter Name="DefaultAffiliateLogoUrl" Value="http://localhost:2010/images/OlympicsPlayerFullScreen_logo.png" />
+		<Parameter Name="ConvivaCustomerID" Value="c3.Vertigo" />
+		<Parameter Name="ConvivaServiceUrl" Value="http://lp2staging.conviva.com" />
+		<Parameter Name="FlagUrlFormat" Value="http://www.nbcolympics.com/imgml/flags/s_noTriCode/{0}.png" />
+		<Parameter Name="AthletePhotosUrlFormat" Value="http://www.nbcolympics.com/imgml/athletes/large/0{0}_142x190.jpg" />
+		<Parameter Name="AthleteVideosUrlFormat" Value="http://www.nbcolympics.com/rss/athletes/athlete={0}/video/index.xml" />
+		<Parameter Name="SportVideosUrlFormat" Value="http://www.nbcolympics.com/rss/sport={0}/video/latestvideo.xml" />
+		<Parameter Name="TopAthletesUrl" Value="http://localhost:2010/DataSources/TopAthletes.xml" />
+		<Parameter Name="TestAdPod" Value="http://ad.doubleclick.net/pfadx/nbcu.olympics.owg2010/video_test;area=video;section=null;kind=test;athlete=null;country=null;event=null;gender=null;olympicday=null;phase=null;pos=1;sz=16x9;tile=1" />
+		<Parameter Name="TwitterRefreshSeconds" Value="15" />
+		<Parameter Name="LivePositionRangeSeconds" Value="30" />
+		<Parameter Name="ShowAllMarkersOnTimeline" Value="True" />
+		<Parameter Name="PlayByPlayPrefixSeconds" Value="0" />
+		<Parameter Name="OmnitureAccount" Value="nbcuolympicsbu" />
+		<Parameter Name="OmnitureTrackingServer" Value="oimg.nbcuni.com" />
+		<Parameter Name="OmnitureSecureTrackingServer" Value="osimg.nbcuni.com" />
+		<Parameter Name="OmnitureDebugTracking" Value="True" />
+		<Parameter Name="OmnitureCharSet" Value="ISO-8859-1" />
+		<Parameter Name="OmnitureVisitorNamespace" Value="nbcuniversal" />
+		<Parameter Name="OmnitureDC" Value="122" />
+    <Parameter Name="OmnitureMediaAutoTrack" Value="False" />
+    <Parameter Name="EnableSmoothStreamingDiagnostics" Value="True" />
+  </Parameters>
+	<DataSources>
+		<DataSource Name="SettingsSource" Url="http://localhost:2010/datasources/settings.xml" Interval="00:01:00" />
+		<DataSource Name="AlertSource" Url="http://localhost:2010/datasources/alerts.xml" Interval="00:00:10" />
+		<DataSource Name="DefaultShareTargetsURL" Url="http://localhost:2010/datasources/ShareTargets.xml" />
+		<DataSource Name="AdTemplateSource" Url="http://localhost:2010/datasources/adtemplates.xml" />
+	</DataSources>
+</Settings>

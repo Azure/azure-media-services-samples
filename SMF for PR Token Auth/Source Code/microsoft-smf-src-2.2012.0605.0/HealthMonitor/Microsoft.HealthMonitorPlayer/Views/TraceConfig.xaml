@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Microsoft.HealthMonitorPlayer.Views.TraceConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="200" d:DesignWidth="200">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent" MinWidth="170">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <RadioButton Content="Default" Margin="3" IsChecked="True" Foreground="White" Checked="Default_Checked" Style="{x:Null}" />
+            <RadioButton Content="Detailed" Margin="3" Foreground="White" Checked="Detailed_Checked" Style="{x:Null}" />
+            <RadioButton x:Name="Custom" Content="Custom" Margin="3" Foreground="White" Checked="Custom_Checked" Style="{x:Null}" />
+        </StackPanel>
+        <ItemsControl x:Name="TraceAreaList" Grid.Row="1" Background="Transparent" Margin="3,0,3,3" Visibility="{Binding IsChecked, ElementName=Custom, Converter={StaticResource ShowIfTrue}}">
+            <ItemsControl.Template>
+                <ControlTemplate>
+                    <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}" VerticalScrollBarVisibility="Auto" Style="{x:Null}">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ItemsControl.Template>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox Foreground="White" IsChecked="{Binding IsEnabled, Mode=TwoWay}" Content="{Binding Description, Mode=OneTime}" Style="{x:Null}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>

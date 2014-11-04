@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VAST version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="oxml.xsd">
+  <Ad id="115571748">
+    <InLine>
+      <AdSystem version="2.0 alpha">Atlas</AdSystem>
+      <AdTitle>Unknown</AdTitle>
+      <Description>Unknown</Description>
+      <Survey></Survey>
+      <Error></Error>
+      <Impression id="Atlas"><![CDATA[http://view.atdmt.com/000/sview/115571748/direct;ai.201582527;vt.2/01/634364885739970673]]></Impression>
+      <Creatives>
+        <Creative id="video" sequence="0" AdID="">
+          <Linear>
+            <Duration>00:30:00</Duration>
+            <TrackingEvents>
+              <Tracking event="start"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.201582527;ct.i3/01/634364885739970673]]></Tracking>
+              <Tracking event="midpoint"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.201582527;ct.i1/01/634364885739970673]]></Tracking>
+              <Tracking event="complete"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.201582527;ct.i2/01/634364885739970673]]></Tracking>
+              <Tracking event="expand"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ai.201582527;ct.i4/01/634364885739970673]]></Tracking>
+            </TrackingEvents>
+            <VideoClicks>
+              <ClickThrough id="Atlas Redirect"><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.1/01/634364885739970673]]></ClickThrough>
+              <ClickTracking id="Spare"></ClickTracking>
+            </VideoClicks>
+            <MediaFiles>
+              <MediaFile apiFramework="Flash" id="flash_streaming_500" maintainAspectRatio="true" scaleable="true" delivery="streaming" bitrate="500" width="400" height="300" type="video/x-flv">
+                <![CDATA[http://vid.atdmt.com/v/ADADOARMBPBT/6820b5ea-8ed2-4b32-9c9e-fc263ff80d55/Harrahs_16x9_16_500_16x9.flv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Flash" id="flash_progressive_200" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="200" width="400" height="300" type="video/x-flv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=FLV;br=200;strm=0;v=1.flv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Flash" id="flash_progressive_300" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="300" width="400" height="300" type="video/x-flv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=FLV;br=300;strm=0;v=1.flv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Flash" id="flash_progressive_500" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="500" width="400" height="300" type="video/x-flv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=FLV;br=500;strm=0;v=1.flv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Flash" id="flash_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-flv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=FLV;br=700;strm=0;v=1.flv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Windows Media" id="windows_progressive_200" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="200" width="400" height="300" type="video/x-ms-wmv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=WMV;br=200;strm=0;v=1.wmv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Windows Media" id="windows_progressive_300" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="300" width="400" height="300" type="video/x-ms-wmv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=WMV;br=300;strm=0;v=1.wmv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Windows Media" id="windows_progressive_500" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="500" width="400" height="300" type="video/x-ms-wmv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=WMV;br=500;strm=0;v=1.wmv]]>
+              </MediaFile>
+              <MediaFile apiFramework="Windows Media" id="windows_progressive_700" maintainAspectRatio="true" scaleable="true" delivery="progressive" bitrate="700" width="400" height="300" type="video/x-ms-wmv">
+                <![CDATA[http://api.atdmt.com/adserv.api/redirect/sa=115571748;ai=201582527;pf=WMV;br=700;strm=0;v=1.wmv]]>
+              </MediaFile>
+            </MediaFiles>
+          </Linear>
+        </Creative>
+        <Creative id="primary_companion" sequence="0" AdID="">
+          <CompanionAds>
+            <Companion id="raw_banner_300x250" width="300" height="250">
+              <StaticResource creativeType="image/jpeg"><![CDATA[http://vid.atdmt.com/v/ADADOARMBPBT/6820b5ea-8ed2-4b32-9c9e-fc263ff80d55/cb/1.jpg]]></StaticResource>
+              <CompanionClickThrough><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.2/01/634364885739970673]]></CompanionClickThrough>
+            </Companion>
+            <Companion id="iframe_banner_300x250" width="300" height="250">
+              <IFrameResource><![CDATA[http://api.atdmt.com/adserv.api/viewad/sa=115571748;sf=Atlas_iframe_300x250_HTML_V3;pf=FLV;br=200;strm=0;]]></IFrameResource>
+              <CompanionClickThrough><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.2/01/634364885739970673]]></CompanionClickThrough>
+            </Companion>
+            <Companion id="raw_banner_300x60" width="300" height="60">
+              <StaticResource creativeType="image/jpeg"><![CDATA[http://vid.atdmt.com/v/ADADOARMBPBT/6820b5ea-8ed2-4b32-9c9e-fc263ff80d55/cb/6.jpg]]></StaticResource>
+              <![CDATA[http://vid.atdmt.com/v/ADADOARMBPBT/6820b5ea-8ed2-4b32-9c9e-fc263ff80d55/cb/6.jpg]]>
+              <CompanionClickThrough><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.2/01/634364885739970673]]></CompanionClickThrough>
+            </Companion>
+            <Companion id="iframe_banner_300x60" width="300" height="60">
+              <IFrameResource><![CDATA[http://api.atdmt.com/adserv.api/viewad/sa=115571748;sf=Atlas_iframe_300x60_HTML_V3;pf=FLV;br=200;strm=0;]]></IFrameResource>
+              <CompanionClickThrough><![CDATA[http://clk.atdmt.com/000/sgo/115571748/direct;ct.2/01/634364885739970673]]></CompanionClickThrough>
+            </Companion>
+          </CompanionAds>
+        </Creative>
+      </Creatives>
+      <Extensions>
+        <Extension type="Atlas">
+        </Extension>
+      </Extensions>
+    </InLine>
+  </Ad>
+</VAST>

@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.20506</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B42C02B3-B634-47B7-BB06-CAD420AD9C44}</ProjectGuid>
+    <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.SilverlightMediaFramework.Compatibility.Phone</RootNamespace>
+    <AssemblyName>Microsoft.SilverlightMediaFramework.Compatibility.Phone</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <TargetFrameworkProfile>WindowsPhone71</TargetFrameworkProfile>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\wpbin\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\wpbin\Microsoft.SilverlightMediaFramework.Compatibility.Phone.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT;WINDOWS_PHONE</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DeploymentCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Assumes.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Assumes.InternalErrorException.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\AttributeServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\CollectionServices.CollectionOfObject.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\CollectionServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\ConditionalWeakTable.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\EnumerableCardinality.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\ReadOnlyDictionary.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\ReadOnlyDictionaryDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Collections\WeakReferenceCollection.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\ContractServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\LazyServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Lock.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Lock.Reader.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Lock.Writer.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\ReflectionInvoke.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\ReflectionServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Requires.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\Runtime\Serialization\SerializationServices.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\SilverlightReflectionInvoke.cs" />
+    <Compile Include="MEF\ComponentModel\Microsoft\Internal\StringComparers.cs" />
+    <Compile Include="MEF\ComponentModel\SilverlightAdditions.cs" />
+    <Compile Include="MEF\ComponentModel\SuppressMessages.cs" />
+    <Compile Include="MEF\ComponentModel\SuppressMessagesBaselined.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\AttributedModelServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\AttributedModel\AttributedExportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\AttributedModel\AttributedModelDiscovery.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\AttributedModel\AttributedPartCreationInfo.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ChangeRejectedException.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionContractMismatchException.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionError.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionErrorDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionErrorId.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionException.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionResult.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CompositionResultOfT.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ConstraintServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ContractNameServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\CreationPolicy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\CompositionTrace.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\CompositionTraceId.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\CompositionTraceSource.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\SilverlightTraceWriter.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\TraceSourceTraceWriter.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Diagnostics\TraceWriter.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ErrorBuilder.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExceptionBuilder.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExportAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExportCardinalityCheckResult.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExportMetadataAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExportServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ExportServices.DisposableLazy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AggregateCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AggregateExportProvider.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AssemblyCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AssemblyCatalogDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AtomicComposition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\AtomicCompositionExtensions.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CatalogExportProvider.CatalogChangeProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CatalogExportProvider.CatalogExport.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CatalogExportProvider.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CatalogExportProvider.PartCreatorExport.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ComposablePartCatalogChangeEventArgs.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ComposablePartCatalogCollection.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ComposablePartExportProvider.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionBatch.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionBatch.SingleExportComposablePart.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionConstants.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionContainer.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionLock.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\CompositionServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\DirectoryCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\DirectoryCatalog.DirectoryCatalogDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ExportProvider.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ExportProvider.GetExportOverrides.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ExportsChangeEventArgs.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ImportEngine.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ImportEngine.EngineContext.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ImportEngine.PartManager.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\ImportEngine.RecompositionManager.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\INotifyComposablePartCatalogChanged.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Hosting\TypeCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\IAttributedImport.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ICompositionError.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ICompositionService.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ImportAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ImportCardinalityMismatchException.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ImportingConstructorAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ImportManyAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\InheritedExportAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\IPartImportsSatisfiedNotification.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\MetadataAttributeAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\MetadataServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\MetadataViewProvider.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\PartCreationPolicyAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\PartMetadataAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\PartNotDiscoverableAttribute.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ComposablePart.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ComposablePartCatalog.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ComposablePartCatalogDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ComposablePartDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ComposablePartException.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\CompositionElement.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\CompositionElementDebuggerProxy.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\CompositionElementExtensions.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ContractBasedImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\Export.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ExportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ExportedDelegate.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ICompositionElement.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ImportCardinality.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\ImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\IPartCreatorImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\Primitives\SerializableCompositionElement.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\DisposableReflectionComposablePart.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ExportingMember.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ImportingItem.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ImportingMember.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ImportingParameter.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ImportType.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\IReflectionPartCreationInfo.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\LazyMemberInfo.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\PartCreatorExportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\PartCreatorMemberImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\PartCreatorParameterImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionComposablePart.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionComposablePartDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionExtensions.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionField.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionItem.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionItemType.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionMember.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionMemberExportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionMemberImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionMethod.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionModelServices.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionParameter.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionParameterImportDefinition.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionProperty.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionType.cs" />
+    <Compile Include="MEF\ComponentModel\System\ComponentModel\Composition\ReflectionModel\ReflectionWritableMember.cs" />
+    <Compile Include="MEF\ComponentModel\System\Lazy.cs" />
+    <Compile Include="MEF\ComponentModel\System\LazyOfTTMetadata.cs" />
+    <Compile Include="MEF\ComponentModel\System\Linq\IQueryable_Of_T.cs" />
+    <Compile Include="MEF\ComponentModel\System\Tuple.cs" />
+    <Compile Include="MEF\Composition.Initialization\SuppressMessages.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\CompositionInitializer.AssemblyList.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\CompositionInitializer.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\ExportFactoryOfT.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\ExportFactoryOfTTMetadata.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\ExportLifetimeContextOfT.cs" />
+    <Compile Include="MEF\Composition.Initialization\System\ComponentModel\Composition\Hosting\CompositionHost.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Strings.Designer.cs" />
+    <Compile Include="ScriptableMemberAttribute.cs" />
+    <Compile Include="ScriptableTypeAttribute.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MEF\Composition.Initialization\Composition.Initialization.csproj" />
+    <Content Include="MEF\Composition.Initialization\Composition.Initialization.csproj.user" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Strings.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MEF\ComponentModel\Properties\" />
+    <Folder Include="MEF\Composition.Initialization\Microsoft\Internal\" />
+    <Folder Include="MEF\Composition.Initialization\Properties\" />
+  </ItemGroup>
+  <!-- This MSBuild script compensates for Blend Design time having the wrong SolutionDir -->
+  <PropertyGroup>
+    <MissingExternalDependenciesBlendDesignTimehack>false</MissingExternalDependenciesBlendDesignTimehack>
+    <MissingExternalDependenciesBlendDesignTimehack Condition="!Exists('$(SolutionDir)Lib')">true</MissingExternalDependenciesBlendDesignTimehack>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'!='true'">$(SolutionDir)</CompileTimeSolutionDir>
+    <CompileTimeSolutionDir Condition="'$(MissingExternalDependenciesBlendDesignTimehack)'=='true'">$(SolutionDir)..\</CompileTimeSolutionDir>
+  </PropertyGroup>
+  <Import Project="$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets" Condition="Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" Condition="!Exists('$(CompileTimeSolutionDir)Lib\Build\MSBuild_WP7\Vertigo.WP7.targets')" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />-->
+  <ProjectExtensions />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

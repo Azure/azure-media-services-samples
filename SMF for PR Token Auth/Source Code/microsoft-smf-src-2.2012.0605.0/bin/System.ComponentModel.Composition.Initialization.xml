@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.ComponentModel.Composition.Initialization</name>
+  </assembly>
+  <members>
+    <member name="T:System.ComponentModel.Composition.CompositionInitializer">
+      <summary>Provides static access to methods for parts to satisfy imports.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.CompositionInitializer.SatisfyImports(System.ComponentModel.Composition.Primitives.ComposablePart)">
+      <summary>Fills the imports of the specified part.</summary>
+      <param name="part">The part to fill the imports of.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="attributedPart" /> is null.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="attributedPart" /> contains exports.</exception>
+      <exception cref="T:System.ComponentModel.Composition.ChangeRejectedException">One or more of the imports of <paramref name="attributedPart" /> could not be satisfied.</exception>
+      <exception cref="T:System.ComponentModel.Composition.CompositionException">One or more of the imports of <paramref name="attributedPart" /> caused a composition error.</exception>
+    </member>
+    <member name="M:System.ComponentModel.Composition.CompositionInitializer.SatisfyImports(System.Object)">
+      <summary>Fills the imports of the specified attributed part.</summary>
+      <param name="attributedPart">The attributed part to fill the imports of.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="attributedPart" /> is null.</exception>
+      <exception cref="T:System.ArgumentException">
+        <paramref name="attributedPart" /> contains exports.</exception>
+      <exception cref="T:System.ComponentModel.Composition.ChangeRejectedException">One or more of the imports of <paramref name="attributedPart" /> could not be satisfied.</exception>
+      <exception cref="T:System.ComponentModel.Composition.CompositionException">One or more of the imports of <paramref name="attributedPart" /> caused a composition error.</exception>
+    </member>
+    <member name="T:System.ComponentModel.Composition.ExportFactory`1">
+      <summary>Creates new instances of a part that provides the specified export.</summary>
+      <typeparam name="T">The type of the export.</typeparam>
+    </member>
+    <member name="M:System.ComponentModel.Composition.ExportFactory`1.#ctor(System.Func{System.Tuple{`0,System.Action}})">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.ExportFactory`1" /> class.</summary>
+      <param name="exportLifetimeContextCreator">A function that returns the exported value and an <see cref="T:System.Action" /> that releases it.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.ExportFactory`1.CreateExport">
+      <summary>Creates an instance of the factory's export.</summary>
+      <returns>A valid instance of the factory's exported type.</returns>
+    </member>
+    <member name="T:System.ComponentModel.Composition.ExportFactory`2">
+      <summary>Creates instances of the specified part, with attached metadata.</summary>
+      <typeparam name="T">The type of the created part.</typeparam>
+      <typeparam name="TMetadata">The type of the created part's metadata.</typeparam>
+    </member>
+    <member name="M:System.ComponentModel.Composition.ExportFactory`2.#ctor(System.Func{System.Tuple{`0,System.Action}},`1)">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.ExportFactory`2" /> class. </summary>
+      <param name="exportLifetimeContextCreator">A function that returns the exported value and an <see cref="T:System.Action" /> that releases it.</param>
+      <param name="metadata">The metadata to attach to the created parts.</param>
+    </member>
+    <member name="P:System.ComponentModel.Composition.ExportFactory`2.Metadata">
+      <summary>Gets the metadata to be attached to the created parts.</summary>
+      <returns>A metadata object that will be attached to the created parts.</returns>
+    </member>
+    <member name="T:System.ComponentModel.Composition.ExportLifetimeContext`1">
+      <summary>Holds an exported value created by an <see cref="T:System.ComponentModel.Composition.ExportFactory`1" /> and a reference to a method to release that object.</summary>
+      <typeparam name="T">The type of the exported value.</typeparam>
+    </member>
+    <member name="M:System.ComponentModel.Composition.ExportLifetimeContext`1.#ctor(`0,System.Action)">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.ExportLifetimeContext`1" /> class. </summary>
+      <param name="value">The exported value.</param>
+      <param name="disposeAction">A reference to a method to release the object.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.ExportLifetimeContext`1.Dispose">
+      <summary>Releases all resources used by the current instance of the <see cref="T:System.ComponentModel.Composition.ExportLifetimeContext`1" /> class, including its associated export.</summary>
+    </member>
+    <member name="P:System.ComponentModel.Composition.ExportLifetimeContext`1.Value">
+      <summary>Gets the exported value.</summary>
+      <returns>The exported value.</returns>
+    </member>
+    <member name="T:System.ComponentModel.Composition.Hosting.CompositionHost">
+      <summary>Provides static methods to control the container used by <see cref="T:System.ComponentModel.Composition.CompositionInitializer" />.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.CompositionHost.Initialize(System.ComponentModel.Composition.Hosting.CompositionContainer)">
+      <summary>Sets <see cref="T:System.ComponentModel.Composition.CompositionInitializer" /> to use the specified container.</summary>
+      <param name="container">The container to use.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="container" /> is null.</exception>
+      <exception cref="T:System.InvalidOperationException">This method has already been called.</exception>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.CompositionHost.Initialize(System.ComponentModel.Composition.Primitives.ComposablePartCatalog[])">
+      <summary>Sets <see cref="T:System.ComponentModel.Composition.CompositionInitializer" /> to use a new container initialized with the specified catalogs.</summary>
+      <returns>The new container.</returns>
+      <param name="catalogs">The catalogs to load into the new container.</param>
+    </member>
+    <member name="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog">
+      <summary>Discovers attributed parts in a XAP file, and provides methods for asynchronously downloading XAP files.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> class using assemblies in the current XAP.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> class using the XAP file at the specified relative URI.</summary>
+      <param name="uriRelative">The URI of the XAP file.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.#ctor(System.Uri)">
+      <summary>Initializes a new instance of the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> class using the XAP file at the specified URI.</summary>
+      <param name="uri">The URI of the XAP file.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.CancelAsync">
+      <summary>Cancels the XAP file download in progress.</summary>
+      <exception cref="T:System.InvalidOperationException">The method is called before <see cref="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadAsync" /> or after the <see cref="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadCompleted" /> event has occurred.</exception>
+    </member>
+    <member name="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Changed">
+      <summary>Occurs when the contents of the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> have changed.</summary>
+    </member>
+    <member name="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Changing">
+      <summary>Occurs when the contents of the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> are changing.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Dispose(System.Boolean)">
+      <summary>Releases the unmanaged resources used by the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" /> and optionally releases the managed resources. </summary>
+      <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources. </param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadAsync">
+      <summary>Begins downloading the XAP file associated with the <see cref="T:System.ComponentModel.Composition.Hosting.DeploymentCatalog" />.</summary>
+      <exception cref="T:System.InvalidOperationException">This method is called more than once, or after the <see cref="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.CancelAsync" /> method.</exception>
+    </member>
+    <member name="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadCompleted">
+      <summary>Occurs when the XAP file has finished downloading, or there has been an error.</summary>
+    </member>
+    <member name="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadProgressChanged">
+      <summary>Occurs when the download progress of the XAP file changes.</summary>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.GetExports(System.ComponentModel.Composition.Primitives.ImportDefinition)">
+      <summary>Gets the export definitions that match the constraint expressed by the specified definition.</summary>
+      <returns>A collection of <see cref="T:System.Tuple`2" /> objects containing the <see cref="T:System.ComponentModel.Composition.Primitives.ExportDefinition" /> objects and their associated <see cref="T:System.ComponentModel.Composition.Primitives.ComposablePartDefinition" /> objects for objects that match the constraint specified by <paramref name="definition" />.</returns>
+      <param name="definition">The conditions of the <see cref="T:System.ComponentModel.Composition.Primitives.ExportDefinition" /> objects to be returned.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.OnChanged(System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs)">
+      <summary>Raises the <see cref="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Changed" /> event.</summary>
+      <param name="e">A <see cref="T:System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs" /> object that contains the event data.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.OnChanging(System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs)">
+      <summary>Raises the <see cref="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Changing" /> event.</summary>
+      <param name="e">A <see cref="T:System.ComponentModel.Composition.Hosting.ComposablePartCatalogChangeEventArgs" /> object that contains the event data.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.OnDownloadCompleted(System.ComponentModel.AsyncCompletedEventArgs)">
+      <summary>Raises the <see cref="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadCompleted" /> event.</summary>
+      <param name="e">A <see cref="T:System.ComponentModel.AsyncCompletedEventArgs" /> object that contains the event data.</param>
+    </member>
+    <member name="M:System.ComponentModel.Composition.Hosting.DeploymentCatalog.OnDownloadProgressChanged(System.Net.DownloadProgressChangedEventArgs)">
+      <summary>Raises the <see cref="E:System.ComponentModel.Composition.Hosting.DeploymentCatalog.DownloadProgressChanged" /> event.</summary>
+      <param name="e">A <see cref="T:System.Net.DownloadProgressChangedEventArgs" /> object that contains the event data.</param>
+    </member>
+    <member name="P:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Parts">
+      <summary>Gets all the parts contained in the catalog.</summary>
+      <returns>A query enumerating all the parts contained in the catalog.</returns>
+    </member>
+    <member name="P:System.ComponentModel.Composition.Hosting.DeploymentCatalog.Uri">
+      <summary>Gets the URI for the XAP file.</summary>
+      <returns>The URI for the XAP file.</returns>
+    </member>
+  </members>
+</doc>

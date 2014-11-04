@@ -1,0 +1,562 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Plugins.Heuristics</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings">
+            <summary>
+            Contains the settings information used to configure the BalancedHeuristicsPlugin
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.TolerableProblematicPlugins">
+            <summary>
+            The number of problematic plugins that are tolerated before scaling back.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.TolerableSubOptimalTrackDifferences">
+            <summary>
+            The tolerable distance between a media plugin's currently playing track 
+            and it's optimal track before the plugin is considered problematic.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.TolerableDroppedFramesPercentage">
+            <summary>
+            The tolerable percentage of dropped frames until the media plugin is considered problematic.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.PollingFrequencyMillis">
+            <summary>
+            The frequency with which the BalancedHeuristicsPlugin will reassess the it's registered media plugins.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.StableBufferSize">
+            <summary>
+            The allowable buffer size for stable media plugins.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsSettings.BitrateBlackListDuration">
+            <summary>
+            The length of time a bitrate should be blacklisted.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings">
+            <summary>
+            Contains the settings information used to configure the PrioritizedHeuristicsPlugin
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.PrimaryMinBitRate">
+            <summary>
+            Gets the min bitrate of the primary SSME.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.PrimaryMinFrameRate">
+            <summary>
+            Gets the min framerate of the primary SSME.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.SecondaryMinBitRate">
+            <summary>
+            Gets the min bitrate of secondary SSME's.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.SecondaryMinFrameRate">
+            <summary>
+            Gets the min framerate of secondary SSME's.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.PollingFrequencyMillis">
+            <summary>
+            Gets the frequency with which the SSME's are reassessed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.MaxReenableAttempts">
+            <summary>
+            Gets the max reenable attempts.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsSettings.SyncToleranceMillis">
+            <summary>
+            Gets the sync tolerance in milliseconds.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsManager">
+            <summary>
+            Reads heuristics settings from heuristics.xml and manages BalancedPriorityGoupMonitors.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsManager.RegisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IAdaptiveMediaPlugin,System.Int32)">
+            <summary>
+            Registers the plugin so that it can be managed.
+            </summary>
+            <param name="plugin">The plugin to register.</param>
+            <param name="priority">The priority of the specified plugin.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsManager.UnregisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IAdaptiveMediaPlugin)">
+            <summary>
+            Unregisters a plugin so that it is no longer managed.
+            </summary>
+            <param name="plugin"></param>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin">
+            <summary>
+            Supports the ability to balance the resource consumption of multiple IAdaptiveMediaPlugin's running in the same application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.Load">
+            <summary>
+            Loads the plug-in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.Unload">
+            <summary>
+            Unloads the plug-in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.RegisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin,System.Int32,System.Boolean)">
+            <summary>
+            Registers the specified media plugin so that it can be managed by this heuristics plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin to register.</param>
+            <param name="priority">The relative priority of this media plugin</param>
+            <param name="enableSync">Indicates if synchronization of this media plugin with others should be enabled.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.UnregisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin)">
+            <summary>
+            Unregisters the specified media plugin so that it is no longer managed by this heuristics plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin to unregister.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.SupportsPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin)">
+            <summary>
+            Determines if this plugin supports management of the specified media plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin.</param>
+            <returns>True if this media plugin is supported.</returns>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.PluginLoaded">
+            <summary>
+            Occurs when the plug-in is loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.PluginUnloaded">
+            <summary>
+            Occurs when the plug-in is unloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.LogReady">
+            <summary>
+            Occurs when the log is ready.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.PluginLoadFailed">
+            <summary>
+            Occurs when the plug-in fails to load.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.PluginUnloadFailed">
+            <summary>
+            Occurs when the plug-in fails to unload.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedHeuristicsPlugin.IsLoaded">
+            <summary>
+            Gets a value indicating whether a plug-in is currently loaded.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.#ctor">
+            <summary>
+            Constructor that takes an initial capacity 
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.AddSmoothStreamingMediaElement(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            AddSmoothStreamingMediaElement
+            </summary>
+            <param name="smoothStreamingMediaElement">the SmoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.AddSmoothStreamingMediaElement(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement,System.UInt64,System.Double)">
+            <summary>
+            AddSmoothStreamingMediaElement
+            </summary>
+            <param name="smoothStreamingMediaElement">the SmoothStreamingMediaElement</param>
+            <param name="minimumPlaybackBitrate">
+                The minimum bitrate (in bps) this SmoothStreamingMediaElement
+                must be capable of playing before the next SmoothStreamingMediaElement
+                should be enabled
+            </param>
+            <param name="minimumRenderedFramesPerSecond">
+                The minimum RenderedFramesPerSecond this SmoothStreamingMediaElement
+                must be achieving at the minimum bitrate before the next 
+                SmoothStreamingMediaElement should be enabled
+            </param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.RemoveSmoothStreamingMediaElement(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Removes a SmoothStreamingMediaElement
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.Clear">
+            <summary>
+            Clears the MultiSSMEHeuristicsManager of all it's
+            SmoothStreamingMediaElement references and stops monitoring
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.ResetRecommendions">
+            <summary>
+            Resets all of the ReEnableAttempt counts
+            and sets the enabled state of the secondary SSMEs back 
+            to disabled.  Call this method after you seek or play an add
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.SetMinimumPlaybackBitrate(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement,System.UInt64)">
+            <summary>
+            SetMinimumPlaybackBitrate
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+            <param name="minimumPlaybackBitrate">
+                The minimum bitrate (in bps) this SmoothStreamingMediaElement
+                must be capable of playing before the next SmoothStreamingMediaElement
+                should be enabled
+            </param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetMinimumPlaybackBitrate(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            GetMinimumPlaybackBitrate - gets the bitrate set during the call to SetMinimumPlaybackBitrate
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.SetMinimumRenderedFramesPerSecond(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement,System.Double)">
+            <summary>
+            SetMinimumRenderedFramesPerSecond specifies the minimum RenderedFramesPerSecond
+            each SmoothStreamingMediaElement should sustain before the next  
+            SmoothStreamingMediaElement is enabled
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+            <param name="minimumRenderedFramesPerSecond">minimumRenderedFramesPerSecond</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetMinimumRenderedFramesPerSecond(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            GetMinimumRenderedFramesPerSecond returns the value set in SetMinimumRenderedFramesPerSecond
+            or in the AddSmoothStreamingMediaElement method
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetAverageRenderedFramesPerSecond(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Returns the last observed RenderedFramesPerSecond
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetLastPlaybackBitrate(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Returns the last observed PlaybackTrack.Bitrate
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetLastDownloadBitrate(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Returns the last observed DownloadTrack.Bitrate
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.StartMonitoring">
+            <summary>
+            Causes the MultiSSMEHeuristicsManager to start monitoring
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.StopMonitoring">
+            <summary>
+            Causes the MultiSSMEHeuristicsManager to stop monitoring
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.RaiseRecommendationChanged(System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement},System.Collections.Generic.IList{Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement})">
+            <summary>
+            RaiseRecommendationChanged
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.Dispatcher_Tick(System.Object,System.EventArgs)">
+            <summary>
+            Main heuristics logic
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.UpdateAverageFramesPerSecond(Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo)">
+            <summary>
+            Updates the AverageRenderedFramesPerSecond for the SSME
+            </summary>
+            <param name="ssmeStateInfo"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.HookEvents(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Hooks events on our referenced SSME's
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.UnhookEvents(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Unhooks events on our referenced SSME's
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.SSME_DownloadTrackChanged(System.Object,Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs)">
+            <summary>
+            Handles DownloadTrackChanged for our SSMEs
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.SSME_PlaybackTrackChanged(System.Object,Microsoft.Web.Media.SmoothStreaming.TrackChangedEventArgs)">
+            <summary>
+            Handles PlaybackTrackChanged for our SSMEs
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetSSMEStateInfoThrowIfNotFound(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            GetSSMEStateInfoThrowIfNotFound
+            </summary>
+            <param name="smoothStreamingMediaElement">smoothStreamingMediaElement</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.ContainsSmoothStreamingMediaElement(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Simple helper to see if we have an id 
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetSSMEStateInfoBySSME(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Simple helper to see if we have an SSME 
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.GetIsMinimized(System.Double)">
+            <summary>
+            Private helper to indicate if the browser is minimized or
+            occluded.  This helps us determine if SSME.RenderedFramesPerSecond
+            can be trusted (as it goes to 0 when minimized)
+            
+            TODO: this need to be tried on a variety of OS's in a variety 
+            of conditions to validate this
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.Item(System.Int32)">
+            <summary>
+            Indexer that returns the SmoothStreamingMediaElement by index
+            </summary>
+            <param name="index">index</param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.MonitorIntervalInMilliseconds">
+            <summary>
+            The interval at which we poll SmoothStreamingMediaElement data
+            and raise the RecommendationChanged event
+            
+            Default value is every 3 seconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.MaxReenableAttempts">
+            <summary>
+            The number of times the recommendation to reenable
+            should be raised.  
+            
+            Default value is 2
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.MaximumRenderedFPSForMinimizedDetection">
+            <summary>
+            SmoothStreamingMediaElement.RenderedFramesPerSecond will drop to 
+            zero when the browser is minimized - even when playback is still
+            working correctly.  This property specifies a maximum threshold
+            that SmoothStreamingMediaElement.RenderedFramesPerSecond to trigger
+            this browser minimized detection
+            
+            Default value is 2.0
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.Count">
+            <summary>
+            The count of SmoothStreamingMediaElement's being tracked
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.IsMonitoring">
+            <summary>
+            True if the MultiSSMEHeuristicsManager is monitoring
+            To enable monitoring, call the StartMonitoring method
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.RecommendPermanentlyDisableAllSecondary">
+            <summary>
+            RecommendDisableAllSecondary - true if we've recommended
+            to permanantly disable all secondary SmoothStreamingMediaElements
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsManager.RecommendationChanged">
+            <summary>
+            Event is raised anytime a recommendation changes about enabling or disabling a 
+            SmoothStreamingMediaElement
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin">
+            <summary>
+            Supports the ability to prioritize the resource consumption of multiple IAdaptiveMediaPlugin's running in the same application.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.SupportsPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin)">
+            <summary>
+            Determines if this plugin supports management of the specified media plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin.</param>
+            <returns>True if this media plugin is supported.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.RegisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin,System.Int32,System.Boolean)">
+            <summary>
+            Registers the specified media plugin so that it can be managed by this heuristics plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin to register.</param>
+            <param name="priority">The relative priority of this media plugin</param>
+            <param name="enableSync">Indicates if synchronization of this media plugin with others should be enabled.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.UnregisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IMediaPlugin)">
+            <summary>
+            Unregisters the specified media plugin so that it is no longer managed by this heuristics plugin.
+            </summary>
+            <param name="mediaPlugin">The media plugin to unregister.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.Load">
+            <summary>
+            Loads the plug-in.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.Unload">
+            <summary>
+            Unloads the plug-in.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.PluginLoaded">
+            <summary>
+            Occurs when the plug-in is loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.PluginUnloaded">
+            <summary>
+            Occurs when the plug-in is unloaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.LogReady">
+            <summary>
+            Occurs when the log is ready.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.PluginLoadFailed">
+            <summary>
+            Occurs when the plug-in fails to load.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.PluginUnloadFailed">
+            <summary>
+            Occurs when the plug-in fails to unload.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.PrioritizedHeuristicsPlugin.IsLoaded">
+            <summary>
+            Gets a value indicating whether a plug-in is currently loaded.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.RegisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IAdaptiveMediaPlugin)">
+            <summary>
+            Registers a plugin so that it can be managed by this BalancedPriorityGroupMonitor.
+            </summary>
+            <param name="plugin">The plugin to register.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.UnregisterPlugin(Microsoft.SilverlightMediaFramework.Plugins.IAdaptiveMediaPlugin)">
+            <summary>
+            Unregisters a plugin so that it is no longer managed by this BalancedPriorityGroupMonitor.
+            </summary>
+            <param name="plugin">The plugin to unregister.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.IsPluginRegistered(Microsoft.SilverlightMediaFramework.Plugins.IAdaptiveMediaPlugin)">
+            <summary>
+            Gets whether the specified plugin is registered with this BalancedPriorityGroupMonitor.
+            </summary>
+            <param name="plugin">The plugin to check for.</param>
+            <returns>True indicates that the specified plugin is registered with this BalancedPriorityGroupMonitor.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.AllowBitrateIncreases">
+            <summary>
+            Gets or sets whether to allow bitrate increases.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.Priority">
+            <summary>
+            Gets the priority.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.BalancedPriorityGroupMonitor.MaxAllowedBitrate">
+            <summary>
+            Gets or sets the maximum allowed bitrate.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.RecommendationChangedEventArgs">
+            <summary>
+            Event arguments for a RecommendationChanged event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.RecommendationChangedEventArgs.RecommendDisable">
+            <summary>
+            RecommendDisable
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.RecommendationChangedEventArgs.RecommendEnable">
+            <summary>
+            RecommendEnable
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.DecrementReEnableCount">
+            <summary>
+            DecrementReEnableCount
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.ResetReEnableCount">
+            <summary>
+            ResetReEnableCount
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.SmoothStreamingMediaElement">
+            <summary>
+            The SSME to track
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.MinimumPlaybackBitrate">
+            <summary>
+            The minimum bitrate (in bps) this SmoothStreamingMediaElement
+            must be capable of playing before the next SmoothStreamingMediaElement
+            should be enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.MinimumRenderedFramesPerSecond">
+            <summary>
+            The minimum number of RenderedFramesPerSecond this SSME should achieve
+            at the MinimumPlaybackBitrate before enabling the next SSME
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.ReEnableCount">
+            <summary>
+            The number of times we're recommended to renable this SSME
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.RecommendedEnable">
+            <summary>
+            Tracks if we've recommended this SSME to be enabled
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.AverageRenderedFramesPerSecond">
+            <summary>
+            LastRenderedFramesPerSecond
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.LastDownloadTrackBitrate">
+            <summary>
+            LastDownloadTrackBitrate
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Heuristics.SSMEStateInfo.LastPlaybackTrackBitrate">
+            <summary>
+            LastPlaybackTrackBitrate
+            </summary>
+        </member>
+    </members>
+</doc>

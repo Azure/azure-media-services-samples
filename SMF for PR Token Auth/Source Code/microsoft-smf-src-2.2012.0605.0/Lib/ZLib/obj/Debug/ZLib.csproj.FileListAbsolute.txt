@@ -1,0 +1,4 @@
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Lib\ZLib\Bin\Debug\ZLib.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Lib\ZLib\Bin\Debug\ZLib.pdb
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Lib\ZLib\obj\Debug\ZLib.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\Lib\ZLib\obj\Debug\ZLib.pdb
