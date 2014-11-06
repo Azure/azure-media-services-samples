@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="0dab187b-893d-4351-bab6-6c745b51723a" revisionNumber="1">
+  <developerSDKTechnologyOverviewArchitectureDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>The SMF uses a plug-in architecture for dynamically discovering application capabilities when needed.</para>
+    </introduction>
+    
+    <section address="Section1">
+      <title>SMF Architecture Overview</title>
+      <content>
+		<para>        
+		SMF uses a MEF-based plug-In architecture to allow an application the flexibility to load only the types of capabilities (plug-ins) it needs, 
+		and only load those when they are needed. There are currently two types of plug-ins:
+		</para>
+		
+		<list class="bullet">
+		  <listItem>Media plug-ins</listItem>
+		  <listItem>MarkerProvider plug-ins</listItem>
+		</list>
+		
+		<para>
+		<legacyBold>PlugInManager</legacyBold>
+		</para>
+		
+		<para>
+		The PlugInManager has several overloads that allow it to query for plug-ins. GetPlugins can get all plug-ins in an external XAP file, 
+		or you can pass in an expression that acts as a filter so that only plug-ins that match that Boolean condition are returned, 
+		or you can define your own metadata and pass that to the GetPlugins method to return only plug-ins that match those capabilities.
+		</para>
+		
+		<para>
+		<legacyBold>Media plug-ins</legacyBold> 
+		</para>
+		
+		<para>
+		A media plug-in is something that plays media (a video player, an audio player, etc.) and has certain capabilities, 
+		such as it supports Smooth Streaming, supports live streams, or supports progressive download. 
+		Note these are boolean capabilities so a plug-in can support a combination of these, 
+		such as supporting Smooth Streaming and live video playback.
+		</para>
+		
+		<para>
+		When the ChangePlaylistItem event occurs, SelectMediaPlugin is called and will choose the correct media plug-in based on the requirements 
+		for the new playlist item.
+		</para>
+		
+		
+		<para>
+		<legacyBold>MarkerProvider Plug-ins</legacyBold>
+		</para>
+		
+		<para>
+		Markers are used for closed captions that consist of text that can appear on a video at specific times. 
+		SMF provides capabilities in the Timed Text W3C specification. 
+		</para>
+		
+		<para>
+		Markers can also be used to indicate a specific time in a media stream. For example, in a live sporting event, markers may be used to indicate 
+		significant events in the game. Markers can be defined when the media is encoded or can be added dynamically. SMF provides a 
+		polling mechanism with a configurable time interval to allow markers to be added for live streams in real time.
+		</para>
+		
+		<para>
+		Markers might be retrieved in various ways (from an XML file, from a Web service, etc.), so SMF has a marker provider architecture that 
+		allows you to define your own way of retrieving markers.
+		</para>
+		
+		<para>
+		<legacyBold>How to Create a Plug-in</legacyBold>
+		</para>
+		
+		<para>
+		As an example, you can create a media plug-in. The IMediaPlugin Interface contains the minimum capabilities to implement a media plugin. 
+		Three Interfaces extend from IMediaPlugin:
+		</para>
+		
+		<list class="bullet">
+		  <listItem>IAdaptiveMedia - implement this if your plugin supports adaptive media.</listItem>
+		  <listItem>ILiveMedia- implement this if your plugin supports live media.</listItem>
+		  <listItem>IProgressive - implement this if your plugin supports progressive download media.</listItem>
+		</list>
+		
+		
+		<para>
+		You implement the Interfaces your plugin requires. You implement a combination of these Interfaces for each of the capabilities your plugin requires. 
+		Implementing just the IMediaPlugin Interface is not sufficient for playing media. This interface does not support any specific capabilities.
+		</para>
+		
+		<para>
+		You add an Attribute to your class as metadata that indicates the plugin capabilities (using the ExportMedia Attribute). 
+		There are three boolean props that broadcast to MEF what the plugin capabilities are. Set the property to true for any capability that plugin 
+		supports (SupportsProgressive = true indicates the plugin can play progressive media, for example).
+		</para>		
+		
+      </content>
+    </section>
+    <relatedTopics></relatedTopics>
+  </developerSDKTechnologyOverviewArchitectureDocument>
+</topic>

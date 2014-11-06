@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Plugins.Monitoring</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLoadLog">
+            <summary>
+            A video has loaded and is ready to be played
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoEventLog">
+            <summary>
+            The base class for a basic video event where we want to track whether or not the playback is live.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog">
+            <summary>
+            The simplest video related log that can be created. This usually serves as the base class for other logs but can be used by itself.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog.MediaElementId">
+            <summary>
+            The media element ID (also cooresponds to the SSME.Name property)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog.VideoPosition">
+            <summary>
+            The position of the video in time (e.g. 14 minutes into the video)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog.VideoSessionDuration">
+            <summary>
+            The total duration that the video has been playing (minus the paused and stopped periods of time).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog.VideoSessionId">
+            <summary>
+            A generated ID specific to the video and player session. Because it is generated locally, this will be different for each user.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLoadLog.MaxBitRate">
+            <summary>
+            The maximum bitrate for the current stream
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLoadLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLoadLog.ClientIP">
+            <summary>
+            The client IP. This will be IPAddress.None (255.255.255.255) if no EdgeServerRules are provided in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLoadLog.VideoUrl">
+            <summary>
+            The Url of the current stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.RemoteVideoLogAgent">
+            <summary>
+            Provides a BatchingLogAgent base class that filters log types typically not sent to the server
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.RemoteVideoLogAgent.Filter">
+            <summary>
+            A filter that uses the configuration if available or the default remote logging filter if not.
+            This default filter will filter out trace logs and video quality snapshots.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.RemoteVideoLogAgent.DefaultRemoteLogFilter">
+            <summary>
+            The default remote logging filter. Excludes TraceLog and VideoQualitySnapshotLog (which are intended for local, real-time measurements only).
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.DiagnosticsPlugin">
+            <summary>
+            This is the Silverlight Media Framework plugin used to log diagnostic information coming from SMF.
+            It is a wrapper around SMFLogger (where the real work happens) in order to make it behave as SMF plugin.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.DiagnosticsPlugin.SetPlayer(System.Windows.FrameworkElement)">
+            <summary>
+            Initializes the SMFLogger and attaches the SMFPlayer to it.
+            </summary>
+            <param name="player">An instance of SMFPlayer</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.DiagnosticsPlugin.LoadHealthMonitor">
+            <summary>
+            Loads the SMFLogger with the default config settings
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.DiagnosticsPlugin.LoadHealthMonitor(System.Uri)">
+            <summary>
+            Loads the SMFLogger from a local config file. Config file should use BuildAction=Content.
+            </summary>
+            <param name="configUri"></param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.DiagnosticsPlugin.Monitor">
+            <summary>
+            Returns the underlying object responsible for monitoring the player
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger">
+            <summary>
+            Responsible for capturing information coming from SilverlightMediaFramework.Diagnostics, turning it into Log objects, and passing it onto the Logging component.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.AttachMonitor(Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor)">
+            <summary>
+            Attaches the diagnostic component so it can be monitored
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.DetachMonitor">
+            <summary>
+            Detaches the diagnostic from being monitored
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.CreateVideoLog(System.String)">
+            <summary>
+            Allows you to programmatically create a custom video log. The log will be populated with certain basic video information.
+            You still need to pass the log on to LoggingService.Current.Log(log);
+            </summary>
+            <param name="logType">A string value representing the type of your custom log.</param>
+            <returns>The newly created log object.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.PopulateSimpleVideoLog(Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.SimpleVideoEventLog)">
+            <summary>
+            Populates a video log with the basic video information
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.PopulateVideoEventLog(Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoEventLog)">
+            <summary>
+            Populates a video log with the basic video information. This is a superset of PopulateSimpleVideoLog
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.HealthMonitorLogger.AdditionalLogData">
+            <summary>
+            Contains optional/additional information that should be attached to all logs before they are sent to the logging framework.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.AudioLatencyAlertLog">
+            <summary>
+            An audio latecy alert has occured. The latency threshold is defined in the diagnostic config and is 2 KBps by default.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.LatencyAlertLog">
+            <summary>
+            A latecy alert has occured. The latency threshold is defined in the diagnostic config and is 2 KBps by default.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.LatencyAlertLog.BitRate">
+            <summary>
+            The bitrate of the chunk being downloaded
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.LatencyAlertLog.ChunkId">
+            <summary>
+            The ID of the chunk being downloaded
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.LatencyAlertLog.DurationSeconds">
+            <summary>
+            The length of time it took to download the chunk
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.AudioTrackChangedLog">
+            <summary>
+            The audio track has been changed to a different language
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.AudioTrackChangedLog.Language">
+            <summary>
+            The language chosen.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog">
+            <summary>
+            Errors have occured when downloading a chunk
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.Count">
+            <summary>
+            The number of errors that occured for a given chunk in the sampling window.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.ChunkId">
+            <summary>
+            The timestamp index of the chunk. This will coorespond to the index in the manifest. This and the StartTime provide the same information only this is an index and StartTime is the offset.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.StreamType">
+            <summary>
+            The stream type of the chunk. (e.g. audio or video)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.StartTime">
+            <summary>
+            The timestamp of the chunk. This will coorespond to the timestamp used in the chunk's URL. This and the ChunkId provide the same information only ChunkId is an index and StartTime is the offset.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.EdgeIP">
+            <summary>
+            The edge server address serving the chunk. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.TotalElapsedTime">
+            <summary>
+            The time since the video was started. Does not exclude paused time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ChunkDownloadErrorLog.SamplingWindowSeconds">
+            <summary>
+            The size of the sampling window in seconds
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ClosedCaptionChangedLog">
+            <summary>
+            The closed captioning has either been turned on or off. A different log type ID will be set depending on which.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.ClosedCaptionChangedLog.IsVisible">
+            <summary>
+            Indicates whether or not closed captioning is visible.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.MediaFailedLog">
+            <summary>
+            The video has failed to play. SMF automatically retries (resulting in the possibility of multiple MediaFailureLog logs followed by a RetryFailedLog or RetrySucceededLog.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.MediaFailedLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.MediaFailedLog.Reason">
+            <summary>
+            The text based reason for the failure.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.RetryFailedLog">
+            <summary>
+            The video has failed to play, retries were issued by SMF but failed. This will always follow one or more MediaFailedLogs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.RetryFailedLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.RetrySucceededLog">
+            <summary>
+            The video has failed to play, retries were issued by SMF and succeeded. This will always follow one or more MediaFailedLogs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.RetrySucceededLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.TraceLog">
+            <summary>
+            Contains the raw trace log information received from the SSME
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoClipEndedLog">
+            <summary>
+            A video clip has ended.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoClipStartedLog">
+            <summary>
+            A video clip has started.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLatencyAlertLog">
+            <summary>
+            An video latecy alert has occured. The latency threshold is defined in the diagnostic config and is 2 KBps by default.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLogTypes">
+            <summary>
+            Constants used for Log.Type
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoLogAttributes">
+            <summary>
+            Constants used as the keys in a log's underlying dictionary of values.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog">
+            <summary>
+            The base log for video quality info. This is used for both snapshots and aggregated data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.ClientIP">
+            <summary>
+            The client IP. This will be IPAddress.None (255.255.255.255) if no EdgeServerRules are provided in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.BitRate">
+            <summary>
+            The bitrate being played.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.BufferingMilliseconds">
+            <summary>
+            The total buffering in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.DroppedFrames">
+            <summary>
+            The dropped frames per second.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.RenderedFrames">
+            <summary>
+            The rendered frames per second.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.ProcessCPULoad">
+            <summary>
+            The CPU load for the current process (e.g. 15 = 15%).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.SystemCPULoad">
+            <summary>
+            The CPU load for the entire system (e.g. 15 = 15%).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.VideoDownloadLatencyMilliseconds">
+            <summary>
+            The latency time for video chunks in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.AudioDownloadLatencyMilliseconds">
+            <summary>
+            The latency time for audio chunks in milliseconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.TotalElapsedTime">
+            <summary>
+            The time since the video was started. Does not exclude paused time.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.AudioBufferSize">
+            <summary>
+            The size of the audio buffer in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.VideoBufferSize">
+            <summary>
+            The size of the video buffer in bytes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.PerceivedBandwidth">
+            <summary>
+            The perceived bandwidth in bytes per second.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.VideoUrl">
+            <summary>
+            The Url of the current stream.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.BitRateChangeCount">
+            <summary>
+            The total times that the bitrate changed within the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.MaxBitRate">
+            <summary>
+            The max bitrate achieved in the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.MaxBitRateMilliseconds">
+            <summary>
+            The total amount of time that the max bitrate was achieved within the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.HttpErrorCount">
+            <summary>
+            The total number of HTTP errors
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.SamplingFrequencySeconds">
+            <summary>
+            The size of the sampling window in seconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.DVRUseCount">
+            <summary>
+            The total times that a DVR operation occured
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityBaseLog.FullScreenChangeCount">
+            <summary>
+            The total times that the video came in or out of full screen mode
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualityLog">
+            <summary>
+            Aggregated video quality metrics over a sampling window.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoQualitySnapshotLog">
+            <summary>
+            A snapshot of the video quality. Used to display real time quality information. When sending to the server, you should use VideoQualityLog instead to get aggregated values and thereby have chunky over chatty communication with the server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStartLog">
+            <summary>
+            A video has started playing
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStartLog.MaxBitRate">
+            <summary>
+            The maximum bitrate for the current stream
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStartLog.EdgeIP">
+            <summary>
+            The edge server address serving the stream. Note: This will always be set to 255.255.255.255 if you haven't configured the EdgeServerRules in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStartLog.ClientIP">
+            <summary>
+            The client IP. This will be IPAddress.None (255.255.255.255) if no EdgeServerRules are provided in the diagnostic config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStartLog.VideoUrl">
+            <summary>
+            The Url of the current stream.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.Logs.VideoStopLog">
+            <summary>
+            The video has finished playing. Pausing the video will not cause this.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.MonitoringConfig">
+            <summary>
+            The Main config object that contains information about how diagnostic and logging features should behave. This is normally loaded from Xml.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.MonitoringConfig.DiagnosticsConfig">
+            <summary>
+            Contains information required to configure the diagnostics component
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.MonitoringConfig.LoggingConfig">
+            <summary>
+            Contains information required to configure the logging component
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.MonitoringConfig.AdditionalData">
+            <summary>
+            Contains additional data to add to every log.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger">
+            <summary>
+            Responsible for initializing the HealthMonitorLogger (the bridge between the diagnostic and logging components).
+            Also captures additional higher-level events from SMF directly and passes them onto the logging component.
+            Normally, this is created from within the SMF plugin (DiagnosticsPlugin) but could be used directly from code by itself.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.AttachToSMF(Microsoft.SilverlightMediaFramework.Core.SMFPlayer)">
+            <summary>
+            Attaches the SMFPlayer so it can be monitored
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.DetachFromSMF(Microsoft.SilverlightMediaFramework.Core.SMFPlayer)">
+            <summary>
+            Detaches the SMFPlayer so it no longer monitored.
+            </summary>
+            <param name="smfPlayer"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.AttachToMediaElement(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Attaches the SmoothStreamingMediaElement to the diagnostic component so it can be monitored.
+            It is recommended that you do not call this directly and instead use AttachToSMF
+            </summary>
+            <param name="element">An instance of SSME</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.DetachFromMediaElement">
+            <summary>
+            Detaches the SmoothStreamingMediaElement from the diagnostic component.
+            It is recommended that you do not call this directly and instead use DetachFromSMF
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.FindMediaPresenter(System.Windows.FrameworkElement)">
+            <summary>
+            Extracts the SSME from the SMFPlayer
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.CreateVideoLog(System.String)">
+            <summary>
+            Allows you to programmatically create a custom video log. The log will be populated with certain basic video information.
+            You still need to pass the log on to LoggingService.Current.Log(log);
+            </summary>
+            <param name="logType">A string value representing the type of your custom log.</param>
+            <returns>The newly created log object.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.CreateVideoLog(System.String,Microsoft.SilverlightMediaFramework.Plugins.Monitoring.VideoDataEnum)">
+            <summary>
+            Allows you to programmatically create a custom video log and specify which video information should be included in the log.
+            You still need to pass the log on to LoggingService.Current.Log(log);
+            </summary>
+            <param name="logType">A string value representing the type of your custom log.</param>
+            <param name="includeVideoData">A bitwise enum used to control which information should be included with the custom log.</param>
+            <returns>The newly created log object.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.IsAttached">
+            <summary>
+            Indicates that everything is attached (SSME, SMF, diagnostics, and logging)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.DiagConfig">
+            <summary>
+            The diagnostics configuration object to be used.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.AdditionalLogData">
+            <summary>
+            Contains optional/additional information that should be attached to all logs before they are sent to the logging framework.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.EdgeServer">
+            <summary>
+            Exposes the edge server that was detected by the diagnostic component. Refer to the diagnostic config for more information about detecting the edge server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Plugins.Monitoring.SMFLogger.ClientIp">
+            <summary>
+            Exposes the client IP that was detected by the diagnostic component as part of the edge server detection process. Refer to the diagnostic config for more information about detecting the edge server.
+            </summary>
+        </member>
+    </members>
+</doc>

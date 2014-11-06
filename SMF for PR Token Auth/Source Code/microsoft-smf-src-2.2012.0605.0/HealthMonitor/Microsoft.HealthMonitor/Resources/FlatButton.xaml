@@ -1,0 +1,56 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows"
+    >
+    <Color x:Key="LightColor">#f9f9e4</Color>
+    <Color x:Key="DarkColor">#e0e3bc</Color>
+    <Color x:Key="TextColor">#66603a</Color>
+    <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}" />
+    <SolidColorBrush x:Key="DarkBrush" Color="{StaticResource DarkColor}" />
+    <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
+    <SolidColorBrush x:Key="DisabledBrush" Color="#8CFFFFFF" />
+    <SolidColorBrush x:Key="HoverBrush" Color="#EDF0C7" />
+    <SolidColorBrush x:Key="PressedBrush" Color="#E6E6D2" />
+
+    <Style x:Key="FlatButton" TargetType="Button">
+        <Setter Property="Foreground" Value="{StaticResource TextBrush}" />
+        <Setter Property="Background" Value="{StaticResource LightBrush}" />
+        <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}" />
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button" xmlns:vsm="clr-namespace:System.Windows;assembly=System.Windows">
+                    <Grid>
+                        <vsm:VisualStateManager.VisualStateGroups>
+                            <vsm:VisualStateGroup x:Name="CommonStates" >
+                                <vsm:VisualState x:Name="Normal" />
+                                <vsm:VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="MouseOverVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0:0:0.1" />
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="Pressed">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="PressedVisual" Storyboard.TargetProperty="Opacity" To=".3" Duration="0:0:0.2" />
+                                    </Storyboard>
+                                </vsm:VisualState>
+                                <vsm:VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetName="DisabledVisual" Storyboard.TargetProperty="Opacity" To="1" Duration="0" />
+                                    </Storyboard>
+                                </vsm:VisualState>
+                            </vsm:VisualStateGroup>
+                        </vsm:VisualStateManager.VisualStateGroups>
+                        <Rectangle x:Name="Background" Fill="{TemplateBinding Background}" StrokeThickness="{TemplateBinding BorderThickness}" Stroke="{TemplateBinding BorderBrush}" RadiusX="1" RadiusY="1" />
+                        <Rectangle x:Name="MouseOverVisual" Opacity="0" Fill="{StaticResource HoverBrush}" StrokeThickness="1" Stroke="LightGray" RadiusX="1" RadiusY="1"/>
+                        <Rectangle x:Name="PressedVisual" Opacity="0" Fill="{StaticResource PressedBrush}" StrokeThickness="1" Stroke="LightGray" RadiusX="1" RadiusY="1"/>
+                        <ContentPresenter Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Margin}" />
+                        <Rectangle x:Name="DisabledVisual" Fill="{StaticResource DisabledBrush}" Opacity="0" IsHitTestVisible="false" RadiusX="1" RadiusY="1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

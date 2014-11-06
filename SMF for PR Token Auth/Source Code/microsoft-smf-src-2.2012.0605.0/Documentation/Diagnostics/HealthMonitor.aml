@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="1a580250-0430-4204-b1b8-2c8d1d191d1b" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>Included with the Silverlight Media Framework is a tool
+called the <externalLink>
+  <linkText>Health Monitor</linkText>
+  <linkUri>http://smf.cloudapp.net/healthmonitor/</linkUri>
+  <linkTarget>_blank</linkTarget>
+</externalLink>. It allows you to visualize and monitor the
+diagnostic information for your smooth streaming player in real-time. The
+Health Monitor operates in two modes:</para>
+    </introduction>
+
+<section>
+  <title>Internal player</title>
+  <content>
+
+<para>Just enter the smooth streaming URL you want to monitor and
+the health monitor will do the rest...</para>
+
+<para><mediaLink><image xlink:href="healthmon_internal" /></mediaLink></para>
+
+  </content>
+</section>
+
+<section>
+  <title>External player</title>
+  <content>
+
+<para>It is very easy to build a player of your own that can be
+monitored by the health monitor. All you have to do is add the following
+assemblies to your project:</para>
+		
+<list class="bullet">
+  <listItem>Microsoft.SilverlightMediaFramework.Diagnostics</listItem>
+  <listItem>Microsoft.SilverlightMediaFramework.Monitoring</listItem>
+  <listItem>Microsoft.SilverlightMediaFramework.Logging</listItem>
+  <listItem>Microsoft.Logging.LocalConnection</listItem>
+</list>
+
+<para>That's it! Your application will now automatically collect smooth streaming
+diagnostic information from the Silverlight Media Framework and send it out
+through a <externalLink>
+  <linkText>local connection</linkText>
+  <linkUri>http://www.silverlight.net/learn/videos/all/localconnection-api/</linkUri>
+  <linkTarget>_blank</linkTarget>
+</externalLink>
+which can be captured by the Health Monitor. </para>
+
+<para>To monitor your external player from the Health Monitor
+tool:</para>
+
+
+<list class="bullet">
+  <listItem>Select &quot;Connect to external player&quot; in the upper right to change modes.</listItem>
+  <listItem>Click the Connect button that now appears in the upper right.</listItem>
+</list>
+
+<para><mediaLink><image xlink:href="healthmon_external" /></mediaLink></para>
+
+<para><legacyBold>Note:</legacyBold> Silverlight local messaging does not work across different security zones. If you’re running the health monitor at http://smf.cloudapp.net/healthmonitor and the app from localhost, they won’t be able to talk to each other by default. To fix, you just need to add smf.cloudapp.net to your local intranet zone for testing purposes.</para>
+
+  </content>
+</section>
+
+<section>
+  <title>Player IDs for external players</title>
+  <content>
+
+<para>You may want to make it harder for others to use the Health
+Monitor tool with your custom player by setting a player ID. This requires
+anyone running the health monitor tool to know this ID in order to connect to
+your external player. <legacyItalic>Warning: this is not a fully secure technique and is only
+intended to make it a little more difficult for those trying to monitor your
+player.</legacyItalic> </para>
+
+<para>Internally, all local connections use a channel name. By
+default, a channel name is already set in the local connection log agent
+(Microsoft.Logging.LocalConnection) and the same channel name is also set in
+the Health Monitor tool. However, you can easily change which channel name is
+used in your player by adding the following code to your player's project:</para>
+
+<code language="none" title=" ">[Export(&quot;LocalChannelName&quot;)]<para/>
+public&#160;string&#160;LocalChannelName<para/>
+{<para/>
+&#160;&#160;&#160;&#160;get<para/>
+&#160;&#160;&#160;&#160;{<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;return&#160;&quot;SomeIDForMyPlayer&quot;;<para/>
+&#160;&#160;&#160;&#160;}<para/>
+}</code>
+
+<para>&#160;</para>
+
+<para>Then, from the Health Monitor tool, the user will need to
+enter the Player ID (e.g. &quot;SomeIDForMyPlayer&quot;) in order to be able to see
+your player's diagnostic information. </para>
+
+<para>If you don't want require users of the health monitor tool
+to type in an ID, you can also change the default player ID for the health
+monitor by creating your own html page that hosts the health monitor .xap file.
+Once you've done this, all you need to do is add the following HTML element to
+your HTML page:</para>
+
+<para>&lt;input type=&quot;hidden&quot;
+id=&quot;defaultChannelName&quot; value=&quot;SomeIDForMyPlayer&quot; /&gt;</para>
+
+<para>The HealthMonitor will detect this and update its default
+player ID/channel name.</para>
+
+
+
+
+  </content>
+</section>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

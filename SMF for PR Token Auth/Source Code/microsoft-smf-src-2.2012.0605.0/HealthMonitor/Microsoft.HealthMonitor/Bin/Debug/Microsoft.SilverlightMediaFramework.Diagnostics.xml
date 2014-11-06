@@ -1,0 +1,821 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Diagnostics</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase">
+            <summary>
+            Responsible for aggregating all of the sampled quality data
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.ISampleAgent">
+            <summary>
+            Provides an interface for a smooth streaming sample agent
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.ISampleAgent.ProcessEvent(Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent)">
+            <summary>
+            Called to give the agent an opportunity to use the smooth streaming event
+            </summary>
+            <param name="entry">The smooth streaming event to process</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.ISampleAgent.GetSamples(System.Int64)">
+            <summary>
+            Called periodically to give the agent an opportunity to return data
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.isPlayingVideo">
+            <summary>
+            Flag indicating whether or not the video is currently playing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.reportDataWhenDisabled">
+            <summary>
+            Indicates whether or not data should be returned while the video is not playing.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.LastUpdateTime">
+            <summary>
+            The time of the last update.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.sampleSizeAggregator">
+            <summary>
+            An aggregator purely used to keep track of video pause and resume events.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.ProcessEvent(Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent)">
+            <summary>
+            Accepts new entries for aggregating
+            </summary>
+            <param name="entry">The new smoothstreamingevent to process</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.GetSamples(System.Int64)">
+            <summary>
+            Returns all available samples. Only returns samples every SlidingWindowInterval.
+            </summary>
+            <param name="currentTicks">The current time</param>
+            <returns>An enumerable of SampleData results. Usually, this will only return none or one item.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.GetSampleData">
+            <summary>
+            Required abstract method for returning sample data. This is only called when the sliding window interval has elapsed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleAgentBase.SlidingWindowInterval">
+            <summary>
+            Interval at which aggregation occurs
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorAggregatedData">
+            <summary>
+            Contains information about a group of download errors. Info about the bitrate is not available.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData">
+            <summary>
+            Defines the base aggregation information that comes from an aggregation agent
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.SampleSizeMilliseconds">
+            <summary>
+            The sample size in milliseconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.MediaElementId">
+            <summary>
+            The media element ID (also cooresponds to the SSME.Name property)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.CurrentStreamUrl">
+            <summary>
+            The Url of the current stream
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.IsLive">
+            <summary>
+            A flag indicating whether or not the video position is currently at the live position
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.CurrentStreamId">
+            <summary>
+            A generated ID used to track the stream. This does not coorespond to anything in the manifest
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.CurrentClipId">
+            <summary>
+            A generated ID used to track the clip. This does not coorespond to anything in the manifest
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleData.EdgeIP">
+            <summary>
+            The edge server used to host the streaming video. Default is 255.255.255.255 and will only be updated if edge server detection rules are specified in the diagnostic config
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorAggregatedData.ChunkId">
+            <summary>
+            The index of the time stamp of the chunk
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorAggregatedData.StreamType">
+            <summary>
+            The stream type (e.g. audio or video)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorAggregatedData.StartTime">
+            <summary>
+            The timestamp of the chunk. Matches the timestamp that is part of the url for the chunk itself.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorAggregatedData.Count">
+            <summary>
+            The total number of download errors for the given chunk (across all bitrates) for a given sample.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules">
+            <summary>
+            Defines the rules used to retrieve info about the edge server and client IP.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.Load(System.Xml.XmlReader)">
+            <summary>
+            Loads a new instance of the EdgeServerRules class from Xml.
+            </summary>
+            <param name="reader"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.Domain">
+            <summary>
+            Serves as a key to know which rule to select based on the current stream's domain. Rule is selected via the expression: currentStreamUri.Host.EndsWith(ai.Domain)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.EdgeResolverUrlPattern">
+            <summary>
+            Provides the Url for the request. If baseUri is supplied to EdgeServerDataClient, it will server as a pattern and resolve to an absolute url via the expression: string.Format(EdgeResolverUrlPattern, baseUri.Host, baseUri.Port)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.EdgeResolverHeaders">
+            <summary>
+            An array of key value pairs to include in the request header. Array is expected to contain an even number of elements.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.ClientIPRegex">
+            <summary>
+            Supplies the regular expression to be used to find the client IP in either the response body or response header. Set to null to ignore.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.ClientIPHeader">
+            <summary>
+            Setting this will indicate that the specified response header includes the client IP (as opposed to the response body).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.EdgeRegex">
+            <summary>
+            Supplies the regular expression to be used to find the edge server in either the response body or response header. Set to null to ignore.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules.EdgeHeader">
+            <summary>
+            Setting this will indicate that the specified response header includes the edge server (as opposed to the response body).
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.QualityConfig">
+            <summary>
+            Responsible for indicating which quality data should be tracked and aggregated. Used to filter data that will not be used at the earliest possible moment to improve performance.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerResult">
+            <summary>
+            Contains the result of the edge server detection operation
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerResult.EdgeServer">
+            <summary>
+            The edge server address. This could be a domain name or IP address.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerResult.ClientIP">
+            <summary>
+            The Client IP as returned by the edge server dataclient.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerResultEventArgs">
+            <summary>
+            Contains the results of an async call to EdgeServerDataClient
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.DownloadErrorSampleAgent">
+            <summary>
+            Responsible for aggregating all of the http chunk download errors that occur and group them by stream type and chunk id (aka start time)
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient">
+            <summary>
+            Responsible for hitting another url to retrieve information about the edge server and client IP address.
+            Request is built and response is parsed according to rules defined in EdgeServerRules
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient.IpNA">
+            <summary>
+            Represents the default IP Address
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient.GetEdgeServerAsync(Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules,System.Uri)">
+            <summary>
+            Initiates the async request to retrieve edge server and client IP info.
+            </summary>
+            <param name="edgeServerRules">The rules to help define the request and how the response is parsed.</param>
+            <param name="baseUri">The base Uri optionally used to create the request Uri. Only used if a pattern is specified in EdgeServerRules.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient.BeginGetEdgeServer(Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerRules,System.Uri,System.AsyncCallback,System.Object)">
+            <summary>
+            Provides an async method to request to retrieve edge server and client IP info.
+            </summary>
+            <param name="edgeServerRules">The rules to help define the request and how the response is parsed.</param>
+            <param name="baseUri">The base Uri optionally used to create the request Uri. Only used if a pattern is specified in EdgeServerRules.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient.EndGetEdgeServer(System.IAsyncResult)">
+            <summary>
+            The call back used in combination with BeginGetEdgeServer
+            </summary>
+            <returns>The result of the edge server detection request.</returns>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.EdgeServerDataClient.GetEdgeServerCompleted">
+            <summary>
+            Notifies the caller that the async request to retrieve edge server info has collected
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig">
+            <summary>
+            This is the main configuration object used by the diagnostic component.
+            An instance of this object is required for the HealthMonitor class to instantiate.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.Load(System.Uri)">
+            <summary>
+            Creates an instance of the main diagnostic config object from a relative Uri
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.Load(System.Xml.XmlReader)">
+            <summary>
+            Creates an instance of the main diagnostic config object from an XmlReader
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.TracingConfig">
+            <summary>
+            Stores the information necessary for configuring the trace monitor.
+            The trace monitor is the module that polls information from SSME at a regular interval on a background thread as well as retrieves system information.
+            If using PIP, you should set this null for the instance of the HealthMonitor that is tracking the PIP
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.QualityConfig">
+            <summary>
+            Responsible for indicating which quality data should be tracked and aggregated. Used to filter data that will not be used at the earliest possible moment to improve performance.
+            Set to null to track all quality data.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.TrackQualitySnapshot">
+            <summary>
+            Indicates that quality snapshots should be taken and passed on via the HealthMonitor.ReportSnapshotData event.
+            Quality snapshots are only valuable for display of real time diag info and quality aggregated data should be used instead for logging to the server.
+            Quality snapshots are taken at the same interval as the TraceConfig.PollingInterval so performance can be improved by setting this to false.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.RecordTraceLogs">
+            <summary>
+            Indicates that the raw tracelogs should be passed on through the HealthMonitor.ReportTraceLogs event.
+            TraceLogs are generated very quickly and can easily generate thousands of them in a matter of minutes. You should therefore set this to false if you do not intend to use them.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.TrackDownloadErrors">
+            <summary>
+            Indicates that specifics should be tracked about download errors and reported via the HealthMonitor.ReportAggregatedData event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.TrackQuality">
+            <summary>
+            Indicates that quality data should be sampled, aggregated and reported via the HealthMonitor.ReportAggregatedData event.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.LatencyAlertThreshold">
+            <summary>
+            Indicates the latency in KBps that needs to be reached before a LatencyAlert is generated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.EdgeServerRuleCollection">
+            <summary>
+            Defines the rules used to retrieve info about the edge server and client IP.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.AggregationInterval">
+            <summary>
+            Indicates the interval that quality data should be generated. Default is every 30 seconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.DiagnosticsConfig.SnapshotInterval">
+            <summary>
+            Indicates the interval that quality snapshot data should be generated. Default is every seconds.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.MarkerEvent">
+            <summary>
+            Base class for start/stop markers. Used in aggregation.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent">
+            <summary>
+            This is the primary class responsible for storing relevant events that occur during playback.
+            These events are sometimes important by themselves and at other times are expected to be aggregated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Ticks">
+            <summary>
+            The datetime (in ticks) that the event occurred
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Value">
+            <summary>
+            The value of the event. The meaning depends on the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Data1">
+            <summary>
+            Used to store additional data about the event. The meaning depends on the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Data2">
+            <summary>
+            Used to store additional data about the event. The meaning depends on the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Data3">
+            <summary>
+            Used to store additional data about the event. The meaning depends on the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.Message">
+            <summary>
+            Used to store text data about the event. The meaning depends on the event type.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.EventType">
+            <summary>
+            The EventType
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.MediaElementId">
+            <summary>
+            The MediaElementId that the event is associated with. This maps to SSME.Name
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.IsLive">
+            <summary>
+            Flag indicating that the event occured in live mode.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.StreamId">
+            <summary>
+            A generated Id for the stream that was playing when the event occurred.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent.ClipId">
+            <summary>
+            A generated Id for the clip that was playing when the event occurred.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.MarkerEventStart">
+            <summary>
+            Indicates the video has resumed
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.MarkerEventStop">
+            <summary>
+            Indicates the video has stopped/paused
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent">
+            <summary>
+            The gateway for getting sampled data (aggregated and snapshots).
+            Relies on individual sampling agents (ISampleAgent) to do the real work.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.GetRunningDuration">
+            <summary>
+            Returns the total duration that the video has been playing (minus the paused and stopped periods of time).
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.GetTotalDuration">
+            <summary>
+            Returns the total duration since the start of the video (doesn't exclude paused or stopped time).
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.ProcessEvent(Microsoft.SilverlightMediaFramework.Diagnostics.SmoothStreamingEvent)">
+            <summary>
+            Add a new entry to the proper aggregator so that it can be tracked and evaluated.
+            </summary>
+            <param name="entry"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.GetSampleData">
+            <summary>
+            Creates objects that contain aggregated data values.
+            </summary>
+            <returns>An enumerable of SampleData objects</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.IsEnabled">
+            <summary>
+            Used to disable or enable the agent. This affects how aggregated data is calculated as well as the sample size.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SamplingAgent.Agents">
+            <summary>
+            Returns the list of sample agents
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.QualitySnapshotAgent">
+            <summary>
+            A class derived from QualitySampleAgent responsible for returning quality snapshots. (indicated by QualityData.IsSnapshot = true)
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.QualitySampleAgent">
+            <summary>
+            Responsible for aggregating all of the sampled quality data
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.QualityAggregationAgent">
+            <summary>
+            A class derived from QualitySampleAgent responsible for returning quality aggregations as opposed to snapshots. (indicated by QualityData.IsSnapshot = false)
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SimpleEventArgs`1">
+            <summary>
+            Wraps a single object in an event args.
+            </summary>
+            <typeparam name="T">The type of object that the event args will wrap</typeparam>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor">
+            <summary>
+            The primary class responsible for connecting to an instance of SSME and reporting diagnostic information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.Flush">
+            <summary>
+            Forces all events in the queue to get flushed.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.GetMediaElementId">
+            <summary>
+            Forces a trace log to occur and then analyzes the MediaElementId used. This is only necessary if SSME.Name is not set.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.TraceMonitor_Pulse">
+            <summary>
+            The callback from the tracemonitor at it regular polling interval (always running on the UI thread)
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.TraceMonitor_PulseBackground">
+            <summary>
+            The callback from the tracemonitor at it regular polling interval (always running on a background thread)
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.Attach(Microsoft.Web.Media.SmoothStreaming.SmoothStreamingMediaElement)">
+            <summary>
+            Connects a SmoothStreamingMediaElement that needs to be monitored
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.Detach">
+            <summary>
+            Disconnects the SmoothStreamingMediaElement that was passed to the Attach method
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.VideoSessionId">
+            <summary>
+            A generated ID used for the life of the HealthMonitor
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.Configuration">
+            <summary>
+            The Configuration data used to drive the HealthMonitor
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.LatencyAlert">
+            <summary>
+            Indicates that the Latency has passed the threshold supplied in the config
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.EventCreated">
+            <summary>
+            Provides all simple diagnostic events.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.ReportSampledData">
+            <summary>
+            Provides aggregated data as it is available.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.ReportTraceLogs">
+            <summary>
+            Provides the low level SSME trace logs. This is normally used only for diagnostic purposes.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.ClientIP">
+            <summary>
+            The client IP. This will be IPAddress.None (255.255.255.255) if no EdgeServerRules are provided in the config.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.EdgeServer">
+            <summary>
+            The edge server used to host the current manifest. This will be 255.255.255.255 if no EdgeServerRules are provided in the config.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.EdgeServerCompleted">
+            <summary>
+            Indicates that the edge server and client IP are now ready for consumption... or no attempt is being made to detect them.
+            If EdgeServerRules are supplied in the config, a video will start playback first and only after a subsequent async request to get this info completes, will the event fire.
+            If no EdgeServerRules are provided in the config, this event will fire immediately when the manifest is loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.IsEdgeServerComplete">
+            <summary>
+            A flag indicating whether or not the edge server detection process has completed (or is no attempt was made to detect it).
+            If EdgeServerRules are supplied in the config, a video will start playback first and only after a subsequent async request to get this info completes, will this flag be set.
+            If no EdgeServerRules are provided in the config, this flag will be set immediately when the manifest is loaded.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.VideoSessionRunningTime">
+            <summary>
+            Returns the total duration that the video has been playing (minus the paused and stopped periods of time).
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.HealthMonitor.VideoSessionTotalTime">
+            <summary>
+            Returns the total duration since the start of the video (doesn't exclude paused or stopped time).
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator">
+            <summary>
+            Tracks a data sample (SmoothStreamingEvent objects)
+            Capable of calculating aggregated values for the data
+            Contains logic for excluding non-tracked periods of time within the sampled data. For example, if the video was paused half way through the sample, that time will not be factored into weighted averages.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetAverage">
+            <summary>
+            The raw average value of the items in the queue (total/count)
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetMax">
+            <summary>
+            The max value of the items in the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetMin">
+            <summary>
+            The min value of the items in the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetCount">
+            <summary>
+            The total number of items in the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetSum">
+            <summary>
+            The sum of items in the queue
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetAverageOverTime">
+            <summary>
+            Gets a average of the event values weighted by their timespan.
+            Weighted values are weighted by the timespan between itself and the next event.
+            Time in between stop and start markers is not counted.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetTotalTime(System.Predicate{System.Double})">
+            <summary>
+            Gets the total time that an event occurred by adding future timespans (the time between itself and the next event)
+            </summary>
+            <param name="condition">A predicate for determining which values to factor into the result</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.GetWindowSize">
+            <summary>
+            Gets the total timespan of the sample window (excluding periods of time where the video was paused or stopped)
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.Update(System.Int64)">
+            <summary>
+            Refreshes the queue by causing items that were created longer ago than the SlidingWindowTicks property to get dropped
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.SlidingWindowTicks">
+            <summary>
+            The total number of ticks that should be represented in the queue
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.SampleEventAggregator.MaxEntries">
+            <summary>
+            The maximum number of entries that can be contained in the queue
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData">
+            <summary>
+            Contains all the aggregated values for the sampled quality data
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.IsSnapshot">
+            <summary>
+            Indicates whether or not the sampling is a snapshot or the full aggregation window
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.DroppedFrames">
+            <summary>
+            Average dropped frames per second
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.RenderedFrames">
+            <summary>
+            Average rendered frames per second
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.ProcessCpuLoad">
+            <summary>
+            The average CPU load for the current process (e.g. 15 = 15%)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.SystemCpuLoad">
+            <summary>
+            The average CPU load for the entire system (e.g. 15 = 15%)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.Bitrate">
+            <summary>
+            The average bitrate currently being played
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.PerceivedBandwidth">
+            <summary>
+            The average perceived bandwidth in bytes per second
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.VideoBufferSize">
+            <summary>
+            The average size of the video buffer in bytes
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.AudioBufferSize">
+            <summary>
+            The average size of the audio buffer in bytes
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.BufferingMilliseconds">
+            <summary>
+            The total duration in milliseconds that the player was buffering
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.VideoDownloadLatencyMilliseconds">
+            <summary>
+            The average latency time for video chunks in milliseconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.AudioDownloadLatencyMilliseconds">
+            <summary>
+            The average latency time for audio chunks in milliseconds
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.BitrateMax">
+            <summary>
+            The max bitrate achieved in the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.BitrateMaxMilliseconds">
+            <summary>
+            The total amount of time that the max bitrate was achieved within the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.BitrateChangeCount">
+            <summary>
+            The total times that the bitrate changed within the current sampling period
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.DvrOperationCount">
+            <summary>
+            The total times that a DVR operation occured
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.FullScreenChangeCount">
+            <summary>
+            The total times that the video came in or out of full screen mode
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.QualityData.HttpErrorCount">
+            <summary>
+            The total number of HTTP errors
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.TraceDataClient">
+            <summary>
+            Responsible for parsing the SSME TraceEntries and turning them into SmoothStreamingEvent objects
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceDataClient.ParseTraceEntries(Microsoft.Web.Media.Diagnostics.TraceEntry[])">
+            <summary>
+            Processes trace entries from the SSME and raises the EventCreated event for each relevant one
+            </summary>
+            <param name="entries">An array of SSME trace events to process</param>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor">
+            <summary>
+            Static class responsible for polling trace entries from SSME, reporting system analytics, and distilling the information into SmoothStreamingEvent objects.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.Init(Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig)">
+            <summary>
+            Required to initialize the TraceMonitor. Once this is called you can call .Start()
+            </summary>
+            <param name="Config">Required information about how the trace monitor should operate.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.Start">
+            <summary>
+            Used to startup the trace monitor.
+            This method is thread-safe.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.Stop">
+            <summary>
+            Used to stop the trace monitor. A counter is used to keep track of when the trace monitor is no longer being used.
+            This method is thread-safe.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.PeekTraceEntries(System.Action)">
+            <summary>
+            Used to peek at the raw trace entries without actually removing them.
+            This method is thread-safe
+            </summary>
+            <param name="BeforePeek">Optional thread-safe action to run before the peek occurs.</param>
+            <returns>All SSME tracelogs currently in the queue.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.GenerateStreamIdentifier">
+            <summary>
+            Creates a new stream ID by incrementing a counter starting at 1.
+            This method is thread-safe
+            </summary>
+            <returns>The new stream ID.</returns>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.ReportTraceLog">
+            <summary>
+            Reports the actual trace logs as they are processed.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.ReportSystemEvent">
+            <summary>
+            Reports system information the is periodically retrieved.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.ReportTraceEvent">
+            <summary>
+            Reports relevant trace information that has been distilled into a SmoothStreamingEvent object.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.Pulse">
+            <summary>
+            Provides a callback on the UI thread that occurs at the regular polling interval.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Diagnostics.TraceMonitor.PulseBackground">
+            <summary>
+            Provides a callback on the background thread that occurs at the regular polling interval.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig">
+            <summary>
+            Stores the information necessary for configuring the trace monitor.
+            The trace monitor is the module that polls information from SSME at a regular interval on a background thread as well as retrieves system information.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig.Load(System.Xml.XmlReader)">
+            <summary>
+            Creates an instance of the TracingConfig from an Xml file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig.TracingConfigFile">
+            <summary>
+            The relative Uri that contains the information used to configure the SSME tracing feature.
+            Default tracing config is provided if this is set not set.
+            See http://msdn.microsoft.com/en-us/library/ee532534(v=VS.90).aspx for more information.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig.PollingInterval">
+            <summary>
+            This is the polling interval used to retrieve info from the SSME trace entry queue.
+            Default value is 2 seconds.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Diagnostics.TracingConfig.RecordCpuLoad">
+            <summary>
+            Indicates whether or not Cpu information should be gathered at the regular polling interval.
+            Default is true. Set to False if you do not need this information and need to improve performance.
+            </summary>
+        </member>
+    </members>
+</doc>

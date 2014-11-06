@@ -1,0 +1,154 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:localcontrols="clr-namespace:Microsoft.HealthMonitor.Controls">
+
+    <Style TargetType="localcontrols:SlidingTabs">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="localcontrols:SlidingTabs">
+
+                    <Grid x:Name="LayoutRoot">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="TabStates">
+                                <VisualState x:Name="Select1">
+                                    <Storyboard>
+                                        <DoubleAnimation To="700" Duration="00:00:00.5" Storyboard.TargetName="Tab1" Storyboard.TargetProperty="Width">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation To="100" Duration="00:00:00.5" Storyboard.TargetName="Tab2" Storyboard.TargetProperty="Width">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <DoubleAnimation To="1" Duration="00:00:00.5" Storyboard.TargetName="Tab1_Selected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab1_Selected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation To="0" Duration="00:00:00.5" Storyboard.TargetName="Tab1_Unselected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab1_Unselected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00.5">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimation To="1" Duration="00:00:00.5" Storyboard.TargetName="Tab2_Unselected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab2_Unselected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation To="0" Duration="00:00:00.5" Storyboard.TargetName="Tab2_Selected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab2_Selected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00.5">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Select2">
+                                    <Storyboard>
+                                        <DoubleAnimation To="100" Duration="00:00:00.5" Storyboard.TargetName="Tab1" Storyboard.TargetProperty="Width">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                        <DoubleAnimation To="700" Duration="00:00:00.5" Storyboard.TargetName="Tab2" Storyboard.TargetProperty="Width">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+
+                                        <DoubleAnimation To="1" Duration="00:00:00.5" Storyboard.TargetName="Tab2_Selected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab2_Selected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation To="0" Duration="00:00:00.5" Storyboard.TargetName="Tab2_Unselected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab2_Unselected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00.5">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+
+                                        <DoubleAnimation To="1" Duration="00:00:00.5" Storyboard.TargetName="Tab1_Unselected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab1_Unselected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <DoubleAnimation To="0" Duration="00:00:00.5" Storyboard.TargetName="Tab1_Selected" Storyboard.TargetProperty="Opacity" />
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="Tab1_Selected" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <ObjectAnimationUsingKeyFrames.KeyFrames>
+                                                <DiscreteObjectKeyFrame KeyTime="00:00:00.5">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames.KeyFrames>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Grid x:Name="Tab1">
+                                <ContentPresenter x:Name="Tab1_Selected" Content="{TemplateBinding Tab1Content}" />
+                                <Grid x:Name="Tab1_Unselected" Opacity="0">
+                                    <Button x:Name="Button1" Style="{StaticResource FlatButton}">
+                                        <ContentPresenter Content="{TemplateBinding Button1Content}" />
+                                    </Button>
+                                </Grid>
+                            </Grid>
+
+                            <Grid x:Name="Tab2">
+                                <ContentPresenter x:Name="Tab2_Selected" Content="{TemplateBinding Tab2Content}" Opacity="0" />
+                                <Grid x:Name="Tab2_Unselected">
+                                    <Button x:Name="Button2" Style="{StaticResource FlatButton}">
+                                        <ContentPresenter Content="{TemplateBinding Button2Content}" />
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </StackPanel>
+                    </Grid>
+
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

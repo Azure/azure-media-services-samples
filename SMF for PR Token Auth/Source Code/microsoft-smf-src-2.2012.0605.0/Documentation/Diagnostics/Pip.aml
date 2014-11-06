@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="f5dc6c34-9d15-4591-8248-2a638aa102dc" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+<para>Each instance of the SMFPlayer can be tracked separately. If
+you are using multiple instances of the SMFPlayer to support PIP playback, you
+should provide two separate config files (one for each instance). However, the
+TraceMonitor section within the config file is shared between multiple
+instances. Therefore, you should only set this in the primary SMFPlayer's
+config file and remove it for PIP instances.</para>
+    </introduction>
+
+<section>
+  <title>PIP (picture in picture) considerations</title>
+  <content>
+
+<para>To indentify which logs belong to which
+instance of SMFPlayer, you can add additional data to all logs generated.
+Simply use the AdditionalData node in the config file to hardcode in a name for
+each player. For example, the main SMFPlayer might have the following in the
+config file:</para>
+
+<code language="none" title=" ">&lt;AdditionalData&gt;player=main&lt;/AdditionalData&gt;</code>
+
+<para>The PIP instance of the SMFPlayer would have it's own config file with the following in it's AdditionalData section:</para>
+
+<code language="none" title=" ">&lt;AdditionalData&gt;player=pip&lt;/AdditionalData&gt;</code>
+
+<para>Note: For multiple name value pairs, use comma delimiting.</para>
+
+  </content>
+</section>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

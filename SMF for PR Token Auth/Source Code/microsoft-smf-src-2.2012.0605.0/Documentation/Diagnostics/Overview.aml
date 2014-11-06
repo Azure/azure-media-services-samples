@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="a4a0c02a-7014-4957-b22d-0df1bab0ed4a" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>Included with the Silverlight Media Framework is a new plug-in
+to help efficiently acquire, aggregate and expose smooth streaming diagnostic
+information such as bit-rate, chunk download errors, CPU utilization, buffering
+time and frames per second. After this information is collected and aggregated,
+it can be filtered and funneled off to another plug-in responsible for logging
+the data. These logging plug-ins can easily be built to allow the data to be
+sent to a server for tracking health across all users or consumed by the client for purposes
+of monitoring and visualizing player health.</para>
+    </introduction>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

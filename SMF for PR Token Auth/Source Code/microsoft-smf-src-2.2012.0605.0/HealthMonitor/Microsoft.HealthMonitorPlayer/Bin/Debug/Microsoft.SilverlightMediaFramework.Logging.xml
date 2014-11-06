@@ -1,0 +1,784 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.SilverlightMediaFramework.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Batch">
+            <summary>
+            A container for a set of logs. Includes data of it's own.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LogBase">
+            <summary>
+            The base class for all logs. The goal of this class is to store the dictionary that holds the key value pairs and provide a set of static methods to help serialize and deserialize values.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.GetPrimativeValue``1(System.String)">
+            <summary>
+            Retrieves the value for the specified key and converts it to the appropriate type
+            </summary>
+            <typeparam name="T">The datatype of the value you expect to receive</typeparam>
+            <param name="Name">The key of the value</param>
+            <returns>The value itself (casted back to the original type)</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.SetPrimativeValue``1(System.String,``0)">
+            <summary>
+            Sets the value for a given key and converts it to a string for storage.
+            </summary>
+            <typeparam name="T">The datatype of the value you expect to receive</typeparam>
+            <param name="Name">The key of the value</param>
+            <param name="Value">The value you which to store</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.GetValue``1(System.String)">
+            <summary>
+            Retrieves a primitive value for the specified key and converts it to the appropriate nullable type.
+            </summary>
+            <typeparam name="T">The datatype of the value you expect to receive</typeparam>
+            <param name="Name">The key of the value</param>
+            <returns>The value itself (casted back to the original type)</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.SetValue``1(System.String,System.Nullable{``0})">
+            <summary>
+            Sets a primitive value for a given key.
+            </summary>
+            <typeparam name="T">The datatype of the value you are setting</typeparam>
+            <param name="Name">The key associated with the value</param>
+            <param name="Value">The value you which to store</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.GetRefValue``1(System.String)">
+            <summary>
+            Retrieves a reference value for the specified key and converts it to the appropriate type. Null is returned if the value does not exist
+            </summary>
+            <typeparam name="T">The datatype of the value you expect to receive</typeparam>
+            <param name="Name">The key of the value</param>
+            <returns>The value itself (casted back to the original type)</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.SetRefValue``1(System.String,``0)">
+            <summary>
+            Sets a reference type value for a given key. Pass null to remove the value from the underlying dictionary.
+            </summary>
+            <typeparam name="T">The datatype of the value you are setting</typeparam>
+            <param name="Name">The key associated with the value</param>
+            <param name="Value">The value you which to store</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.DeserializeData(System.Xml.XmlReader,Microsoft.SilverlightMediaFramework.Logging.LogBase)">
+            <summary>
+            Deserializes the log from an xml reader
+            </summary>
+            <param name="xmlReader">XmlReader containing the log info</param>
+            <param name="logBase">The log object you would like to populate</param>
+            <returns>Indicates whether or not it was successful. If no data is found in the xml, it will return false</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LogBase.SerializeData(System.Xml.XmlWriter)">
+            <summary>
+            Serializes the current log to Xml
+            </summary>
+            <param name="xmlWriter">The XmlWriter object you would like to store the log's values in</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogBase.Type">
+            <summary>
+            The log type. All logs must have a unique log type. (e.g. VideoStart, VideoEnd)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogBase.Data">
+            <summary>
+            The underlying data set for all log values. Values are always stored as strings in order to support easy serialization and deserialization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Batch.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Helper method for default serialization
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Batch.Deserialize(System.Xml.XmlReader)">
+            <summary>
+             Helper method to deserialize a batch serailized via the default serialization
+            </summary>
+            <returns>The deserialized batch</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.ApplicationName">
+            <summary>
+            The name of the client application. Pulled from the config file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.ApplicationVersion">
+            <summary>
+            The version of the client application. Pulled from the config file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.ApplicationId">
+            <summary>
+            A unique ID for the client application. Pulled from the config file.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.SessionId">
+            <summary>
+            The session ID. This is randomly generated for each session of the app.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.InstanceId">
+            <summary>
+            And instance ID that is persisted in isolated storage to help group users across multiple sessions.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.BatchId">
+            <summary>
+            A generated, unique ID for the batch.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.TimeStamp">
+            <summary>
+            The timestamp of the batch. This can be calibrated to server time if LogBatchAsync returns a LogBatchResponse containing a time offset for the server.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.LogsDropped">
+            <summary>
+            The total number of logs dropped because of log failures in the current session
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.LogsSent">
+            <summary>
+            The total number of logs sent in the current session
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.TotalFailures">
+            <summary>
+            The total number of failures in the current session
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Batch.Logs">
+            <summary>
+            The actual logs
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.BatchEventArgs">
+            <summary>
+            EventArgs used to return a batch object.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig">
+            <summary>
+            Configuration object to control queueing and batching behavior for the special logagent: BatchingLogAgent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.ApplicationId">
+            <summary>
+            A GUID to identify the current application
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.ApplicationName">
+            <summary>
+            The application name
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.ApplicationVersion">
+            <summary>
+            The application version.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxQueueLength">
+            <summary>
+            The max size of the queue. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxBatchLength">
+            <summary>
+            The max number of logs to pull from the queue and put in the batch. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxSendErrors">
+            <summary>
+            The max number of errors before the agent will get disabled. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxSendErrorsThrottled">
+            <summary>
+            The max number of errors before the agent will get throttled. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxSessionLogs">
+            <summary>
+            The max number of logs for the entire session. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MaxRetries">
+            <summary>
+            The max number of retries before dropping the batch and moving onto the next set of logs. This is useful if there is a chance that a particular log is causing the failure. If null, no limit is enforced.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.QueuePollingInterval">
+            <summary>
+            The interval it which the queue should be processed.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.QueuePollingIntervalThrottled">
+            <summary>
+            The interval for processing the queue when in throttled mode. This kicks in when MaxSendErrorsThrottled has been reached.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.LoggingEnabled">
+            <summary>
+            Setting to false will cause the agent to not run. This is a way to impose a kill switch via configuration.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.MappingRules">
+            <summary>
+            The mapping rules for changing the log key value pairs to something else before passing onto the IBatchAgent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingConfig.BatchAgent">
+            <summary>
+            The agent that batch is ultimately handed off to. Usually the batch is sent to a server.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent">
+            <summary>
+            A special kind of LogAgent that is capable of batching logs.
+            It will queue all logs, polling from that queue on a separate thread, and batch the results.
+            Ultimately, the logs (wrapped in a Batch object) are passed onto an implementation of IBatchAgent.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.ILogAgent">
+            <summary>
+            LogAgents handle logs sent to the logging service
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.Log(Microsoft.SilverlightMediaFramework.Logging.Log)">
+            <summary>
+            Logs are passed to this method
+            </summary>
+            <param name="log">The actual log object</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.BroadcastException(System.Exception)">
+            <summary>
+            Provides a handler for dealing with exceptions that occur due to the logging process.
+            Note, this is different from unhandled exceptions that occur in your application. 
+            UEs are turned into ApplicationExceptionLog objects and passed to the Log function (assuming this is enabled in the config).
+            </summary>
+            <param name="exception">The exception that was trapped.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.StartSession">
+            <summary>
+            Starts the logging session.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.StopSession">
+            <summary>
+            Stops the logging session.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.IsSessionStarted">
+            <summary>
+            Indicates that the session is active.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.ILogAgent.Filter">
+            <summary>
+            Defined which logs will be passed to the Log method. Optional, return null if no filtering is to occur.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BroadcastException(System.Exception)">
+            <summary>
+            Used for debugging. All ignorable exceptions that occur in the process of logging are sent here.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.StartSession">
+            <summary>
+            Used to spin up the agent.
+            </summary>
+            <returns>Indicates success</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.StopSession">
+            <summary>
+            Stops the agent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.Log(Microsoft.SilverlightMediaFramework.Logging.Log)">
+            <summary>
+            Adds a log to the queue
+            </summary>
+            <param name="log">The new log being logged. This has already passed the filter condition if one was specified in the MappingPolicy.</param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.LoadConfig">
+            <summary>
+            Causes the ConfigUri to be loaded.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BatchException">
+            <summary>
+            Fired when a handled exception occurs
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BatchSending">
+            <summary>
+            Fired before the batch is sent
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BatchSendSuccess">
+            <summary>
+            Fired after the batch has been successfully sent
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BatchSendFailed">
+            <summary>
+            Fired after the batch failed to send
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalLogsDroppedChanged">
+            <summary>
+            Fired when more logs have been dropped
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.IsSessionStarted">
+            <summary>
+            Indicates that the agent is currently running
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.SessionId">
+            <summary>
+            The current generated session ID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.SessionStartTime">
+            <summary>
+            The Timestamp of when the session started
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.ServerTimeOffset">
+            <summary>
+            The server time offset (used to correct the local time so the server can get accurate time)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.SessionDuration">
+            <summary>
+            The current duration of the session
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.ConfigUri">
+            <summary>
+            The Uri of the config file to load once the session starts. If the agent is already running an exception will be thrown.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.Configuration">
+            <summary>
+            The config object to use. It is not recommended you change this while the session is running.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.State">
+            <summary>
+            The state of the agent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalLogsDropped">
+            <summary>
+            The total number of dropped logs
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalLogsSent">
+            <summary>
+            The total number of logs sent
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalLogsQueued">
+            <summary>
+            The total number of logs currently in the queue
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalBatchesSent">
+            <summary>
+            The total number of batches sent
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.TotalBatchesFailed">
+            <summary>
+            The total number of batches that failed to get sent.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.Filter">
+            <summary>
+            The filter used by the LoggingService to know which logs to pass to the .Log function.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.BatchingLogAgent.BatchingLogAgentStates">
+            <summary>
+            The possible states for the log agent.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Data.InstanceDataClient">
+            <summary>
+            Loads and saves settings to isolated storage
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Data.InstanceDataClient.InstanceId">
+            <summary>
+            A unique GUID persisted and retrieved from isolated storage. Useful for grouping clients across multiple sessions.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.BatchingExceptionEventArgs">
+            <summary>
+            EventArgs used to return an exception that occured during batching.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.IBatchAgent">
+            <summary>
+            The interface that must be implemented in order to receive batched logs
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.IBatchAgent.LogBatchAsync(Microsoft.SilverlightMediaFramework.Logging.Batch)">
+            <summary>
+            Called when a batch of logs are ready to be logged.
+            </summary>
+            <param name="batch">The batch to be logged</param>
+            <returns>A bool indicating whether an async request is in progress. Only return false if there was an immediate failure.</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LogBatchCompletedEventArgs">
+            <summary>
+            EventArg used to indicate the status of the request.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogBatchCompletedEventArgs.Error">
+            <summary>
+            Set to null if the async operation was successful.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogBatchCompletedEventArgs.Result">
+            <summary>
+            The result from a successful async batch log operation.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogBatchCompletedEventArgs.Batch">
+            <summary>
+            The original batch that was logged.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.ILogFilter">
+            <summary>
+            Interface to help determine which logs should be filtered before being passed to a LogAgent.
+            Each LogAgent can optionally return an object of this type to control filtering.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.ILogFilter.IncludeLog(Microsoft.SilverlightMediaFramework.Logging.LogBase)">
+            <summary>
+            Indicates whether or not the log should be filtered or included and therefore sent to the log agent.
+            </summary>
+            <param name="Log">The log in question.</param>
+            <returns>True indicates that the log should be included. False, the log will not be passed to the LogAgent.</returns>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Log">
+            <summary>
+            This is the base class for all logs. Contains only the bare minimum set of properties.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Log.CastLog``1">
+            <summary>
+            Casts a log of one type to another. Very useful for deserialization
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Log.CreateLog``1(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            Static function to create a log of a specific type from a dictionary of data. Useful for deserialization.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Log.Deserialize(System.Xml.XmlReader)">
+            <summary>
+            Deserializes a log from Xml. The type of log created will always be Log. To cast after the fact, call CreateLog or CastLog.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Log.Serialize(System.Xml.XmlWriter)">
+            <summary>
+            Serializes a log to Xml.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Log.LogId">
+            <summary>
+            The ID of the log. This is a uniquely generated GUID.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Log.RelatedLogId">
+            <summary>
+            Optional. The ID of a related log. (e.g. the ID from the VideoStartLog might set here for the VideoEndLog)
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Log.TimeOffset">
+            <summary>
+            The time that has ellapsed since the logging session began.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Log.TimeStamp">
+            <summary>
+            The time that the log was created or when the event that it represents happened.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Log.StartupParam">
+            <summary>
+            Optional. A placeholder for an application startup parameter.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LogBatchResult">
+            <summary>
+            The result from a successful async batch log operation.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Logging.LogBatchResult.IsEnabled">
+            <summary>
+            Indicates that the main log agent should continue to run. This is essentiall a kill switch.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Logging.LogBatchResult.QueuePollingInterval">
+            <summary>
+            The new polling interval. Overrides the one specified in the config.
+            </summary>
+        </member>
+        <member name="F:Microsoft.SilverlightMediaFramework.Logging.LogBatchResult.ServerTime">
+            <summary>
+            The server time. Used to calibrate the timestamp sent on the logs.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig">
+            <summary>
+            Used to configure the behavior of the logging component
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig.Load(System.Xml.XmlReader)">
+            <summary>
+            Loads the configuration from Xml.
+            </summary>
+            <param name="reader">An XmlReader containing your configuration data.</param>
+            <returns>A new instance of a LoggingConfig object.</returns>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig.QueryStringParam">
+            <summary>
+            Contains the querystring param that should be added to each log. Optional.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig.LogUnhandledExceptions">
+            <summary>
+            Causes all unhandled exceptions to be logged. True by default.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig.PreventUnhandledExceptions">
+            <summary>
+            Causes unhandled exceptions to be 'handled' and therefore not let other observers know about them. This is false by default but should be set to true if you do not have your own global unhandled exception handler.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingConfig.MaxExceptionLength">
+            <summary>
+            Truncates exceptions to this maximum length. Set to null to indicate no truncation should occur. The default is 2048.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LoggingService">
+            <summary>
+            The main logging gateway. All logs are passed to this module, where they are then filtered and distributed to subsequent logging agents.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingService.Log(Microsoft.SilverlightMediaFramework.Logging.Log)">
+            <summary>
+            Logs a log object by sending it onto the appropriate log agents. 
+            Each agent can specify filtering rules to help determine if it is interested in the specified log. 
+            </summary>
+            <param name="log"></param>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingService.StartSession">
+            <summary>
+            Method used to start the logging instance. This will get called automatically when the logging service is created and only needs to be called again if the session was stopped.
+            </summary>
+            <returns>Indicates success</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingService.StopSession">
+            <summary>
+            Stops the logging session.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingService.BroadcastException(System.Exception)">
+            <summary>
+            Broadcasts an exception. This is passed onto each log agent and but is not necessarily turned into a log object.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.LoggingService.LogException(System.Exception,System.String)">
+            <summary>
+            Logs an exception. If UEs are to be logged, this will automatically be called internally.
+            </summary>
+            <param name="exception">The exception object to be logged</param>
+            <param name="ApplicationArea">The area of the application that the exception occurred in.</param>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.IsEnabled">
+            <summary>
+            Enables or disables the logging service.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.LoggingService.StartingSession">
+            <summary>
+            Indicates he session has started.
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.LoggingService.LogReceived">
+            <summary>
+            Fired whenever a new log is received.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.Configuration">
+            <summary>
+            Configuration required for the logging service to operate.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.StartupParam">
+            <summary>
+            Contains a value that will automatically be added to each log. The value is taken from the querystring.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.Current">
+            <summary>
+            The current instance of the logging service. This is the only way to create and access the logging service to ensure only one exists.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.Agents">
+            <summary>
+            The collection of logging agents that are responsible for actually handling the individual logs.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LoggingService.IsSessionStarted">
+            <summary>
+            Flag indicating that the logging session has started.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.LogReceivedEventArgs">
+            <summary>
+            Used by SimpleLogAgent to provide access to relay logs sent to it
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.LogReceivedEventArgs.Log">
+            <summary>
+            The log object that has been logged.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Logs.ApplicationErrorLog">
+            <summary>
+            Contains information about unhandled exceptions. To enable you must set LoggingConfig.LogUnhandledExceptions = true.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Logs.ApplicationErrorLog.MaxExceptionLength">
+            <summary>
+            The max length that Exception.ToString() can be. If greater, it will be truncated.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Logs.ApplicationErrorLog.ApplicationArea">
+            <summary>
+            The area of the application that the exception occured in. This allows you to tag the log with custom info about the exception.
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Logs.ApplicationErrorLog.Message">
+            <summary>
+            The actual exception message being logged. This will be truncated to MaxExceptionLength if it set.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Logs.LogTypes">
+            <summary>
+            Constants used for the log type of the base logs defined in the logging service
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Logs.LogAttributes">
+            <summary>
+            Constants used for serialization of the base log types.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Logs.BatchAttributes">
+            <summary>
+            Constants used serializaiton of the batch
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Logs.SessionStartLog">
+            <summary>
+            The logging session has started
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Mapping.MappingRules">
+            <summary>
+            Stores the rules for how to map key value pairs.
+            Also implements methods to do the mappings.
+            Also implements IFilter and uses these rules to tell the LoggingService which logs to filter out before they are passed onto the BatchingLogAgent.
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Mapping.MappingRules.IncludeLog(Microsoft.SilverlightMediaFramework.Logging.LogBase)">
+            <summary>
+            Uses the rules to determine which logs to filter.
+            </summary>
+            <param name="Log">The log that is going to be logged.</param>
+            <returns>True indicates the log should be logged and not filtered.</returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Mapping.MappingRules.TryMap(Microsoft.SilverlightMediaFramework.Logging.LogBase,System.Collections.Generic.IDictionary{System.String,System.String}@)">
+            <summary>
+            Attempts to map a dictionary using the LogMappings
+            </summary>
+            <param name="Input">The log to map</param>
+            <param name="Output">A dictionary of mapped key value pairs</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.Mapping.MappingRules.Load(System.Xml.XmlReader)">
+            <summary>
+            Helper method to deserialize mapping rules form xml
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.Mapping.MappingRules.LogMappingsRules">
+            <summary>
+            A dictionary of mappings.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Mapping.LogMappings">
+            <summary>
+            Contains the mapping rules for an individual log type
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Mapping.LogMappingBase">
+            <summary>
+            Contains the list of key value pair mappings. This is used as both a base class for LogMapping (what a log uses to map its values) and as the actual class for batch mappings.
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.Mapping.KeyValuePairMapping">
+            <summary>
+            The mapping rule for an individual key value pair
+            </summary>
+        </member>
+        <member name="M:Microsoft.SilverlightMediaFramework.Logging.QueueManager.Dispose">
+            <summary>
+            Cleans up the queue manager
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.QueueManager.BatchSending">
+            <summary>
+            Batch is being sent to BatchAgent
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.QueueManager.BatchSendSuccess">
+            <summary>
+            Batch was successfully sent via BatchAgent
+            </summary>
+        </member>
+        <member name="E:Microsoft.SilverlightMediaFramework.Logging.QueueManager.BatchSendFailed">
+            <summary>
+            Batch failed to send
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.QueueManager.FailedSendCount">
+            <summary>
+            The total number of send failures
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.QueueManager.State">
+            <summary>
+            The state of the queue manager
+            </summary>
+        </member>
+        <member name="P:Microsoft.SilverlightMediaFramework.Logging.QueueManager.SendCount">
+            <summary>
+            The total number of batches sent
+            </summary>
+        </member>
+        <member name="T:Microsoft.SilverlightMediaFramework.Logging.QueueManager.QueueManagerStates">
+            <summary>
+            The states of the queuemanager
+            </summary>
+        </member>
+    </members>
+</doc>

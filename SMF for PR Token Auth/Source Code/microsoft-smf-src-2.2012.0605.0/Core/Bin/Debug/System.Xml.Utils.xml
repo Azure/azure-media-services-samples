@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Xml.Utils</name>
+  </assembly>
+  <members>
+    <member name="T:System.Xml.Resolvers.XmlKnownDtds">
+      <summary>The <see cref="T:System.Xml.Resolvers.XmlKnownDtds" /> enumeration is used by the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> and defines which well-known DTDs the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> recognizes.</summary>
+    </member>
+    <member name="F:System.Xml.Resolvers.XmlKnownDtds.None">
+      <summary>Specifies that the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> will not recognize any of the predefined DTDs.</summary>
+    </member>
+    <member name="F:System.Xml.Resolvers.XmlKnownDtds.Xhtml10">
+      <summary>Specifies that the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> will recognize DTDs and entities that are defined in XHTML 1.0. </summary>
+    </member>
+    <member name="F:System.Xml.Resolvers.XmlKnownDtds.Rss091">
+      <summary>Specifies that the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> will recognize DTDs and entities that are defined in RSS 0.91.</summary>
+    </member>
+    <member name="F:System.Xml.Resolvers.XmlKnownDtds.All">
+      <summary>Specifies that the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> will recognize all currently supported DTDs. This is the default behavior.</summary>
+    </member>
+    <member name="T:System.Xml.Resolvers.XmlPreloadedResolver">
+      <summary>The <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> type is used to prepopulate the cache with DTDs or XML streams. </summary>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> class. </summary>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.#ctor(System.Xml.Resolvers.XmlKnownDtds)">
+      <summary>Initializes a new instance of the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> class with the specified preloaded well-known DTDs.</summary>
+      <param name="preloadedDtds">The well-known DTDs that should be prepopulated into the cache.</param>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.#ctor(System.Xml.XmlResolver)">
+      <summary>Initializes a new instance of the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> class with the specified fallback resolver.</summary>
+      <param name="fallbackResolver">XmlResolver, XmlXapResolver, or your own resolver.</param>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.#ctor(System.Xml.XmlResolver,System.Xml.Resolvers.XmlKnownDtds)">
+      <summary>Initializes a new instance of the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> class with the specified fallback resolver and preloaded well-known DTDs.</summary>
+      <param name="fallbackResolver">XmlResolver, XmlXapResolver, or your own resolver.</param>
+      <param name="preloadedDtds">The well-known DTDs that should be prepopulated into cache. </param>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.#ctor(System.Xml.XmlResolver,System.Xml.Resolvers.XmlKnownDtds,System.Collections.Generic.IEqualityComparer{System.Uri})">
+      <summary>Initializes a new instance of the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> class with the specified fallback resolver, preloaded well-known DTDs and URI equality comparer.</summary>
+      <param name="fallbackResolver">XmlResolver, XmlXapResolver, or your own resolver.</param>
+      <param name="preloadedDtds">The well-known DTDs that should be prepopulated into cache.</param>
+      <param name="uriComparer">The implementation of the <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> generic interface to use when comparing URIs.</param>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.Add(System.Uri,System.Byte[])">
+      <summary>Adds a <see cref="T:System.IO.Stream" />, byte array, or string with preloaded data to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store and maps it to a URI. If the store already contains a mapping for the same URI, the existing mapping is overridden.</summary>
+      <param name="uri">The URI of the data that is being added to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store.</param>
+      <param name="value">A byte array with the data corresponding to the provided URI.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> or <paramref name="value" /> is null.</exception>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.Add(System.Uri,System.Byte[],System.Int32,System.Int32)">
+      <summary>Adds a <see cref="T:System.IO.Stream" />, byte array, or string with preloaded data to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store and maps it to a URI. If the store already contains a mapping for the same URI, the existing mapping is overridden.</summary>
+      <param name="uri">The URI of the data that is being added to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store.</param>
+      <param name="value">A byte array with the data corresponding to the provided URI.</param>
+      <param name="offset">The offset in the provided byte array where the data starts.</param>
+      <param name="count">The number of bytes to read from the byte array, starting at the provided offset.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> or <paramref name="value" /> is null.</exception>
+      <exception cref="T:System.ArgumentOutOfRangeException">
+        <paramref name="offset" /> or <paramref name="count" /> is less than 0.-or-The length of the <paramref name="value" /> minus <paramref name="offset" /> is less than <paramref name="count." /></exception>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.Add(System.Uri,System.IO.Stream)">
+      <summary>Adds a <see cref="T:System.IO.Stream" />, byte array, or string with preloaded data to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store and maps it to a URI. If the store already contains a mapping for the same URI, the existing mapping is overridden.</summary>
+      <param name="uri">The URI of the data that is being added to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store.</param>
+      <param name="value">A <see cref="T:System.IO.Stream" /> with the data corresponding to the provided URI.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> or <paramref name="value" /> is null.</exception>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.Add(System.Uri,System.String)">
+      <summary>Adds a <see cref="T:System.IO.Stream" />, byte array, or string with preloaded data to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store and maps it to a URI. If the store already contains a mapping for the same URI, the existing mapping is overridden.</summary>
+      <param name="uri">The URI of the data that is being added to the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store.</param>
+      <param name="value">A String with the data corresponding to the provided URI.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> or <paramref name="value" /> is null.</exception>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.GetEntity(System.Uri,System.String,System.Type)">
+      <summary>Maps a URI to an object that contains the actual resource. </summary>
+      <returns>A <see cref="T:System.IO.Stream" /> or <see cref="T:System.IO.TextReader" /> object.</returns>
+      <param name="absoluteUri">The URI returned from <see cref="M:System.Xml.XmlResolver.ResolveUri(System.Uri,System.String)" />.</param>
+      <param name="role">The current version of the .NET Framework for Silverlight does not use this parameter when resolving URIs. This is provided for future extensibility purposes. For example, this can be mapped to the xlink:role and used as an implementation specific argument in other scenarios.</param>
+      <param name="ofObjectToReturn">The type of object to return. The <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> supports <see cref="T:System.IO.Stream" /> objects and <see cref="T:System.IO.TextReader" /> objects for URIs that were added as String. If the requested type is not supported by the resolver, an exception will be thrown. Use the <see cref="M:System.Xml.Resolvers.XmlPreloadedResolver.SupportsType(System.Uri,System.Type)" /> method to determine if a certain Type is supported by this resolver.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="absoluteUri" /> is null.</exception>
+      <exception cref="T:System.Xml.XmlException">Cannot resolve URI passed in <paramref name="absoluteUri" />.-or-<paramref name="ofObjectToReturn" /> is not of a supported type.</exception>
+    </member>
+    <member name="P:System.Xml.Resolvers.XmlPreloadedResolver.PreloadedUris">
+      <summary>Gets a collection of preloaded URIs.</summary>
+      <returns>The collection of preloaded URIs.</returns>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.Remove(System.Uri)">
+      <summary>Removes the data corresponding to the URI from the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" />. </summary>
+      <param name="uri">The URI of the data that should be removed from the <see cref="T:System.Xml.Resolvers.XmlPreloadedResolver" /> store.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> is null.</exception>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.ResolveUri(System.Uri,System.String)">
+      <summary>Resolves the absolute URI from the base and relative URIs.</summary>
+      <returns>A <see cref="T:System.Uri" /> representing the absolute URI or null if the relative URI cannot be resolved.</returns>
+      <param name="baseUri">The base URI used to resolve the relative URI.</param>
+      <param name="relativeUri">The URI to resolve. The URI can be absolute or relative. If absolute, this value effectively replaces the <paramref name="baseUri" /> value. If relative, it combines with the <paramref name="baseUri" /> to make an absolute URI.</param>
+    </member>
+    <member name="M:System.Xml.Resolvers.XmlPreloadedResolver.SupportsType(System.Uri,System.Type)">
+      <summary>Returns true if the resolver’s GetEntity method can resolve the provided URI into an instance of the provided <see cref="T:System.Type" />.</summary>
+      <returns>True if the resolver’s GetEntity method can resolve the provided URI into an instance of the provided <see cref="T:System.Type" />; otherwise false.</returns>
+      <param name="absoluteUri">The URI.</param>
+      <param name="type">The requested <see cref="T:System.Type" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="uri" /> is null.</exception>
+    </member>
+  </members>
+</doc>

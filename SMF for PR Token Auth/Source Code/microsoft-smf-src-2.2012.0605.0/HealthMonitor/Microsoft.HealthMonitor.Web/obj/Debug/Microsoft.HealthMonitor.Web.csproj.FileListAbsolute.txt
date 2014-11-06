@@ -1,0 +1,5 @@
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\HealthMonitor\Microsoft.HealthMonitor.Web\bin\HealthMonitor.Web.dll.config
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\HealthMonitor\Microsoft.HealthMonitor.Web\bin\HealthMonitor.Web.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\HealthMonitor\Microsoft.HealthMonitor.Web\bin\HealthMonitor.Web.pdb
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\HealthMonitor\Microsoft.HealthMonitor.Web\obj\Debug\HealthMonitor.Web.dll
+C:\Users\christoc\Source\Silverlight Media Framework For Blogpost\microsoft-smf-src-2.2012.0605.0\HealthMonitor\Microsoft.HealthMonitor.Web\obj\Debug\HealthMonitor.Web.pdb

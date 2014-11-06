@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddExternalPackageCompletedLogMessage" xml:space="preserve">
+    <value>Addition of External Package Has Completed: {0}</value>
+  </data>
+  <data name="AddExternalPackageFailedLogMessage" xml:space="preserve">
+    <value>Addition of External Package ({0}) Has Failed: {1}</value>
+  </data>
+  <data name="BufferingProgressChangedLogMessage" xml:space="preserve">
+    <value>Buffering Progress Changed: {0}</value>
+  </data>
+  <data name="ChapterItemDoesNotBelongToCurrentPlaylistMessage" xml:space="preserve">
+    <value>The specified Chapter Item does not belong to the current Playlist.</value>
+  </data>
+  <data name="ConfiguredVideoSizeLogMessage" xml:space="preserve">
+    <value>Configured Video Size - Height: {0} Width: {1}</value>
+  </data>
+  <data name="DownloadProgressChangedLogMessage" xml:space="preserve">
+    <value>Download Progress Changed: {0}</value>
+  </data>
+  <data name="DurationChangedLogMessage" xml:space="preserve">
+    <value>Duration Changed: {0}</value>
+  </data>
+  <data name="LogWritersLoadedLogMessage" xml:space="preserve">
+    <value>Loaded LogWriter Plugins</value>
+  </data>
+  <data name="MarkerLeftLogMessage" xml:space="preserve">
+    <value>Marker Left - Type: "{0}" Begin: "{1}" End: "{2}"</value>
+  </data>
+  <data name="MarkerProviderRegisteredLogMessage" xml:space="preserve">
+    <value>Marker Provider Registered: {0}</value>
+  </data>
+  <data name="MarkerProviderUnregisteredLogMessage" xml:space="preserve">
+    <value>Marker Provider Unregistered: {0}</value>
+  </data>
+  <data name="MarkerReachedLogMessage" xml:space="preserve">
+    <value>Marker Reached - Type: "{0}" Begin: "{1}" End: "{2}"</value>
+  </data>
+  <data name="MarkerSkippedLogMessage" xml:space="preserve">
+    <value>Marker Skipped - Type: "{0}" Begin: "{1}" End: "{2}"</value>
+  </data>
+  <data name="MarkersRemovedLogMessage" xml:space="preserve">
+    <value>Markers Removed: {0}</value>
+  </data>
+  <data name="MaximumBitrateChangedLogMessage" xml:space="preserve">
+    <value>Maximum Bitrate Changed: {0}</value>
+  </data>
+  <data name="MediaEndedLogMessage" xml:space="preserve">
+    <value>Media Ended</value>
+  </data>
+  <data name="MediaFailedLogMessage" xml:space="preserve">
+    <value>Media Failed: {0}</value>
+  </data>
+  <data name="MediaOpenedLogMessage" xml:space="preserve">
+    <value>Media Opened</value>
+  </data>
+  <data name="MediaPluginRegisteredLogMessage" xml:space="preserve">
+    <value>Media Plug In Registered: {0}</value>
+  </data>
+  <data name="MediaPluginUnregisteredLogMessage" xml:space="preserve">
+    <value>Media Plug In Unregistered: {0}</value>
+  </data>
+  <data name="NewMarkersLogMessage" xml:space="preserve">
+    <value>New Markers: {0}</value>
+  </data>
+  <data name="PlaybackBitrateChangedLogMessage" xml:space="preserve">
+    <value>Playback Bitrate Changed: {0}</value>
+  </data>
+  <data name="PlaylistChangedLogMessage" xml:space="preserve">
+    <value>Playlist Changed</value>
+  </data>
+  <data name="PlaylistItemChangedLogMessage" xml:space="preserve">
+    <value>Playlist Item Changed</value>
+  </data>
+  <data name="PlaySpeedChangedLogMessage" xml:space="preserve">
+    <value>Play Speed Changed: {0}</value>
+  </data>
+  <data name="PlayStateChangedLogMessage" xml:space="preserve">
+    <value>Play State Changed: {0}</value>
+  </data>
+  <data name="RetrieveMarkersFailedLogMessage" xml:space="preserve">
+    <value>Retrieving Markers Has Failed: {0}</value>
+  </data>
+  <data name="RetryAttemptFailedLogMessage" xml:space="preserve">
+    <value>Retry Attempt Failed: {0}</value>
+  </data>
+  <data name="RetryCancelledLogMessage" xml:space="preserve">
+    <value>Retry Cancelled</value>
+  </data>
+  <data name="RetryFailedLogMessage" xml:space="preserve">
+    <value>Retry Failed</value>
+  </data>
+  <data name="RetryMonitorMediaPluginCannotBeNullMessage" xml:space="preserve">
+    <value>Unable to begin retrying, MediaElementPlugin cannot be null.</value>
+  </data>
+  <data name="RetryStartedLogMessage" xml:space="preserve">
+    <value>Retry Started</value>
+  </data>
+  <data name="RetrySuccessfulLogMessage" xml:space="preserve">
+    <value>Retry Successful</value>
+  </data>
+  <data name="UnableToLocateMarkerProviderLogMessage" xml:space="preserve">
+    <value>Unable To Locate The Correct Marker Provider For This Media</value>
+  </data>
+  <data name="UnableToLocateMediaPluginLogMessage" xml:space="preserve">
+    <value>Unable To Locate A Media Plugin To Play This Media</value>
+  </data>
+  <data name="DebugLogWriterOutputFormat" xml:space="preserve">
+    <value>Severity: "{0}" Sender: "{1}" Message: "{2}" Timestamp: "{3}"</value>
+  </data>
+  <data name="LoggingOutputFormat" xml:space="preserve">
+    <value>{3} Severity: "{0}" Sender: "{1}" Type: "{2}" Message: "{3}" </value>
+  </data>
+  <data name="GenericErrorOccurredLogMessage" xml:space="preserve">
+    <value>Error Occurred - Location: "{0}" Message: "{1}"</value>
+  </data>
+  <data name="LoadPluginFailedLogMessage" xml:space="preserve">
+    <value>The following error occurred loading a plugin - Plugin: "{0}" Error: "{1}"</value>
+  </data>
+  <data name="PluginLoadFailedLogMessage" xml:space="preserve">
+    <value>Unable To Load Plugin ({0}) the following error has occurred: {1}</value>
+  </data>
+  <data name="UIPluginsLoadedLogMessage" xml:space="preserve">
+    <value>UI Plugins Loaded</value>
+  </data>
+  <data name="ConfigureMediaPluginFailedLogMessage" xml:space="preserve">
+    <value>Error Occurred Configuring Media Plugin: {0}</value>
+  </data>
+  <data name="GenericPluginsLoadedLogMessage" xml:space="preserve">
+    <value>Generic Plugins Loaded</value>
+  </data>
+  <data name="CaptionRegionLeftLogMessage" xml:space="preserve">
+    <value>Caption Region Left - Id: "{0}"</value>
+  </data>
+  <data name="CaptionRegionReachedLogMessage" xml:space="preserve">
+    <value>Caption Region Reached - Id: "{0}"</value>
+  </data>
+  <data name="AddExternalPackageDownloadProgressChangedLogMessage" xml:space="preserve">
+    <value>Download Progress of external package ({0}) is {1}</value>
+  </data>
+  <data name="UnsupportedAdDeliveryMethodExceptionMessage" xml:space="preserve">
+    <value>This delivery method is not supported by the current Plugin: {0}</value>
+  </data>
+  <data name="errorInvalidPlaylist" xml:space="preserve">
+    <value>Invalid Playlist</value>
+    <comment>playlist incorrect exception string</comment>
+  </data>
+  <data name="errorInvalidPlaylistNode" xml:space="preserve">
+    <value>Invalid Playlist: Unexpected node: {0} in {1}</value>
+    <comment>playlist incorrect exception string</comment>
+  </data>
+  <data name="readerChapterItem" xml:space="preserve">
+    <value>{0} {1}</value>
+    <comment>screen reader text (chapter time and title)</comment>
+  </data>
+  <data name="readerChapters" xml:space="preserve">
+    <value>Show chapters toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerClosedCaptions" xml:space="preserve">
+    <value>Closed captions toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerFrameStepBackwards" xml:space="preserve">
+    <value>Step backwards one frame</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerFrameStepForwards" xml:space="preserve">
+    <value>Step forwards one frame</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerFullScreen" xml:space="preserve">
+    <value>Full screen toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerHour" xml:space="preserve">
+    <value>one hour</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerHours" xml:space="preserve">
+    <value>{0} hours</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerMinute" xml:space="preserve">
+    <value>one minute</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerMinutes" xml:space="preserve">
+    <value>{0} minutes</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerMute" xml:space="preserve">
+    <value>Mute Toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerNextMarker" xml:space="preserve">
+    <value>Skip to next marker</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerOffline" xml:space="preserve">
+    <value>Make player available offline</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerOfflineProgressCancel" xml:space="preserve">
+    <value>Click the cancel button to stop offline installation</value>
+    <comment>Offline download dialog cancel button automation text</comment>
+  </data>
+  <data name="readerOfflineProgressFinish" xml:space="preserve">
+    <value>Click the finish button to compete offline installation</value>
+    <comment>Offline download dialog finish button automation text</comment>
+  </data>
+  <data name="readerPlaylist" xml:space="preserve">
+    <value>Show playlist toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerPlaylistItem" xml:space="preserve">
+    <value>playlist item {0}. {1}.</value>
+    <comment>screen reader text (playlist file and title)</comment>
+  </data>
+  <data name="readerPlayPause" xml:space="preserve">
+    <value>Play pause toggle</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerPlugin" xml:space="preserve">
+    <value>Show graphs</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerPopout" xml:space="preserve">
+    <value>Show player in seperate window</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerPreviousMarker" xml:space="preserve">
+    <value>Skip to previous marker</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerSecond" xml:space="preserve">
+    <value>one second</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerSeconds" xml:space="preserve">
+    <value>{0} seconds</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerSeekSlider" xml:space="preserve">
+    <value>Seek to time</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerStop" xml:space="preserve">
+    <value>Stop</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerVolumeDown" xml:space="preserve">
+    <value>Decrease volume</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerVolumeSlider" xml:space="preserve">
+    <value>Set volume</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="readerVolumeUp" xml:space="preserve">
+    <value>Increase volume</value>
+    <comment>screen reader text</comment>
+  </data>
+  <data name="Smpte12MBadFormat" xml:space="preserve">
+    <value>The timecode provided is not in the correct format.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12MOutOfRange" xml:space="preserve">
+    <value>The timecode provided is out of the expected range.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12MOverflowException" xml:space="preserve">
+    <value>The resulting timecode is out of the expected range of MaxValue.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_2398_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMPTE 23.98 IVTC.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_24_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMPTE 24fps Film Sync.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_25_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMPTE 25fps PAL.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_2997_Drop_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMPTE 29.97 DropFrame.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_2997_NonDrop_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMTPE 29.97 NonDrop.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="Smpte12M_30_BadFormat" xml:space="preserve">
+    <value>Timecode frame value is not in the expected range for SMPTE 30fps.</value>
+    <comment>timecode error</comment>
+  </data>
+  <data name="OfflineDownloadFailedErrorMessage" xml:space="preserve">
+    <value>Download Failed For {0} Stream Length is {1}.</value>
+  </data>
+  <data name="InsufficientQuotaSpaceToStoreResourcesErrorMessage" xml:space="preserve">
+    <value>Insufficient quota space to store resource.  Resource size: {0}.</value>
+  </data>
+  <data name="PluginsLoaded3DLogMessage" xml:space="preserve">
+    <value>3D Plugins Loaded</value>
+  </data>
+  <data name="PluginsLoadedAdPayloadHandlerLogMessage" xml:space="preserve">
+    <value>AdPayloadHandler Plugins Loaded</value>
+  </data>
+  <data name="PlayBlockAdded" xml:space="preserve">
+    <value>PlayBlock added by {0}</value>
+  </data>
+  <data name="PlayBlockReleased" xml:space="preserve">
+    <value>PlayBlock released by {0}</value>
+  </data>
+  <data name="AdNotHandled" xml:space="preserve">
+    <value>Ad not handled: {0}</value>
+  </data>
+  <data name="AdSkippedFromFwdRwd" xml:space="preserve">
+    <value>Ad skipped due to fast forward or rewind: {0}</value>
+  </data>
+  <data name="AdSkippedFromSeek" xml:space="preserve">
+    <value>Ad skipped due to seek: {0}</value>
+  </data>
+</root>

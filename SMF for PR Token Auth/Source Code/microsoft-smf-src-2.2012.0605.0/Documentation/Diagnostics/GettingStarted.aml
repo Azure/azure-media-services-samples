@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="e0e82bb5-8bde-4fd3-bf07-4420714a8d7c" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>Guide to getting started with the dianostic and logging components.</para>
+    </introduction>
+
+<section>
+  <title>Capturing diagnostic information</title>
+  <content>
+
+<para>1) Create a simple Silverlight Media Framework app. Follow
+the <externalLink>
+  <linkText>instructions on CodePlex</linkText>
+  <linkUri>http://smf.codeplex.com/documentation</linkUri>
+  <linkTarget>_blank</linkTarget>
+</externalLink>
+for more information.</para>
+
+<para>2) Add the following references to your project:</para>
+
+<para>·&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+Microsoft.SilverlightMediaFramework.Diagnostics</para>
+
+<para>·&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+Microsoft.SilverlightMediaFramework.Monitoring</para>
+
+<para>·&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+Microsoft.SilverlightMediaFramework.Logging</para>
+
+<para>Note: After doing this, diagnostic information will now be
+captured and packaged into Log objects.</para>
+
+<para>3) Capture those logs and take a look at them by adding the
+following code to main page:</para>
+
+<code language="none" title=" ">using&#160;System.Windows.Controls;<para/>
+using&#160;Microsoft.SilverlightMediaFramework.Logging;<para/>
+ <para/>
+namespace&#160;LocalDiagnostics<para/>
+{<para/>
+&#160;&#160;&#160;&#160;public&#160;partial&#160;class&#160;MainPage&#160;:&#160;UserControl<para/>
+&#160;&#160;&#160;&#160;{<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;public&#160;MainPage()<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;InitializeComponent();<para/>
+ <para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;LoggingService.Current.LogReceived&#160;+=&#160;logger_LogReceived;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<para/>
+ <para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;void&#160;logger_LogReceived(object&#160;sender,&#160;LogReceivedEventArgs&#160;e)<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;{<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;    System.Diagnostics.Debug.WriteLine(e.Log.ToString());<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;}<para/>
+&#160;&#160;&#160;&#160;}<para/>
+}</code>
+
+<para>That's all it takes to start capturing logs created by the
+Silverlight Media Framework!</para>
+
+  </content>
+</section>
+
+<section><!--h3-->
+  <title>Threading Considerations</title>
+  <content>
+
+<para>To achieve optimal performance, logs are often created on
+background threads. Therefore, if you tried to modify the UI from the
+LogReceived event, you will eventually receive an UnauthorizedAccessException. Therefore,
+to account for this, you will want to do something like the following:</para>
+
+<code language="none" title=" ">void&#160;logger_LogReceived(object&#160;sender,&#160;LogReceivedEventArgs&#160;e)<para/>
+{<para/>
+&#160;&#160;&#160;&#160;if&#160;(Dispatcher.CheckAccess())<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;DoSomethingWithLog(e.Log);<para/>
+&#160;&#160;&#160;&#160;else<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Dispatcher.BeginInvoke(()&#160;=&gt;&#160;DoSomethingWithLog(e.Log));<para/>
+}</code>
+
+<para><legacyItalic>(this will make sure DoSomethingWithLog is always called
+on the main, UI thread).</legacyItalic></para>
+
+  </content>
+</section>
+
+<section><!--h3-->
+  <title>Using the logs?</title>
+  <content>
+
+<para>Let's take this a step further and use these logs to do
+something useful. The first thing to know is that there are many different
+types of logs. All logs derive from the Log base class which contains a
+dictionary of key value pairs. While you could go look up the property value directly in
+the dictionary, a better way is to cast the log object to its derived type.</para>
+
+<para>For example, one of the more useful log types is
+VideoQualitySnapshotLog. This object defines a number of additional properties
+that internally tap into the dictionary in a strongly typed manner. Here's an
+example of how you would watch for the VideoQualitySnapshotLog and use it to
+see what the perceived bandwidth is. <legacyItalic>Note: PerceivedBandwidth is just one of
+the many properties available on the VideoQualitySnapshotLog.</legacyItalic></para>
+
+<code language="none" title=" ">void&#160;DoSomethingWithLog(Log&#160;log)<para/>
+{<para/>
+&#160;&#160;&#160;&#160;if&#160;(log&#160;is&#160;VideoQualitySnapshotLog)<para/>
+&#160;&#160;&#160;&#160;{<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;VideoQualitySnapshotLog&#160;qualityLog&#160;=&#160;(VideoQualitySnapshotLog)log;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;double&#160;kbps&#160;=&#160;qualityLog.PerceivedBandwidth.GetValueOrDefault(0)&#160;/&#160;1024;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Bandwidth.Text&#160;=&#160;kbps.ToString()&#160;+&#160;&quot;&#160;kbps&quot;;<para/>
+&#160;&#160;&#160;&#160;}<para/>
+}</code>
+
+<para>To see this code in action, take a look at the
+Samples.LocalDiagnostics sample included with the Silverlight Media Framework. Please
+refer to API Reference in the help file for a complete list of the log types supported and
+what information is provided within each.</para>
+
+
+
+
+  </content>
+</section>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

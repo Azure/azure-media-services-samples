@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <!-- The configuration and platform will be used to determine which
+         assemblies to include from solution and project documentation
+         sources -->
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b66407bb-6f25-436c-922b-ba55394f9918}</ProjectGuid>
+    <SHFBSchemaVersion>1.9.3.0</SHFBSchemaVersion>
+    <!-- AssemblyName, Name, and RootNamespace are not used by SHFB but Visual
+         Studio adds them anyway -->
+    <AssemblyName>Documentation</AssemblyName>
+    <RootNamespace>Documentation</RootNamespace>
+    <Name>Documentation</Name>
+    <!-- SMF overrides -->
+    <SMFBinFolder>..\bin\</SMFBinFolder>
+    <SMFBinFolder Condition="!Exists('$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Core.dll')">..\..\..\..\..\Binaries\</SMFBinFolder>
+    <SHFBROOT>$(MSBuildProjectDirectory)\..\Lib\Build\Sandcastle\Sandcastle Help File Builder</SHFBROOT>
+    <SandcastlePath>$(MSBuildProjectDirectory)\..\Lib\Build\Sandcastle\SandcastleBin\</SandcastlePath>
+    <HtmlHelp1xCompilerPath>$(MSBuildProjectDirectory)\..\Lib\Build\Sandcastle\\HTML Help Workshop\</HtmlHelp1xCompilerPath>
+    <HtmlHelp2xCompilerPath>
+    </HtmlHelp2xCompilerPath>
+    <!-- SHFB properties -->
+    <OutputPath>$(SMFBinFolder)Help\</OutputPath>
+    <HtmlHelpName>Microsoft Silverlight Media Framework 2.7</HtmlHelpName>
+    <DocumentationSources>
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Core.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Core.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Diagnostics.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Diagnostics.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Logging.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Logging.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Heuristics.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Heuristics.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Monitoring.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Monitoring.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Progressive.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Progressive.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Utilities.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Utilities.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.Xap.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.Xap.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.Adaptive.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Advertising.Adaptive.xml" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.dll" />
+      <DocumentationSource sourceFile="$(SMFBinFolder)Microsoft.SilverlightMediaFramework.Plugins.Anaglyph3D.xml" />
+    </DocumentationSources>
+    <NamingMethod>MemberName</NamingMethod>
+    <HelpTitle>Microsoft Silverlight Media Framework 2.7</HelpTitle>
+    <MissingTags>AutoDocumentCtors, AutoDocumentDispose</MissingTags>
+    <FeedbackEMailAddress>smffeedback%40microsoft.com</FeedbackEMailAddress>
+    <FrameworkVersion>.NET 4.0.30319</FrameworkVersion>
+    <CopyrightText>Copyright &amp;#169%3b 2011 Microsoft Corporation</CopyrightText>
+    <Preliminary>True</Preliminary>
+    <HelpFileVersion>2.2010.721.1</HelpFileVersion>
+    <CleanIntermediates>True</CleanIntermediates>
+    <FeedbackEMailLinkText>smffeedback</FeedbackEMailLinkText>
+    <SyntaxFilters>CSharp, VisualBasic, XamlUsage</SyntaxFilters>
+    <VisibleItems>Attributes, InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
+    <CopyrightHref>http://www.microsoft.com</CopyrightHref>
+    <FooterText>This framework is licensed under the Microsoft Public License.</FooterText>
+    <RootNamespaceContainer>True</RootNamespaceContainer>
+    <RootNamespaceTitle>API Reference</RootNamespaceTitle>
+    <IncludeFavorites>True</IncludeFavorites>
+    <ProjectSummary>An extensible media framework for Microsoft Silverlight applications.</ProjectSummary>
+    <ShowFeedbackControl>True</ShowFeedbackControl>
+    <NamespaceSummaries>
+    </NamespaceSummaries>
+    <ApiFilter />
+    <ComponentConfigurations />
+    <HelpAttributes />
+    <PlugInConfigurations />
+    <BuildLogFile />
+    <WorkingPath />
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <!-- There are no properties for these two groups but they need to appear in
+       order for Visual Studio to perform the build. -->
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Architecture.aml" />
+    <None Include="Diagnostics\RemoteLogging.aml" />
+    <None Include="Diagnostics\Pip.aml" />
+    <None Include="Diagnostics\HealthMonitor.aml" />
+    <None Include="Diagnostics\GettingStarted.aml" />
+    <None Include="Diagnostics\Configuration.aml" />
+    <None Include="Diagnostics\Overview.aml" />
+    <None Include="SilverlightMediaFramework.aml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ContentLayout Include="Content Layout.content" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Diagnostics\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Media.SmoothStreaming">
+      <HintPath>$(SMFBinFolder)Microsoft.Web.Media.SmoothStreaming.dll</HintPath>
+    </Reference>
+    <Reference Include="System, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\system.dll</HintPath>
+    </Reference>
+    <Reference Include="System, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\system.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\Lib\Build\Silverlight5\SDK\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition.Initialization, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\Lib\Build\Silverlight5\SDK\System.ComponentModel.Composition.Initialization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\System.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\System.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\System.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\System.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Browser, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\System.Windows.Browser.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Browser, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\System.Windows.Browser.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight4\Reference Assemblies\System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml, Version=5.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+      <HintPath>..\Lib\Build\Silverlight5\Reference Assemblies\System.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq, Version=5.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
+      <HintPath>..\Lib\Build\Silverlight5\SDK\System.Xml.Linq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\smf2-architecture.png">
+      <ImageId>smf2-architecture</ImageId>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Images\healthmon_external.png">
+      <ImageId>healthmon_external</ImageId>
+    </Image>
+    <Image Include="Images\healthmon_internal.png">
+      <ImageId>healthmon_internal</ImageId>
+    </Image>
+  </ItemGroup>
+  <!-- Import the SHFB build targets -->
+  <Import Project="$(SHFBROOT)\SandcastleHelpFileBuilder.targets" />
+</Project>

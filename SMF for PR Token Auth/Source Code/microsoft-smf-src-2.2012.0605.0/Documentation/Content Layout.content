@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics defaultTopic="ad58f477-cd3f-4f9e-b322-453fc651fd3b">
+  <Topic id="ad58f477-cd3f-4f9e-b322-453fc651fd3b" visible="True" title="Microsoft Silverlight Media Framework 2.7" tocTitle="SMF Overview" />
+  <Topic id="0dab187b-893d-4351-bab6-6c745b51723a" visible="True" />
+  <Topic id="a4a0c02a-7014-4957-b22d-0df1bab0ed4a" visible="True" title="Smooth Streaming Diagnostics Overview" tocTitle="Smooth Streaming Diagnostics">
+    <Topic id="e0e82bb5-8bde-4fd3-bf07-4420714a8d7c" visible="True" title="Getting Started Guide" tocTitle="Getting Started" />
+    <Topic id="1a580250-0430-4204-b1b8-2c8d1d191d1b" visible="True" title="Health Monitor Tool" tocTitle="Health Monitor" />
+    <Topic id="0e6cda0b-1852-4544-960f-0df06ff353b1" visible="True" title="Configuration" />
+    <Topic id="f5dc6c34-9d15-4591-8248-2a638aa102dc" visible="True" title="Pip Diagnostics" />
+    <Topic id="9b8da6b9-e710-4211-94aa-7eb5888f57f3" visible="True" title="Remote Logging" />
+  </Topic>
+</Topics>

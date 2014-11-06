@@ -1,0 +1,197 @@
+﻿<UserControl 
+	xmlns:input="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input" 
+	xmlns:controls="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls" 
+	xmlns:localcontrols="clr-namespace:Microsoft.HealthMonitor.Controls"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+	xmlns:vm="clr-namespace:Microsoft.HealthMonitor.ViewModels" 
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:player="clr-namespace:Microsoft.HealthMonitorPlayer.Views"
+	xmlns:data="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Data"
+	x:Class="Microsoft.HealthMonitor.Views.MainView" 
+	xmlns:v="clr-namespace:Microsoft.HealthMonitor.Views"
+	xmlns:c="clr-namespace:Microsoft.HealthMonitor.Converters"
+    xmlns:BubbleCreamTheme="clr-namespace:System.Windows.Controls.Theming;assembly=System.Windows.Controls.Theming.BubbleCreme"
+	mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <c:VisibilityConverter x:Key="VisibilityConverter"/>
+        <c:ConditionalConverter x:Key="NAConverter" Condition="255.255.255.255" Substitution="NA"/>
+        <c:ConditionalConverter x:Key="PlayerIdConverter" Condition="[Leave empty to use default ID]" Substitution=""/>
+        <!--<vm:MainViewModel x:Key="MainViewModelDataSource" d:IsDataSource="True"/>-->
+    </UserControl.Resources>
+    <BubbleCreamTheme:BubbleCremeTheme>
+        <Grid x:Name="LayoutRoot">
+            <!--DataContext="{StaticResource MainViewModelDataSource}">-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="230"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <controls:TabControl Width="320" Grid.Row="1" Grid.Column="0" Margin="5" SizeChanged="TabControl_SizeChanged">
+                <controls:TabItem Header="Stream Information" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Process CPU: " VerticalAlignment="Center" Grid.Row="0" Margin="3"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding ProcessCPU, Converter={StaticResource NAConverter}}" Grid.Row="0" Margin="3"/>
+
+                        <TextBlock Text="System CPU: " VerticalAlignment="Center" Grid.Row="1" Margin="3"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding SystemCPU, Converter={StaticResource NAConverter}}" Grid.Row="1" Margin="3"/>
+
+                        <TextBlock Text="Client IP: " VerticalAlignment="Center" Grid.Row="2" Margin="3"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding ClientIP, Converter={StaticResource NAConverter}}" Grid.Row="2" Margin="3"/>
+
+                        <TextBlock Text="Edge Server IP: " VerticalAlignment="Center" Grid.Row="3" Margin="3"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding EdgeServerIP, Converter={StaticResource NAConverter}}" Grid.Row="3" Margin="3"/>
+
+                        <TextBlock Text="Manifest URL: " VerticalAlignment="Center" Grid.Row="4" Margin="3"/>
+                        <TextBox IsReadOnly="True" Grid.Column="1" Text="{Binding SmoothStreamingUrl, Converter={StaticResource NAConverter}}" Grid.Row="4" Margin="3"/>
+                    </Grid>
+                </controls:TabItem>
+                <controls:TabItem Header="Logs" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Generated log objects" TextAlignment="Center" />
+                        <v:RawLogs Grid.Row="1" DataContext="{Binding Logs}" Margin="5" />
+                        <Button Margin="5" Grid.Row="2" Content="Save Logs..." Command="{Binding SaveLogsCommand}"/>
+                    </Grid>
+                </controls:TabItem>
+                <controls:TabItem Header="Quality" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Aggregated readings for the last sampling window" TextAlignment="Center" />
+                        <v:QualityReport DataContext="{Binding QualityData}" Grid.Row="1" Margin="5" />
+                    </Grid>
+                </controls:TabItem>
+                <controls:TabItem Header="Trace" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Text="Smoothstreaming Media Element trace logs" TextAlignment="Center" />
+                        <data:DataGrid x:Name="TraceGrid" Grid.Row="1" IsReadOnly="True" AutoGenerateColumns="False" CanUserReorderColumns="False" Margin="5" ItemsSource="{Binding TraceLogs}" MinHeight="70" MaxHeight="1000">
+                            <data:DataGrid.Columns>
+                                <data:DataGridTextColumn Header="Date" IsReadOnly="True" Binding="{Binding Date, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Class" IsReadOnly="True" Binding="{Binding ClassName, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Method" IsReadOnly="True" Binding="{Binding MethodName, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Area" IsReadOnly="True" Binding="{Binding TraceArea, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Level" IsReadOnly="True" Binding="{Binding TraceLevel, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Text" IsReadOnly="True" Binding="{Binding Text, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Media Element ID" IsReadOnly="True" Binding="{Binding MediaElementId, Mode=OneTime}" />
+                                <data:DataGridTextColumn Header="Thread ID" IsReadOnly="True" Binding="{Binding ThreadId, Mode=OneTime}" />
+                            </data:DataGrid.Columns>
+                        </data:DataGrid>
+                        <Button Margin="5" x:Name="buttonCapture" Grid.Row="2" Content="Save Trace Logs..." Command="{Binding SaveTraceCommand}"/>
+                    </Grid>
+                </controls:TabItem>
+            </controls:TabControl>
+            <Border Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" BorderThickness="2" BorderBrush="Black">
+                <Grid>
+                    <ContentControl x:Name="playerFrame" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Visibility="{Binding IsPlayerEmbedded, Converter={StaticResource VisibilityConverter}, ConverterParameter=VisibleIfNotTrue}">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock TextAlignment="Center" Text="{Binding Instruction}" FontSize="15"/>
+                            <TextBlock TextAlignment="Center" Text="Connection state: Connected" FontSize="15" Visibility="{Binding Connected, Converter={StaticResource VisibilityConverter}, ConverterParameter=VisibleIfTrue}"/>
+                            <TextBlock TextAlignment="Center" Text="Connection state: Not Connected" FontSize="15" Visibility="{Binding Connected, Converter={StaticResource VisibilityConverter}, ConverterParameter=VisibleIfNotTrue}"/>
+                        </StackPanel>
+                    </ContentControl>
+                    <player:Player x:Name="Player" VideoUrl="{Binding SmoothStreamingSource}"  Visibility="{Binding IsPlayerEmbedded, Converter={StaticResource VisibilityConverter}, ConverterParameter=VisibleIfTrue}" />
+                </Grid>
+            </Border>
+
+            <localcontrols:SlidingTabs Grid.Row="0" Grid.ColumnSpan="2">
+                <localcontrols:SlidingTabs.Tab1Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Stream URL:" VerticalAlignment="Center" Margin="3" />
+                        <!--<input:AutoCompleteBox ItemsSource="{Binding SavedSources}" x:Name="TextStreamUrl" Text="http://video3.smoothhd.com.edgesuite.net/ondemand/Big%20Buck%20Bunny%20Adaptive.ism/Manifest" Grid.Column="1" Margin="3" VerticalAlignment="Center" KeyUp="TextStreamUrl_KeyUp" />-->
+                        <TextBox x:Name="TextStreamUrl" Text="http://video3.smoothhd.com.edgesuite.net/ondemand/Big%20Buck%20Bunny%20Adaptive.ism/Manifest" Grid.Column="1" Margin="3" VerticalAlignment="Center" KeyUp="TextStreamUrl_KeyUp" />
+                        <Button x:Name="ButtonPlay" Grid.Column="2" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Command="{Binding PlayInternalCommand}" CommandParameter="{Binding Text, ElementName=TextStreamUrl}" Padding="12,5,12,5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/go.png" Stretch="None" VerticalAlignment="Center" />
+                                <TextBlock FontWeight="Bold" Text="Play" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Play" />
+                            </ToolTipService.ToolTip>
+                        </Button>
+                    </Grid>
+                </localcontrols:SlidingTabs.Tab1Content>
+                <localcontrols:SlidingTabs.Tab2Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Player ID:" VerticalAlignment="Center" Margin="3" />
+                        <input:AutoCompleteBox ItemsSource="{Binding SavedPlayers}" x:Name="TextPlayerId" Text="[Leave empty to use default ID]" GotFocus="TextBox_GotFocus" LostFocus="TextPlayerId_LostFocus" Grid.Column="1" Margin="3" VerticalAlignment="Center" KeyUp="TextPlayerId_KeyUp" />
+                        <!--<TextBox x:Name="TextPlayerId" Grid.Column="1" Text="[Leave empty to use default ID]" GotFocus="TextBox_GotFocus" LostFocus="TextPlayerId_LostFocus" Margin="3" VerticalAlignment="Center" />-->
+                        <TextBlock Text="What's this?" TextDecorations="underline" Grid.Column="2" VerticalAlignment="Center" Margin="3">
+							<ToolTipService.ToolTip>
+								<ToolTip Content="You can connect to another locally running player that uses the Silverlight Media Framework diagnostic and local connection assemblies." />
+							</ToolTipService.ToolTip>
+                        </TextBlock>
+                        <Button x:Name="ButtonConnect" Grid.Column="3" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" Command="{Binding ConnectExternalCommand}" CommandParameter="{Binding Text, ElementName=TextPlayerId, Converter={StaticResource PlayerIdConverter}}" Padding="12,5,12,5">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="/Resources/go.png" Stretch="None" VerticalAlignment="Center" />
+                                <TextBlock FontWeight="Bold" Text="Connect" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <ToolTipService.ToolTip>
+                                <ToolTip Content="Connect" />
+                            </ToolTipService.ToolTip>
+                        </Button>
+                    </Grid>
+                </localcontrols:SlidingTabs.Tab2Content>
+                <localcontrols:SlidingTabs.Button1Content>
+                    <StackPanel Orientation="Horizontal" Margin="3,0,3,0">
+                        <Image Source="/Resources/left.png" Stretch="None" />
+                        <TextBlock Text="Connect to internal player" VerticalAlignment="Center" Margin="9,0,0,0" />
+                    </StackPanel>
+                </localcontrols:SlidingTabs.Button1Content>
+                <localcontrols:SlidingTabs.Button2Content>
+                    <StackPanel Orientation="Horizontal" Margin="3,0,3,0">
+                        <TextBlock Text="Connect to external player" VerticalAlignment="Center" Margin="0,0,9,0" />
+                        <Image Source="/Resources/right.png" Stretch="None" />
+                    </StackPanel>
+                </localcontrols:SlidingTabs.Button2Content>
+            </localcontrols:SlidingTabs>
+
+            <!--<controls:GridSplitter Grid.Row="3" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Stretch" Background="Transparent" />-->
+
+            <v:ChartView DataContext="{Binding ChartViewModel}" Grid.Row="4" Margin="3,0,3,3" Grid.ColumnSpan="2" />
+
+        </Grid>
+    </BubbleCreamTheme:BubbleCremeTheme>
+</UserControl>

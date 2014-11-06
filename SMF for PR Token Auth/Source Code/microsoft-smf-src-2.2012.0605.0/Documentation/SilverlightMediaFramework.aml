@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ad58f477-cd3f-4f9e-b322-453fc651fd3b" revisionNumber="1">
+  <developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+      <para>The Microsoft Silverlight Media Framework (SMF) 2.7 is a set of .NET components you can use to create and customize Silverlight-based video player applications.</para>
+    </introduction>
+   
+   	<section address="Section1">
+	    <title>Microsoft Silverlight Media Framework 2.7 Overview</title>
+		<content>
+			<para>
+			Microsoft's open source Silverlight Media Framework (SMF) enables developers to quickly deploy a robust, scalable, customizable media player for IIS Smooth Streaming delivery. 
+			The SMF builds on the core functionality of the Smooth Streaming Player Development Kit. 
+			</para>
+			<para>
+			SMF is built on a proven code base with dozens of leading Smooth Streaming deployments, including Wimbledon, Sunday Night Football on NBCSports, 
+			the UEFA Super Cup on Canal+, Roland Garros and the Tour de France on France Télévisions and many others and by providing developers with source code 
+			they can more easily build these experiences for their deployments. Key features in the framework include DVR, rewind, alternate language tracks, 
+			in-stream data feeds and analytics tracking. The SMF is designed for future third-party extensibility and component modularity, as well as support 
+			for other media delivery scenarios beyond Smooth Streaming. 
+			</para>
+			<para><legacyBold>Player Elements</legacyBold></para>
+			
+			<list class="bullet">
+				<listItem>Play / pause</listItem>
+				<listItem>Rewind</listItem>
+				<listItem>Fast forward</listItem>
+				<listItem>Replay</listItem>
+				<listItem>Slow motion</listItem>
+				<listItem>Next chapter marker</listItem>
+				<listItem>Previous chapter marker</listItem>
+				<listItem>Timeline Scrubber</listItem>
+				<listItem>Current position / total position</listItem>
+				<listItem>Go to live </listItem>
+				<listItem>Bitrate meter</listItem>
+				<listItem>Volume</listItem>
+				<listItem>Full screen / restore</listItem>
+			</list>
+			
+			<para><legacyBold>Advanced Features</legacyBold></para>
+			
+			<list class="bullet">
+				<listItem>Brand your player - Use Blend to re-invent how users experience your content!</listItem>
+				<listItem>Emphasize defining moments by embedding Markers in your Timeline.</listItem>
+				<listItem>Communicate and respond to bandwidth utilization by using the Bitrate element.</listItem>
+				<listItem>Integrate external data sources using the Data framework.</listItem>
+				<listItem>Deliver differentiated Live and On-Demand experiences.</listItem>
+			</list>
+			
+			<para><legacyBold>SMF Architecture Diagram</legacyBold></para>
+			<para>The image below shows a diagram of the main functionality of the Silverlight Media Framework 2.0.</para>
+			<para>
+				<mediaLink>
+					<image xlink:href="smf2-architecture"/>
+				</mediaLink>
+			</para>
+		</content>
+	</section>
+	
+	<relatedTopics></relatedTopics>
+	
+</developerConceptualDocument>
+</topic>

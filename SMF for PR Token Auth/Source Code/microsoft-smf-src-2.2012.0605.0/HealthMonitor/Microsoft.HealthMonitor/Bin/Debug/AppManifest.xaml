@@ -1,0 +1,27 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Microsoft.HealthMonitor" EntryPointType="Microsoft.HealthMonitor.App" RuntimeVersion="5.0.61118.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="Microsoft.HealthMonitor" Source="Microsoft.HealthMonitor.dll" />
+    <AssemblyPart x:Name="DotNetZip" Source="DotNetZip.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Core" Source="Microsoft.SilverlightMediaFramework.Core.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Diagnostics" Source="Microsoft.SilverlightMediaFramework.Diagnostics.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Logging" Source="Microsoft.SilverlightMediaFramework.Logging.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Plugins" Source="Microsoft.SilverlightMediaFramework.Plugins.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Plugins.Monitoring" Source="Microsoft.SilverlightMediaFramework.Plugins.Monitoring.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming" Source="Microsoft.SilverlightMediaFramework.Plugins.SmoothStreaming.dll" />
+    <AssemblyPart x:Name="Microsoft.SilverlightMediaFramework.Utilities" Source="Microsoft.SilverlightMediaFramework.Utilities.dll" />
+    <AssemblyPart x:Name="Microsoft.Web.Media.SmoothStreaming" Source="Microsoft.Web.Media.SmoothStreaming.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.Composition" Source="System.ComponentModel.Composition.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.DataAnnotations" Source="System.ComponentModel.DataAnnotations.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data" Source="System.Windows.Controls.Data.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Data.Input" Source="System.Windows.Controls.Data.Input.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls" Source="System.Windows.Controls.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Input" Source="System.Windows.Controls.Input.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Theming.BubbleCreme" Source="System.Windows.Controls.Theming.BubbleCreme.dll" />
+    <AssemblyPart x:Name="System.Windows.Controls.Theming.Toolkit" Source="System.Windows.Controls.Theming.Toolkit.dll" />
+    <AssemblyPart x:Name="System.Windows.Data" Source="System.Windows.Data.dll" />
+    <AssemblyPart x:Name="System.Xml.Linq" Source="System.Xml.Linq.dll" />
+    <AssemblyPart x:Name="System.Xml.Serialization" Source="System.Xml.Serialization.dll" />
+    <AssemblyPart x:Name="System.ComponentModel.Composition.Initialization" Source="System.ComponentModel.Composition.Initialization.dll" />
+    <AssemblyPart x:Name="ZLib" Source="ZLib.dll" />
+  </Deployment.Parts>
+</Deployment>

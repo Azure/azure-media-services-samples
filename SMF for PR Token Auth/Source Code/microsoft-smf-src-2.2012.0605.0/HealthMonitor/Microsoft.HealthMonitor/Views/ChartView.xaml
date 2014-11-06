@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="Microsoft.HealthMonitor.Views.ChartView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:v="clr-namespace:Microsoft.HealthMonitor.Views"
+	 xmlns:c="clr-namespace:Microsoft.HealthMonitor.Converters">
+    <UserControl.Resources>
+        <!--Main Bubble Colors-->
+        <Color x:Key="LightColor">#f9f9e4</Color>
+        <Color x:Key="DarkColor">#e0e3bc</Color>
+        <Color x:Key="TextColor">#66603a</Color>
+        <SolidColorBrush x:Key="LightBrush" Color="{StaticResource LightColor}" />
+        <SolidColorBrush x:Key="DarkBrush" Color="{StaticResource DarkColor}" />
+        <SolidColorBrush x:Key="TextBrush" Color="{StaticResource TextColor}" />
+        <SolidColorBrush x:Key="DisabledColor" Color="#8CFFFFFF" />
+        <c:VisibilityConverter x:Key="VisibilityConverter"/>
+        <c:BoolConverter x:Key="IsOverConverter" TrueValue=".5" FalseValue="1" />
+        
+        <Style x:Key="LegendStyle" TargetType="Border">
+            <Setter Property="Margin" Value="9" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BorderBrush" Value="{StaticResource DarkBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,2">
+                        <GradientStop Color="{StaticResource LightColor}" Offset=".25" />
+                        <GradientStop Color="{StaticResource DarkColor}" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ChartStyle" TargetType="Border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,2">
+                        <GradientStop Color="{StaticResource LightColor}" Offset=".25" />
+                        <GradientStop Color="{StaticResource DarkColor}" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <!--<Setter Property="Foreground" Value="{StaticResource TextBrush}" />-->
+            <Setter Property="BorderThickness" Value=".75,.75,1.5,1.5" />
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BorderBrush">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,-.5">
+                        <GradientStop Color="{StaticResource DarkColor}" Offset="1" />
+                        <GradientStop Color="{StaticResource LightColor}" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Border Style="{StaticResource ChartStyle}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <ItemsControl ItemsSource="{Binding ChartLines}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Line X1="{Binding P1.X}" X2="{Binding P2.X}" Y1="{Binding P1.Y}" Y2="{Binding P2.Y}" Stroke="#4066603a" StrokeThickness="1.5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Charts}" SizeChanged="ItemsControl_SizeChanged">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid></Grid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Polyline Stroke="{Binding LineColor}" StrokeThickness="2" Opacity="{Binding IsOver, Converter={StaticResource IsOverConverter}}" Points="{Binding Points}" Visibility="{Binding Visible, Converter={StaticResource VisibilityConverter}, ConverterParameter=VisibleIfTrue}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <Border Grid.Column="1" Width="240" Style="{StaticResource LegendStyle}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding Charts}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5">
+                                    <CheckBox IsChecked="{Binding Visible, Mode=TwoWay}"/>
+                                    <Rectangle Fill="{Binding LineColor}" Width="20" Height="20"></Rectangle>
+                                    <TextBlock Text="{Binding Title}" Margin="5,0,0,0"/>
+                                    <TextBlock Text=" ("/>
+                                    <TextBlock Text="{Binding CurrentValue}"/>
+                                    <TextBlock Text="/"/>
+                                    <TextBlock Text="{Binding MaxValue}"/>
+                                    <TextBlock Text=")"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </Grid>
+    </Border>
+
+</UserControl>

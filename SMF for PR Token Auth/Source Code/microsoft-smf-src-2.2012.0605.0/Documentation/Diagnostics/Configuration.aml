@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="0e6cda0b-1852-4544-960f-0df06ff353b1" revisionNumber="1">
+  <developerConceptualDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <introduction>
+<para>The diagnostics, monitoring, and logging components are very
+flexible and can be configured to your specific needs without changing the code.
+When using these components in a production environment, it is always recommended
+that you review configuration to make sure it meets your needs.</para>
+    </introduction>
+
+<section>
+  <title>Deploying a config file</title>
+  <content>
+
+<para>By default, configuration settings are set for you. However,
+to override these default settings:</para>
+
+
+<list class="ordered">
+  <listItem>Create
+an xml file containing your config data. The easiest way is to make a copy of
+MonitoringConfig.xml (found in the Microsoft.HealthMonitorPlayer project) and make the
+necessary changes.</listItem>
+  <listItem>Add this new config xml file to your main project with a <legacyBold>Build Action of Content</legacyBold>.</listItem>
+  <listItem>Add the following Xaml to your SMFPlayer:</listItem>
+</list>
+
+<code language="none" title=" ">&lt;Core:SMFPlayer&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;Core:SMFPlayer.GlobalConfigMetadata&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Utilities:MetadataItem&#160;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Key=&quot;Microsoft.SilverlightMediaFramework.Logging.ConfigUri&quot;&#160;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Value=&quot;MonitoringConfig.xml&quot;&#160;/&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;/Core:SMFPlayer.GlobalConfigMetadata&gt;<para/>
+&lt;/Core:SMFPlayer&gt;</code>
+
+  </content>
+</section>
+
+<section>
+  <title>Config file reference</title>
+  <content>
+
+<code language="none" title=" ">&lt;?xml&#160;version=&quot;1.0&quot;&#160;encoding=&quot;utf-8&quot;&#160;?&gt;<para/>
+&lt;Configuration&gt;<para/>
+&#160;&#160;&lt;Diagnostics&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;TraceMonitor&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;TracingConfigFile&gt;/Microsoft.SilverlightMediaFramework.Diagnostics;component/TracingConfig.xml&lt;/TracingConfigFile&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;PollingMilliseconds&gt;1000&lt;/PollingMilliseconds&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;RecordCpuLoad&gt;1&lt;/RecordCpuLoad&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;/TraceMonitor&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;Diagnostics&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;AggregationIntervalMilliseconds&gt;15000&lt;/AggregationIntervalMilliseconds&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;SnapshotIntervalMilliseconds&gt;1000&lt;/SnapshotIntervalMilliseconds&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;TrackQualitySnapshot&gt;1&lt;/TrackQualitySnapshot&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;LatencyAlertThreshold&gt;2&lt;/LatencyAlertThreshold&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;TrackQuality&gt;1&lt;/TrackQuality&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;TrackDownloadErrors&gt;1&lt;/TrackDownloadErrors&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;RecordTraceLogs&gt;1&lt;/RecordTraceLogs&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;!--omit&#160;this&#160;node&#160;to&#160;track&#160;everything--&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;!--&lt;QualityTracking&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;DroppedFrames&gt;1&lt;/DroppedFrames&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;RenderedFrames&gt;1&lt;/RenderedFrames&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;ProcessCPULoad&gt;1&lt;/ProcessCPULoad&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;SystemCPULoad&gt;1&lt;/SystemCPULoad&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Bitrate&gt;1&lt;/Bitrate&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;BitrateMax&gt;1&lt;/BitrateMax&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;BitrateMaxDuration&gt;1&lt;/BitrateMaxDuration&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;PerceivedBandwidth&gt;1&lt;/PerceivedBandwidth&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;VideoBufferSize&gt;1&lt;/VideoBufferSize&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;AudioBufferSize&gt;1&lt;/AudioBufferSize&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;Buffering&gt;1&lt;/Buffering&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;BitrateChangeCount&gt;1&lt;/BitrateChangeCount&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;VideoDownloadLatency&gt;1&lt;/VideoDownloadLatency&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;AudioDownloadLatency&gt;1&lt;/AudioDownloadLatency&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;DvrOperationCount&gt;1&lt;/DvrOperationCount&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;FullScreenChangeCount&gt;1&lt;/FullScreenChangeCount&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&lt;HttpErrorCount&gt;1&lt;/HttpErrorCount&gt;<para/>
+&#160;&#160;&#160;&#160;&#160;&#160;&lt;/QualityTracking&gt;--&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;/Diagnostics&gt;<para/>
+&#160;&#160;&lt;/Diagnostics&gt;<para/>
+&#160;&#160;&lt;Logging&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;LogUnhandledExceptions&gt;1&lt;/LogUnhandledExceptions&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;PreventUnhandledExceptions&gt;0&lt;/PreventUnhandledExceptions&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;MaxExceptionLength&gt;2048&lt;/MaxExceptionLength&gt;<para/>
+&#160;&#160;&#160;&#160;&lt;QueryStringParam&gt;refid&lt;/QueryStringParam&gt;<para/>
+&#160;&#160;&lt;/Logging&gt;<para/>
+&#160;&#160;&lt;AdditionalData&gt;key1=value1,key2=value2&lt;/AdditionalData&gt;<para/>
+&lt;/Configuration&gt;</code>
+
+  </content>
+</section>
+
+<section>
+  <title>TraceMonitor Section</title>
+  <content>
+
+<para>All instances of the SMFPlayer will share this section so
+you should only set this node in the config file used for the primary instance
+of the SMFPlayer. In other words, remove this node in the config file used for
+PIP (picture in picture) instances of the SMFPlayer.</para>
+
+<para><legacyBold>TracingConfigFile:</legacyBold> This is the config file used to
+configure tracing for the Microsoft Smooth Streaming Media Element. Please refer
+to the <externalLink>
+  <linkText>Smooth Streaming Media Element documentation</linkText>
+  <linkUri>http://msdn.microsoft.com/en-us/library/microsoft.web.media.diagnostics.tracing(VS.90).aspx</linkUri>
+  <linkTarget>_blank</linkTarget>
+</externalLink> for more information. The default is
+set to a path that exists within the diagnostics assembly.</para>
+
+<para><legacyBold>PollingMilliseconds:</legacyBold> This is the rate that trace logs
+will be polled from the Smooth Streaming Media Element. Default is 1 second
+(1000).</para>
+
+<para><legacyBold>RecordCpuLoad:</legacyBold> Indicates that the CPU load should be
+retrieved every polling interval. 1 = on, 0 = off. If you do not want this
+data, for optimal performance, turn this setting off.</para>
+
+  </content>
+</section>
+
+<section>
+  <title>Diagnostics Section</title>
+  <content>
+
+<para><legacyBold>AggregationIntervalMilliseconds:</legacyBold> The interval that
+quality data should be aggregated. Default is every 30 seconds.</para>
+
+<para><legacyBold>SnapshotIntervalMilliseconds:</legacyBold> The interval that
+quality snapshots should be aggregated. Default is every second.</para>
+
+<para><legacyBold>SnapshotEnabled:</legacyBold> Indicates that quality snapshots
+should be turned on and subsequently, VideoQualitySnapshotLogs should be
+generated. Quality snapshots are only valuable for display of real time
+diagnostic info. Use normal quality logs (not snapshots) instead when logging
+results to the server. </para>
+
+<para><legacyBold>TrackQuality:</legacyBold> Indicates that quality data should be
+sampled, aggregated and reported through the VideoQualityLog object. This is
+one of the primary functions of the diagnostic component and therefore is
+almost always left on.</para>
+
+<para><legacyBold>TrackDownloadErrors:</legacyBold> Indicates that download errors should
+be tracked and reported via the ChunkDownloadErrorLog. This will help you hunt
+down bad or missing chunks in your video stream.</para>
+
+<para><legacyBold>LatencyAlertThreshold:</legacyBold> Indicates the latency in KBps
+that needs to be reached before a LatencyAlert log is generated.</para>
+
+<para><legacyBold>RecordTraceLogs:</legacyBold> This controls whether or not the low
+level Smooth Streaming Media Element trace logs should generate and log
+TraceLog objects. Trace logs are generated extremely frequently, therefore, to
+improve performance and memory utilization, you should turn this off unless you
+intend to use this information. Note: The most valuable information from these
+logs is already captured and used to help generate other logs.</para>
+
+<para><legacyBold>QualityTracking:</legacyBold> This is a parent node and controls what
+quality data should be tracked and aggregated. This will affect which
+properties are populated in both the VideoQualitySnapshotLog and the
+VideoQualityLog. You can omit this node to include everything. Please refer to
+the QualityLog API documentation for more information about the individual
+quality readings.</para>
+
+  </content>
+</section>
+
+<section>
+  <title>Logging Section</title>
+  <content>
+
+<para><legacyBold>LogUnhandledExceptions:</legacyBold> This indicates that all
+unhandled exceptions captured should be turned into ApplicationExceptionLog
+objects.</para>
+
+<para><legacyBold>PreventUnhandledExceptions:</legacyBold> Setting to 1 indicates
+that all unhandled exceptions should be handled (e.Handled = true will be set
+in the Application.Current.UnhandledException event handler).</para>
+
+<para><legacyBold>MaxExceptionLength:</legacyBold> When exceptions are turned into
+ApplicationExceptionLog objects, they are seriailized using
+exception.ToString(). This setting controls the truncation of that string.
+Remove this node to prevent truncation.</para>
+
+<para><legacyBold>QueryStringParam:</legacyBold> The value of this query string parameter
+will be added to every log. This is useful if you which to track something
+about the webpage currently serving your Silverlight application.</para>
+
+  </content>
+</section>
+
+<section>
+  <title>AdditionalData Section</title>
+  <content>
+
+<para>This node contains a series of key value pairs separated by
+commas that are to be added to every log generated. See PIP considerations for
+one possible use case.</para>
+
+
+
+
+  </content>
+</section>
+
+    <relatedTopics>
+    </relatedTopics>
+
+  </developerConceptualDocument>
+</topic>

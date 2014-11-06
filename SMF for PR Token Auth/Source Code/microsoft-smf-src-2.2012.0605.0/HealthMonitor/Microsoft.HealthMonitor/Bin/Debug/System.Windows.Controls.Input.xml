@@ -1,0 +1,457 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Windows.Controls.Input</name>
+  </assembly>
+  <members>
+    <member name="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer">
+      <summary>Exposes <see cref="T:System.Windows.Controls.AutoCompleteBox" /> types to UI automation.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.#ctor(System.Windows.Controls.AutoCompleteBox)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer" /> class.</summary>
+      <param name="owner">The <see cref="T:System.Windows.Controls.AutoCompleteBox" /> that is associated with this <see cref="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer" />.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.GetPattern(System.Windows.Automation.Peers.PatternInterface)">
+      <summary>Gets an object that supports the requested pattern, based on the patterns implemented by this <see cref="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer" />.</summary>
+      <returns>The object that implements the pattern interface, or null if the specified pattern interface is not implemented by this peer.</returns>
+      <param name="patternInterface">One of the enumeration values.</param>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IExpandCollapseProvider#Collapse">
+      <summary>For a description of this member, see <see cref="M:System.Windows.Automation.Provider.IExpandCollapseProvider.Collapse" />.</summary>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IExpandCollapseProvider#Expand">
+      <summary>For a description of this member, see <see cref="M:System.Windows.Automation.Provider.IExpandCollapseProvider.Expand" />.</summary>
+    </member>
+    <member name="P:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IExpandCollapseProvider#ExpandCollapseState">
+      <summary>For a description of this member, see <see cref="P:System.Windows.Automation.Provider.IExpandCollapseProvider.ExpandCollapseState" />.</summary>
+      <returns>The state (expanded or collapsed) of the control.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#ISelectionProvider#CanSelectMultiple">
+      <summary>For a description of this member, see <see cref="P:System.Windows.Automation.Provider.ISelectionProvider.CanSelectMultiple" />.</summary>
+      <returns>true if multiple selection is allowed; otherwise, false.</returns>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#ISelectionProvider#GetSelection">
+      <summary>For a description of this member, see <see cref="M:System.Windows.Automation.Provider.ISelectionProvider.GetSelection" />.</summary>
+      <returns>A list of UI automation providers. </returns>
+    </member>
+    <member name="P:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#ISelectionProvider#IsSelectionRequired">
+      <summary>For a description of this member, see <see cref="P:System.Windows.Automation.Provider.ISelectionProvider.IsSelectionRequired" />.</summary>
+      <returns>true if selection is required; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IValueProvider#IsReadOnly">
+      <summary>For a description of this member, see <see cref="P:System.Windows.Automation.Provider.IValueProvider.IsReadOnly" />.</summary>
+      <returns>true if the value is read-only; false if it can be modified. </returns>
+    </member>
+    <member name="M:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IValueProvider#SetValue(System.String)">
+      <summary>For a description of this member, see <see cref="M:System.Windows.Automation.Provider.IValueProvider.SetValue(System.String)" />.</summary>
+      <param name="value">The value to set. The provider is responsible for converting the value to the appropriate data type.</param>
+    </member>
+    <member name="P:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer.System#Windows#Automation#Provider#IValueProvider#Value">
+      <summary>For a description of this member, see <see cref="P:System.Windows.Automation.Provider.IValueProvider.Value" />.</summary>
+      <returns>The value of the control.</returns>
+    </member>
+    <member name="T:System.Windows.Controls.AutoCompleteBox">
+      <summary>Represents a control that provides a text box for user input and a drop-down that contains possible matches based on the input in the text box.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> class. </summary>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.ArrangeOverride(System.Windows.Size)">
+      <summary>Arranges and sizes the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control and its contents.</summary>
+      <returns>The <paramref name="finalSize" />, unchanged.</returns>
+      <param name="finalSize">The size allowed for the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</param>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.DropDownClosed">
+      <summary>Occurs when the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> property was changed from true to false and the drop-down is open.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.DropDownClosing">
+      <summary>Occurs when the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> property is changing from true to false. </summary>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.DropDownOpened">
+      <summary>Occurs when the value of the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> property has changed from false to true and the drop-down is open.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.DropDownOpening">
+      <summary>Occurs when the value of the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> property is changing from false to true. </summary>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.FilterMode">
+      <summary>Gets or sets how the text in the text box is used to filter items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property for display in the drop-down.</summary>
+      <returns>One of the <see cref="T:System.Windows.Controls.AutoCompleteFilterMode" /> values The default is <see cref="F:System.Windows.Controls.AutoCompleteFilterMode.StartsWith" />.</returns>
+      <exception cref="T:System.ArgumentException">The specified value is not a valid <see cref="T:System.Windows.Controls.AutoCompleteFilterMode" />.</exception>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.FilterModeProperty">
+      <summary>Gets the identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.FilterMode" /> dependency property.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.FormatValue(System.Object)">
+      <summary>Converts the specified object to a string by using the property values of the binding object specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ValueMemberBinding" /> property.</summary>
+      <returns>The string representation of the specified object.</returns>
+      <param name="value">The object to format as a string.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.GetSelectionAdapterPart">
+      <summary>Returns the specified object as an <see cref="T:System.Windows.Controls.ISelectionAdapter" />, if possible.</summary>
+      <returns>A <see cref="T:System.Windows.Controls.ISelectionAdapter" /> if possible; otherwise, null.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.HasFocus">
+      <summary>Determines whether the text box or drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control has focus.</summary>
+      <returns>true to indicate the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> has focus; otherwise, false.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen">
+      <summary>Gets or sets a value that indicates whether the drop-down portion of the control is open.</summary>
+      <returns>true if the drop-down is open; otherwise, false. The default is false.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.IsDropDownOpenProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsDropDownOpen" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.IsTextCompletionEnabled">
+      <summary>Gets or sets a value that indicates whether the first possible match found during the filtering process will be displayed automatically in the text box.</summary>
+      <returns>true if the first possible match found will be displayed automatically in the text box; otherwise, false. The default is false.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.IsTextCompletionEnabledProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsTextCompletionEnabled" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.IsTextCompletionEnabled" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ItemContainerStyle">
+      <summary>Gets or sets the <see cref="T:System.Windows.Style" /> that is applied to the selection adapter contained in the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The <see cref="T:System.Windows.Style" /> applied to the selection adapter contained in the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control. The default is null.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.ItemContainerStyleProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemContainerStyle" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemContainerStyle" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ItemFilter">
+      <summary>Gets or sets the custom method that uses the user-entered text to filter the items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property for display in the drop-down.</summary>
+      <returns>The custom method that uses the user-entered text to filter the items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property. The default is null.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.ItemFilterProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemFilter" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemFilter" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ItemsSource">
+      <summary>Gets or sets a collection that is used to generate the items for the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The collection that is used to generate the items of the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.ItemsSourceProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ItemTemplate">
+      <summary>Gets or sets the <see cref="T:System.Windows.DataTemplate" /> used to display each item in the drop-down portion of the control.</summary>
+      <returns>The <see cref="T:System.Windows.DataTemplate" /> used to display each item in the drop-down. The default is null.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.ItemTemplateProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemTemplate" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemTemplate" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.MaxDropDownHeight">
+      <summary>Gets or sets the maximum height of the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The maximum height of the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control. The default is <see cref="F:System.Double.PositiveInfinity" />.</returns>
+      <exception cref="T:System.ArgumentException">The specified value is less than 0.</exception>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.MaxDropDownHeightProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.MaxDropDownHeight" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.MaxDropDownHeight" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.MinimumPopulateDelay">
+      <summary>Gets or sets the minimum delay, in milliseconds, after text is typed in the text box before the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control populates the list of possible matches in the drop-down.</summary>
+      <returns>The minimum delay, in milliseconds, after text is typed in the text box, but before the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> populates the list of possible matches in the drop-down. The default is 0.</returns>
+      <exception cref="T:System.ArgumentException">The set value is less than 0.</exception>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.MinimumPopulateDelayProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.MinimumPopulateDelay" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.MinimumPopulateDelay" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.MinimumPrefixLength">
+      <summary>Gets or sets the minimum number of characters required to be entered in the text box before the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> displays possible matches.</summary>
+      <returns>The minimum number of characters to be entered in the text box before the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> displays possible matches. The default is 1.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.MinimumPrefixLengthProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.MinimumPrefixLength" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.MinimumPrefixLength" /> dependency property.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnApplyTemplate">
+      <summary>Builds the visual tree for the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control when a new template is applied.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnCreateAutomationPeer">
+      <summary>Returns a <see cref="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer" /> for use by the Silverlight automation infrastructure.</summary>
+      <returns>A <see cref="T:System.Windows.Automation.Peers.AutoCompleteBoxAutomationPeer" /> for the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> object.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnDropDownClosed(System.Windows.RoutedPropertyChangedEventArgs{System.Boolean})">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.DropDownClosed" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.RoutedPropertyChangedEventArgs`1" /> which contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnDropDownClosing(System.Windows.Controls.RoutedPropertyChangingEventArgs{System.Boolean})">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.DropDownClosing" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.Controls.RoutedPropertyChangingEventArgs`1" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnDropDownOpened(System.Windows.RoutedPropertyChangedEventArgs{System.Boolean})">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.DropDownOpened" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.RoutedPropertyChangedEventArgs`1" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnDropDownOpening(System.Windows.Controls.RoutedPropertyChangingEventArgs{System.Boolean})">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.DropDownOpening" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.Controls.RoutedPropertyChangingEventArgs`1" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnGotFocus(System.Windows.RoutedEventArgs)">
+      <summary>Provides handling for the <see cref="E:System.Windows.UIElement.GotFocus" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.RoutedEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnKeyDown(System.Windows.Input.KeyEventArgs)">
+      <summary>Provides handling for the <see cref="E:System.Windows.UIElement.KeyDown" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.Input.KeyEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnLostFocus(System.Windows.RoutedEventArgs)">
+      <summary>Provides handling for the <see cref="E:System.Windows.UIElement.LostFocus" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.RoutedEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnPopulated(System.Windows.Controls.PopulatedEventArgs)">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populated" /> event </summary>
+      <param name="e">A <see cref="T:System.Windows.Controls.PopulatedEventArgs" /> that contains the event data. </param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnPopulating(System.Windows.Controls.PopulatingEventArgs)">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populating" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.Controls.PopulatingEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnSelectionChanged(System.Windows.Controls.SelectionChangedEventArgs)">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.SelectionChanged" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.Controls.SelectionChangedEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.OnTextChanged(System.Windows.RoutedEventArgs)">
+      <summary>Raises the <see cref="E:System.Windows.Controls.AutoCompleteBox.TextChanged" /> event.</summary>
+      <param name="e">A <see cref="T:System.Windows.RoutedEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="M:System.Windows.Controls.AutoCompleteBox.PopulateComplete">
+      <summary>Notifies the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> that the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property has been set and the data can be filtered to provide possible matches in the drop-down.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.Populated">
+      <summary>Occurs when the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> has populated the drop-down with possible matches based on the <see cref="P:System.Windows.Controls.AutoCompleteBox.Text" /> property.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.Populating">
+      <summary>Occurs when the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> is populating the drop-down with possible matches based on the <see cref="P:System.Windows.Controls.AutoCompleteBox.Text" /> property.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.SearchText">
+      <summary>Gets the text that is used to filter items in the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> item collection. </summary>
+      <returns>The text that is used to filter items in the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> item collection.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.SearchTextProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.SearchText" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.SearchText" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.SelectedItem">
+      <summary>Gets or sets the selected item in the drop-down.</summary>
+      <returns>The selected item in the drop-down.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.SelectedItemProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.SelectedItem" /> dependency property.</summary>
+      <returns>The identifier the <see cref="P:System.Windows.Controls.AutoCompleteBox.SelectedItem" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.SelectionAdapter">
+      <summary>Gets or sets the selection adapter used to populate the drop-down with a list of selectable items. </summary>
+      <returns>The selection adapter used to populate the drop-down with a list of selectable items. </returns>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.SelectionChanged">
+      <summary>Occurs when the selected item in the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> has changed.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.Text">
+      <summary>Gets or sets the text in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The text in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.TextBoxStyle">
+      <summary>Gets or sets the <see cref="T:System.Windows.Style" /> applied to the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The <see cref="T:System.Windows.Style" /> applied to the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control. The default is null.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.TextBoxStyleProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.TextBoxStyle" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.TextBoxStyle" /> dependency property.</returns>
+    </member>
+    <member name="E:System.Windows.Controls.AutoCompleteBox.TextChanged">
+      <summary>Occurs when the text in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> changes.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.TextFilter">
+      <summary>Gets or sets the custom method that uses the user-entered text to filter items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property in a text-based way for display in the drop-down.</summary>
+      <returns>The custom method that uses the user-entered text to filter items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property in a text-based way for display in the drop-down.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.TextFilterProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.TextFilter" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.TextFilter" /> dependency property.</returns>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteBox.TextProperty">
+      <summary>Identifies the <see cref="P:System.Windows.Controls.AutoCompleteBox.Text" /> dependency property.</summary>
+      <returns>The identifier for the <see cref="P:System.Windows.Controls.AutoCompleteBox.Text" /> dependency property.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ValueMemberBinding">
+      <summary>Gets or sets the <see cref="T:System.Windows.Data.Binding" /> that is used to get the value for display in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control, and to filter items for display in the drop-down.</summary>
+      <returns>The <see cref="T:System.Windows.Data.Binding" /> object used when binding to a collection property, and to filter items for display in the drop-down.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.AutoCompleteBox.ValueMemberPath">
+      <summary>Gets or sets the property path that is used to get the value for display in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control, and to filter items for display in the drop-down.</summary>
+      <returns>The property path that is used to get values for display in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control, and to filter items for display in the drop-down.</returns>
+    </member>
+    <member name="T:System.Windows.Controls.AutoCompleteFilterMode">
+      <summary>Specifies how text in the text box portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control is used to filter items specified by the <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemsSource" /> property for display in the drop-down.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.None">
+      <summary>Specifies that no filter is used. All items are returned.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.StartsWith">
+      <summary>Specifies a culture-sensitive, case-insensitive filter where the returned items start with the specified text. The filter uses the <see cref="M:System.String.StartsWith(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.CurrentCultureIgnoreCase" /> as the string comparison criteria. </summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.StartsWithCaseSensitive">
+      <summary>Specifies a culture-sensitive, case-sensitive filter where the returned items start with the specified text. The filter uses the <see cref="M:System.String.StartsWith(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.CurrentCulture" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.StartsWithOrdinal">
+      <summary>Specifies an ordinal, case-insensitive filter where the returned items start with the specified text. The filter uses the <see cref="M:System.String.StartsWith(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.OrdinalIgnoreCase" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.StartsWithOrdinalCaseSensitive">
+      <summary>Specifies an ordinal, case-sensitive filter where the returned items start with the specified text. The filter uses the <see cref="M:System.String.StartsWith(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.Ordinal" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.Contains">
+      <summary>Specifies a culture-sensitive, case-insensitive filter where the returned items contain the specified text.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.ContainsCaseSensitive">
+      <summary>Specifies a culture-sensitive, case-sensitive filter where the returned items contain the specified text.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.ContainsOrdinal">
+      <summary>Specifies an ordinal, case-insensitive filter where the returned items contain the specified text.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.ContainsOrdinalCaseSensitive">
+      <summary>Specifies an ordinal, case-sensitive filter where the returned items contain the specified text.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.Equals">
+      <summary>Specifies a culture-sensitive, case-insensitive filter where the returned items equal the specified text. The filter uses the <see cref="M:System.String.Equals(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.CurrentCultureIgnoreCase" /> as the search comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.EqualsCaseSensitive">
+      <summary>Specifies a culture-sensitive, case-sensitive filter where the returned items equal the specified text. The filter uses the <see cref="M:System.String.Equals(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.CurrentCulture" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.EqualsOrdinal">
+      <summary>Specifies an ordinal, case-insensitive filter where the returned items equal the specified text. The filter uses the <see cref="M:System.String.Equals(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.OrdinalIgnoreCase" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.EqualsOrdinalCaseSensitive">
+      <summary>Specifies an ordinal, case-sensitive filter where the returned items equal the specified text. The filter uses the <see cref="M:System.String.Equals(System.String,System.StringComparison)" /> method, specifying <see cref="P:System.StringComparer.Ordinal" /> as the string comparison criteria.</summary>
+    </member>
+    <member name="F:System.Windows.Controls.AutoCompleteFilterMode.Custom">
+      <summary>Specifies that a custom filter is used. This mode is used when the <see cref="P:System.Windows.Controls.AutoCompleteBox.TextFilter" /> or <see cref="P:System.Windows.Controls.AutoCompleteBox.ItemFilter" /> properties are set.</summary>
+    </member>
+    <member name="T:System.Windows.Controls.AutoCompleteFilterPredicate`1">
+      <summary>Represents the filter used by the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control to determine whether an item is a possible match for the specified text.</summary>
+      <returns>true to indicate <paramref name="item" /> is a possible match for <paramref name="search" />; otherwise false.</returns>
+      <param name="search">The string used as the basis for filtering.</param>
+      <param name="item">The item that is compared with the <paramref name="search" /> parameter.</param>
+      <typeparam name="T">The type used for filtering the <see cref="T:System.Windows.Controls.AutoCompleteBox" />. This type can be either a string or an object.</typeparam>
+    </member>
+    <member name="T:System.Windows.Controls.ISelectionAdapter">
+      <summary>Defines an item collection, selection members, and key handling for the selection adapter contained in the drop-down portion of an <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.ISelectionAdapter.Cancel">
+      <summary>Occurs when a selection has been canceled.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.ISelectionAdapter.Commit">
+      <summary>Occurs when a selected item is not cancelled and is committed as the selected item. </summary>
+    </member>
+    <member name="M:System.Windows.Controls.ISelectionAdapter.CreateAutomationPeer">
+      <summary>Returns an automation peer for the selection adapter, for use by the Silverlight automation infrastructure.</summary>
+      <returns>An automation peer for the selection adapter, if one is available; otherwise, null.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.ISelectionAdapter.HandleKeyDown(System.Windows.Input.KeyEventArgs)">
+      <summary>Provides handling for the <see cref="E:System.Windows.UIElement.KeyDown" /> event that occurs when a key is pressed while the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> has focus.</summary>
+      <param name="e">A <see cref="T:System.Windows.Input.KeyEventArgs" /> that contains data about the <see cref="E:System.Windows.UIElement.KeyDown" /> event.</param>
+    </member>
+    <member name="P:System.Windows.Controls.ISelectionAdapter.ItemsSource">
+      <summary>Gets or sets a collection that is used to generate content for the selection adapter.</summary>
+      <returns>The collection that is used to generate content for the selection adapter.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.ISelectionAdapter.SelectedItem">
+      <summary>Gets or sets the selected item.</summary>
+      <returns>The currently selected item.</returns>
+    </member>
+    <member name="E:System.Windows.Controls.ISelectionAdapter.SelectionChanged">
+      <summary>Occurs when the <see cref="P:System.Windows.Controls.ISelectionAdapter.SelectedItem" /> property value changes.</summary>
+    </member>
+    <member name="T:System.Windows.Controls.PopulatedEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populated" /> event.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.PopulatedEventArgs.#ctor(System.Collections.IEnumerable)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.PopulatedEventArgs" />.</summary>
+      <param name="data">The list of possible matches added to the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</param>
+    </member>
+    <member name="P:System.Windows.Controls.PopulatedEventArgs.Data">
+      <summary>Gets the list of possible matches added to the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The list of possible matches added to the <see cref="T:System.Windows.Controls.AutoCompleteBox" />.</returns>
+    </member>
+    <member name="T:System.Windows.Controls.PopulatedEventHandler">
+      <summary>Represents the method that will handle the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populated" /> event of a <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <param name="sender">The source of the event. </param>
+      <param name="e">A <see cref="T:System.Windows.Controls.PopulatedEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="T:System.Windows.Controls.PopulatingEventArgs">
+      <summary>Provides data for the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populating" /> event.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.PopulatingEventArgs.#ctor(System.String)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.PopulatingEventArgs" /> class.</summary>
+      <param name="parameter">The value of the <see cref="P:System.Windows.Controls.AutoCompleteBox.SearchText" /> property, which is used to filter items for the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</param>
+    </member>
+    <member name="P:System.Windows.Controls.PopulatingEventArgs.Cancel">
+      <summary>Gets or sets a value that indicates whether the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populating" /> event should be canceled.</summary>
+      <returns>true to cancel the event, otherwise false. The default is false.</returns>
+    </member>
+    <member name="P:System.Windows.Controls.PopulatingEventArgs.Parameter">
+      <summary>Gets the text that is used to determine which items to display in the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+      <returns>The text that is used to determine which items to display in the <see cref="T:System.Windows.Controls.AutoCompleteBox" />.</returns>
+    </member>
+    <member name="T:System.Windows.Controls.PopulatingEventHandler">
+      <summary>Represents the method that will handle the <see cref="E:System.Windows.Controls.AutoCompleteBox.Populating" /> event of a <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control. </summary>
+      <param name="sender">The source of the event. </param>
+      <param name="e">A <see cref="T:System.Windows.Controls.PopulatingEventArgs" /> that contains the event data.</param>
+    </member>
+    <member name="T:System.Windows.Controls.SelectorSelectionAdapter">
+      <summary>Represents the selection adapter contained in the drop-down portion of an <see cref="T:System.Windows.Controls.AutoCompleteBox" /> control.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.#ctor">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.SelectorSelectionAdapter" /> class.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.#ctor(System.Windows.Controls.Primitives.Selector)">
+      <summary>Initializes a new instance of the <see cref="T:System.Windows.Controls.SelectorSelectionAdapter" /> class with the specified <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</summary>
+      <param name="selector">The <see cref="T:System.Windows.Controls.Primitives.Selector" /> control to wrap as a <see cref="T:System.Windows.Controls.SelectorSelectionAdapter" />.</param>
+    </member>
+    <member name="E:System.Windows.Controls.SelectorSelectionAdapter.Cancel">
+      <summary>Occurs when a selection is canceled before it is committed.</summary>
+    </member>
+    <member name="E:System.Windows.Controls.SelectorSelectionAdapter.Commit">
+      <summary>Occurs when an item is selected and is committed to the underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.CreateAutomationPeer">
+      <summary>Returns an automation peer for the underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control, for use by the Silverlight automation infrastructure.</summary>
+      <returns>An automation peer for use by the Silverlight automation infrastructure.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.HandleKeyDown(System.Windows.Input.KeyEventArgs)">
+      <summary>Provides handling for the <see cref="E:System.Windows.UIElement.KeyDown" /> event that occurs when a key is pressed while the drop-down portion of the <see cref="T:System.Windows.Controls.AutoCompleteBox" /> has focus.</summary>
+      <param name="e">A <see cref="T:System.Windows.Input.KeyEventArgs" /> that contains data about the <see cref="E:System.Windows.UIElement.KeyDown" /> event.</param>
+    </member>
+    <member name="P:System.Windows.Controls.SelectorSelectionAdapter.ItemsSource">
+      <summary>Gets or sets a collection that is used to generate the content of the selection adapter.</summary>
+      <returns>The collection used to generate content for the selection adapter.</returns>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.OnCancel">
+      <summary>Raises the <see cref="E:System.Windows.Controls.SelectorSelectionAdapter.Cancel" /> event.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.OnCommit">
+      <summary>Raises the <see cref="E:System.Windows.Controls.SelectorSelectionAdapter.Commit" /> event.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.SelectedIndexDecrement">
+      <summary>Decrements the <see cref="P:System.Windows.Controls.Primitives.Selector.SelectedIndex" /> property of the underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</summary>
+    </member>
+    <member name="M:System.Windows.Controls.SelectorSelectionAdapter.SelectedIndexIncrement">
+      <summary>Increments the <see cref="P:System.Windows.Controls.Primitives.Selector.SelectedIndex" /> property of the underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.SelectorSelectionAdapter.SelectedItem">
+      <summary>Gets or sets the selected item of the selection adapter.</summary>
+      <returns>The selected item of the underlying selection adapter.</returns>
+    </member>
+    <member name="E:System.Windows.Controls.SelectorSelectionAdapter.SelectionChanged">
+      <summary>Occurs when the <see cref="P:System.Windows.Controls.SelectorSelectionAdapter.SelectedItem" /> property value changes.</summary>
+    </member>
+    <member name="P:System.Windows.Controls.SelectorSelectionAdapter.SelectorControl">
+      <summary>Gets or sets the underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</summary>
+      <returns>The underlying <see cref="T:System.Windows.Controls.Primitives.Selector" /> control.</returns>
+    </member>
+  </members>
+</doc>
