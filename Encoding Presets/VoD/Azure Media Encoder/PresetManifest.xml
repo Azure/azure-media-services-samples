@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Presets>
+  <Preset Name="AAC Good Quality Audio" Id="17905BF4-75CF-4CB3-950B-5A92ECD891F1" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="AAC Good Quality Audio.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set 1080p" Id="53456003-4EAD-4F2A-9619-138953DFF764" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set 1080p.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set 1080p for iOS Cellular Only" Id="A794EFBF-7B5A-430E-9C86-DA484F29A05C" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set 1080p for iOS Cellular Only.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set 720p" Id="F43E67A2-B675-4622-81DB-055311305280" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set 720p.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set 720p for iOS Cellular Only" Id="576C9648-7242-4BBD-AB39-70A20C46D518" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set 720p for iOS Cellular Only.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set SD 16x9" Id="B81FD6A0-9632-470B-A017-647179F9B80E" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set SD 16x9.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set SD 16x9 for iOS Cellular Only" Id="4E7FD62A-4438-46E2-AB86-3F73EDCB8D3D" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set SD 16x9 for iOS Cellular Only.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set SD 4x3" Id="BC03C402-9AB5-4F71-B363-55BBB089E188" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set SD 4x3.xml" />
+  <Preset Name="H264 Adaptive Bitrate MP4 Set SD 4x3 for iOS Cellular Only" Id="AC885666-D303-4F03-9196-4B74614B92D2" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Adaptive Bitrate MP4 Set SD 4x3 for iOS Cellular Only.xml" />
+  <Preset Name="H264 Broadband 1080p" Id="4D305DAB-D47B-4855-BC26-5683B34F78B9" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Broadband 1080p.xml" />
+  <Preset Name="H264 Broadband 720p" Id="BBE5D9D0-B69E-43B6-8E31-52956AA6D97F" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Broadband 720p.xml" />
+  <Preset Name="H264 Broadband SD 16x9" Id="C22BF9F4-2700-4E59-B227-6517767F3EAF" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Broadband SD 16x9.xml" />
+  <Preset Name="H264 Broadband SD 4x3" Id="F2398619-4A3A-4D75-B5E0-CEC1C1AF06A0" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Broadband SD 4x3.xml" />
+  <Preset Name="H264 Smooth Streaming 1080p" Id="2C1E1D10-F263-4A7D-9227-87AACE7F01C9" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming 1080p.xml" />
+  <Preset Name="H264 Smooth Streaming 720p" Id="9F205F16-ADD1-45FA-9798-77102792D527" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming 720p.xml" />
+  <Preset Name="H264 Smooth Streaming 720p for 3G or 4G" Id="7A9F85FE-A65F-482B-9CFA-A3A18F8518CF" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming 720p for 3G or 4G.xml" />
+  <Preset Name="H264 Smooth Streaming 720p Xbox Live ADK" Id="06EC3CEF-63B3-44D8-A2A6-4A1DA202BBE5" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming 720p Xbox Live ADK.xml" />
+  <Preset Name="H264 Smooth Streaming SD 16x9" Id="3CDC2299-819D-44B3-881B-8C70E11A869C" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming SD 16x9.xml" />
+  <Preset Name="H264 Smooth Streaming SD 4x3" Id="AF0FB3C4-4A13-429E-A151-E460C9FA1B1F" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming SD 4x3.xml" />
+  <Preset Name="H264 Smooth Streaming Windows Phone 7 Series" Id="326C1EB6-36AF-4042-9B18-3E6ABC15FBBB" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="H264 Smooth Streaming Windows Phone 7 Series.xml" />
+  <Preset Name="Thumbnails" Id="1E3DD7CA-E519-4152-814D-7819FAB036BF" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="Thumbnails.xml" />
+  <Preset Name="VC1 Broadband 1080p" Id="C8F5AC02-3E2F-44E8-A125-AFC8E156581C" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Broadband 1080p.xml" />
+  <Preset Name="VC1 Broadband 720p" Id="CCD35E1C-7B12-4E33-BC1A-BD761BBA185F" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Broadband 720p.xml" />
+  <Preset Name="VC1 Broadband SD 16x9" Id="F81C853F-3D02-40A1-A38E-18B8BD7D251D" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Broadband SD 16x9.xml" />
+  <Preset Name="VC1 Broadband SD 4x3" Id="3B35BA85-45C4-4C63-930F-AE9FFCF45DA6" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Broadband SD 4x3.xml" />
+  <Preset Name="VC1 Smooth Streaming 1080p" Id="134C7918-FECE-4564-BC1F-553EE5A104A7" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Smooth Streaming 1080p.xml" />
+  <Preset Name="VC1 Smooth Streaming 720p" Id="0B48EFE1-B6DF-45B5-A8B5-65FD24B48A34" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Smooth Streaming 720p.xml" />
+  <Preset Name="VC1 Smooth Streaming 720p Xbox Live ADK" Id="A393B360-2170-451E-8755-B491353C0554" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Smooth Streaming 720p Xbox Live ADK.xml" />
+  <Preset Name="VC1 Smooth Streaming SD 16x9" Id="2F6B3143-D4CF-4679-9A9D-8D9F81F94444" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Smooth Streaming SD 16x9.xml" />
+  <Preset Name="VC1 Smooth Streaming SD 4x3" Id="B26CE84E-E1A8-4CE5-9F9D-A78AEEA1873C" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="VC1 Smooth Streaming SD 4x3.xml" />
+  <Preset Name="WMA High Quality Audio" Id="8F204AA5-4E12-4072-9650-E8AEBB49E497" MediaProcessorId="1b1da727-93ae-4e46-a8a1-268828765609" FilePath="WMA High Quality Audio.xml" />
+</Presets>
