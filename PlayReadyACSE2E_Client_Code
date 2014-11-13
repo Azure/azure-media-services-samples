@@ -1,0 +1,237 @@
+//the code for Silverlight custom license acquirer
+
+using System;
+using System.Net;
+using System.Windows.Media;
+using System.IO;
+
+namespace SmoothStreamingPlayer
+{
+    public class CustomLicenseAcquirer : LicenseAcquirer
+    {
+        private string challengeString;  //hold licenseChallenge string 
+
+        // called before MediaOpened is raised, and when the Media pipeline is building a topology
+        protected override void OnAcquireLicense(Stream licenseChallenge, Uri licenseServerUri)
+        {
+            StreamReader objStreamReader = new StreamReader(licenseChallenge);
+            challengeString = objStreamReader.ReadToEnd();
+
+            // set License Server URL, based on whether there is an override
+            Uri resolvedLicenseServerUri;
+            if (LicenseServerUriOverride == null)
+                resolvedLicenseServerUri = licenseServerUri;
+            else
+                resolvedLicenseServerUri = LicenseServerUriOverride;
+
+            //SMFPlayer bug: converting & to &amp; in query string parameters. This line fixes it.
+            resolvedLicenseServerUri = new Uri(System.Windows.Browser.HttpUtility.HtmlDecode(resolvedLicenseServerUri.AbsoluteUri));
+            
+            //construct HttpWebRequest to license server
+            HttpWebRequest objHttpWebRequest = WebRequest.Create(resolvedLicenseServerUri) as HttpWebRequest;
+            objHttpWebRequest.Method = "POST";
+            objHttpWebRequest.ContentType = "application/xml";
+            //The headers below are necessary so that error handling and redirects are handled properly via the Silverlight client.
+            objHttpWebRequest.Headers["msprdrm_server_redirect_compat"]  = "false";
+            objHttpWebRequest.Headers["msprdrm_server_exception_compat"] = "false";
+
+            //for testing ContentKeyRestrictionType.TokenRestricted
+            //  To retrieve ACS Token, the following codes are used:
+            //- WCFService.svc GetAcsToken()
+            //- MainPage.xaml.cs button_Click
+            //- CustomLicenseAcquirer.cs OnAcquireLicense
+            //- Constants.AcsToken
+            if (Constants.AddAuthorizationToken)
+            {
+                //string kid   = Constants.KeyId;   //"42b3ddc1-2b93-4813-b50b-af1ec3c9c771";
+                objHttpWebRequest.Headers["Authorization"] = "Bearer=" + Constants.AcsToken;  
+            }
+
+            //  Initiate getting request stream  
+            IAsyncResult objIAsyncResult = objHttpWebRequest.BeginGetRequestStream(new AsyncCallback(RequestStreamCallback), objHttpWebRequest);
+        }
+
+        // This method is called when the asynchronous operation completes.
+        void RequestStreamCallback(IAsyncResult ar)
+        {
+            HttpWebRequest objHttpWebRequest = ar.AsyncState as HttpWebRequest;  
+            objHttpWebRequest.ContentType = "text/xml";
+            //add challengeString to HttpWebRequest
+            Stream objStream = objHttpWebRequest.EndGetRequestStream(ar);
+            StreamWriter objStreamWriter = new StreamWriter(objStream, System.Text.Encoding.UTF8);
+            objStreamWriter.Write(challengeString);
+            objStreamWriter.Close();
+
+            // Make async call for response  
+            objHttpWebRequest.BeginGetResponse(new AsyncCallback(ResponseCallback), objHttpWebRequest);
+        }
+
+        private void ResponseCallback(IAsyncResult ar)
+        {
+            HttpWebRequest objHttpWebRequest = ar.AsyncState as HttpWebRequest;
+            WebResponse objWebResponse = objHttpWebRequest.EndGetResponse(ar);       
+            Stream objStream = objWebResponse.GetResponseStream(); 
+
+            //get license body        
+            //StreamReader objStreamReader = new StreamReader(objStream, System.Text.Encoding.UTF8);
+            //string prLicense = objStreamReader.ReadToEnd();
+
+            //objStream.Seek(0, SeekOrigin.Begin);
+            SetLicenseResponse(objStream);
+        }
+
+    }  //class
+}  //namespace
+
+
+
+
+
+
+//the code for the WCF service for getting ACS token
+using System;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.ServiceModel.Activation;
+using System.Xml.Linq;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Net;
+using System.IO;
+using System.Runtime.Serialization.Json;
+
+//Test client: C:\Program Files (x86)\Microsoft Visual Studio 9.0\Common7\IDE\wcftestclient.exe
+namespace SilverlightApplication.Web
+{   
+    //implementation
+    [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
+    public class WCFService : IWCFService
+    {
+        public CustomPlaylistItem[] GetPlaylist()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Playlist\\Playlist.xml"; //.Replace("SilverlightApplication.Web\\", "SmoothStreamingPlayer\\Playlist.xml");
+            XDocument objXDocument = XDocument.Load(path);
+            IEnumerable<string> attributes = from node in objXDocument.Descendants("media") select node.Attribute("url").Value;
+
+            string[] urls = attributes.ToArray<string>();
+
+            CustomPlaylistItem[] objCustomPlaylistItems = new CustomPlaylistItem[urls.Length];
+
+            for (int i = 0; i < urls.Length; i++)
+            {
+                objCustomPlaylistItems[i] = new CustomPlaylistItem();
+                objCustomPlaylistItems[i].Url = urls[i];
+            }
+            
+            //replace localhost in URL's by machine name/IP, depending on network
+            string dnsName = System.Configuration.ConfigurationManager.AppSettings["host"]; // System.Net.Dns.GetHostEntry("localhost").HostName;
+            foreach (CustomPlaylistItem objCustomPlaylistItem in objCustomPlaylistItems)
+            {
+                objCustomPlaylistItem.Url = objCustomPlaylistItem.Url.Replace("/localhost/", "/" + dnsName + "/");
+            }
+
+            return objCustomPlaylistItems;
+        }
+
+
+        public string GetAcsToken()
+        {
+            string issuer   = System.Configuration.ConfigurationManager.AppSettings["AcsIssuer"];
+            string scope    = System.Configuration.ConfigurationManager.AppSettings["AcsScope"];
+            string username = System.Configuration.ConfigurationManager.AppSettings["Username"];
+            string password = System.Configuration.ConfigurationManager.AppSettings["Password"];
+            
+            string tokenToReturn = null;
+
+            using (WebClient client = new WebClient())
+            {
+                //
+                //  Create the authentication request to get a token
+                //
+                client.BaseAddress = (new Uri(issuer)).AbsoluteUri;
+
+                var oauthRequestValues = new NameValueCollection
+                {
+                    {"grant_type",    "client_credentials"},
+                    {"client_id",     username},
+                    {"client_secret", password},
+                    {"scope",         scope},
+                };
+
+                byte[] responseBytes = null;
+
+                try
+                {
+                    responseBytes = client.UploadValues("/v2/OAuth2-13", "POST", oauthRequestValues);
+                }
+                catch (WebException we)
+                {
+                    Stream stream = we.Response.GetResponseStream();
+                    StreamReader reader = new StreamReader(stream);
+
+                    throw;
+                }
+
+                using (var responseStream = new MemoryStream(responseBytes))
+                {
+                    OAuth2TokenResponse tokenResponse = (OAuth2TokenResponse)new DataContractJsonSerializer(typeof(OAuth2TokenResponse)).ReadObject(responseStream);
+                    tokenToReturn = tokenResponse.AccessToken;
+                }
+            }
+
+            return tokenToReturn;
+        }
+    }
+
+    //interface: NOTE: if you use interface to define [ServiceContract], make sure web.config contract name stays in sync: contract="SilverlightApplication.Web.IWCFService"
+    [ServiceContract]
+    public interface IWCFService
+    {
+        [OperationContract]
+        CustomPlaylistItem[] GetPlaylist();
+
+        [OperationContract]
+        string GetAcsToken();
+    }
+
+    //schema
+    [DataContract]
+    public class CustomPlaylistItem
+    {
+        [DataMember]
+        public string Url { get; set; }
+    }
+
+    [DataContract]
+    public class OAuth2TokenResponse
+    {
+        [DataMember(Name = "access_token")]
+        public string AccessToken { get; set; }
+
+        [DataMember(Name = "expires_in")]
+        public int ExpirationInSeconds { get; set; }
+    }
+}
+
+
+
+//the code for calling the WCF service to request ACS authorization token
+
+//retrieve and set Constants.AcsToken
+WCFServiceProxy.WCFServiceClient objWCFServiceClient = new WCFServiceProxy.WCFServiceClient();
+objWCFServiceClient.Endpoint.Address = new System.ServiceModel.EndpointAddress(Constants.WCF_SERVICE_URL);
+objWCFServiceClient.GetAcsTokenCompleted += new EventHandler<WCFServiceProxy.GetAcsTokenCompletedEventArgs>(objWCFServiceClient_GetAcsTokenCompleted);
+objWCFServiceClient.GetAcsTokenAsync();
+                        
+                        
+void objWCFServiceClient_GetAcsTokenCompleted(object sender, WCFServiceProxy.GetAcsTokenCompletedEventArgs e)
+{
+      Constants.AcsToken = (string) e.Result;
+
+      //playback with license acquisition after Constants.AcsToken is set
+      PlaylistUtils.AddPlaylist(player, new string[] { txtUrl.Text });
+      player.GoToPlaylistItem(player.Playlist.Count - 1);
+}
+        
+        
