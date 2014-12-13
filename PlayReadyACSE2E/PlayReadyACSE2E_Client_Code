@@ -146,24 +146,38 @@ namespace SilverlightApplication.Web
 
             using (WebClient client = new WebClient())
             {
-                //
                 //  Create the authentication request to get a token
-                //
                 client.BaseAddress = (new Uri(issuer)).AbsoluteUri;
 
-                var oauthRequestValues = new NameValueCollection
+                NameValueCollection objNameValueCollection = null;
+                switch (System.Configuration.ConfigurationManager.AppSettings["CredentialType"].ToLower())
                 {
-                    {"grant_type",    "client_credentials"},
-                    {"client_id",     username},
-                    {"client_secret", password},
-                    {"scope",         scope},
-                };
+                    case "password":
+                        objNameValueCollection = new NameValueCollection
+                        {
+                            {"grant_type",    "client_credentials"},
+                            {"client_id",     username},
+                            {"client_secret", password},
+                            {"scope",         scope}
+                        };
+                        break;
+                    case "symmetrickey":
+                        objNameValueCollection = new NameValueCollection
+                        {
+                            {"grant_type",    "http://schemas.xmlsoap.org/ws/2009/11/swt-token-profile-1.0"},
+                            {"assertion",     this.CreateToken(username, password)},
+                            {"scope",         scope}
+                        };
+                        break;
+                    default:
+                        break;
+                }
 
                 byte[] responseBytes = null;
 
                 try
                 {
-                    responseBytes = client.UploadValues("/v2/OAuth2-13", "POST", oauthRequestValues);
+                    responseBytes = client.UploadValues(new Uri(issuer + "/v2/OAuth2-13/"), "POST", objNameValueCollection);
                 }
                 catch (WebException we)
                 {
@@ -182,6 +196,25 @@ namespace SilverlightApplication.Web
 
             return tokenToReturn;
         }
+
+        public string CreateToken(string issuer, string signingKey)
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            // add the issuer name 
+            sb.AppendFormat("Issuer={0}", System.Web.HttpUtility.UrlEncode(issuer));
+            string signature = this.GenerateSignature(sb.ToString(), signingKey);
+            sb.AppendFormat("&HMACSHA256={0}", signature);
+            return sb.ToString();
+        } 
+
+        private string GenerateSignature(string unsignedToken, string signingKey)
+        {
+            System.Security.Cryptography.HMACSHA256 hmac = new System.Security.Cryptography.HMACSHA256(Convert.FromBase64String(signingKey));
+            byte[] locallyGeneratedSignatureInBytes = hmac.ComputeHash(System.Text.Encoding.ASCII.GetBytes(unsignedToken));
+            string locallyGeneratedSignature = System.Web.HttpUtility.UrlEncode(Convert.ToBase64String(locallyGeneratedSignatureInBytes));
+            return locallyGeneratedSignature;
+        } 
+
     }
 
     //interface: NOTE: if you use interface to define [ServiceContract], make sure web.config contract name stays in sync: contract="SilverlightApplication.Web.IWCFService"
