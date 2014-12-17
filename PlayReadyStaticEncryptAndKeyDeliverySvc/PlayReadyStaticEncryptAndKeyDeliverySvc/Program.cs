@@ -34,9 +34,9 @@ namespace PlayReadyStaticEncryptAndKeyDeliverySvc
 
         // Media Services account information.
         private static readonly string _mediaServicesAccountName = 
-            ConfigurationManager.AppSettings["MediaServiceAccountName"];
+            ConfigurationManager.AppSettings["MediaServicesAccountName"];
         private static readonly string _mediaServicesAccountKey = 
-            ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            ConfigurationManager.AppSettings["MediaServicesAccountKey"];
 
         static void Main(string[] args)
         {
@@ -47,11 +47,6 @@ namespace PlayReadyStaticEncryptAndKeyDeliverySvc
             // Use the cached credentials to create CloudMediaContext.
             _context = new CloudMediaContext(_cachedCredentials);
 
-            //foreach (var ass in _context.Assets)
-            //{
-            //    Console.WriteLine(ass.Name);
-            //}
-            //return;
 
             // Encoding and encrypting assets //////////////////////
             // Load a single MP4 file.
