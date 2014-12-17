@@ -1,0 +1,1 @@
+C:\GitHub\azure-media-services-samples\PlayReadyDynamicEncryptAndKeyDeliverySvc\PlayReadyDynamicEncryptAndKeyDeliverySvc\bin\Debug\PlayReadyDynamicEncryptAndKeyDeliverySvc.exe.config
