@@ -1,0 +1,78 @@
+﻿@model MediaLibraryWebApp.Models.UserProfile
+@{
+    ViewBag.Title = "Graph API User Profile";
+}
+
+<h2>@ViewBag.Title.</h2>
+@if (ViewBag.ErrorMessage == "UnexpectedError")
+{
+    <p>An unexpected error occurred while retrieving your profile.  Please try again.  You may need to sign-in.</p>
+}
+<table class="table table-bordered table-striped">
+    @if (Model.User != null)
+    {
+        <tr>
+            <td>User Principal Name </td>
+            <td>@Model.User.UserPrincipalName</td>
+        </tr>
+        <tr>
+            <td>Display Name</td>
+            <td>@Model.User.DisplayName</td>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td>@Model.User.GivenName</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>@Model.User.Surname</td>
+        </tr>
+        <tr>
+            <td>Mail</td>
+            <td>@Model.User.Mail</td>
+        </tr>
+    }
+</table>
+
+
+<h2>Graph API User Groups</h2>
+<table class="table table-bordered table-striped">
+    <th>Display Name</th>
+    <th>Group Object Id</th>
+    <th>Description</th>
+    @if (Model.Groups != null)
+    {
+        foreach (var group in Model.Groups)
+        {
+            <tr>
+                <td>@group.DisplayName</td>
+                <td>@group.ObjectId</td>
+                <td>@group.Description</td>
+            </tr>
+        }
+    }
+</table>
+@if (ViewBag.ErrorMessage == "AuthorizationRequired")
+{
+    <p>You have to sign-in to see your profile. Click @Html.ActionLink("here", "Index", "UserProfile", new { reauth = true }, null) to sign-in.</p>
+}
+
+
+<h2>JWT token claims</h2>
+<table class="table table-bordered table-striped">
+    <th>Claim Type</th>
+    <th>Claim Value</th>
+    @if (Model.Token != null)
+    {
+        foreach (var claim in Model.Token.Claims)
+        {
+            <tr>
+                <td>@claim.Type</td>
+                <td>@claim.Value</td>
+            </tr>
+        }
+    }
+</table>
+
+
+
