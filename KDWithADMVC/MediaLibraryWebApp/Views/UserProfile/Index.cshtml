@@ -35,19 +35,21 @@
 </table>
 
 
-<h2>Graph API User Groups</h2>
+<h2>All Graph API User Groups</h2>
 <table class="table table-bordered table-striped">
     <th>Display Name</th>
     <th>Group Object Id</th>
     <th>Description</th>
-    @if (Model.Groups != null)
+    <th>Is Member of</th>
+    @if (Model.AllGroups != null)
     {
-        foreach (var group in Model.Groups)
+        foreach (var group in Model.AllGroups)
         {
             <tr>
                 <td>@group.DisplayName</td>
                 <td>@group.ObjectId</td>
                 <td>@group.Description</td>
+                <td>@Model.MemberGroups.Contains(group.ObjectId)</td>
             </tr>
         }
     }
@@ -57,6 +59,10 @@
     <p>You have to sign-in to see your profile. Click @Html.ActionLink("here", "Index", "UserProfile", new { reauth = true }, null) to sign-in.</p>
 }
 
+<h2>JWT token</h2>
+<pre>
+@Model.Token.RawData
+</pre>
 
 <h2>JWT token claims</h2>
 <table class="table table-bordered table-striped">

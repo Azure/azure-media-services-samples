@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Xml;
 using System.Xml.XPath;
+using MediaLibraryWebApp.Models;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
 using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
@@ -40,16 +41,16 @@ namespace MediaLibraryWebApp.Controllers
         public async Task<ActionResult> Index()
         {
             //Initializing a model
-            List<Tuple<IAsset, ILocator,Uri>> itemList = new List<Tuple<IAsset, ILocator,Uri>>();
-             JwtSecurityToken token = GetJwtSecurityToken();
-
-            
-            var admin = token.Claims.FirstOrDefault(c => c.Type == "groups" && c.Value == Configuration.AdminGroupId);
-            ViewData["IsAdmin"] = admin!=null ? true:false; 
+            MediaLibraryModel model = new MediaLibraryModel();
+            model.VideoList = new List<Tuple<IAsset, ILocator, Uri>>();
+            model.IsCurrentUserMemberOfAdminGroup = IsAdminUser();
 
             try
             {
-                var cloudMediaContext = Factory.GetCloudMediaContext();
+                CloudMediaContext cloudMediaContext = Factory.GetCloudMediaContext();
+
+                IStreamingEndpoint streamingEndPoint = cloudMediaContext.StreamingEndpoints.FirstOrDefault();
+                model.StreamingEndPoint = streamingEndPoint;
 
                 // Find 30-day read-only access policy. 
                 string streamingPolicy = "30d Streaming policy";
@@ -76,17 +77,17 @@ namespace MediaLibraryWebApp.Controllers
                     }
                     //If no policy has been found we are storing nulls in a model
                     Tuple<IAsset, ILocator, Uri> item = new Tuple<IAsset, ILocator, Uri>(file.Asset, originLocator, originLocator != null ? new Uri(originLocator.Path + file.Name) : null);
-                    itemList.Add(item);
+                    model.VideoList.Add(item);
 
                 });
 
-                return View(itemList);
+                return View(model);
             }
             catch (Exception ex)
             {
 
                 ViewBag.ErrorMessage = ex.Message;
-                return View(itemList);
+                return View(model);
             }
         }
 
@@ -375,6 +376,13 @@ namespace MediaLibraryWebApp.Controllers
 
             // Create a URL to the streaming manifest file. 
             return originLocator.Path + assetFile.Name;
+        }
+
+        private bool IsAdminUser()
+        {
+              JwtSecurityToken token = GetJwtSecurityToken();
+            var admin = token.Claims.FirstOrDefault(c => c.Type == "groups" && c.Value == Configuration.AdminGroupId);
+             return admin!=null ? true:false; 
         }
 
     }

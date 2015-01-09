@@ -16,6 +16,7 @@
 
 // The following using statements were added for this sample.
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens;
 using System.Linq;
 using System.Security.Claims;
@@ -51,11 +52,13 @@ namespace MediaLibraryWebApp.Controllers
             try
             {
                 ActiveDirectoryClient activeDirectoryClient = Factory.GetActiveDirectoryClientAsApplication(jwtToken);
-                var userProfile = (User)await activeDirectoryClient.Users.GetByObjectId(userObjectID).ExecuteAsync();
+                User userProfile = (User)await activeDirectoryClient.Users.GetByObjectId(userObjectID).ExecuteAsync();
+                List<string> membergroups = (await userProfile.GetMemberGroupsAsync(false)).ToList();
                 var groups = await activeDirectoryClient.Groups.ExecuteAsync();
                 profile = new UserProfile();
                 profile.Token = token;
-                profile.Groups = groups.CurrentPage;
+                profile.MemberGroups = membergroups;
+                profile.AllGroups = groups.CurrentPage;
                 profile.User = userProfile;
                 return View(profile);
             }

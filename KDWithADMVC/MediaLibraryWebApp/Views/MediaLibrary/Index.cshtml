@@ -1,26 +1,45 @@
 ﻿@using System.Security.Claims
-@model IEnumerable<Tuple<Microsoft.WindowsAzure.MediaServices.Client.IAsset, Microsoft.WindowsAzure.MediaServices.Client.ILocator, Uri>>
+@using Microsoft.WindowsAzure.MediaServices.Client
+@model MediaLibraryWebApp.Models.MediaLibraryModel
 @{
     ViewBag.Title = "Azure Media Services Assets";
 }
-<h3>Streamable Media Library</h3>
+<h3>Your Media Library</h3>
 
+<p>On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).</p>
 
-@if ((bool)ViewData["IsAdmin"] == true)
+@if (Model.StreamingEndPoint == null)
 {
+    <p>You don't have streaming endpoint associated with account.Please visit Azure portal and create one </p>
+}
+@if (Model.StreamingEndPoint != null && Model.StreamingEndPoint.State == StreamingEndpointState.Stopped)
+{
+    <p>Your streamming endpoint in Stopped state.Please visit portal and start streaming endpont</p>
+}
+
+@if (Model.IsCurrentUserMemberOfAdminGroup == true)
+{
+    <p>As member of Admin Group you need to specify which video will be displayed for which user group. Look into profile page to see ObjectIDs of user group. In ClaimType textbox put value as 'group' and in claimValue put ObjectID of AD Group. Only users belonging to this group will be able to obtain content key to decrypt video. </p>
+    
     using (Html.BeginForm("CleanAllPermissions", "MediaLibrary"))
     {
-        @Html.ActionLink("Clear All Content Keys, Auth and Delivery Policies", "CleanAllPermissions", "MediaLibrary", null, new { @class = "saveButton", onclick = "return false;" })
+        @Html.ActionLink("Clear All Content Keys, Auth and Delivery Policies", "CleanAllPermissions", "MediaLibrary", null, new { @class = "saveButton btn btn-primary", onclick = "return false;" })
     }
+    
     <script>
         $(document).ready(function () {
             $('.saveButton').click(function () {
                 $(this).closest('form')[0].submit();
             });
+            $('.videoAsset').hover(function () {
+                $(this).popover();
+                return false;
+            });
         });
     </script>
 
 }
+
 <p>
     <table class="table table-bordered table-striped">
         <tr>
@@ -30,12 +49,21 @@
             <th></th>
         </tr>
 
-        @foreach (var i in Model)
+        @foreach (var i in Model.VideoList)
         {
 
             <tr>
                 <td> @i.Item1.Id</td>
-                <td> @i.Item1.Name</td>
+                <td>
+                    @if (i.Item2 != null)
+                    {
+                         @i.Item1.Name <br/><a data-content="@(i.Item3)/Manifest" class="btn btn-primary videoAsset" data-original-title="(@i.Item1.Name) URI">Show Uri</a>
+                    }
+                    else
+                    {
+                        @i.Item1.Name
+                    }
+                </td>
                 @if (i.Item2 != null)
                 {
                     <td> @(i.Item2.ExpirationDateTime)</td>
@@ -57,12 +85,12 @@
                                        flashvars="src=@(i.Item3)/Manifest&autoPlay=false&plugin_AdaptiveStreamingPlugin=/Content/MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10&AdaptiveStreamingPlugin_encryptionKeyToken=Bearer @(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"></embed>
                             </object>
                         </div>
-                        @if ((bool)ViewData["IsAdmin"] == true)
+                        @if (Model.IsCurrentUserMemberOfAdminGroup == true)
                         {
                             using (Html.BeginForm("RemoveJWTTokenAuthentication", "MediaLibrary"))
                             {
                                 @(Html.Hidden("assetId", i.Item1.Id))
-                                @(Html.ActionLink("Remove JWT Token Auth policy", "RemoveJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton", onclick = "return false;" }))
+                                @(Html.ActionLink("Remove JWT Token Auth policy", "RemoveJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton  btn btn-primary", onclick = "return false;" }))
 
                             }
                         }
@@ -71,7 +99,7 @@
                 else
                 {
                     <td></td>
-                    if ((bool)ViewData["IsAdmin"] == true)
+                    if (Model.IsCurrentUserMemberOfAdminGroup == true)
                     {
                         <td>
                             <b>Requeired claims:</b>
@@ -79,10 +107,10 @@
                             {
                                 @Html.Encode(" Claim : ")
                                 @(Html.Hidden("assetId", i.Item1.Id))
-                                @(Html.TextBox("claimType", ""))
+                                @(Html.TextBox("claimType", "groups"))
                                 @Html.Encode(" = ")
-                                @(Html.TextBox("claimValue", ""))<br />
-                                @(Html.ActionLink("Set JWT Token Auth policy", "EnableJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton", onclick = "return false;" }))
+                                @(Html.TextBox("claimValue", "Paste Group ObjectID here"))<br/><br/>
+                                @(Html.ActionLink("Set JWT Token Auth policy", "EnableJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton btn btn-primary", onclick = "return false;" }))
 
                             }
                         </td>

@@ -24,6 +24,7 @@ namespace MediaLibraryWebApp.Models
     {
         public IUser User { get; set; }
         public JwtSecurityToken Token { get; set; }
-        public IReadOnlyList<IGroup> Groups { get; set; }
+        public IReadOnlyList<IGroup> AllGroups { get; set; }
+        public IEnumerable<string> MemberGroups { get; set; }
     }
 }
