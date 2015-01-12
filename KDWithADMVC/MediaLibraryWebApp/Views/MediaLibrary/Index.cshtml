@@ -10,16 +10,17 @@
 
 @if (Model.StreamingEndPoint == null)
 {
-    <p>You don't have streaming endpoint associated with account.Please visit Azure portal and create one </p>
+    <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie"><h4>Streaming endpoint has not been created</h4><p>You don't have streaming endpoint associated with account.Please visit Azure portal and create one</p> </div>
 }
 @if (Model.StreamingEndPoint != null && Model.StreamingEndPoint.State == StreamingEndpointState.Stopped)
 {
-    <p>Your streamming endpoint in Stopped state.Please visit portal and start streaming endpont</p>
+    <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie"><h4>Your streamming endpoint in Stopped state</h4><p>Please visit azure portal and start streaming endpont</p></div>
 }
 
 @if (Model.IsCurrentUserMemberOfAdminGroup == true)
 {
-    <p>As member of Admin Group you need to specify which video will be displayed for which user group. Look into profile page to see ObjectIDs of user group. In ClaimType textbox put value as 'group' and in claimValue put ObjectID of AD Group. Only users belonging to this group will be able to obtain content key to decrypt video. </p>
+    <div class="bs-callout bs-callout-info"><h4>Admin access</h4><p>As member of Admin Group you need to specify which video will be displayed for which user group. Look into profile page to see ObjectIDs of user group. In ClaimType textbox put value as 'group' and in claimValue put ObjectID of AD Group. Only users belonging to this group will be able to obtain content key to decrypt video. </p></div>
+    
     
     using (Html.BeginForm("CleanAllPermissions", "MediaLibrary"))
     {

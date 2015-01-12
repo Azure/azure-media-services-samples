@@ -79,7 +79,6 @@ publish
 *.Publish.xml
 
 #Config files
-Web.config
 Web.Debug.config
 Web.Release.config
 
