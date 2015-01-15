@@ -157,6 +157,7 @@ namespace ConsoleApplication6
             TokenRestrictionTemplate tokenTemplate = new TokenRestrictionTemplate();
             tokenTemplate.Issuer = issuer;
             tokenTemplate.Audience = scope;
+            tokenTemplate.TokenType = TokenType.SWT;
             tokenTemplate.PrimaryVerificationKey = new SymmetricVerificationKey(signingKey);
 
             string requirements = TokenRestrictionTemplateSerializer.Serialize(tokenTemplate);
