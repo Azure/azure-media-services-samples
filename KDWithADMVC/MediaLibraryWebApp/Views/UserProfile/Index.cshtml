@@ -6,7 +6,9 @@
 <h2>@ViewBag.Title.</h2>
 @if (ViewBag.ErrorMessage == "UnexpectedError")
 {
-    <p>An unexpected error occurred while retrieving your profile.  Please try again.  You may need to sign-in.</p>
+    <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie"><h4>Sign in</h4>
+	<p>An unexpected error occurred while retrieving your profile.  Please try again.  You may need to sign-in.</p>
+	</div>
 }
 <table class="table table-bordered table-striped">
     @if (Model.User != null)

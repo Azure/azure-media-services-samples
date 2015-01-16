@@ -20,7 +20,16 @@ From your shell or command line:
 
 ### Step 2:  Provision  Azure Media Service account and encode few video files to be used in example
 
-1.To-do
+1. Use the Azure Management Portal to create an Azure Media Services account. For more information, see [How to Create a Media Services Account](http://azure.microsoft.com/en-us/documentation/articles/media-services-create-account/).
+
+2. Use the Portal to upload an asset. See the steps described in the [How to: Upload content](http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/) section. 
+
+3.  Use the Portal to encode the asset. See the steps described in the [How to: Encode content](http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/) section and choose the **Playback on PC/Mac (via Flash/Silverlight)** preset from the Azure Media Encoder dialog box.
+
+4.  Use the Portal to publish the asset. See the steps described in the [How to: Publish content](http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/) section.
+
+Once your asset is published, you can use the steps described in [How to: Play content from the portal](http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/) section to stream your asset. You can also use one of the following players to test your stream: [http://amsplayer.azurewebsites.net/](http://amsplayer.azurewebsites.net/) or [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
+
 
 ### Step 3:  Create a few user accounts and groups in your Azure Active Directory tenant
 

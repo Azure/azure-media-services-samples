@@ -6,7 +6,14 @@
 }
 <h3>Your Media Library</h3>
 
-<p>On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).</p>
+<p>On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).
+    <ul>
+        <li>Use the Portal to upload an asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Upload content</a> section.</li> 
+        <li>Use the Portal to encode the asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Encode content</a> section and choose the **Playback on PC/Mac (via Flash/Silverlight)** preset from the Azure Media Encoder dialog box. </li>  
+
+    </ul>
+
+</p>
 
 @if (Model.StreamingEndPoint == null)
 {
@@ -20,8 +27,10 @@
 @if (Model.IsCurrentUserMemberOfAdminGroup == true)
 {
     <div class="bs-callout bs-callout-info"><h4>Admin access</h4><p>As member of Admin Group you need to specify which video will be displayed for which user group. Look into profile page to see ObjectIDs of user group. In ClaimType textbox put value as 'group' and in claimValue put ObjectID of AD Group. Only users belonging to this group will be able to obtain content key to decrypt video. </p></div>
-    
-    
+
+    <div class="bs-callout bs-callout-warning"><h4>Signing Keys and Azure AD certificates rollover</h4><p>For following example Azure Media Services stores copy of Azure Active Directory signing certificates in order to validate JWT token signature. After Azure Active Directory signing cretificate rotation it is up to application to implement logic to update sertificates within Azure Media Services content key auth policies. Read more about Azure AD certificates rollover at http://technet.microsoft.com/en-us/library/jj933264.aspx </p></div>
+
+
     using (Html.BeginForm("CleanAllPermissions", "MediaLibrary"))
     {
         @Html.ActionLink("Clear All Content Keys, Auth and Delivery Policies", "CleanAllPermissions", "MediaLibrary", null, new { @class = "saveButton btn btn-primary", onclick = "return false;" })
@@ -47,7 +56,7 @@
             <th>Asset Id</th>
             <th>Asset Name</th>
             <th>Expires</th>
-            <th></th>
+            <th>Playback / Auth Policy setup</th>
         </tr>
 
         @foreach (var i in Model.VideoList)
