@@ -1,0 +1,141 @@
+﻿@using System.Security.Claims
+@using Microsoft.WindowsAzure.MediaServices.Client
+@model MediaLibraryWebApp.Models.MediaLibraryModel
+@{
+    ViewBag.Title = "Azure Media Services Assets";
+}
+<h3>Your Media Library</h3>
+
+<p>On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).
+    <ul>
+        <li>Use the Portal to upload an asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Upload content</a> section.</li> 
+        <li>Use the Portal to encode the asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Encode content</a> section and choose the **Playback on PC/Mac (via Flash/Silverlight)** preset from the Azure Media Encoder dialog box. </li>  
+
+    </ul>
+
+</p>
+
+@if (Model.StreamingEndPoint == null)
+{
+    <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie"><h4>Streaming endpoint has not been created</h4><p>You don't have streaming endpoint associated with account.Please visit Azure portal and create one</p> </div>
+}
+@if (Model.StreamingEndPoint != null && Model.StreamingEndPoint.State == StreamingEndpointState.Stopped)
+{
+    <div class="bs-callout bs-callout-danger" id="callout-fieldset-disabled-ie"><h4>Your streamming endpoint in Stopped state</h4><p>Please visit azure portal and start streaming endpont</p></div>
+}
+
+@if (Model.IsCurrentUserMemberOfAdminGroup == true)
+{
+    <div class="bs-callout bs-callout-info"><h4>Admin access</h4><p>As member of Admin Group you need to specify which video will be displayed for which user group. Look into profile page to see ObjectIDs of user group. In ClaimType textbox put value as 'group' and in claimValue put ObjectID of AD Group. Only users belonging to this group will be able to obtain content key to decrypt video. </p></div>
+
+    <div class="bs-callout bs-callout-warning"><h4>Signing Keys and Azure AD certificates rollover</h4><p>For following example Azure Media Services stores copy of Azure Active Directory signing certificates in order to validate JWT token signature. After Azure Active Directory signing cretificate rotation it is up to application to implement logic to update sertificates within Azure Media Services content key auth policies. Read more about Azure AD certificates rollover at http://technet.microsoft.com/en-us/library/jj933264.aspx </p></div>
+
+
+    using (Html.BeginForm("CleanAllPermissions", "MediaLibrary"))
+    {
+        @Html.ActionLink("Clear All Content Keys, Auth and Delivery Policies", "CleanAllPermissions", "MediaLibrary", null, new { @class = "saveButton btn btn-primary", onclick = "return false;" })
+    }
+    
+    <script>
+        $(document).ready(function () {
+            $('.saveButton').click(function () {
+                $(this).closest('form')[0].submit();
+            });
+            $('.videoAsset').hover(function () {
+                $(this).popover();
+                return false;
+            });
+        });
+    </script>
+
+}
+
+<p>
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Asset Id</th>
+            <th>Asset Name</th>
+            <th>Expires</th>
+            <th>Playback / Auth Policy setup</th>
+        </tr>
+
+        @foreach (var i in Model.VideoList)
+        {
+
+            <tr>
+                <td> @i.Item1.Id</td>
+                <td>
+                    @if (i.Item2 != null)
+                    {
+                         @i.Item1.Name <br/><a data-content="@(i.Item3)/Manifest" class="btn btn-primary videoAsset" data-original-title="(@i.Item1.Name) URI">Show Uri</a>
+                    }
+                    else
+                    {
+                        @i.Item1.Name
+                    }
+                </td>
+                @if (i.Item2 != null)
+                {
+                    <td> @(i.Item2.ExpirationDateTime)</td>
+                    <td>
+                        <div>
+                            <object width="600" height="420">
+                                <param name="movie" value="@(Url.Content("~/Content/StrobeMediaPlayback.2.0.swf"))"></param>
+                                <param name="flashvars" value="src=@(i.Item3)/Manifest&autoPlay=false&plugin_AdaptiveStreamingPlugin=/Content/MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10&AdaptiveStreamingPlugin_encryptionKeyToken=Bearer @(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"></param>
+                                <param name="allowFullScreen" value="true"></param>
+                                <param name="allowscriptaccess" value="always"></param>
+                                <param name="wmode" value="direct"></param>
+                                <embed src="@(Url.Content("~/Content/StrobeMediaPlayback.2.0.swf"))"
+                                       type="application/x-shockwave-flash"
+                                       allowscriptaccess="always"
+                                       allowfullscreen="true"
+                                       wmode="direct"
+                                       width="600"
+                                       height="420"
+                                       flashvars="src=@(i.Item3)/Manifest&autoPlay=false&plugin_AdaptiveStreamingPlugin=/Content/MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10&AdaptiveStreamingPlugin_encryptionKeyToken=Bearer @(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"></embed>
+                            </object>
+                        </div>
+                        @if (Model.IsCurrentUserMemberOfAdminGroup == true)
+                        {
+                            using (Html.BeginForm("RemoveJWTTokenAuthentication", "MediaLibrary"))
+                            {
+                                @(Html.Hidden("assetId", i.Item1.Id))
+                                @(Html.ActionLink("Remove JWT Token Auth policy", "RemoveJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton  btn btn-primary", onclick = "return false;" }))
+
+                            }
+                        }
+                    </td>
+                }
+                else
+                {
+                    <td></td>
+                    if (Model.IsCurrentUserMemberOfAdminGroup == true)
+                    {
+                        <td>
+                            <b>Requeired claims:</b>
+                            @using (Html.BeginForm("EnableJWTTokenAuthentication", "MediaLibrary"))
+                            {
+                                @Html.Encode(" Claim : ")
+                                @(Html.Hidden("assetId", i.Item1.Id))
+                                @(Html.TextBox("claimType", "groups"))
+                                @Html.Encode(" = ")
+                                @(Html.TextBox("claimValue", "Paste Group ObjectID here"))<br/><br/>
+                                @(Html.ActionLink("Set JWT Token Auth policy", "EnableJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton btn btn-primary", onclick = "return false;" }))
+
+                            }
+                        </td>
+                    }
+                }
+            </tr>
+        }
+    </table>
+</p>
+@if (ViewBag.ErrorMessage == "AuthorizationRequired")
+{
+    <p>You have to sign-in to see your to do list. Click @Html.ActionLink("here", "Index", "MediaLibrary", new { reauth = true }, null) to sign-in.</p>
+
+}
+@if (ViewBag.ErrorMessage == "UnexpectedError")
+{
+    <p>An unexpected error occurred while retrieving your to do list.  Please try again.  You may need to sign-in.</p>
+}
