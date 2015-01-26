@@ -54,7 +54,6 @@ namespace AESDynamicEncryptionAndKeyDeliverySvc
             // Used the chached credentials to create CloudMediaContext.
             _context = new CloudMediaContext(_cachedCredentials);
 
-
             bool tokenRestriction = false;
             string tokenTemplateString = null;
 
@@ -118,7 +117,7 @@ namespace AESDynamicEncryptionAndKeyDeliverySvc
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.None); 
+            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted); 
 
             var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
 
@@ -160,7 +159,7 @@ namespace AESDynamicEncryptionAndKeyDeliverySvc
 
             ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
             encodeTask.InputAssets.Add(inputAsset);
-            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.None);
+            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
 
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
             job.Submit();
@@ -319,12 +318,13 @@ namespace AESDynamicEncryptionAndKeyDeliverySvc
 
         static private string GenerateTokenRequirements()
         {
-            TokenRestrictionTemplate template = new TokenRestrictionTemplate();
+            TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
             template.PrimaryVerificationKey = new SymmetricVerificationKey();
             template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());
             template.Audience = _sampleAudience;
             template.Issuer = _sampleIssuer;
+
             template.RequiredClaims.Add(TokenClaim.ContentKeyIdentifierClaim);
 
             return TokenRestrictionTemplateSerializer.Serialize(template);
