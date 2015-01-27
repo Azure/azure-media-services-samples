@@ -91,7 +91,7 @@ namespace AESDynamicEncryptionAndKeyDeliverySvc
                 // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
                 Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
                 string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
-                Console.WriteLine("The authorization token is:\n{0}", testToken);
+                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
                 Console.WriteLine();
             }
 
