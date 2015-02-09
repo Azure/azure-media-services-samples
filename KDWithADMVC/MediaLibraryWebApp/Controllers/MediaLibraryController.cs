@@ -226,13 +226,15 @@ namespace MediaLibraryWebApp.Controllers
             {
 
                 List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
-                
-                X509Certificate2 cert = GetX509Certificate2FromADMetadataEndpoint();
+
+                List<X509Certificate2> certs = GetX509Certificate2FromADMetadataEndpoint();
                 JwtSecurityToken token = GetJwtSecurityToken();
 
                 TokenRestrictionTemplate template = new TokenRestrictionTemplate();
                 template.TokenType = TokenType.JWT;
-                template.PrimaryVerificationKey = new X509CertTokenVerificationKey(cert);
+                template.PrimaryVerificationKey = new X509CertTokenVerificationKey(certs[0]);
+                certs.GetRange(1, certs.Count - 1).ForEach(c => template.AlternateVerificationKeys.Add(new X509CertTokenVerificationKey(c)));
+               
                 
                 //Ignore Empty claims
                 if (!String.IsNullOrEmpty(claimType) && !String.IsNullOrEmpty(claimValue))
@@ -276,8 +278,9 @@ namespace MediaLibraryWebApp.Controllers
             return token;
         }
 
-        private static X509Certificate2 GetX509Certificate2FromADMetadataEndpoint()
+        private static List<X509Certificate2> GetX509Certificate2FromADMetadataEndpoint()
         {
+            List<X509Certificate2> certs = new List<X509Certificate2>();
             XPathDocument xmlReader = new XPathDocument(Configuration.MetadataUri);
             XPathNavigator navigator = xmlReader.CreateNavigator();
             XmlNamespaceManager manager = new XmlNamespaceManager(navigator.NameTable);
@@ -285,16 +288,21 @@ namespace MediaLibraryWebApp.Controllers
             manager.AddNamespace("ns1", "urn:oasis:names:tc:SAML:2.0:metadata");
             manager.AddNamespace("ds", "http://www.w3.org/2000/09/xmldsig#");
             manager.PushScope();
+
+            //Reading all certs since AD periodically do cert rollover
             XPathNodeIterator nodes =
                 navigator.Select(
                     "//ns1:EntityDescriptor/ns1:RoleDescriptor/ns1:KeyDescriptor[@use='signing']/ds:KeyInfo/ds:X509Data/ds:X509Certificate",
                     manager);
-            nodes.MoveNext();
-            XPathNavigator nodesNavigator = nodes.Current;
+            while (nodes.MoveNext())
+            {
+                XPathNavigator nodesNavigator = nodes.Current;
+                //Cert body is base64 encoded in metadata doc
+                certs.Add(new X509Certificate2(Convert.FromBase64String(nodesNavigator.InnerXml)));
+            }
 
-            //Cert body is base64 encoded in metadata doc
-            X509Certificate2 cert = new X509Certificate2(Convert.FromBase64String(nodesNavigator.InnerXml));
-            return cert;
+            
+            return certs;
         }
 
 
