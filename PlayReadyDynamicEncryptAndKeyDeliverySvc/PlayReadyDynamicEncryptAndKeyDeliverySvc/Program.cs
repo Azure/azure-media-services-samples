@@ -45,7 +45,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
             // Used the cached credentials to create CloudMediaContext.
             _context = new CloudMediaContext(_cachedCredentials);
 
-            bool tokenRestriction = true;
+            bool tokenRestriction = false;
             string tokenTemplateString = null;
 
             IAsset asset = UploadFileAndCreateAsset(_singleMP4File);
@@ -83,7 +83,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
                 // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
                 Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
                 string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey, DateTime.UtcNow.AddDays(365));
-                Console.WriteLine("The authorization token is:\n{0}", testToken);
+                Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
                 Console.WriteLine();
             }
 
@@ -106,7 +106,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
             }
 
             var assetName = Path.GetFileNameWithoutExtension(singleFilePath);
-            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.None);
+            IAsset inputAsset = _context.Assets.Create(assetName, AssetCreationOptions.StorageEncrypted);
 
             var assetFile = inputAsset.AssetFiles.Create(Path.GetFileName(singleFilePath));
 
@@ -149,7 +149,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
 
             ITask encodeTask = job.Tasks.AddNew("Encoding", latestMediaProcessor, encodingPreset, TaskOptions.None);
             encodeTask.InputAssets.Add(inputAsset);
-            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.None);
+            encodeTask.OutputAssets.AddNew(String.Format("{0} as {1}", inputAsset.Name, encodingPreset), AssetCreationOptions.StorageEncrypted);
 
             job.StateChanged += new EventHandler<JobStateChangedEventArgs>(JobStateChanged);
             job.Submit();
@@ -259,7 +259,7 @@ namespace PlayReadyDynamicEncryptAndKeyDeliverySvc
 
         static private string GenerateTokenRequirements()
         {
-            TokenRestrictionTemplate template = new TokenRestrictionTemplate();
+            TokenRestrictionTemplate template = new TokenRestrictionTemplate(TokenType.SWT);
 
             template.PrimaryVerificationKey = new SymmetricVerificationKey();
             template.AlternateVerificationKeys.Add(new SymmetricVerificationKey());

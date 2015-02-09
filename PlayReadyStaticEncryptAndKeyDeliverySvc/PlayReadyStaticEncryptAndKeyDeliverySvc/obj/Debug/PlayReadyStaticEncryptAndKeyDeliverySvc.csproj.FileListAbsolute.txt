@@ -1,1 +1,0 @@
-C:\Users\yanmf\Documents\GitHub\Azure-Media-Services-Samples\PlayReadyStaticEncryptAndKeyDeliverySvc\PlayReadyStaticEncryptAndKeyDeliverySvc\bin\Debug\PlayReadyStaticEncryptAndKeyDeliverySvc.exe.config

@@ -16,7 +16,7 @@ Azure Media Services tenant can be provisioned through Azure Portal and regular 
 
 From your shell or command line:
 
-`git clone https://github.com/gtrifonov/azure-media-services-samples.git`
+`git clone https://github.com/azure-media-services-samples.git`
 
 ### Step 2:  Provision  Azure Media Service account and encode few video files to be used in example
 
@@ -60,6 +60,7 @@ Once your asset is published, you can use the steps described in [How to: Play c
 13. Download 'MediaLibraryWebApp' application manifest from Azure portal
 14. Find property `groupMembershipClaims` and change it value to `All`. `"groupMembershipClaims": "All",` 
 15. Upload application manifest back to Azure portal
+16. In section 'Permission to other applications ' select Windows Azure Active Directory Application permissions and check all checkboxes.
 
 ### Step 4:  Configure the sample to use your Azure AD tenant and Azure Media Service
 
