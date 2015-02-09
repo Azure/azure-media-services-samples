@@ -47,7 +47,7 @@ namespace MediaLibraryWebApp.Controllers
             string jwtToken = ClaimsPrincipal.Current.FindFirst(Configuration.ClaimsJwtToken).Value;
             JwtSecurityToken token = new JwtSecurityToken(jwtToken);
             string userObjectID = ClaimsPrincipal.Current.FindFirst(Configuration.ClaimsObjectidentifier).Value;
-            
+
             AuthenticationContext authContext = new AuthenticationContext(Configuration.Authority, new NaiveSessionCache(userObjectID));
             try
             {

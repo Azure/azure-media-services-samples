@@ -76,7 +76,7 @@ namespace MediaLibraryWebApp.Controllers
                                 .FirstOrDefault();
                     }
                     //If no policy has been found we are storing nulls in a model
-                    Tuple<IAsset, ILocator, Uri> item = new Tuple<IAsset, ILocator, Uri>(file.Asset, originLocator, originLocator != null ? new Uri(originLocator.Path + file.Name) : null);
+                    Tuple<IAsset, ILocator, Uri> item = new Tuple<IAsset, ILocator, Uri>(file.Asset, originLocator, originLocator != null ? new Uri(originLocator.Path.Replace("http://","https://") + file.Name) : null);
                     model.VideoList.Add(item);
 
                 });

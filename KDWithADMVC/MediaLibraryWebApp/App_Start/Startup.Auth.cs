@@ -70,7 +70,7 @@ namespace MediaLibraryWebApp
                             
                             AuthenticationContext authContext = new AuthenticationContext(MediaLibraryWebApp.Configuration.Authority, new NaiveSessionCache(userObjectID));
                             AuthenticationResult result = authContext.AcquireTokenByAuthorizationCode(code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, MediaLibraryWebApp.Configuration.GraphResourceId);
-
+                            
                             //Initializing  MediaServicesCredentials in order to obtain access token to be used to connect 
                             var amsCredentials = new MediaServicesCredentials(MediaLibraryWebApp.Configuration.MediaAccount, MediaLibraryWebApp.Configuration.MediaKey);
                             //Forces to get access token
