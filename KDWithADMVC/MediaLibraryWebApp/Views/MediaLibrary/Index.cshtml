@@ -6,7 +6,8 @@
 }
 <h3>Your Media Library</h3>
 
-<p>On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).
+<p>
+    On this page you should see list of all streamable media assets. You are able to playback only videos for which authentication policy has been configured to include on of yours AD JWT token claims (in this demo AD group ObjectID).
     <ul>
         <li>Use the Portal to upload an asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Upload content</a> section.</li>
         <li>Use the Portal to encode the asset. See the steps described in the <a href="http://azure.microsoft.com/en-us/documentation/articles/media-services-manage-content/">How to: Encode content</a> section and choose the **Playback on PC/Mac (via Flash/Silverlight)** preset from the Azure Media Encoder dialog box. </li>
@@ -79,30 +80,15 @@
                     <td> @(i.Item2.ExpirationDateTime)</td>
                     <td>
                         <div>
-                            @*<video id="@i.Item1.Name" class="azuremediaplayer amp-default-skin" autoplay controls width="640" height="400" data-setup='{"nativeControlsForTouch": false}'>
-                                    <source src="@(i.Item3)/manifest"
-                                            type="application/vnd.ms-sstr+xml"
-                                            data-setup='{"protectionInfo": [{"type": "AES", "authenticationToken": "Bearer=@(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"}]}' />
-                                <p class="amp-no-js">
-                                    To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
-                                </p>
-                                </video>*@
-        <object width="600" height="420">
-            <param name="movie" value="@(Url.Content("~/Content/StrobeMediaPlayback.2.0.swf"))"></param>
-            <param name="flashvars" value="src=@(i.Item3)/Manifest&autoPlay=false&plugin_AdaptiveStreamingPlugin=/Content/MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10&AdaptiveStreamingPlugin_encryptionKeyToken=Bearer @(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"></param>
-            <param name="allowFullScreen" value="true"></param>
-            <param name="allowscriptaccess" value="always"></param>
-            <param name="wmode" value="direct"></param>
-            <embed src="@(Url.Content("~/Content/StrobeMediaPlayback.2.0.swf"))"
-                   type="application/x-shockwave-flash"
-                   allowscriptaccess="always"
-                   allowfullscreen="true"
-                   wmode="direct"
-                   width="600"
-                   height="420"
-                   flashvars="src=@(i.Item3)/Manifest&autoPlay=false&plugin_AdaptiveStreamingPlugin=/Content/MSAdaptiveStreamingPlugin-v1.0.12-osmf2.0.swf&AdaptiveStreamingPlugin_retryLive=true&AdaptiveStreamingPlugin_retryInterval=10&AdaptiveStreamingPlugin_encryptionKeyToken=Bearer @(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"></embed>
-        </object>
-        </div>
+                            <video id="@i.Item1.Name" class="azuremediaplayer amp-default-skin amp-big-play-centered" autoplay controls width="600" height="420" data-setup='{"nativeControlsForTouch": false}'>
+                                <source src="@(i.Item3)/Manifest"
+                                        type="application/vnd.ms-sstr+xml"
+                                        data-setup='{"protectionInfo": [{"type": "AES", "authenticationToken": "Bearer=@(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"}]}' />
+                            <p class="amp-no-js">
+                                To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
+                            </p>
+                            </video>
+                        </div>
         @if (Model.IsCurrentUserMemberOfAdminGroup == true)
         {
             using (Html.BeginForm("RemoveJWTTokenAuthentication", "MediaLibrary"))

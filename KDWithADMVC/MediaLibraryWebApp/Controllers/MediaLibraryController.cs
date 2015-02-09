@@ -355,7 +355,7 @@ namespace MediaLibraryWebApp.Controllers
                 cloudMediaContext.AssetDeliveryPolicies.Create(
                             "myAssetDeliveryPolicy",
                             AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
-                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS,
+                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                             assetDeliveryPolicyConfiguration);
 
             // Add AssetDelivery Policy to the asset
