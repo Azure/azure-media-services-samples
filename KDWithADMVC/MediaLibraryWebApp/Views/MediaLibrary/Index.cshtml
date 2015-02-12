@@ -84,11 +84,11 @@
                                 <source src="@(i.Item3)/Manifest"
                                         type="application/vnd.ms-sstr+xml"
                                         data-setup='{"protectionInfo": [{"type": "AES", "authenticationToken": "Bearer=@(ClaimsPrincipal.Current.FindFirst("ADJwtTokenClaim").Value)"}]}' />
-                            <p class="amp-no-js">
-                                To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
-                            </p>
-                            </video>
-                        </div>
+        <p class="amp-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that supports HTML5 video
+        </p>
+        </video>
+        </div>
         @if (Model.IsCurrentUserMemberOfAdminGroup == true)
         {
             using (Html.BeginForm("RemoveJWTTokenAuthentication", "MediaLibrary"))
@@ -106,14 +106,23 @@
                     if (Model.IsCurrentUserMemberOfAdminGroup == true)
                     {
                         <td>
-                            <b>Requeired claims:</b>
+                            <b>Required claims:</b>
                             @using (Html.BeginForm("EnableJWTTokenAuthentication", "MediaLibrary"))
                             {
-                                @Html.Encode(" Claim : ")
-                                @(Html.Hidden("assetId", i.Item1.Id))
-                                @(Html.TextBox("claimType", "groups"))
-                                @Html.Encode(" = ")
-                                @(Html.TextBox("claimValue", "Paste Group ObjectID here"))<br /><br />
+                                <p>
+                                    @Html.Encode("groups: ")
+                                    @(Html.Hidden("assetId", i.Item1.Id))
+                                    @(Html.Hidden("claimType", "groups"))
+                                    @foreach (var group in Model.AllGroups)
+                                    {
+                                    // Display a checkbox with group.DisplayName and claimValue group.ObjectId
+                                    <input id="group_@group.ObjectId" type="checkbox" name="claimValue[]" value="@group.ObjectId" />
+                                    <label for="group_@group.ObjectId">@group.DisplayName</label>
+                                    <span>or</span>
+                                    }
+                                </p>
+                                @*@(Html.TextBox("claimType", "groups"))@Html.Encode(" = ")
+                                    @(Html.TextBox("claimValue", "Paste Group ObjectID here"))<br /><br />*@
                                 @(Html.ActionLink("Set JWT Token Auth policy", "EnableJWTTokenAuthentication", "MediaLibrary", i.Item1.Id, new { @class = "saveButton btn btn-primary", onclick = "return false;" }))
 
                             }
