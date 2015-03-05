@@ -22,10 +22,10 @@ The intent here is to produce an audio-video interleaved MP4 that can be deliver
 	1. Keep source resolution, and aspect ratio
 		- If source image height is greater than or equal to 720, we will assume Rec709 colorspace and a 16:9 aspect ratio; if the source image height is less than 720, we will assume Rec601 colorspace and a 4:3 aspect ratio
 	1. Bitrate will be chosen based on source resolution:
-i.	4k/UHD content: 12,000 kbps
-ii.	1080p:  6500 kbps
-iii.	720p:  3500 kbps 
-iv.	SD :  2200 kbps
+		- 4k/UHD content: 12,000 kbps
+		- 1080p:  6500 kbps
+		- 720p:  3500 kbps 
+		- SD :  2200 kbps
 1. Audio encoding: 
 	1. Codec is AAC-LC 
 	1. 1-pass CBR
