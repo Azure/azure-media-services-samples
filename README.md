@@ -1,3 +1,5 @@
+We are no longer updating this repository, please go to https://github.com/AzureMediaServicesSamples for most updated sample code.
+
 # Azure-Media-Services-Samples
 
 The Azure-Media-Services-Samples repository contains the following Azure Media Services samples.
