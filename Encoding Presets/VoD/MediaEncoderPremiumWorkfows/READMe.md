@@ -1,8 +1,9 @@
 #Media-Encoder-Premium-Workflows
 
-**NOTE** Since the default workflows include fairly complex decision logic elements, it can be sensitive to how the input media file provides metadata about resolution, frame rate, progressive vs. interlace coding, etc. These workflows may not always work with source files produced by open-source encoders like ffmpeg.
-
 The following sections describe the default workflows.
+
+
+**NOTE** Since the default workflows include fairly complex decision logic elements, it can be sensitive to how the input media file provides metadata about resolution, frame rate, progressive vs. interlace coding, etc. These workflows may not always work with source files produced by open-source encoders like ffmpeg.
 
 ##H264 Progressive Download MP4
 
