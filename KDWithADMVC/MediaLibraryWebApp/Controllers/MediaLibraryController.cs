@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.MediaServices.Client;
 using Microsoft.WindowsAzure.MediaServices.Client.ContentKeyAuthorization;
 using Microsoft.WindowsAzure.MediaServices.Client.DynamicEncryption;
 using WebGrease.Css.Extensions;
+using Microsoft.Azure.ActiveDirectory.GraphClient;
 
 namespace MediaLibraryWebApp.Controllers
 {
@@ -44,6 +45,24 @@ namespace MediaLibraryWebApp.Controllers
             MediaLibraryModel model = new MediaLibraryModel();
             model.VideoList = new List<Tuple<IAsset, ILocator, Uri>>();
             model.IsCurrentUserMemberOfAdminGroup = IsAdminUser();
+
+            // Populate the Groups
+            try
+            {
+                // Get the token
+                string jwtToken = ClaimsPrincipal.Current.FindFirst(Configuration.ClaimsJwtToken).Value;
+                JwtSecurityToken token = new JwtSecurityToken(jwtToken);
+
+                ActiveDirectoryClient activeDirectoryClient = Factory.GetActiveDirectoryClientAsApplication(jwtToken);
+                var groups = await activeDirectoryClient.Groups.ExecuteAsync();
+                model.AllGroups = groups.CurrentPage;
+            }
+            catch (Exception ex)
+            {
+
+                ViewBag.ErrorMessage = ex.Message;
+                return View(model);
+            }
 
             try
             {
@@ -76,7 +95,7 @@ namespace MediaLibraryWebApp.Controllers
                                 .FirstOrDefault();
                     }
                     //If no policy has been found we are storing nulls in a model
-                    Tuple<IAsset, ILocator, Uri> item = new Tuple<IAsset, ILocator, Uri>(file.Asset, originLocator, originLocator != null ? new Uri(originLocator.Path + file.Name) : null);
+                    Tuple<IAsset, ILocator, Uri> item = new Tuple<IAsset, ILocator, Uri>(file.Asset, originLocator, originLocator != null ? new Uri(originLocator.Path.Replace("http://","https://") + file.Name) : null);
                     model.VideoList.Add(item);
 
                 });
@@ -165,7 +184,7 @@ namespace MediaLibraryWebApp.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public async Task<ActionResult> EnableJWTTokenAuthentication(string assetId,string claimType, string claimValue)
+        public async Task<ActionResult> EnableJWTTokenAuthentication(string assetId,string claimType, string[] claimValue)
         {
             var cloudMediaContext = Factory.GetCloudMediaContext();
 
@@ -208,7 +227,7 @@ namespace MediaLibraryWebApp.Controllers
             return RedirectToAction("Index");
         }
 
-        public static IContentKey AddAuthorizationPolicyToContentKey(string assetID, CloudMediaContext mediaContext, IContentKey objIContentKey, string claimType, string claimValue)
+        public static IContentKey AddAuthorizationPolicyToContentKey(string assetID, CloudMediaContext mediaContext, IContentKey objIContentKey, string claimType, string[] claimValue)
         {
            //we name auth policy same as asset
             var policy = mediaContext.ContentKeyAuthorizationPolicies.Where(c => c.Name == assetID).FirstOrDefault();
@@ -218,50 +237,13 @@ namespace MediaLibraryWebApp.Controllers
             {
                 policy = mediaContext.ContentKeyAuthorizationPolicies.CreateAsync(assetID).Result;
             }
-           
-            //naming policyOption same as asset
-            var policyOption = mediaContext.ContentKeyAuthorizationPolicyOptions.Where(name => name.Name == assetID).FirstOrDefault();
 
-            if (policyOption == null)
-            {
+            // Add each claim (group) as a Policy Option
+            foreach (var claim in claimValue)
+                CreatePolicyOption(assetID, mediaContext, claimType, claim, policy);
 
-                List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
-
-                List<X509Certificate2> certs = GetX509Certificate2FromADMetadataEndpoint();
-                JwtSecurityToken token = GetJwtSecurityToken();
-
-                TokenRestrictionTemplate template = new TokenRestrictionTemplate();
-                template.TokenType = TokenType.JWT;
-                template.PrimaryVerificationKey = new X509CertTokenVerificationKey(certs[0]);
-                certs.GetRange(1, certs.Count - 1).ForEach(c => template.AlternateVerificationKeys.Add(new X509CertTokenVerificationKey(c)));
-               
-                
-                //Ignore Empty claims
-                if (!String.IsNullOrEmpty(claimType) && !String.IsNullOrEmpty(claimValue))
-                {
-                    template.RequiredClaims.Add(new TokenClaim(claimType, claimValue));
-                }
-
-                var audience = token.Audiences.First();
-                template.Audience = new Uri(audience);
-                template.Issuer = new Uri(token.Issuer);
-                string requirements = TokenRestrictionTemplateSerializer.Serialize(template);
-
-                ContentKeyAuthorizationPolicyRestriction restriction = new ContentKeyAuthorizationPolicyRestriction
-                {
-                    Name = "Authorization Policy with Token Restriction",
-                    KeyRestrictionType = (int)ContentKeyRestrictionType.TokenRestricted,
-                    Requirements = requirements
-                };
-
-                restrictions.Add(restriction);
-
-                policyOption =
-                    mediaContext.ContentKeyAuthorizationPolicyOptions.Create(assetID,
-                        ContentKeyDeliveryType.BaselineHttp, restrictions, null);
-                policy.Options.Add(policyOption);
-                policy.UpdateAsync();
-            }
+            // After adding Policy Options to the Policy, update it
+            policy.UpdateAsync();
 
 
             // Add ContentKeyAutorizationPolicy to ContentKey
@@ -270,6 +252,46 @@ namespace MediaLibraryWebApp.Controllers
 
             return IContentKeyUpdated;
         }
+
+        private static void CreatePolicyOption(string assetID, CloudMediaContext mediaContext, string claimType, string claim, IContentKeyAuthorizationPolicy policy)
+        {
+            IContentKeyAuthorizationPolicyOption policyOption;
+            List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>();
+
+            List<X509Certificate2> certs = GetX509Certificate2FromADMetadataEndpoint();
+            JwtSecurityToken token = GetJwtSecurityToken();
+
+            TokenRestrictionTemplate template = new TokenRestrictionTemplate();
+            template.TokenType = TokenType.JWT;
+            template.PrimaryVerificationKey = new X509CertTokenVerificationKey(certs[0]);
+            certs.GetRange(1, certs.Count - 1)
+                .ForEach(c => template.AlternateVerificationKeys.Add(new X509CertTokenVerificationKey(c)));
+
+
+            //Ignore Empty claims
+            if (!String.IsNullOrEmpty(claimType) && !String.IsNullOrEmpty(claim))
+            {
+                template.RequiredClaims.Add(new TokenClaim(claimType, claim));
+            }
+
+            var audience = token.Audiences.First();
+            template.Audience = new Uri(audience);
+            template.Issuer = new Uri(token.Issuer);
+            string requirements = TokenRestrictionTemplateSerializer.Serialize(template);
+
+            ContentKeyAuthorizationPolicyRestriction restriction = new ContentKeyAuthorizationPolicyRestriction
+            {
+                Name = "Authorization Policy with Token Restriction",
+                KeyRestrictionType = (int) ContentKeyRestrictionType.TokenRestricted,
+                Requirements = requirements
+            };
+
+            restrictions.Add(restriction);
+
+
+            policyOption = mediaContext.ContentKeyAuthorizationPolicyOptions.Create(assetID+"_group:"+claim,ContentKeyDeliveryType.BaselineHttp, restrictions, null);
+            policy.Options.Add(policyOption);
+        }                
 
         private static JwtSecurityToken GetJwtSecurityToken()
         {
@@ -355,7 +377,7 @@ namespace MediaLibraryWebApp.Controllers
                 cloudMediaContext.AssetDeliveryPolicies.Create(
                             "myAssetDeliveryPolicy",
                             AssetDeliveryPolicyType.DynamicEnvelopeEncryption,
-                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS,
+                            AssetDeliveryProtocol.SmoothStreaming | AssetDeliveryProtocol.HLS | AssetDeliveryProtocol.Dash,
                             assetDeliveryPolicyConfiguration);
 
             // Add AssetDelivery Policy to the asset
